@@ -35,7 +35,7 @@ namespace LeagueInfo
         public string Lore { get; set; }
 
         [JsonProperty("name")]
-        public string name { get; set; }
+        public string Name { get; set; }
 
         [JsonProperty("partype")]
         public string Partype { get; set; }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using LeagueInfo.Json.Request;
 
 namespace LeagueInfo.Json
 {
@@ -23,5 +24,20 @@ namespace LeagueInfo.Json
 
         [JsonProperty("version")]
         public string Version { get; set; }
+
+        public ChampionListDto LoadAllChampions()
+        {
+            string json = new Requester().GetJson();
+            ChampionListDto champions = new ChampionListDto();
+            try
+            {
+                champions = JsonConvert.DeserializeObject<ChampionListDto>(json);
+
+            }
+            catch
+            {
+            }
+            return champions;
+        }
     }
 }

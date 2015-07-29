@@ -13,8 +13,9 @@
     SupportedOrientations="Portrait" Orientation="Portrait"
     shell:SystemTray.IsVisible="True">
 	
-	<phone:Panorama Title="league info">
+	<phone:Panorama Title="league info" >
 		<phone:PanoramaItem Header="campeões" Loaded="PanoramaItem_Loaded">
+            <StackPanel Name="ChampionsList" />
 		</phone:PanoramaItem>
 	</phone:Panorama>
 

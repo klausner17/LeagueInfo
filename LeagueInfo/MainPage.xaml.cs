@@ -11,6 +11,7 @@ using LeagueInfo.Resources;
 using LeagueInfo.Json;
 using Newtonsoft.Json;
 using System.IO;
+using LeagueInfo.Json;
 
 namespace LeagueInfo
 {
@@ -20,30 +21,22 @@ namespace LeagueInfo
         public MainPage()
         {
             InitializeComponent();
-
-            // Sample code to localize the ApplicationBar
-            //BuildLocalizedApplicationBar();
         }
 
-        private void PanoramaItem_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        private  void PanoramaItem_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
-        	
+            ChampionListDto champions =  new ChampionListDto();
+            champions =  champions.LoadAllChampions();
+            try
+            {
+                foreach (Champion champion in champions.Data.Values)
+                {
+                    TextBlock text = new TextBlock();
+                    text.Text = champion.Name;
+                    ChampionsList.Children.Add(text);
+                }
+            }
+            catch { }
         }
-
-        // Sample code for building a localized ApplicationBar
-        //private void BuildLocalizedApplicationBar()
-        //{
-        //    // Set the page's ApplicationBar to a new instance of ApplicationBar.
-        //    ApplicationBar = new ApplicationBar();
-
-        //    // Create a new button and set the text value to the localized string from AppResources.
-        //    ApplicationBarIconButton appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/appbar.add.rest.png", UriKind.Relative));
-        //    appBarButton.Text = AppResources.AppBarButtonText;
-        //    ApplicationBar.Buttons.Add(appBarButton);
-
-        //    // Create a new menu item with the localized string from AppResources.
-        //    ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMenuItemText);
-        //    ApplicationBar.MenuItems.Add(appBarMenuItem);
-        //}
     }
 }

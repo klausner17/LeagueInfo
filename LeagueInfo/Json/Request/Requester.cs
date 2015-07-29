@@ -17,22 +17,34 @@ namespace LeagueInfo.Json.Request
         const string KEY = @"8eee2093-91d0-4a8f-bc85-c366e7de1c33";
         public string Campo { get; set; }
         private WebRequest requester;
+        private String json { get; set; }
+        private static ManualResetEvent allDone = new ManualResetEvent(false);
+        bool go = false;
 
-        private void StartWebRequest()
+        private async void StartWebRequest()
         {
             requester = WebRequest.Create(URLAPI);
-            requester.BeginGetResponse(new AsyncCallback(FinishWebRequest), null);
-            StreamReader stream = (StreamReader) requester.BeginGetRequestStream(new AsyncCallback(BeginGetStream), null);
-        }
-
-        private void BeginGetStream(IAsyncResult ar)
-        {
-            requester.EndGetResponse(ar);
+            var asyncResult = requester.BeginGetResponse(new AsyncCallback(FinishWebRequest), null);
+            while (!go)
+                await Task.Delay(10);
+            //allDone.WaitOne();
         }
 
         private void FinishWebRequest(IAsyncResult result)
         {
-            requester.EndGetResponse(result);
+            HttpWebResponse response = requester.EndGetResponse(result) as HttpWebResponse;
+            json = string.Empty;
+            using (var reader = new StreamReader(response.GetResponseStream()))
+            {
+                json = reader.ReadToEnd();
+            }
+            go = true;
+        }
+
+        public string GetJson()
+        {
+            StartWebRequest();
+            return json;
         }
     }
 }
