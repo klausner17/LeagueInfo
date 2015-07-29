@@ -94,6 +94,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ItemSelect.xaml.cs">
+      <DependentUpon>ItemSelect.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Json\Champion.cs" />
     <Compile Include="Json\ChampionListDto.cs" />
     <Compile Include="Json\Request\Requester.cs" />
@@ -113,6 +116,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="Controls\ItemSelect.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

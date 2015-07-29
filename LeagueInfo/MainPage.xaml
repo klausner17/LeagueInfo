@@ -12,11 +12,19 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     shell:SystemTray.IsVisible="True">
-	
-	<phone:Panorama Title="league info" >
-		<phone:PanoramaItem Header="campeões" Loaded="PanoramaItem_Loaded">
-            <StackPanel Name="ChampionsList" />
+	<Grid>
+		<TextBlock Margin="10,0,0,0">league info</TextBlock>
+		<phone:Panorama Background="White" Margin="0,60,0,0">
+		<phone:PanoramaItem Header="campeões" Loaded="PanoramaItem_Loaded" Foreground="black">
+			<ScrollViewer VerticalAlignment="Stretch">
+                <StackPanel Name="ChampionsList" />
+			</ScrollViewer>
+		</phone:PanoramaItem>
+		<phone:PanoramaItem Header="itens" Foreground="Black">
+			
 		</phone:PanoramaItem>
 	</phone:Panorama>
+	</Grid>
+
 
 </phone:PhoneApplicationPage>

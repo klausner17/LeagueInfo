@@ -21,13 +21,13 @@ namespace LeagueInfo.Json.Request
         private static ManualResetEvent allDone = new ManualResetEvent(false);
         bool go = false;
 
-        private async void StartWebRequest()
+        private async Task StartWebRequest()
         {
-            requester = WebRequest.Create(URLAPI);
-            var asyncResult = requester.BeginGetResponse(new AsyncCallback(FinishWebRequest), null);
+            string url = @"https://global.api.pvp.net/api/lol/static-data/br/v1.2/champion?champData=lore&api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33";
+            requester = (HttpWebRequest)WebRequest.Create(url);
+            requester.BeginGetResponse(new AsyncCallback(FinishWebRequest), null);
             while (!go)
-                await Task.Delay(10);
-            //allDone.WaitOne();
+                await Task.Delay(1);
         }
 
         private void FinishWebRequest(IAsyncResult result)
@@ -41,9 +41,9 @@ namespace LeagueInfo.Json.Request
             go = true;
         }
 
-        public string GetJson()
+        public async Task<string> GetJson()
         {
-            StartWebRequest();
+            await StartWebRequest();
             return json;
         }
     }

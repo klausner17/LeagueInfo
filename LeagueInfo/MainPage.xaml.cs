@@ -17,23 +17,23 @@ namespace LeagueInfo
 {
     public partial class MainPage : PhoneApplicationPage
     {
-        ChampionListDto listChampions;
         public MainPage()
         {
             InitializeComponent();
         }
 
-        private  void PanoramaItem_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        private async void PanoramaItem_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
             ChampionListDto champions =  new ChampionListDto();
-            champions =  champions.LoadAllChampions();
+            champions =  await champions.LoadAllChampions();
             try
             {
                 foreach (Champion champion in champions.Data.Values)
                 {
-                    TextBlock text = new TextBlock();
-                    text.Text = champion.Name;
-                    ChampionsList.Children.Add(text);
+                    ItemSelect item = new ItemSelect();
+                    item.Title = champion.Name;
+                    item.Description = champion.Title;
+                    ChampionsList.Children.Add(item);
                 }
             }
             catch { }

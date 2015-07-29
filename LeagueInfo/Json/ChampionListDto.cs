@@ -25,14 +25,13 @@ namespace LeagueInfo.Json
         [JsonProperty("version")]
         public string Version { get; set; }
 
-        public ChampionListDto LoadAllChampions()
+        public async Task<ChampionListDto> LoadAllChampions()
         {
-            string json = new Requester().GetJson();
+            string json = await new Requester().GetJson();
             ChampionListDto champions = new ChampionListDto();
             try
             {
                 champions = JsonConvert.DeserializeObject<ChampionListDto>(json);
-
             }
             catch
             {
