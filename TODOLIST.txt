@@ -1,0 +1,2 @@
+Requester - Adicionar timeout
+ItemSelect - Animações para quando pressionar
