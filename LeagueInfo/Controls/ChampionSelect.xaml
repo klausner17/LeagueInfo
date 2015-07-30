@@ -6,22 +6,34 @@
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
-    Foreground="{StaticResource PhoneForegroundBrush}" d:DesignWidth="480" Height="100"  
-    MouseLeftButtonDown="userControl_MouseLeftButtonDown" MouseLeftButtonUp="userControl_MouseLeftButtonUp">
+    Foreground="{StaticResource PhoneForegroundBrush}" d:DesignWidth="480" Height="100" RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="userControl_MouseLeftButtonDown">
+	<UserControl.Resources>
+		<Style x:Key="TransformButton" TargetType="Button">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Grid x:Name="LayoutRoot">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="100"/>
+								<ColumnDefinition Width="*"/>
+							</Grid.ColumnDefinitions>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="*"/>
+								<RowDefinition Height="*"/>
+							</Grid.RowDefinitions>
+							<Canvas Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Background="#FF5FFF58" Margin="5">
+								<Image x:Name="icon" />
+							</Canvas>
+							<TextBlock x:Name="description" Grid.Row="1" Grid.Column="1" FontSize="26.667" Text="Description" Margin="8,0,0,0" Foreground="{StaticResource PhoneSubtleBrush}" />
+							<ContentPresenter Grid.Column="1" Margin="8,0,0,0" Grid.Row="0"/>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="FontSize" Value="34.667"/>
+			<Setter Property="Foreground" Value="White"/>
+		</Style>
+	</UserControl.Resources>
     
-    <Grid x:Name="LayoutRoot">
-    	<Grid.RowDefinitions>
-    		<RowDefinition Height="*"/>
-    		<RowDefinition Height="*"/>
-    	</Grid.RowDefinitions>
-    	<Grid.ColumnDefinitions>
-    		<ColumnDefinition Width="100"/>
-    		<ColumnDefinition Width="*"/>
-    	</Grid.ColumnDefinitions>
-		<Canvas Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Background="#FF5FFF58" Margin="5">
-			<Image x:Name="icon" />
-		</Canvas>
-		<TextBlock x:Name="title" Grid.Row="0" Grid.Column="1" FontSize="34.667" Text="Title" Margin="8,0,0,0" Foreground="White"/>
-		<TextBlock x:Name="description" Grid.Row="1" Grid.Column="1" FontSize="26.667" Text="Description" Margin="8,0,0,0" Foreground="{StaticResource PhoneSubtleBrush}" />
-	</Grid>
+    <Button Content="Title" Style="{StaticResource TransformButton}"/>
 </UserControl>
