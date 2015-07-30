@@ -23,7 +23,7 @@ namespace LeagueInfo.Json.Request
 
         private async Task StartWebRequest()
         {
-            string url = @"https://global.api.pvp.net/api/lol/static-data/br/v1.2/champion?champData=lore&api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33";
+            string url = @"https://global.api.pvp.net/api/lol/static-data/br/v1.2/champion?champData=all&api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33";
             requester = (HttpWebRequest)WebRequest.Create(url);
             requester.BeginGetResponse(new AsyncCallback(FinishWebRequest), null);
             while (!go)

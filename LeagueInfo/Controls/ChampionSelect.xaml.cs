@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using LeagueInfo.Json;
 
 namespace LeagueInfo
 {
@@ -28,6 +29,12 @@ namespace LeagueInfo
                 this.title.Text = value.Name;
                 this.description.Text = value.Title;
             }
+        }
+
+        public Image Icon
+        {
+            get { return this.icon; }
+            set { this.icon = value; }
         }
 
         public ChampionSelected()

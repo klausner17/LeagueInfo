@@ -11,7 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Newtonsoft.Json;
 
-namespace LeagueInfo
+namespace LeagueInfo.Json
 {
 	public class Champion
 	{
@@ -45,6 +45,9 @@ namespace LeagueInfo
 
         [JsonProperty("title")]
         public string Title { get; set; }
+
+        [JsonProperty("image")]
+        public ImageDto Image { get; set; }
 
         #endregion
 

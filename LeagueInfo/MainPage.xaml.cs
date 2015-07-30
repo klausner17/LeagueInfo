@@ -11,6 +11,7 @@ using LeagueInfo.Resources;
 using LeagueInfo.Json;
 using Newtonsoft.Json;
 using System.IO;
+using System.Windows.Media.Imaging;
 
 namespace LeagueInfo
 {
@@ -32,22 +33,29 @@ namespace LeagueInfo
                 foreach (Champion champion in champions.Data.Values)
                 {
                     ChampionSelected item = new ChampionSelected();
+                    //BitmapImage bmp = new BitmapImage();
+                    //Uri imageUri = new Uri("/Assets/champions/" + champion.Key + "_Square_0.png", UriKind.Relative);
+                    //Stream bmpStream = Application.GetResourceStream(imageUri).Stream;
+                    //bmp.SetSource(bmpStream);
+                    //Image img = new Image();
+                    //img.Source = bmp;
+                    //item.Icon = img;
                     item.Champion = champion;
                     item.OnTouch += item_OnTouch;
                     ChampionsList.Children.Add(item);
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         void item_OnTouch(object sender)
         {
-            try
-            {
-                championSelected = (sender as ChampionSelected).Champion;
-                NavigationService.Navigate(new Uri("/Pages/DetailChampion.xaml", UriKind.Relative));
-            }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            championSelected = (sender as ChampionSelected).Champion;
+            MessageBox.Show(championSelected.Image.Sprite);
+            NavigationService.Navigate(new Uri("/Pages/DetailChampion.xaml", UriKind.Relative));
         }
 
     }
