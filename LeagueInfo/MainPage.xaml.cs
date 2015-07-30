@@ -33,13 +33,6 @@ namespace LeagueInfo
                 foreach (Champion champion in champions.Data.Values)
                 {
                     ChampionSelected item = new ChampionSelected();
-                    //BitmapImage bmp = new BitmapImage();
-                    //Uri imageUri = new Uri("/Assets/champions/" + champion.Key + "_Square_0.png", UriKind.Relative);
-                    //Stream bmpStream = Application.GetResourceStream(imageUri).Stream;
-                    //bmp.SetSource(bmpStream);
-                    //Image img = new Image();
-                    //img.Source = bmp;
-                    //item.Icon = img;
                     item.Champion = champion;
                     item.OnTouch += item_OnTouch;
                     ChampionsList.Children.Add(item);
