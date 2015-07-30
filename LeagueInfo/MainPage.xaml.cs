@@ -11,12 +11,13 @@ using LeagueInfo.Resources;
 using LeagueInfo.Json;
 using Newtonsoft.Json;
 using System.IO;
-using LeagueInfo.Json;
 
 namespace LeagueInfo
 {
     public partial class MainPage : PhoneApplicationPage
     {
+        public static Champion championSelected = new Champion();
+
         public MainPage()
         {
             InitializeComponent();
@@ -30,13 +31,24 @@ namespace LeagueInfo
             {
                 foreach (Champion champion in champions.Data.Values)
                 {
-                    ItemSelect item = new ItemSelect();
-                    item.Title = champion.Name;
-                    item.Description = champion.Title;
+                    ChampionSelected item = new ChampionSelected();
+                    item.Champion = champion;
+                    item.OnTouch += item_OnTouch;
                     ChampionsList.Children.Add(item);
                 }
             }
             catch { }
         }
+
+        void item_OnTouch(object sender)
+        {
+            try
+            {
+                championSelected = (sender as ChampionSelected).Champion;
+                NavigationService.Navigate(new Uri("/Pages/DetailChampion.xaml", UriKind.Relative));
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
     }
 }

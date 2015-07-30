@@ -84,11 +84,12 @@ namespace LeagueInfo
         // Code to execute if a navigation fails
         private void RootFrame_NavigationFailed(object sender, NavigationFailedEventArgs e)
         {
-            if (Debugger.IsAttached)
-            {
-                // A navigation has failed; break into the debugger
-                Debugger.Break();
-            }
+            MessageBox.Show("A navegação falhou.");
+            //if (Debugger.IsAttached)
+            //{
+            //    // A navigation has failed; break into the debugger
+            //    Debugger.Break();
+            //}
         }
 
         // Code to execute on Unhandled Exceptions

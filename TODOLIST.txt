@@ -1,2 +1,4 @@
 Requester - Adicionar timeout
-ItemSelect - Animações para quando pressionar
+Associar imagens dos campeões
+tratar erro de conexao
+criar cache
