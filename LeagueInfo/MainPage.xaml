@@ -10,14 +10,15 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="Portrait" Orientation="Portrait"
-    shell:SystemTray.IsVisible="True">
-    <Grid Background="{StaticResource PhoneAccentBrush}">
-		<TextBlock Margin="10,0,0,0" >league info</TextBlock>
-		<phone:Panorama Margin="0,60,0,0">
-			<phone:Panorama.Background>
-				<ImageBrush Stretch="None" ImageSource="/BackGround.jpg" Opacity="0.995"/>
-			</phone:Panorama.Background>
+    SupportedOrientations="Portrait" Orientation="Portrait" UseLayoutRounding="True">
+    <Grid>
+    	<Grid.Background>
+    		<ImageBrush ImageSource="/BackGround.jpg" Stretch="UniformToFill"/>
+    	</Grid.Background>
+		<Grid Background="{StaticResource TransparentBrush}" VerticalAlignment="Top">
+			<TextBlock Margin="10,0,0,0" VerticalAlignment="Top" Height="Auto">league info</TextBlock>
+		</Grid>
+		<phone:Panorama Margin="0,50,0,0">
 		    <phone:PanoramaItem Header="campeões" Loaded="PanoramaItem_Loaded">
 			    <ScrollViewer VerticalAlignment="Stretch">
                     <StackPanel Name="ChampionsList" />
@@ -27,6 +28,7 @@
 			
 		</phone:PanoramaItem>
 	</phone:Panorama>
+		<ProgressBar Visibility="Collapsed" HorizontalAlignment="Stretch" IsIndeterminate="True"  VerticalAlignment="Top" Height="20" Foreground="White"  Name="loadProgress" Value="100"/>
 	</Grid>
 
 

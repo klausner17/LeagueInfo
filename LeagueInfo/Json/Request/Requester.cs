@@ -11,6 +11,8 @@ namespace LeagueInfo.Json.Request
 {
     class Requester
     {
+        public delegate void GettingJsonEventHandler(int status);
+        public static event GettingJsonEventHandler OnGettingData;
         const string URLAPI = @"https://global.api.pvp.net/api/lol/static-data/br/v1.2/champion?champData=all&api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33";
         const string REGION = "br";
         const string VERSION = "v1.2";
@@ -21,13 +23,18 @@ namespace LeagueInfo.Json.Request
         private static ManualResetEvent allDone = new ManualResetEvent(false);
         bool go = false;
 
+        public const int BEGINDOWNLOAD = 0;
+        public const int ENDDOWNLOAD = 1;
+
         private async Task StartWebRequest()
         {
             string url = @"https://global.api.pvp.net/api/lol/static-data/br/v1.2/champion?champData=all&api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33";
             requester = (HttpWebRequest)WebRequest.Create(url);
             requester.BeginGetResponse(new AsyncCallback(FinishWebRequest), null);
+            GettingData(BEGINDOWNLOAD);
             while (!go)
                 await Task.Delay(1);
+            GettingData(ENDDOWNLOAD);
         }
 
         private void FinishWebRequest(IAsyncResult result)
@@ -35,9 +42,7 @@ namespace LeagueInfo.Json.Request
             HttpWebResponse response = requester.EndGetResponse(result) as HttpWebResponse;
             json = string.Empty;
             using (var reader = new StreamReader(response.GetResponseStream()))
-            {
                 json = reader.ReadToEnd();
-            }
             go = true;
         }
 
@@ -45,6 +50,12 @@ namespace LeagueInfo.Json.Request
         {
             await StartWebRequest();
             return json;
+        }
+
+        public void GettingData(int status)
+        {
+            if (OnGettingData != null)
+                OnGettingData(status);
         }
     }
 }
