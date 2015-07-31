@@ -18,11 +18,11 @@
 			<phone:Panorama.Background>
 				<ImageBrush Stretch="None" ImageSource="/BackGround.jpg" Opacity="0.995"/>
 			</phone:Panorama.Background>
-		<phone:PanoramaItem Header="campeões" Loaded="PanoramaItem_Loaded">
-			<ScrollViewer VerticalAlignment="Stretch">
-                <StackPanel Name="ChampionsList" />
-			</ScrollViewer>
-		</phone:PanoramaItem>
+		    <phone:PanoramaItem Header="campeões" Loaded="PanoramaItem_Loaded">
+			    <ScrollViewer VerticalAlignment="Stretch">
+                    <StackPanel Name="ChampionsList" />
+			    </ScrollViewer>
+		    </phone:PanoramaItem>
 		<phone:PanoramaItem Header="itens">
 			
 		</phone:PanoramaItem>

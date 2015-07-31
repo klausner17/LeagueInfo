@@ -19,9 +19,9 @@ namespace LeagueInfo.Pages
 
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
         {
-            panoramaChampion.Title = MainPage.championSelected.Name;
+            championName.Text = MainPage.championSelected.Name;
             TextBlock loreDescription = new TextBlock();
-            lore.Text = MainPage.championSelected.Lore;
+            lore.Text = MainPage.championSelected.Lore.Replace("<br>", "\n");
         }
     }
 }

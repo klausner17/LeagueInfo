@@ -47,7 +47,6 @@ namespace LeagueInfo
         void item_OnTouch(object sender)
         {
             championSelected = (sender as ChampionSelected).Champion;
-            MessageBox.Show(championSelected.Image.Sprite);
             NavigationService.Navigate(new Uri("/Pages/DetailChampion.xaml", UriKind.Relative));
         }
 

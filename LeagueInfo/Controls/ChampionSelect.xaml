@@ -17,7 +17,8 @@
 			<RowDefinition Height="*"/>
 			<RowDefinition Height="*"/>
 		</Grid.RowDefinitions>
-        <Image x:Name="icon"   Height="90" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Margin="5" Source="/Assets/champions/Aatrox_Square_0.png"/>
+        <Canvas Height="90" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Margin="5" Background="Cyan" />
+        <Image x:Name="icon"   Height="90" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Margin="5" />
         <TextBlock x:Name="title" Grid.Row="0" Grid.Column="1" FontSize="26.667" Text="Title" Margin="8,0,0,0" Foreground="White" />
 		<TextBlock x:Name="description" Grid.Row="1" Grid.Column="1" FontSize="26.667" Text="Description" Margin="8,0,0,0" Foreground="{StaticResource PhoneSubtleBrush}" />
 	</Grid>

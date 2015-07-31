@@ -15,10 +15,12 @@
 
     <!--LayoutRoot contains the root grid where all other page content is placed-->
     <Grid x:Name="LayoutRoot">
-        <phone:Panorama Title="champion name" Name="panoramaChampion">
-
+        <Grid Background="{StaticResource PhoneAccentBrush}" Height="Auto" Width="Auto" VerticalAlignment="Top">
+            <TextBlock Name="championName" Text="champion" Margin="10,0,0,0"/>
+        </Grid>
+        <phone:Panorama Margin="0,60,0,0">
             <!--Panorama item one-->
-            <phone:PanoramaItem Header="lore">
+            <phone:PanoramaItem Header="lore" >
                 <ScrollViewer VerticalAlignment="Stretch">
                     <TextBlock TextWrapping="Wrap" Name="lore" FontSize="22"></TextBlock>
                 </ScrollViewer>
