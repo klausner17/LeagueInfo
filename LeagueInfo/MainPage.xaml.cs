@@ -62,7 +62,7 @@ namespace LeagueInfo
                     {
                         ChampionSelected item = new ChampionSelected();
                         item.Champion = champion;
-                        item.Icon.Source = new BitmapImage(new Uri("/Assets/" + champion.Key + "_Square_0.png", UriKind.Relative));
+                        item.icon.Source = new BitmapImage(new Uri("/Assets/" + champion.Key + "_Square_0.png", UriKind.Relative));
                         item.OnTouch += item_OnTouch;
                         ChampionsList.Children.Add(item);
                         loadedChampions = true;
