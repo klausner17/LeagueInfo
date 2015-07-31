@@ -1,4 +1,4 @@
-﻿<phone:PhoneApplicationPage
+﻿<phone:PhoneApplicationPage x:Name="phoneApplicationPage"
     x:Class="LeagueInfo.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -15,10 +15,13 @@
     	<Grid.Background>
     		<ImageBrush ImageSource="/BackGround.jpg" Stretch="UniformToFill"/>
     	</Grid.Background>
-		<Grid Background="{StaticResource TransparentBrush}" VerticalAlignment="Top">
-			<TextBlock Margin="10,0,0,0" VerticalAlignment="Top" Height="Auto">league info</TextBlock>
+		<Grid VerticalAlignment="Top">
+			<Grid.Background>
+				<SolidColorBrush Color="Black" Opacity="0.4"/>
+			</Grid.Background>
+			<TextBlock FontSize="24" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto">league info</TextBlock>
 		</Grid>
-		<phone:Panorama Margin="0,50,0,0">
+		<phone:Panorama Margin="0,40,0,0">
 		    <phone:PanoramaItem Header="campeões" Loaded="PanoramaItem_Loaded">
 			    <ScrollViewer VerticalAlignment="Stretch">
                     <StackPanel Name="ChampionsList" />
@@ -28,7 +31,7 @@
 			
 		</phone:PanoramaItem>
 	</phone:Panorama>
-		<ProgressBar Visibility="Collapsed" HorizontalAlignment="Stretch" IsIndeterminate="True"  VerticalAlignment="Top" Height="20" Foreground="White"  Name="loadProgress" Value="100"/>
+	<ProgressBar Visibility="visible" HorizontalAlignment="Stretch" IsIndeterminate="True"  VerticalAlignment="center" Height="20" Width="{Binding Width, ElementName=phoneApplicationPage}" Foreground="White"  Name="loadProgress" Margin="0"/>
 	</Grid>
 
 
