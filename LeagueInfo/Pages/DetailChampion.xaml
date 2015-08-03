@@ -27,8 +27,19 @@
             </phone:PanoramaItem>
 
             <!--Panorama item two-->
-            <phone:PanoramaItem Header="item2">
-                <Grid/>
+            <phone:PanoramaItem Header="dicas">
+                <StackPanel>
+					<StackPanel Name="allytips" >
+						<StackPanel.Background>
+							<SolidColorBrush Color="Blue" Opacity="0.5"/>
+						</StackPanel.Background>
+					</StackPanel>
+					<StackPanel Name="enimytips" >
+						<StackPanel.Background>
+							<SolidColorBrush Color="Red" Opacity="0.5"/>
+						</StackPanel.Background>
+					</StackPanel>
+				</StackPanel>
             </phone:PanoramaItem>
         </phone:Panorama>
     </Grid>

@@ -22,6 +22,7 @@ namespace LeagueInfo
         public static Champion championSelected = new Champion();
         private delegate void ProgressCallBack(bool status);
 		private bool loadedChampions = false;
+        private bool loadingChampions = false;
 
         private void ProgressBarVisibility(bool status)
         {
@@ -52,8 +53,10 @@ namespace LeagueInfo
 
         private async void PanoramaItem_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            if (!loadedChampions)
+            if (!loadedChampions || !loadingChampions)
             {
+                ChampionsList.Children.Clear();
+                loadingChampions = true;                
                 ChampionListDto champions = new ChampionListDto();
                 champions = await champions.LoadAllChampions();
                 try
@@ -62,16 +65,18 @@ namespace LeagueInfo
                     {
                         ChampionSelected item = new ChampionSelected();
                         item.Champion = champion;
-                        //item.icon.Source = new BitmapImage(new Uri("/Assets/" + champion.Key + "_Square_0.png", UriKind.Relative));
+                        item.Icon.Source = new BitmapImage(new Uri("/Assets/champions/" + champion.Key + "_Square_0.png", UriKind.Relative));
                         item.OnTouch += item_OnTouch;
                         ChampionsList.Children.Add(item);
-                        loadedChampions = true;
                     }
+                    loadedChampions = true;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                    loadingChampions = false;
                 }
+                loadingChampions = false;
             }
         }
 
