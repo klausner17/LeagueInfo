@@ -19,19 +19,18 @@
 			<Grid.Background>
 				<SolidColorBrush Color="Black" Opacity="0.4"/>
 			</Grid.Background>
-			<TextBlock FontSize="24" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto">league info</TextBlock>
+			<TextBlock Padding="5" FontSize="24" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto">league info</TextBlock>
 		</Grid>
-		<phone:Panorama Margin="0,40,0,0">
+		<phone:Panorama Margin="0,42,0,0">
 		    <phone:PanoramaItem Header="campeões" Loaded="PanoramaItem_Loaded">
 			    <ScrollViewer VerticalAlignment="Stretch">
                     <StackPanel Name="ChampionsList" />
 			    </ScrollViewer>
 		    </phone:PanoramaItem>
 		<phone:PanoramaItem Header="itens">
-			
 		</phone:PanoramaItem>
 	</phone:Panorama>
-	<ProgressBar Visibility="visible" HorizontalAlignment="Stretch" IsIndeterminate="True"  VerticalAlignment="center" Height="20" Width="{Binding Width, ElementName=phoneApplicationPage}" Foreground="White"  Name="loadProgress" Margin="0"/>
+	<ProgressBar Visibility="Collapsed" HorizontalAlignment="Stretch" IsIndeterminate="True"  VerticalAlignment="center" Height="20" Width="{Binding Width, ElementName=phoneApplicationPage}" Foreground="White"  Name="loadProgress" Margin="0"/>
 	</Grid>
 
 

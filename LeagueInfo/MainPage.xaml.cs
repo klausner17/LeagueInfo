@@ -14,6 +14,7 @@ using System.IO;
 using System.Windows.Media.Imaging;
 using LeagueInfo.Json.Request;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace LeagueInfo
 {
@@ -22,6 +23,7 @@ namespace LeagueInfo
         public static Champion championSelected = new Champion();
         private delegate void ProgressCallBack(bool status);
 		private bool loadedChampions = false;
+        private bool loadingChampions = false;
 
         private void ProgressBarVisibility(bool status)
         {
@@ -52,8 +54,10 @@ namespace LeagueInfo
 
         private async void PanoramaItem_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            if (!loadedChampions)
+            if ((!loadedChampions && !loadingChampions) || !loadedChampions)
             {
+                ChampionsList.Children.Clear();
+                loadingChampions = true;
                 ChampionListDto champions = new ChampionListDto();
                 champions = await champions.LoadAllChampions();
                 try
@@ -62,15 +66,18 @@ namespace LeagueInfo
                     {
                         ChampionSelected item = new ChampionSelected();
                         item.Champion = champion;
-                        //item.icon.Source = new BitmapImage(new Uri("/Assets/" + champion.Key + "_Square_0.png", UriKind.Relative));
+                        item.icon.Source = new BitmapImage(new Uri(@"/Assets/champions/" + champion.Key + "_Square_0.png", UriKind.Relative));
                         item.OnTouch += item_OnTouch;
                         ChampionsList.Children.Add(item);
                         loadedChampions = true;
+                        await Task.Delay(50);
                     }
+                    loadingChampions = false;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                    loadingChampions = false;
                 }
             }
         }
