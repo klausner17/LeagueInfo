@@ -28,12 +28,11 @@ namespace LeagueInfo.Json.Request
 
         private async Task StartWebRequest()
         {
-            string url = @"https://global.api.pvp.net/api/lol/static-data/br/v1.2/champion?champData=all&api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33";
-            requester = (HttpWebRequest)WebRequest.Create(url);
+            requester = (HttpWebRequest)WebRequest.Create(URLAPI);
             requester.BeginGetResponse(new AsyncCallback(FinishWebRequest), null);
             GettingData(BEGINDOWNLOAD);
             while (!go)
-                await Task.Delay(1);
+                await Task.Delay(1000);
             GettingData(ENDDOWNLOAD);
         }
 
