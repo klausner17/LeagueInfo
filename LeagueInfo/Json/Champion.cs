@@ -22,7 +22,7 @@ namespace LeagueInfo.Json
         [JsonProperty("blurb")]
         public string Blurb { get; set; }
 
-        [JsonProperty("enimytip")]
+        [JsonProperty("enimytips")]
         public List<string> EnimyTips { get; set; }
 
         [JsonProperty("id")]
