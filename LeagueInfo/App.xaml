@@ -10,6 +10,7 @@
         <local:LocalizedStrings xmlns:local="clr-namespace:LeagueInfo" x:Key="LocalizedStrings"/>
 		<Style TargetType="TextBlock">
 			<Setter Property="FontSize" Value="40"/>
+            <Setter Property="TextAlignment" Value="Justify"/>
 		</Style>
     </Application.Resources>
 

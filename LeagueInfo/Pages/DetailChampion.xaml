@@ -22,24 +22,28 @@
             <!--Panorama item one-->
             <phone:PanoramaItem Header="lore" >
                 <ScrollViewer VerticalAlignment="Stretch">
-                    <TextBlock TextWrapping="Wrap" Name="lore" FontSize="22"></TextBlock>
+                    <TextBlock TextWrapping="Wrap" Name="lore"></TextBlock>
                 </ScrollViewer>
             </phone:PanoramaItem>
 
             <!--Panorama item two-->
             <phone:PanoramaItem Header="dicas">
-                <StackPanel>
-					<StackPanel Name="allytips" >
-						<StackPanel.Background>
-							<SolidColorBrush Color="Blue" Opacity="0.5"/>
-						</StackPanel.Background>
+				<ScrollViewer VerticalAlignment="Stretch">
+					<StackPanel>
+						<StackPanel Name="allytips">
+							<Grid x:Name="headerAllyTips">
+								<TextBlock Padding="5,0,0,5">Aliados</TextBlock>
+								<Line Stroke="Gray" X2="{Binding ActualWidth, ElementName=headerAllyTips}" Y1="{Binding ActualHeight, ElementName=headerAllyTips}" Y2="{Binding ActualHeight, ElementName=headerAllyTips}"/>
+							</Grid>
+						</StackPanel>
+						<StackPanel Name="enimytips" Margin="0,20,0,0">
+							<Grid x:Name="headerEnemyTips">
+								<TextBlock Padding="5,0,0,5">Inimigos</TextBlock>
+								<Line Stroke="Gray" X2="{Binding ActualWidth, ElementName=headerAllyTips}" Y1="{Binding ActualHeight, ElementName=headerAllyTips}" Y2="{Binding ActualHeight, ElementName=headerAllyTips}"/>
+							</Grid>
+						</StackPanel>
 					</StackPanel>
-					<StackPanel Name="enimytips" >
-						<StackPanel.Background>
-							<SolidColorBrush Color="Red" Opacity="0.5"/>
-						</StackPanel.Background>
-					</StackPanel>
-				</StackPanel>
+				</ScrollViewer>
             </phone:PanoramaItem>
         </phone:Panorama>
     </Grid>

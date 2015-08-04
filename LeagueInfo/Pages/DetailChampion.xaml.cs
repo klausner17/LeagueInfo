@@ -29,15 +29,15 @@ namespace LeagueInfo.Pages
                 TextBlock tipAlly = new TextBlock();
                 tipAlly.TextWrapping = TextWrapping.Wrap;
                 tipAlly.FontSize = 22;
-                tipAlly.Text = strAlly;
+                tipAlly.Text = "\n\t" + strAlly;
                 allytips.Children.Add(tipAlly);
             }
-            foreach (string strAlly in champion.EnimyTips)
+            foreach (string strEnemy in champion.EnimyTips)
             {
                 TextBlock tipEnimy = new TextBlock();
                 tipEnimy.TextWrapping = TextWrapping.Wrap;
                 tipEnimy.FontSize = 22;
-                tipEnimy.Text = strAlly;
+                tipEnimy.Text = "\n\t" + strEnemy;
                 enimytips.Children.Add(tipEnimy);
             }
         }
@@ -47,7 +47,7 @@ namespace LeagueInfo.Pages
             foreach (string str in strInfo)
             {
                 TextBlock info = new TextBlock();
-                info.Text = str;
+                info.Text = "\n\t" + str;
                 info.TextWrapping = TextWrapping.Wrap;
                 info.FontSize = 22;
                 component.Children.Add(info);
