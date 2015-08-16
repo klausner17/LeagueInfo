@@ -28,7 +28,7 @@ namespace LeagueInfo.Pages
             {
                 TextBlock tipAlly = new TextBlock();
                 tipAlly.TextWrapping = TextWrapping.Wrap;
-                tipAlly.FontSize = 22;
+                tipAlly.FontSize = 18;
                 tipAlly.Text = "\n\t" + strAlly;
                 allytips.Children.Add(tipAlly);
             }
@@ -36,7 +36,7 @@ namespace LeagueInfo.Pages
             {
                 TextBlock tipEnimy = new TextBlock();
                 tipEnimy.TextWrapping = TextWrapping.Wrap;
-                tipEnimy.FontSize = 22;
+                tipEnimy.FontSize = 18;
                 tipEnimy.Text = "\n\t" + strEnemy;
                 enimytips.Children.Add(tipEnimy);
             }
@@ -49,7 +49,7 @@ namespace LeagueInfo.Pages
                 TextBlock info = new TextBlock();
                 info.Text = "\n\t" + str;
                 info.TextWrapping = TextWrapping.Wrap;
-                info.FontSize = 22;
+                info.FontSize = 168;
                 component.Children.Add(info);
             }
         }

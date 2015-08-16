@@ -28,6 +28,9 @@
 			    </ScrollViewer>
 		    </phone:PanoramaItem>
 		<phone:PanoramaItem Header="itens">
+                <ScrollViewer VerticalAlignment="Stretch">
+                    <StackPanel Name="ItensList"/>
+                </ScrollViewer>
 		</phone:PanoramaItem>
 	</phone:Panorama>
 	<ProgressBar Visibility="Collapsed" HorizontalAlignment="Stretch" IsIndeterminate="True"  VerticalAlignment="center" Height="20" Width="{Binding Width, ElementName=phoneApplicationPage}" Foreground="White"  Name="loadProgress" Margin="0"/>

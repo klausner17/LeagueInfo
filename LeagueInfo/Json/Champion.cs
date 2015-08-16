@@ -14,7 +14,7 @@ using Newtonsoft.Json;
 namespace LeagueInfo.Json
 {
 	public class Champion
-	{
+	{       
         #region ChampionDto
         [JsonProperty("allytips")]
         public List<string> AllyTips { get; set; }
@@ -48,7 +48,6 @@ namespace LeagueInfo.Json
 
         [JsonProperty("image")]
         public ImageDto Image { get; set; }
-
         #endregion
 
 		public Champion()

@@ -13,7 +13,7 @@ namespace LeagueInfo.Json.Request
     {
         public delegate void GettingJsonEventHandler(int status);
         public static event GettingJsonEventHandler OnGettingData;
-        const string URLAPI = @"https://global.api.pvp.net/api/lol/static-data/br/v1.2/champion?champData=all&api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33";
+        public string url;
         const string REGION = "br";
         const string VERSION = "v1.2";
         const string KEY = @"8eee2093-91d0-4a8f-bc85-c366e7de1c33";
@@ -26,9 +26,14 @@ namespace LeagueInfo.Json.Request
         public const int BEGINDOWNLOAD = 0;
         public const int ENDDOWNLOAD = 1;
 
+        public Requester(string url)
+        {
+            this.url = url;
+        }
+
         private async Task StartWebRequest()
         {
-            requester = (HttpWebRequest)WebRequest.Create(URLAPI);
+            requester = (HttpWebRequest)WebRequest.Create(url);
             requester.BeginGetResponse(new AsyncCallback(FinishWebRequest), null);
             GettingData(BEGINDOWNLOAD);
             while (!go)
