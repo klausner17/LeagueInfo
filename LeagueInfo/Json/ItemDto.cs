@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace LeagueInfo.Json
 {
-    class ItemDto : BasicDataDto
+    public class ItemDto : BasicDataDto
     {
     }
 }

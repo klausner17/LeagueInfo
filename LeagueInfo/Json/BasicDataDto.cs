@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace LeagueInfo.Json
 {
-    class BasicDataDto
+    public class BasicDataDto
     {
         [JsonProperty("colloq")]
         public string Colloq { get; set; }
