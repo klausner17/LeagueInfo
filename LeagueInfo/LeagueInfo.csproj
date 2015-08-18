@@ -97,9 +97,17 @@
     <Compile Include="Controls\ChampionSelect.xaml.cs">
       <DependentUpon>ChampionSelect.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Json\BasicDataDto.cs" />
+    <Compile Include="Json\BasicDataStatsDto.cs" />
     <Compile Include="Json\Champion.cs" />
     <Compile Include="Json\ChampionListDto.cs" />
+    <Compile Include="Json\GoldDto.cs" />
+    <Compile Include="Json\GroupDto.cs" />
     <Compile Include="Json\ImageDto.cs" />
+    <Compile Include="Json\ItemDto.cs" />
+    <Compile Include="Json\ItemListDto.cs" />
+    <Compile Include="Json\ItemTreeDto.cs" />
+    <Compile Include="Json\MetaDataDto.cs" />
     <Compile Include="Json\Request\Requester.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="MainPage.xaml.cs">
