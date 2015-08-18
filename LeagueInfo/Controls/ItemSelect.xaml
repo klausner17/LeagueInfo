@@ -18,10 +18,10 @@
             <ColumnDefinition Width="100"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Image Name="iconItem" Grid.RowSpan="2" />
+        <Rectangle Width="auto" Height="auto" Grid.RowSpan="2" Fill="Yellow" Margin="5" />
         <TextBlock Name="descriptionItem" Text="Descrição" 
                    Grid.Column="1" Grid.Row="0" Margin="10"
-                   FontSize="26" VerticalAlignment="Center"/>
+                   FontSize="26" VerticalAlignment="Center" TextWrapping="Wrap"/>
         <TextBlock Name="custItem" Text="Custo: - "
                     Grid.Column="1" Grid.Row="1" Margin="10"
                    FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Right"/>

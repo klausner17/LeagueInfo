@@ -115,7 +115,7 @@ namespace LeagueInfo
 
         private void ItemSelect_OnTouch(object sender)
         {
-            throw new NotImplementedException();
+            MessageBox.Show((sender as ItemSelect).Item.PlainText);
         }
     }
 }
