@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using LeagueInfo.Json.Request;
 using System.Threading;
 using System.Threading.Tasks;
+using LeagueInfo.Controls;
 
 namespace LeagueInfo
 {
@@ -89,5 +90,32 @@ namespace LeagueInfo
             NavigationService.Navigate(new Uri("/Pages/DetailChampion.xaml", UriKind.Relative));
         }
 
+        private async void PanoramaItem_Loaded_1(object sender, RoutedEventArgs e)
+        {
+            ItensList.Children.Clear();
+            ItemListDto itens = new ItemListDto();
+            itens = await itens.LoadAllItens();
+            try
+            {
+                foreach (ItemDto item in itens.Data.Values)
+                {
+                    ItemSelect itemSelect = new ItemSelect();
+                    itemSelect.Item = item;
+                    itemSelect.OnTouch += ItemSelect_OnTouch;
+                    ItensList.Children.Add(itemSelect);
+                    await Task.Delay(50);
+                }
+                loadingChampions = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void ItemSelect_OnTouch(object sender)
+        {
+            MessageBox.Show((sender as ItemSelect).Item.PlainText);
+        }
     }
 }
