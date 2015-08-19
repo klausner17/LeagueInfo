@@ -47,15 +47,15 @@ namespace LeagueInfo.Json.Request
             try
             {
                 response = requester.EndGetResponse(result) as HttpWebResponse;
-            }
-            catch
-            {
-
-            }
                 json = string.Empty;
                 using (var reader = new StreamReader(response.GetResponseStream()))
                     json = reader.ReadToEnd();
                 go = true;
+            }
+            catch
+            {
+             
+            }
         }
 
         public async Task<string> GetJson()

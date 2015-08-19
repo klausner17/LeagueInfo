@@ -7,8 +7,9 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    d:DesignHeight="100" d:DesignWidth="480" MouseLeftButtonDown="UserControl_MouseLeftButtonDown" MouseLeftButtonUp="UserControl_MouseLeftButtonUp">
-    
+    d:DesignHeight="100" d:DesignWidth="480"
+    MouseLeftButtonDown="UserControl_MouseLeftButtonDown" MouseLeftButtonUp="UserControl_MouseLeftButtonUp">
+
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -18,13 +19,13 @@
             <ColumnDefinition Width="100"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <!--<Rectangle Width="auto" Height="auto" Grid.RowSpan="2" Fill="Yellow" Margin="5" />-->
+        <Rectangle Width="90" Height="90" Grid.RowSpan="2" Fill="Cyan"/>
         <TextBlock Name="descriptionItem" Text="Descrição" 
-                   Grid.Column="1" Grid.Row="0" Margin="10"
-                   FontSize="26" VerticalAlignment="Center" TextWrapping="Wrap"/>
-        <TextBlock Name="custItem" Text="Custo: - "
-                    Grid.Column="1" Grid.Row="1" Margin="10"
+                   Grid.Column="1" Grid.Row="0" Margin="3,0"
+                   FontSize="20" VerticalAlignment="Top" TextWrapping="Wrap"/>
+        <TextBlock Name="custItem" Text="Custo: - gold"
+                    Grid.Column="1" Grid.Row="1" Margin="3"
                    FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-                   
+
     </Grid>
 </UserControl>

@@ -22,7 +22,7 @@ namespace LeagueInfo.Controls
             {
                 item = value;
                 descriptionItem.Text = item.Name;
-                custItem.Text = item.Gold.Total.ToString();
+                custItem.Text = "Custo: " + item.Gold.Total.ToString() + " gold";
             }
         }
 

@@ -92,30 +92,31 @@ namespace LeagueInfo
 
         private async void PanoramaItem_Loaded_1(object sender, RoutedEventArgs e)
         {
-            //ItensList.Children.Clear();
-            //ItemListDto itens = new ItemListDto();
-            //itens = await itens.LoadAllItens();
-            //try
-            //{
-            //    foreach (ItemDto item in itens.Data.Values)
-            //    {
-            //        ItemSelect itemSelect = new ItemSelect();
-            //        itemSelect.Item = item;
-            //        itemSelect.OnTouch += ItemSelect_OnTouch;
-            //        ItensList.Children.Add(itemSelect);
-            //        await Task.Delay(50);
-            //    }
-            //    loadingChampions = false;
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
+            ItensList.Children.Clear();
+            ItemListDto itens = new ItemListDto();
+            itens = await itens.LoadAllItens();
+            try
+            {
+                foreach (ItemDto item in itens.Data.Values)
+                {
+                    ItemSelect itemSelect = new ItemSelect();
+                    itemSelect.Margin = new Thickness(0, 5, 0, 5);
+                    itemSelect.Item = item;
+                    itemSelect.OnTouch += ItemSelect_OnTouch;
+                    ItensList.Children.Add(itemSelect);
+                    await Task.Delay(50);
+                }
+                loadingChampions = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void ItemSelect_OnTouch(object sender)
         {
-            MessageBox.Show((sender as ItemSelect).Item.PlainText);
+            MessageBox.Show((sender as ItemSelect).Item.SanitizedDescriprion);
         }
     }
 }
