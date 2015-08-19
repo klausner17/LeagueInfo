@@ -27,12 +27,6 @@ namespace LeagueInfo
             {
                 this.champion = value;
                 this.title.Text = value.Name;
-                this.description.Text = value.Title;
-                this.tags.Text = string.Empty;
-                foreach (string tag in value.Tags)
-                    this.tags.Text += ", " + tag;
-                tags.Text = tags.Text.Remove(0, 2);
-                
             }
         }
 

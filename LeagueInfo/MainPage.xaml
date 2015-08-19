@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -22,14 +23,18 @@
 			<TextBlock Padding="5" FontSize="24" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto">league info</TextBlock>
 		</Grid>
 		<phone:Panorama Margin="0,42,0,0">
-		    <phone:PanoramaItem Header="campeões" Loaded="PanoramaItem_Loaded">
-			    <ScrollViewer VerticalAlignment="Stretch">
-                    <StackPanel Name="ChampionsList" />
-			    </ScrollViewer>
-		    </phone:PanoramaItem>
-		<phone:PanoramaItem Header="itens" Loaded="PanoramaItem_Loaded_1">
+            <phone:PanoramaItem Header="campeões" Loaded="PanoramaItem_Loaded">
+                <ListBox Name="ChampionsList">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <toolkit:WrapPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                </ListBox>
+            </phone:PanoramaItem>
+            <phone:PanoramaItem Header="itens" Loaded="PanoramaItem_Loaded_1">
                 <ScrollViewer VerticalAlignment="Stretch">
-                    <StackPanel Name="ItensList"/>
+                    <StackPanel Name="ItensList" />
                 </ScrollViewer>
 		</phone:PanoramaItem>
 	</phone:Panorama>

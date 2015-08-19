@@ -6,22 +6,16 @@
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
-    Foreground="{StaticResource PhoneForegroundBrush}" d:DesignWidth="480" Height="100" RenderTransformOrigin="0.5,0.5" 
+    Foreground="{StaticResource PhoneForegroundBrush}" d:DesignWidth="150" Height="150" RenderTransformOrigin="0.5,0.5" 
     MouseLeftButtonDown="userControl_MouseLeftButtonDown" MouseLeftButtonUp="userControl_MouseLeftButtonUp">
     <Grid x:Name="LayoutRoot">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
-        </Grid.RowDefinitions>
-        <Image x:Name="icon" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Margin="5" Source="/Assets/champions/Aatrox_Square_0.png" />
-        <TextBlock Grid.Row="0" Grid.Column="1" x:Name="title"  FontSize="26" Text="Title" Margin="8,8,0,0" Foreground="White" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
-        <TextBlock Grid.Row="1" Grid.Column="1" x:Name="description" FontSize="22" Text="Description" Margin="8,0,0,0" Foreground="{StaticResource PhoneSubtleBrush}" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="Auto" Width="Auto" />
-        <TextBlock Grid.Row="2" Grid.Column="1" x:Name="tags"  Text="tags" FontSize="14" VerticalAlignment="Top"  Margin="8,0,0,0" Foreground="{StaticResource PhoneSubtleBrush}" />
+        <Image x:Name="icon" Grid.RowSpan="3" Grid.Row="0" Width="150" Height="150" Source="/Assets/champions/Aatrox_Square_0.png" />
+        <Grid Width="Auto" VerticalAlignment="Bottom">
+            <Grid.Background>
+                <SolidColorBrush Color="Black" Opacity="0.75"/>
+            </Grid.Background>
+            <TextBlock  x:Name="title"  FontSize="24" Text="Title"  TextAlignment="Center" VerticalAlignment="Bottom" Foreground="White" HorizontalAlignment="Stretch" Grid.ColumnSpan="2" />
+        </Grid>
     </Grid>
 
 </UserControl>

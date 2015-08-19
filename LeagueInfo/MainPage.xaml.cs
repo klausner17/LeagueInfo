@@ -1,19 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
-using LeagueInfo.Resources;
 using LeagueInfo.Json;
-using Newtonsoft.Json;
-using System.IO;
 using System.Windows.Media.Imaging;
 using LeagueInfo.Json.Request;
-using System.Threading;
 using System.Threading.Tasks;
 using LeagueInfo.Controls;
 
@@ -57,7 +48,7 @@ namespace LeagueInfo
         {
             if ((!loadedChampions && !loadingChampions) || !loadedChampions)
             {
-                ChampionsList.Children.Clear();
+                ChampionsList.Items.Clear();
                 loadingChampions = true;
                 ChampionListDto champions = new ChampionListDto();
                 champions = await champions.LoadAllChampions();
@@ -66,10 +57,11 @@ namespace LeagueInfo
                     foreach (Champion champion in champions.Data.Values)
                     {
                         ChampionSelected item = new ChampionSelected();
+                        item.Margin = new Thickness(10);
                         item.Champion = champion;
                         item.icon.Source = new BitmapImage(new Uri(@"/Assets/champions/" + champion.Key + "_Square_0.png", UriKind.Relative));
                         item.OnTouch += item_OnTouch;
-                        ChampionsList.Children.Add(item);
+                        ChampionsList.Items.Add(item);
                         loadedChampions = true;
                         await Task.Delay(50);
                     }
