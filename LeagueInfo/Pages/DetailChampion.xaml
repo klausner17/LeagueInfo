@@ -28,22 +28,38 @@
 
             <!--Panorama item two-->
             <phone:PanoramaItem Header="dicas">
-				<ScrollViewer VerticalAlignment="Stretch">
-					<StackPanel>
-						<StackPanel Name="allytips">
-							<Grid x:Name="headerAllyTips">
-								<TextBlock Padding="5,0,0,5">Aliados</TextBlock>
-								<Line Stroke="Gray" X2="{Binding ActualWidth, ElementName=headerAllyTips}" Y1="{Binding ActualHeight, ElementName=headerAllyTips}" Y2="{Binding ActualHeight, ElementName=headerAllyTips}"/>
-							</Grid>
-						</StackPanel>
-						<StackPanel Name="enimytips" Margin="0,20,0,0">
-							<Grid x:Name="headerEnemyTips">
-								<TextBlock Padding="5,0,0,5">Inimigos</TextBlock>
-								<Line Stroke="Gray" X2="{Binding ActualWidth, ElementName=headerAllyTips}" Y1="{Binding ActualHeight, ElementName=headerAllyTips}" Y2="{Binding ActualHeight, ElementName=headerAllyTips}"/>
-							</Grid>
-						</StackPanel>
-					</StackPanel>
-				</ScrollViewer>
+                <ScrollViewer VerticalAlignment="Stretch">
+                    <StackPanel>
+                        <StackPanel Name="allytips">
+                            <Grid x:Name="headerAllyTips">
+                                <TextBlock Padding="5,0,0,5" FontSize="32" Foreground="DarkCyan" FontWeight="SemiBold">Aliados</TextBlock>
+                                <Line Stroke="DarkCyan" X2="{Binding ActualWidth, ElementName=headerAllyTips}" Y1="{Binding ActualHeight, ElementName=headerAllyTips}" Y2="{Binding ActualHeight, ElementName=headerAllyTips}"/>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Name="enimytips" Margin="0,20,0,0">
+                            <Grid x:Name="headerEnemyTips">
+                                <TextBlock Padding="5,0,0,5" FontSize="32" Foreground="Firebrick" FontWeight="SemiBold">Inimigos</TextBlock>
+                                <Line Stroke="Firebrick" X2="{Binding ActualWidth, ElementName=headerEnemyTips}" Y1="{Binding ActualHeight, ElementName=headerEnemyTips}" Y2="{Binding ActualHeight, ElementName=headerEnemyTips}"/>
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </phone:PanoramaItem>
+
+            <!-- Panorama item three -->
+            <phone:PanoramaItem Header="comentarios">
+                <ScrollViewer VerticalAlignment="Stretch">
+                    <StackPanel Name="comentariosChampions">
+                        
+                    </StackPanel>
+                </ScrollViewer>
+            </phone:PanoramaItem>
+            
+            <!--Panorama item four -->
+            <phone:PanoramaItem Header="counters">
+                <ScrollViewer VerticalAlignment="Stretch">
+                    <StackPanel Name="counterCampeao"/>
+                </ScrollViewer>
             </phone:PanoramaItem>
         </phone:Panorama>
     </Grid>
