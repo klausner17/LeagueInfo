@@ -48,7 +48,7 @@ namespace LeagueInfo
         {
             if ((!loadedChampions && !loadingChampions) || !loadedChampions)
             {
-                ChampionsList.Items.Clear();
+                ChampionsList.ItemsSource.Clear();
                 loadingChampions = true;
                 ChampionListDto champions = new ChampionListDto();
                 champions = await champions.LoadAllChampions();
@@ -61,7 +61,7 @@ namespace LeagueInfo
                         item.Champion = champion;
                         item.icon.Source = new BitmapImage(new Uri(@"/Assets/champions/" + champion.Key + "_Square_0.png", UriKind.Relative));
                         item.OnTouch += item_OnTouch;
-                        ChampionsList.Items.Add(item);
+                        ChampionsList.ItemsSource.Add(item);
                         loadedChampions = true;
                         await Task.Delay(50);
                     }

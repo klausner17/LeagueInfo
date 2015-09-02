@@ -24,13 +24,14 @@
 		</Grid>
 		<phone:Panorama Margin="0,42,0,0">
             <phone:PanoramaItem Header="campeões" Loaded="PanoramaItem_Loaded">
-                <ListBox Name="ChampionsList">
+                <phone:LongListSelector Name="ChampionsList" IsGroupingEnabled="True"/>
+                <!--<ListBox Name="ChampionsList">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <toolkit:WrapPanel Orientation="Horizontal"/>
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
-                </ListBox>
+                </ListBox>-->
             </phone:PanoramaItem>
             <phone:PanoramaItem Header="itens" Loaded="PanoramaItem_Loaded_1">
                 <ScrollViewer VerticalAlignment="Stretch">
