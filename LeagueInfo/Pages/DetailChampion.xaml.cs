@@ -8,6 +8,8 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using LeagueInfo.Json;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace LeagueInfo.Pages
 {
@@ -20,26 +22,16 @@ namespace LeagueInfo.Pages
 
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
         {
-            Champion champion = MainPage.championSelected;
+            Champion champion = ChampionListDto.AllChampions.Data[NavigationContext.QueryString["key"]];
+            BitmapImage backGridInfo = new BitmapImage(new Uri(@"/Assets/champions/Square/"+ champion.Key+"_Square_0.png", UriKind.Relative));
+            ImageBrush brush = new ImageBrush();
+            brush.ImageSource = backGridInfo;
+            gridInfo.Background = brush;
             championName.Text = champion.Name;
             TextBlock loreDescription = new TextBlock();
             lore.Text = champion.Lore.Replace("<br>", "\n");
-            foreach (string strAlly in champion.AllyTips)
-            {
-                TextBlock tipAlly = new TextBlock();
-                tipAlly.TextWrapping = TextWrapping.Wrap;
-                tipAlly.FontSize = 18;
-                tipAlly.Text = "\n\t" + strAlly;
-                allytips.Children.Add(tipAlly);
-            }
-            foreach (string strEnemy in champion.EnimyTips)
-            {
-                TextBlock tipEnimy = new TextBlock();
-                tipEnimy.TextWrapping = TextWrapping.Wrap;
-                tipEnimy.FontSize = 18;
-                tipEnimy.Text = "\n\t" + strEnemy;
-                enimytips.Children.Add(tipEnimy);
-            }
+            AddInfoComponent(champion.AllyTips, allytips);
+            AddInfoComponent(champion.EnimyTips, enimytips);
         }
 
         private void AddInfoComponent(List<string> strInfo, StackPanel component)
@@ -49,7 +41,7 @@ namespace LeagueInfo.Pages
                 TextBlock info = new TextBlock();
                 info.Text = "\n\t" + str;
                 info.TextWrapping = TextWrapping.Wrap;
-                info.FontSize = 168;
+                info.FontSize = 18;
                 component.Children.Add(info);
             }
         }

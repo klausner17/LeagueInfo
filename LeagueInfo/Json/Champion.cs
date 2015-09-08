@@ -28,6 +28,12 @@ namespace LeagueInfo.Json
         [JsonProperty("id")]
         public int Id { get; set; }
 
+        [JsonProperty("image")]
+        public ImageDto Image { get; set; }
+
+        [JsonProperty("info")]
+        public InfoDto Info { get; set; }
+
         [JsonProperty("key")]
         public string Key { get; set; }
 
@@ -40,19 +46,27 @@ namespace LeagueInfo.Json
         [JsonProperty("partype")]
         public string Partype { get; set; }
 
+        [JsonProperty("passive")]
+        public PassiveDto Passive { get; set; }
+
+        [JsonProperty("recommended")]
+        public List<RecommendedDto> Recommended { get; set; }
+
+        [JsonProperty("skins")]
+        public List<SkinDto> Skins { get; set; }
+
+        [JsonProperty("spells")]
+        public List<ChampionSpellDto> Spells { get; set; }
+
+        [JsonProperty("stats")]
+        public StatsDto Stats { get; set; }
+
         [JsonProperty("tags")]
         public List<string> Tags { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
 
-        [JsonProperty("image")]
-        public ImageDto Image { get; set; }
         #endregion
-
-		public Champion()
-        {
-           
-        }
 	}
 }

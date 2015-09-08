@@ -43,18 +43,20 @@ namespace LeagueInfo.Json.Request
 
         private void FinishWebRequest(IAsyncResult result)
         {
-            HttpWebResponse response ;
+            json = string.Empty;
             try
             {
+                HttpWebResponse response;
                 response = requester.EndGetResponse(result) as HttpWebResponse;
                 json = string.Empty;
                 using (var reader = new StreamReader(response.GetResponseStream()))
                     json = reader.ReadToEnd();
                 go = true;
             }
-            catch
+            catch (Exception )
             {
-             
+                go = true;
+                return;
             }
         }
 

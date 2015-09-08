@@ -5,12 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using LeagueInfo.Json.Request;
+using System.IO;
 
 namespace LeagueInfo.Json
 {
     public class ItemListDto
     {
         const string URLALLITENS = @"https://global.api.pvp.net/api/lol/static-data/br/v1.2/item?itemListData=all&api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33";
+        public ItemListDto AllItems;
 
         [JsonProperty("basic")]
         public BasicDataDto Basic { get; set; }
@@ -33,15 +35,10 @@ namespace LeagueInfo.Json
         public async Task<ItemListDto> LoadAllItens()
         {
             string json = await new Requester(URLALLITENS).GetJson();
-            ItemListDto itens = new ItemListDto();
-            try
-            {
-                itens = JsonConvert.DeserializeObject<ItemListDto>(json);
-            }
-            catch
-            {
-            }
-            return itens;
+            if (json == string.Empty)
+                json = new StreamReader(@"Assets\Cache\jsonitems.txt", UnicodeEncoding.UTF8).ReadLine();
+            AllItems = JsonConvert.DeserializeObject<ItemListDto>(json);
+            return AllItems;
         }
     }
 }

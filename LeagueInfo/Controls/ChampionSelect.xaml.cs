@@ -30,7 +30,32 @@ namespace LeagueInfo
                 this.description.Text = value.Title;
                 this.tags.Text = string.Empty;
                 foreach (string tag in value.Tags)
-                    this.tags.Text += ", " + tag;
+                {
+                    switch(tag)
+                    {
+                        case "Fighter":
+                            this.tags.Text += ", lutador";
+                            break;
+                        case "Support":
+                            this.tags.Text += ", suporte";
+                            break;
+                        case "Tank":
+                            this.tags.Text += ", tanque";
+                            break;
+                        case "Mage":
+                            this.tags.Text += ", mago";
+                            break;
+                        case "Assassin":
+                            this.tags.Text += ", assassino";
+                            break;
+                        case "Marksman":
+                            this.tags.Text += ", atirador";
+                            break;
+                        default:
+                            this.tags.Text += ", desconhecido";
+                            break;
+                    }
+                }
                 tags.Text = tags.Text.Remove(0, 2);
 
             }

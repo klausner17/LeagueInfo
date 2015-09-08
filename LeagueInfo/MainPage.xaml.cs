@@ -12,7 +12,6 @@ namespace LeagueInfo
 {
     public partial class MainPage : PhoneApplicationPage
     {
-        public static Champion championSelected = new Champion();
         private delegate void ProgressCallBack(bool status);
 		private bool loadedChampions = false;
         private bool loadingChampions = false;
@@ -48,7 +47,7 @@ namespace LeagueInfo
         {
             if ((!loadedChampions && !loadingChampions) || !loadedChampions)
             {
-                ChampionsList.ItemsSource.Clear();
+                ChampionsList.Items.Clear();
                 loadingChampions = true;
                 ChampionListDto champions = new ChampionListDto();
                 champions = await champions.LoadAllChampions();
@@ -59,9 +58,9 @@ namespace LeagueInfo
                         ChampionSelected item = new ChampionSelected();
                         item.Margin = new Thickness(10);
                         item.Champion = champion;
-                        item.icon.Source = new BitmapImage(new Uri(@"/Assets/champions/" + champion.Key + "_Square_0.png", UriKind.Relative));
+                        item.icon.Source = new BitmapImage(new Uri(@"/Assets/champions/Square/" + champion.Key + "_Square_0.png", UriKind.Relative));
                         item.OnTouch += item_OnTouch;
-                        ChampionsList.ItemsSource.Add(item);
+                        ChampionsList.Items.Add(item);
                         loadedChampions = true;
                         await Task.Delay(50);
                     }
@@ -78,8 +77,8 @@ namespace LeagueInfo
 
         void item_OnTouch(object sender)
         {
-            championSelected = (sender as ChampionSelected).Champion;
-            NavigationService.Navigate(new Uri("/Pages/DetailChampion.xaml", UriKind.Relative));
+            Champion championSelected = (sender as ChampionSelected).Champion;
+            NavigationService.Navigate(new Uri("/Pages/DetailChampion.xaml?key="+championSelected.Key, UriKind.Relative));
         }
 
         private async void PanoramaItem_Loaded_1(object sender, RoutedEventArgs e)
