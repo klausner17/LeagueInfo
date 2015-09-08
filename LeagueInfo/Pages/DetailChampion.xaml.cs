@@ -23,7 +23,7 @@ namespace LeagueInfo.Pages
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
         {
             Champion champion = ChampionListDto.AllChampions.Data[NavigationContext.QueryString["key"]];
-            BitmapImage backGridInfo = new BitmapImage(new Uri(@"/Assets/champions/Square/"+ champion.Key+"_Square_0.png", UriKind.Relative));
+            BitmapImage backGridInfo = new BitmapImage(new Uri(@"/Assets/champions/Splash/"+ champion.Key+"_Splash_0.png", UriKind.Relative));
             ImageBrush brush = new ImageBrush();
             brush.ImageSource = backGridInfo;
             gridInfo.Background = brush;
