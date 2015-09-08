@@ -27,6 +27,12 @@ namespace LeagueInfo
             {
                 this.champion = value;
                 this.title.Text = value.Name;
+                this.description.Text = value.Title;
+                this.tags.Text = string.Empty;
+                foreach (string tag in value.Tags)
+                    this.tags.Text += ", " + tag;
+                tags.Text = tags.Text.Remove(0, 2);
+
             }
         }
 
@@ -43,7 +49,7 @@ namespace LeagueInfo
 
         private void userControl_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            coordMouseDown = e.GetPosition(userControl); 
+            coordMouseDown = e.GetPosition(userControl);
         }
 
         private void userControl_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
