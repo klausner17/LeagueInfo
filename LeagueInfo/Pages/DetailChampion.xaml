@@ -15,48 +15,50 @@
 
     <!--LayoutRoot contains the root grid where all other page content is placed-->
     <Grid x:Name="LayoutRoot">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="23*"/>
-            <ColumnDefinition Width="97*"/>
-        </Grid.ColumnDefinitions>
-        <Grid Background="{StaticResource PhoneAccentBrush}" Height="Auto" Width="Auto" VerticalAlignment="Top" Grid.ColumnSpan="2" Name="gridInfo">
-            <StackPanel>
-                <TextBlock Name="championName" FontSize="38" Text="champion" Margin="10,0,0,0"/>
-                <Grid Margin="10,0,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="120"/>
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <TextBlock FontSize="24" Text="Ataque" />
-                    <Line Name="attackInfo" />
-                </Grid>
-                <Grid Margin="10,0,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="120"/>
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <TextBlock FontSize="24" Text="Defesa" />
-                    <Line Name="defenseInfo" />
-                </Grid>
-                <Grid Margin="10,0,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="120"/>
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <TextBlock FontSize="24" Text="Magia" />
-                    <Line Name="magicInfo" />
-                </Grid>
-                <Grid Margin="10,0,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="120"/>
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <TextBlock FontSize="24" Text="Dificuldade" />
-                    <Line Name="difficultyInfo" />
-                </Grid>
-            </StackPanel>
-        </Grid>
-        <phone:Panorama Margin="0,180,0,0" Grid.ColumnSpan="2">
+        <phone:Panorama Margin="0,0,0,0" Name="panorama">
+            <phone:Panorama.HeaderTemplate>
+                <DataTemplate >
+                    <StackPanel Margin="0,0,0,0" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+                        <StackPanel.Background>
+                            <SolidColorBrush Color="{StaticResource PhoneAccentColor}" Opacity="0.7"/>
+                        </StackPanel.Background>
+                        <TextBlock Name="championName" FontSize="38" Text="champion" Margin="10,0,0,0"/>
+                        <Grid Margin="10,0,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock FontSize="24" Text="Ataque" />
+                            <Line Name="attackInfo" />
+                        </Grid>
+                        <Grid Margin="10,0,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock FontSize="24" Text="Defesa" />
+                            <Line Name="defenseInfo" />
+                        </Grid>
+                        <Grid Margin="10,0,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock FontSize="24" Text="Magia" />
+                            <Line Name="magicInfo" />
+                        </Grid>
+                        <Grid Margin="10,0,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock FontSize="24" Text="Dificuldade" />
+                            <Line Name="difficultyInfo" />
+                        </Grid>
+                        <Line StrokeThickness="10" Stroke="{StaticResource PhoneAccentBrush}" Fill="{StaticResource PhoneAccentBrush}" />
+                    </StackPanel>
+                </DataTemplate>
+            </phone:Panorama.HeaderTemplate>
             <!--Panorama item one-->
             <phone:PanoramaItem Header="lore" >
                 <ScrollViewer VerticalAlignment="Stretch">

@@ -20,20 +20,6 @@ namespace LeagueInfo.Pages
             InitializeComponent();
         }
 
-        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
-        {
-            Champion champion = ChampionListDto.AllChampions.Data[NavigationContext.QueryString["key"]];
-            BitmapImage backGridInfo = new BitmapImage(new Uri(@"/Assets/champions/Splash/"+ champion.Key+"_Splash_0.png", UriKind.Relative));
-            ImageBrush brush = new ImageBrush();
-            brush.ImageSource = backGridInfo;
-            gridInfo.Background = brush;
-            championName.Text = champion.Name;
-            TextBlock loreDescription = new TextBlock();
-            lore.Text = champion.Lore.Replace("<br>", "\n");
-            AddInfoComponent(champion.AllyTips, allytips);
-            AddInfoComponent(champion.EnimyTips, enimytips);
-        }
-
         private void AddInfoComponent(List<string> strInfo, StackPanel component)
         {
             foreach (string str in strInfo)
@@ -44,6 +30,21 @@ namespace LeagueInfo.Pages
                 info.FontSize = 18;
                 component.Children.Add(info);
             }
+        }
+
+        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            Champion champion = ChampionListDto.AllChampions.Data[NavigationContext.QueryString["key"]];
+            BitmapImage backGridInfo = new BitmapImage(new Uri(@"/Assets/champions/Splash/" + champion.Key + "_Splash_0.jpg", UriKind.Relative));
+            ImageBrush brush = new ImageBrush();
+            brush.Stretch = Stretch.UniformToFill;
+            brush.ImageSource = backGridInfo;
+            panorama.Background = brush;
+            //championName.Text = champion.Name;
+            TextBlock loreDescription = new TextBlock();
+            lore.Text = champion.Lore.Replace("<br>", "\n");
+            AddInfoComponent(champion.AllyTips, allytips);
+            AddInfoComponent(champion.EnimyTips, enimytips);
         }
     }
 }
