@@ -10,6 +10,7 @@ using Microsoft.Phone.Shell;
 using LeagueInfo.Json;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using LeagueInfo.Controls;
 
 namespace LeagueInfo.Pages
 {
@@ -27,7 +28,7 @@ namespace LeagueInfo.Pages
                 TextBlock info = new TextBlock();
                 info.Text = "\n\t" + str;
                 info.TextWrapping = TextWrapping.Wrap;
-                info.FontSize = 18;
+                info.FontSize = 22;
                 component.Children.Add(info);
             }
         }
@@ -40,11 +41,21 @@ namespace LeagueInfo.Pages
             brush.Stretch = Stretch.UniformToFill;
             brush.ImageSource = backGridInfo;
             panorama.Background = brush;
-            //championName.Text = champion.Name;
+            championName.Text = champion.Name;
             TextBlock loreDescription = new TextBlock();
             lore.Text = champion.Lore.Replace("<br>", "\n");
             AddInfoComponent(champion.AllyTips, allytips);
             AddInfoComponent(champion.EnimyTips, enimytips);
+            attackInfo.Value = champion.Info.Attack;
+            defenseInfo.Value = champion.Info.Defense;
+            magicInfo.Value = champion.Info.Magic;
+            difficultyInfo.Value = champion.Info.Difficulty;
+            //incluir habilidades
+            foreach (ChampionSpellDto spell in champion.Spells)
+            {
+                Abillity controlAbillity = new Abillity(spell.Key, spell.ToolTip);
+                abillityChampions.Children.Add(controlAbillity);
+            }
         }
     }
 }
