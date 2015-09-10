@@ -7,7 +7,7 @@ using System.Net;
 using System.IO;
 using System.Threading;
 
-namespace LeagueInfo.Json.Request
+namespace LeagueInfo.ClassApi.Request
 {
     class Requester
     {

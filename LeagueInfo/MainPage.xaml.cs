@@ -2,9 +2,9 @@
 using System.Windows;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
-using LeagueInfo.Json;
+using LeagueInfo.ClassApi;
 using System.Windows.Media.Imaging;
-using LeagueInfo.Json.Request;
+using LeagueInfo.ClassApi.Request;
 using System.Threading.Tasks;
 using LeagueInfo.Controls;
 

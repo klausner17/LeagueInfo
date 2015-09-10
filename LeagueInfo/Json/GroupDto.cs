@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace LeagueInfo.Json
+namespace LeagueInfo.ClassApi
 {
     public class GroupDto
     {

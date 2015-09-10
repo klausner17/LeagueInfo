@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-namespace LeagueInfo.Json
+namespace LeagueInfo.ClassApi
 {
     /// <summary>
     /// This class contain item gold data.
