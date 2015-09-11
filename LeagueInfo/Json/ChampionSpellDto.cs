@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace LeagueInfo.Json
+namespace LeagueInfo.ClassApi
 {
     /// <summary>
     /// Esta classe representa as habilidades do campeão.
@@ -50,8 +50,11 @@ namespace LeagueInfo.Json
         [JsonProperty("maxrank")]
         public int MaxRank { get; set; }
 
-        //[JsonProperty("range")]
-        //public object Range { get; set; }
+        [JsonProperty("name")]
+        public string Name { get; internal set; }
+
+        [JsonProperty("range")]
+        public object Range { get; set; }
 
         [JsonProperty("rangeBurn")]
         public string RangeBurn { get; set; }

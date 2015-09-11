@@ -11,7 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Newtonsoft.Json;
 
-namespace LeagueInfo.Json
+namespace LeagueInfo.ClassApi
 {
 	public class Champion
 	{       

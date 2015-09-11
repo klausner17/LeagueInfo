@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using LeagueInfo.Json.Request;
+using LeagueInfo.ClassApi.Request;
 using System.IO;
 
-namespace LeagueInfo.Json
+namespace LeagueInfo.ClassApi
 {
     class ChampionListDto
     {

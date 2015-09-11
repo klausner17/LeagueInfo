@@ -7,7 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using LeagueInfo.Json;
+using LeagueInfo.ClassApi;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using LeagueInfo.Controls;
@@ -53,7 +53,7 @@ namespace LeagueInfo.Pages
             //incluir habilidades
             foreach (ChampionSpellDto spell in champion.Spells)
             {
-                Abillity controlAbillity = new Abillity(spell.Key, spell.ToolTip);
+                Abillity controlAbillity = new Abillity(spell);
                 abillityChampions.Children.Add(controlAbillity);
             }
         }

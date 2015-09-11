@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace LeagueInfo.Json
+namespace LeagueInfo.ClassApi
 {
     public class ItemTreeDto
     {

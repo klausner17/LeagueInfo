@@ -94,8 +94,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Abillity.xaml.cs">
-      <DependentUpon>Abillity.xaml</DependentUpon>
+    <Compile Include="Controls\AbillityControl.xaml.cs">
+      <DependentUpon>AbillityControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\ChampionSelect.xaml.cs">
       <DependentUpon>ChampionSelect.xaml</DependentUpon>
@@ -144,7 +144,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
-    <Page Include="Controls\Abillity.xaml">
+    <Page Include="Controls\AbillityControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

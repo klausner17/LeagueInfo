@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace LeagueInfo.Json
+namespace LeagueInfo.ClassApi
 {
     /// <summary>
     /// Classe que representa as passiva do campeão.

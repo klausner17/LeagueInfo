@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace LeagueInfo.Json
+namespace LeagueInfo.ClassApi
 {
     public class ImageDto
     {

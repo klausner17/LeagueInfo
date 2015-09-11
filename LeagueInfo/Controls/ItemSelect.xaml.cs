@@ -1,5 +1,5 @@
 ﻿using System.Windows.Controls;
-using LeagueInfo.Json;
+using LeagueInfo.ClassApi;
 using System.Windows;
 using System;
 
