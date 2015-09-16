@@ -21,7 +21,7 @@ namespace LeagueInfo.Controls
             {
                 spell = value;
                 this.title.Text = spell.Name;
-                this.content.Inlines.Add(spell.Description);
+                this.content.Text = spell.Description;
             }
         }
         public Abillity()
@@ -35,11 +35,5 @@ namespace LeagueInfo.Controls
             Spell = spell;
         }
 
-        //private TextBlock TootTipTratado(string toolTip)
-        //{
-        //    TextBlock contentTratado = new TextBlock();
-        //    //pegar span
-            
-        //}
     }
 }

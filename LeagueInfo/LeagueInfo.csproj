@@ -118,13 +118,16 @@
     <Compile Include="Json\ItemListDto.cs" />
     <Compile Include="Json\ItemTreeDto.cs" />
     <Compile Include="Json\LevelTipDto.cs" />
+    <Compile Include="Json\MatchSummary.cs" />
     <Compile Include="Json\MetaDataDto.cs" />
     <Compile Include="Json\PassiveDto.cs" />
+    <Compile Include="Json\PlayerHistory.cs" />
     <Compile Include="Json\RecommendedDto.cs" />
     <Compile Include="Json\Request\Requester.cs" />
     <Compile Include="Json\SkinDto.cs" />
     <Compile Include="Json\SpellVarsData.cs" />
     <Compile Include="Json\StatsDto.cs" />
+    <Compile Include="Json\SummonerDto.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>

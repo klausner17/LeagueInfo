@@ -23,6 +23,12 @@
 			<TextBlock Padding="5" FontSize="24" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto">league info</TextBlock>
 		</Grid>
 		<phone:Panorama Margin="0,42,0,0">
+            <phone:PanoramaItem Header="Invocador">
+                <StackPanel>
+                    <TextBox Name="invocador" />
+                    <Button Name="buttonBuscasInv" Content="buscar"/>
+                </StackPanel>
+            </phone:PanoramaItem>
             <phone:PanoramaItem Header="campeões" Loaded="PanoramaItem_Loaded">
                 <ListBox Name="ChampionsList">
                     <ListBox.ItemsPanel>
