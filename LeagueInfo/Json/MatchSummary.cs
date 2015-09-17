@@ -26,6 +26,27 @@ namespace LeagueInfo.Json
         [JsonProperty("matchType")]
         public string MatchType { get; set; }
 
+        [JsonProperty("matchVersion")]
+        public string MatchVersion { get; set; }
+
+        [JsonProperty("participantIdenties")]
+        public List<ParticipantIdentity> ParticipantIdentities { get; set; }
+
+        [JsonProperty("participants")]
+        public List<Participant> Participants { get; set; }
+
+        [JsonProperty("platformId")]
+        public string PlatformId { get; set; }
+
+        [JsonProperty("queueTypr")]
+        public string QueueType { get; set; }
+
+        [JsonProperty("region")]
+        public string Region { get; set; }
+
+        [JsonProperty("season")]
+        public string Season { get; set; }
+
 
     }
 }

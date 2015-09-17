@@ -30,7 +30,7 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0" FontSize="24" Text="Ataque" />
-                <ProgressBar Name="attackInfo" Grid.Column="1" Foreground="Firebrick"  Value="10" Minimum="0" Maximum="10" Margin="0,0,10,0"/>
+                <ProgressBar Name="attackInfo" Grid.Column="1" Foreground="Firebrick" Minimum="0" Maximum="10" Margin="0,0,10,0"/>
 
             </Grid>
             <Grid Margin="10,0,0,0">
@@ -39,7 +39,7 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <TextBlock FontSize="24" Text="Defesa" />
-                <ProgressBar Name="defenseInfo" Grid.Column="1" Foreground="#FF73B843"  Value="10" Minimum="0" Maximum="10" Margin="0,0,10,0" Height="20" />
+                <ProgressBar Name="defenseInfo" Grid.Column="1" Foreground="#FF73B843" Minimum="0" Maximum="10" Margin="0,0,10,0" Height="20" />
             </Grid>
             <Grid Margin="10,0,0,0">
                 <Grid.ColumnDefinitions>
@@ -47,7 +47,7 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <TextBlock FontSize="24" Text="Magia" />
-                <ProgressBar Name="magicInfo" Grid.Column="1" Foreground="SteelBlue"  Value="10" Minimum="0" Maximum="10" Margin="0,0,10,0" />
+                <ProgressBar Name="magicInfo" Grid.Column="1" Foreground="SteelBlue" Minimum="0" Maximum="10" Margin="0,0,10,0" />
             </Grid>
             <Grid Margin="10,0,0,0">
                 <Grid.ColumnDefinitions>
@@ -55,7 +55,7 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <TextBlock FontSize="24" Text="Dificuldade" />
-                <ProgressBar Name="difficultyInfo" Grid.Column="1" Foreground="#FF9C7BD6"  Value="10" Minimum="0" Maximum="10" Margin="0,0,10,0" />
+                <ProgressBar Name="difficultyInfo" Grid.Column="1" Foreground="#FF9C7BD6" Minimum="0" Maximum="10" Margin="0,0,10,0" />
             </Grid>
             <Line StrokeThickness="10" Stroke="{StaticResource PhoneAccentBrush}" Fill="{StaticResource PhoneAccentBrush}" />
         </StackPanel>

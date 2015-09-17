@@ -61,7 +61,7 @@ namespace LeagueInfo
                         item.OnTouch += item_OnTouch;
                         ChampionsList.Items.Add(item);
                         loadedChampions = true;
-                        await Task.Delay(50);
+                        await Task.Delay(1);
                     }
                     loadingChampions = false;
                 }
