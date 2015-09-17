@@ -54,11 +54,6 @@ namespace LeagueInfo
             MessageBox.Show((sender as ItemSelect).Item.SanitizedDescriprion);
         }
 
-        private void CarregarCampeoes()
-        {
-
-        }
-
         private async void Panorama_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             string panoramaItemSelectedName = ((PanoramaItem)panoramaMain.SelectedItem).Name;
@@ -107,6 +102,11 @@ namespace LeagueInfo
                     }
                     break;
             }
+        }
+
+        private void buttonBuscasInv_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Pages/SummonerDetail.xaml?name=" + textBlockInvocador.Text, UriKind.Relative));
         }
     }
 }

@@ -1,0 +1,80 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="LeagueInfo.Pages.SummonerDetail"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True" Loaded="PhoneApplicationPage_Loaded">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <Grid Grid.Row="0" Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image Width="100" Height="100"
+                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Name="imageInvocador" />
+            <Grid Grid.Column="1" Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Name="textBlockNomeInv" Text="Nome do Invocador"
+                           VerticalAlignment="Center" Margin="5,5,0,5" 
+                            Grid.Row="0" Foreground="Black" FontSize="26" />
+                <TextBlock Name="textBlockLevel" Text="Level "
+                           VerticalAlignment="Center" Margin="5,5,0,5"
+                           Grid.Row="1" Foreground="Black" FontSize="26"  />
+                <TextBlock Name="textBlockElo" Text="Bronze V"
+                           VerticalAlignment="Center" Margin="5,5,0,5"
+                           Grid.Row="2" Foreground="Black" FontSize="26" />
+            </Grid>
+            <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Name="textBlockVit" Text=" vitorias"
+                           VerticalAlignment="Center" HorizontalAlignment="Center"
+                           Grid.Column="0"
+                            FontSize="26" Foreground="#FF139C0D"/>
+                <TextBlock Name="textBlockDer" Text=" derrotas" FontSize="26"
+                           VerticalAlignment="Center" HorizontalAlignment="Center"
+                           Grid.Column="1" Foreground="#FFE83737"/>
+            </Grid>
+        </Grid>
+
+        <phone:Panorama Grid.Row="1" Name="panoramaMain">
+            <phone:PanoramaItem Name="panoramaUltimasPartidas" Header="partidas">
+                <ListBox Name="listboxPartidas" />
+            </phone:PanoramaItem>
+            <phone:PanoramaItem Name="panoramaRunas" Header="runas">
+                <ListBox Name="listBoxRunas" />
+            </phone:PanoramaItem>
+            <phone:PanoramaItem Name="panoramaTalentos" Header="talentos">
+                <ListBox Name="listBoxTalentos" />
+            </phone:PanoramaItem>
+        </phone:Panorama>
+    </Grid>
+
+</phone:PhoneApplicationPage>

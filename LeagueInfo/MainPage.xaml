@@ -25,8 +25,8 @@
 		<phone:Panorama Name="panoramaMain" Margin="0,42,0,0" SelectionChanged="Panorama_SelectionChanged">
             <phone:PanoramaItem Header="invocador" Name="panoramaInvocador">
                 <StackPanel>
-                    <TextBox Name="invocador" />
-                    <Button Name="buttonBuscasInv" Content="buscar"/>
+                    <TextBox Name="textBlockInvocador" />
+                    <Button Name="buttonBuscasInv" Content="buscar" Click="buttonBuscasInv_Click"/>
                 </StackPanel>
             </phone:PanoramaItem>
             <phone:PanoramaItem Header="campeões" Name="panoramaCampeoes">
