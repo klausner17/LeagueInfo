@@ -107,7 +107,7 @@
     <Compile Include="Json\BasicDataStatsDto.cs" />
     <Compile Include="Json\BlockItemDto.cs" />
     <Compile Include="Json\BlocksDto.cs" />
-    <Compile Include="Json\Champion.cs" />
+    <Compile Include="Json\ChampionDto.cs" />
     <Compile Include="Json\ChampionListDto.cs" />
     <Compile Include="Json\ChampionSpellDto.cs" />
     <Compile Include="Json\GoldDto.cs" />

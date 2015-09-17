@@ -14,14 +14,14 @@ namespace LeagueInfo
 {
     public partial class ChampionSelected : UserControl
     {
-        private Champion champion;
+        private ChampionDto champion;
         private Point coordMouseDown;
 
         public delegate void OnClick(object sender);
 
         public event OnClick OnTouch;
 
-        public Champion Champion
+        public ChampionDto Champion
         {
             get { return this.champion; }
             set

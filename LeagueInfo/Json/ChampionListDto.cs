@@ -11,11 +11,11 @@ namespace LeagueInfo.ClassApi
 {
     class ChampionListDto
     {
-        const String URLALLCHAMPS = @"https://global.api.pvp.net/api/lol/static-data/br/v1.2/champion?champData=all&api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33";
+        const String URLALLCHAMPS = @"https://global.api.pvp.net/api/lol/static-data/br/v1.2/champion?champData=image,tags&api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33";
         public static ChampionListDto AllChampions;
 
         [JsonProperty("data")]
-        public Dictionary<string, Champion> Data { get; set; }
+        public Dictionary<string, ChampionDto> Data { get; set; }
 
         [JsonProperty("format")]
         public string Format { get; set; }

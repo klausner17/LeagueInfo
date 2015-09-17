@@ -11,6 +11,7 @@ using LeagueInfo.ClassApi;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using LeagueInfo.Controls;
+using LeagueInfo.ClassApi;
 
 namespace LeagueInfo.Pages
 {
@@ -33,10 +34,13 @@ namespace LeagueInfo.Pages
             }
         }
 
-        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
+        private async void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
         {
-            Champion champion = ChampionListDto.AllChampions.Data[NavigationContext.QueryString["key"]];
-            BitmapImage backGridInfo = new BitmapImage(new Uri(@"/Assets/champions/Splash/" + champion.Key + "_Splash_0.jpg", UriKind.Relative));
+            ChampionDto champion = new ChampionDto();
+            champion = await champion.SearchChampion(Convert.ToInt32(NavigationContext.QueryString["id"]));
+            Random randNumSkin = new Random();
+            int num = randNumSkin.Next(champion.Skins.Count);
+            BitmapImage backGridInfo = new BitmapImage(new Uri("http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + champion.Key + "_" + num.ToString() + ".jpg"));
             ImageBrush brush = new ImageBrush();
             brush.Stretch = Stretch.UniformToFill;
             brush.ImageSource = backGridInfo;

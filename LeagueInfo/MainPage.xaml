@@ -22,14 +22,14 @@
 			</Grid.Background>
 			<TextBlock Padding="5" FontSize="24" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto">league info</TextBlock>
 		</Grid>
-		<phone:Panorama Margin="0,42,0,0">
-            <phone:PanoramaItem Header="Invocador">
+		<phone:Panorama Name="panoramaMain" Margin="0,42,0,0" SelectionChanged="Panorama_SelectionChanged">
+            <phone:PanoramaItem Header="invocador" Name="panoramaInvocador">
                 <StackPanel>
                     <TextBox Name="invocador" />
                     <Button Name="buttonBuscasInv" Content="buscar"/>
                 </StackPanel>
             </phone:PanoramaItem>
-            <phone:PanoramaItem Header="campeões" Loaded="PanoramaItem_Loaded">
+            <phone:PanoramaItem Header="campeões" Name="panoramaCampeoes">
                 <ListBox Name="ChampionsList">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -38,7 +38,7 @@
                     </ListBox.ItemsPanel>
                 </ListBox>
             </phone:PanoramaItem>
-            <phone:PanoramaItem Header="itens" Loaded="PanoramaItem_Loaded_1">
+            <phone:PanoramaItem Header="itens" Name="panoramaItens">
                 <ScrollViewer VerticalAlignment="Stretch">
                     <StackPanel Name="ItensList" />
                 </ScrollViewer>
