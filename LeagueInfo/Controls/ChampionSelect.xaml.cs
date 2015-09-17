@@ -8,6 +8,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using LeagueInfo.ClassApi;
+using System.Windows.Media.Imaging;
 
 namespace LeagueInfo
 {
@@ -29,6 +30,7 @@ namespace LeagueInfo
                 this.title.Text = value.Name;
                 this.description.Text = value.Title;
                 this.tags.Text = string.Empty;
+                this.icon.Source = new BitmapImage(new Uri("http://ddragon.leagueoflegends.com/cdn/5.18.1/img/champion/" + champion.Key + ".png"));
                 foreach (string tag in value.Tags)
                 {
                     switch(tag)

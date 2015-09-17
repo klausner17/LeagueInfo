@@ -8,6 +8,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using LeagueInfo.ClassApi;
+using System.Windows.Media.Imaging;
 
 namespace LeagueInfo.Controls
 {
@@ -22,6 +23,7 @@ namespace LeagueInfo.Controls
                 spell = value;
                 this.title.Text = spell.Name;
                 this.content.Text = spell.Description;
+                this.iconAbillity.Source = new BitmapImage(new Uri("http://ddragon.leagueoflegends.com/cdn/5.18.1/img/spell/"+spell.Image.Full));
             }
         }
         public Abillity()

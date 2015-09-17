@@ -19,7 +19,7 @@
             <ColumnDefinition Width="100"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Rectangle Width="90" Height="90" Grid.RowSpan="2" Fill="Cyan"/>
+        <Image Name="iconItem" Width="90" Height="90" Grid.RowSpan="2"/>
         <TextBlock Name="descriptionItem" Text="Descrição" 
                    Grid.Column="1" Grid.Row="0" Margin="3,0"
                    FontSize="20" VerticalAlignment="Top" TextWrapping="Wrap"/>

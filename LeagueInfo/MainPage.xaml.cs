@@ -58,7 +58,6 @@ namespace LeagueInfo
                         ChampionSelected item = new ChampionSelected();
                         item.Margin = new Thickness(10);
                         item.Champion = champion;
-                        item.icon.Source = new BitmapImage(new Uri(@"/Assets/champions/Square/" + champion.Key + "_Square_0.png", UriKind.Relative));
                         item.OnTouch += item_OnTouch;
                         ChampionsList.Items.Add(item);
                         loadedChampions = true;
