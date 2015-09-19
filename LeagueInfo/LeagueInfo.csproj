@@ -117,10 +117,13 @@
     <Compile Include="Json\ItemDto.cs" />
     <Compile Include="Json\ItemListDto.cs" />
     <Compile Include="Json\ItemTreeDto.cs" />
+    <Compile Include="Json\LeagueDto.cs" />
+    <Compile Include="Json\LeagueEntryDto.cs" />
     <Compile Include="Json\LevelTipDto.cs" />
     <Compile Include="Json\Mastery.cs" />
     <Compile Include="Json\MatchSummary.cs" />
     <Compile Include="Json\MetaDataDto.cs" />
+    <Compile Include="Json\MiniSeriesDto.cs" />
     <Compile Include="Json\Participant.cs" />
     <Compile Include="Json\ParticipantIdentity.cs" />
     <Compile Include="Json\ParticipantStats.cs" />
