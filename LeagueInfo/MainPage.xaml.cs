@@ -7,14 +7,13 @@ using System.Windows.Media.Imaging;
 using LeagueInfo.ClassApi.Request;
 using System.Threading.Tasks;
 using LeagueInfo.Controls;
+using System.Windows.Input;
 
 namespace LeagueInfo
 {
     public partial class MainPage : PhoneApplicationPage
     {
         private delegate void ProgressCallBack(bool status);
-		private bool loadedChampions = false;
-        private bool loadingChampions = false;
 
         private void ProgressBarVisibility(bool status)
         {
@@ -108,5 +107,12 @@ namespace LeagueInfo
         {
             NavigationService.Navigate(new Uri("/Pages/SummonerDetail.xaml?name=" + textBlockInvocador.Text, UriKind.Relative));
         }
+
+        private void textBlockInvocador_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                buttonBuscasInv_Click(sender, null);
+        }
+        
     }
 }

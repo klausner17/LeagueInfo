@@ -103,6 +103,9 @@
     <Compile Include="Controls\ItemSelect.xaml.cs">
       <DependentUpon>ItemSelect.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\LastMatches.xaml.cs">
+      <DependentUpon>LastMatches.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Json\BasicDataDto.cs" />
     <Compile Include="Json\BasicDataStatsDto.cs" />
     <Compile Include="Json\BlockItemDto.cs" />
@@ -170,6 +173,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\ItemSelect.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\LastMatches.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

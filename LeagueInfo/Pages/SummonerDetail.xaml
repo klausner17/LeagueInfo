@@ -45,7 +45,7 @@
                 <TextBlock Name="textBlockLevel" Text="Level "
                            VerticalAlignment="Center" Margin="5,5,0,5"
                            Grid.Row="1" Foreground="Black" FontSize="26"  />
-                <TextBlock Name="textBlockElo" Text="Bronze V"
+                <TextBlock Name="textBlockElo" Text="Elo"
                            VerticalAlignment="Center" Margin="5,5,0,5"
                            Grid.Row="2" Foreground="Black" FontSize="26" />
             </Grid>

@@ -25,7 +25,7 @@
 		<phone:Panorama Name="panoramaMain" Margin="0,42,0,0" SelectionChanged="Panorama_SelectionChanged">
             <phone:PanoramaItem Header="invocador" Name="panoramaInvocador">
                 <StackPanel>
-                    <TextBox Name="textBlockInvocador" />
+                    <TextBox Name="textBlockInvocador" InputScope="Chat" KeyDown="textBlockInvocador_KeyDown"/>
                     <Button Name="buttonBuscasInv" Content="buscar" Click="buttonBuscasInv_Click"/>
                 </StackPanel>
             </phone:PanoramaItem>

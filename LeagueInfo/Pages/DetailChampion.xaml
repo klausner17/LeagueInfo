@@ -23,7 +23,7 @@
             <StackPanel.Background>
                 <SolidColorBrush Color="{StaticResource PhoneAccentColor}" Opacity="0.3"/>
             </StackPanel.Background>
-            <TextBlock TextAlignment="Center" Name="championName" FontSize="38" Text="champion" Margin="10,0,0,0"/>
+            <TextBlock TextAlignment="Left" Name="championName" FontSize="38" Text="champion" Margin="10,0,0,0"/>
             <Grid Margin="10,0,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="120"/>

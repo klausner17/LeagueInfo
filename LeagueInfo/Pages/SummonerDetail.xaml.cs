@@ -23,9 +23,14 @@ namespace LeagueInfo.Pages
         {
             string nameSummoner = NavigationContext.QueryString["name"];
             SummonerDto summoner = new SummonerDto();
+            LeagueDto leagueSummoner = new LeagueDto();
             summoner = await summoner.SearchSummoner(nameSummoner);
+            leagueSummoner = await leagueSummoner.SearchLeague(summoner.Id);
             textBlockNomeInv.Text = summoner.Nome;
-            textBlockLevel.Text = summoner.SummonerLevel.ToString();
+            textBlockLevel.Text += summoner.SummonerLevel.ToString();
+            textBlockElo.Text = leagueSummoner.Tier + " " + leagueSummoner.Entries[0].Division;
+            textBlockVit.Text = leagueSummoner.Entries[0].Wins > 1 ? leagueSummoner.Entries[0].Wins.ToString() + " vitórias" : leagueSummoner.Entries[0].Wins.ToString() + " vitória";
+            textBlockDer.Text = leagueSummoner.Entries[0].Losses > 1 ? leagueSummoner.Entries[0].Losses.ToString() + " derrotas" : leagueSummoner.Entries[0].Losses.ToString() + " derrota";
             imageInvocador.Source = new BitmapImage(new Uri(@"http://ddragon.leagueoflegends.com/cdn/5.18.1/img/profileicon/" + summoner.ProfileIconId.ToString() + ".png"));
         }
     }

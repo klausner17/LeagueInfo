@@ -25,12 +25,13 @@ namespace LeagueInfo.Json
         [JsonProperty("tier")]
         public string Tier { get; set; }
 
-        public async Task<LeagueDto> SearchLeague(int id)
+        public async Task<LeagueDto> SearchLeague(long id)
         {
             Requester req = new Requester(@"https://br.api.pvp.net/api/lol/br/v2.5/league/by-summoner/" + id.ToString() + "/entry?api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33");
             string json = await req.GetJson();
             LeagueDto league = new LeagueDto();
-            league = JsonConvert.DeserializeObject<this.GetType()>
+            league = JsonConvert.DeserializeObject<Dictionary<string, List<LeagueDto>>>(json).Values.First()[0];
+            return league;
         }
 
     }
