@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using LeagueInfo.ClassApi.Request;
 
-namespace LeagueInfo.Json
+namespace LeagueInfo.ClassApi
 {
     class LeagueDto
     {

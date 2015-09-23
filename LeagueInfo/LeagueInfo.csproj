@@ -94,6 +94,10 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ClassApi\GameDto.cs" />
+    <Compile Include="ClassApi\PlayerDto.cs" />
+    <Compile Include="ClassApi\RawStatsDto.cs" />
+    <Compile Include="ClassApi\RecentGamesDto.cs" />
     <Compile Include="Controls\AbillityControl.xaml.cs">
       <DependentUpon>AbillityControl.xaml</DependentUpon>
     </Compile>
@@ -106,42 +110,42 @@
     <Compile Include="Controls\LastMatches.xaml.cs">
       <DependentUpon>LastMatches.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Json\BasicDataDto.cs" />
-    <Compile Include="Json\BasicDataStatsDto.cs" />
-    <Compile Include="Json\BlockItemDto.cs" />
-    <Compile Include="Json\BlocksDto.cs" />
-    <Compile Include="Json\ChampionDto.cs" />
-    <Compile Include="Json\ChampionListDto.cs" />
-    <Compile Include="Json\ChampionSpellDto.cs" />
-    <Compile Include="Json\GoldDto.cs" />
-    <Compile Include="Json\GroupDto.cs" />
-    <Compile Include="Json\ImageDto.cs" />
-    <Compile Include="Json\InfoDto.cs" />
-    <Compile Include="Json\ItemDto.cs" />
-    <Compile Include="Json\ItemListDto.cs" />
-    <Compile Include="Json\ItemTreeDto.cs" />
-    <Compile Include="Json\LeagueDto.cs" />
-    <Compile Include="Json\LeagueEntryDto.cs" />
-    <Compile Include="Json\LevelTipDto.cs" />
-    <Compile Include="Json\Mastery.cs" />
-    <Compile Include="Json\MatchSummary.cs" />
-    <Compile Include="Json\MetaDataDto.cs" />
-    <Compile Include="Json\MiniSeriesDto.cs" />
-    <Compile Include="Json\Participant.cs" />
-    <Compile Include="Json\ParticipantIdentity.cs" />
-    <Compile Include="Json\ParticipantStats.cs" />
-    <Compile Include="Json\ParticipantTimeline.cs" />
-    <Compile Include="Json\ParticipantTimeLineData.cs" />
-    <Compile Include="Json\PassiveDto.cs" />
-    <Compile Include="Json\Player.cs" />
-    <Compile Include="Json\PlayerHistory.cs" />
-    <Compile Include="Json\RecommendedDto.cs" />
-    <Compile Include="Json\Request\Requester.cs" />
-    <Compile Include="Json\Rune.cs" />
-    <Compile Include="Json\SkinDto.cs" />
-    <Compile Include="Json\SpellVarsData.cs" />
-    <Compile Include="Json\StatsDto.cs" />
-    <Compile Include="Json\SummonerDto.cs" />
+    <Compile Include="ClassApi\BasicDataDto.cs" />
+    <Compile Include="ClassApi\BasicDataStatsDto.cs" />
+    <Compile Include="ClassApi\BlockItemDto.cs" />
+    <Compile Include="ClassApi\BlocksDto.cs" />
+    <Compile Include="ClassApi\ChampionDto.cs" />
+    <Compile Include="ClassApi\ChampionListDto.cs" />
+    <Compile Include="ClassApi\ChampionSpellDto.cs" />
+    <Compile Include="ClassApi\GoldDto.cs" />
+    <Compile Include="ClassApi\GroupDto.cs" />
+    <Compile Include="ClassApi\ImageDto.cs" />
+    <Compile Include="ClassApi\InfoDto.cs" />
+    <Compile Include="ClassApi\ItemDto.cs" />
+    <Compile Include="ClassApi\ItemListDto.cs" />
+    <Compile Include="ClassApi\ItemTreeDto.cs" />
+    <Compile Include="ClassApi\LeagueDto.cs" />
+    <Compile Include="ClassApi\LeagueEntryDto.cs" />
+    <Compile Include="ClassApi\LevelTipDto.cs" />
+    <Compile Include="ClassApi\Mastery.cs" />
+    <Compile Include="ClassApi\MatchSummary.cs" />
+    <Compile Include="ClassApi\MetaDataDto.cs" />
+    <Compile Include="ClassApi\MiniSeriesDto.cs" />
+    <Compile Include="ClassApi\Participant.cs" />
+    <Compile Include="ClassApi\ParticipantIdentity.cs" />
+    <Compile Include="ClassApi\ParticipantStats.cs" />
+    <Compile Include="ClassApi\ParticipantTimeline.cs" />
+    <Compile Include="ClassApi\ParticipantTimeLineData.cs" />
+    <Compile Include="ClassApi\PassiveDto.cs" />
+    <Compile Include="ClassApi\Player.cs" />
+    <Compile Include="ClassApi\PlayerHistory.cs" />
+    <Compile Include="ClassApi\RecommendedDto.cs" />
+    <Compile Include="ClassApi\Request\Requester.cs" />
+    <Compile Include="ClassApi\Rune.cs" />
+    <Compile Include="ClassApi\SkinDto.cs" />
+    <Compile Include="ClassApi\SpellVarsData.cs" />
+    <Compile Include="ClassApi\StatsDto.cs" />
+    <Compile Include="ClassApi\SummonerDto.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>

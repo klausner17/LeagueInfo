@@ -7,7 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using LeagueInfo.Json;
+using LeagueInfo.ClassApi;
 using System.Windows.Media.Imaging;
 
 namespace LeagueInfo.Pages
