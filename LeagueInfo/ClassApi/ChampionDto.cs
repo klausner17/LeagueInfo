@@ -71,11 +71,16 @@ namespace LeagueInfo.ClassApi
         [JsonProperty("title")]
         public string Title { get; set; }
 
-        public async Task<ChampionDto> SearchChampion(int idChampion)
+        public async Task<ChampionDto> SearchChampion(long idChampion)
         {
             string json = await new Requester(@"https://global.api.pvp.net/api/lol/static-data/br/v1.2/champion/" + idChampion.ToString() + 
                 "?champData=all&api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33").GetJson();
             return JsonConvert.DeserializeObject<ChampionDto>(json);
+        }
+
+        public BitmapImage GetChampionSquare()
+        {
+            return new BitmapImage(new Uri("http://ddragon.leagueoflegends.com/cdn/5.18.1/img/champion/" + this.Image.Full));
         }
         #endregion
 	}

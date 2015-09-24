@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace LeagueInfo.ClassApi
 {
@@ -15,231 +11,231 @@ namespace LeagueInfo.ClassApi
         public int BarracksKilled { get; set; }
 
         [JsonProperty("championsKilled")]
-        public int championsKilled { get; set; }
+        public int ChampionsKilled { get; set; }
 
         [JsonProperty("combatPlayerScore")]
-        public int combatPlayerScore { get; set; }
+        public int CombatPlayerScore { get; set; }
 
         [JsonProperty("consumablesPurchased")]
-        public int consumablesPurchased { get; set; }
+        public int ConsumablesPurchased { get; set; }
 
         [JsonProperty("damageDealtPlayer")]
-        public int damageDealtPlayer { get; set; }
+        public int DamageDealtPlayer { get; set; }
 
         [JsonProperty("doubleKills")]
-        public int doubleKills { get; set; }
+        public int DoubleKills { get; set; }
 
         [JsonProperty("firstBlood")]
-        public int firstBlood { get; set; }
+        public int FirstBlood { get; set; }
 
         [JsonProperty("gold")]
-        public int gold { get; set; }
+        public int Gold { get; set; }
 
         [JsonProperty("goldEarned")]
-        public int goldEarned { get; set; }
+        public int GoldEarned { get; set; }
 
         [JsonProperty("goldSpent")]
-        public int goldSpent { get; set; }
+        public int GoldSpent { get; set; }
 
         [JsonProperty("item0")]
-        public int item0 { get; set; }
+        public int Item0 { get; set; }
 
         [JsonProperty("item1")]
-        public int item1 { get; set; }
+        public int Item1 { get; set; }
 
         [JsonProperty("item2")]
-        public int item2 { get; set; }
+        public int Item2 { get; set; }
 
         [JsonProperty("item3")]
-        public int item3 { get; set; }
+        public int Item3 { get; set; }
 
         [JsonProperty("item4")]
-        public int item4 { get; set; }
+        public int Item4 { get; set; }
 
         [JsonProperty("item5")]
-        public int item5 { get; set; }
+        public int Item5 { get; set; }
 
         [JsonProperty("item6")]
-        public int item6 { get; set; }
+        public int Item6 { get; set; }
 
         [JsonProperty("itemsPurchased")]
-        public int itemsPurchased { get; set; }
+        public int ItemsPurchased { get; set; }
 
         [JsonProperty("killingSprees")]
-        public int killingSprees { get; set; }
+        public int KillingSprees { get; set; }
 
         [JsonProperty("largestCriticalStrike")]
-        public int largestCriticalStrike { get; set; }
+        public int LargestCriticalStrike { get; set; }
 
         [JsonProperty("largestKillingSpree")]
-        public int largestKillingSpree { get; set; }
+        public int LargestKillingSpree { get; set; }
 
         [JsonProperty("largestMultiKill")]
-        public int largestMultiKill { get; set; }
+        public int LargestMultiKill { get; set; }
 
         [JsonProperty("legendaryItemsCreated")]
-        public int legendaryItemsCreated { get; set; }
+        public int LegendaryItemsCreated { get; set; }
 
         [JsonProperty("level")]
-        public int level { get; set; }
+        public int Level { get; set; }
 
         [JsonProperty("magicDamageDealtPlayer")]
-        public int magicDamageDealtPlayer { get; set; }
+        public int MagicDamageDealtPlayer { get; set; }
 
         [JsonProperty("magicDamageDealtToChampions")]
-        public int magicDamageDealtToChampions { get; set; }
+        public int MagicDamageDealtToChampions { get; set; }
 
         [JsonProperty("magicDamageTaken")]
-        public int magicDamageTaken { get; set; }
+        public int MagicDamageTaken { get; set; }
 
         [JsonProperty("minionsDenied")]
-        public int minionsDenied { get; set; }
+        public int MinionsDenied { get; set; }
 
         [JsonProperty("minionsKilled")]
-        public int minionsKilled { get; set; }
+        public int MinionsKilled { get; set; }
 
         [JsonProperty("neutralMinionsKilled")]
-        public int neutralMinionsKilled { get; set; }
+        public int NeutralMinionsKilled { get; set; }
 
         [JsonProperty("neutralMinionsKilledEnemyJungle")]
-        public int neutralMinionsKilledEnemyJungle { get; set; }
+        public int NeutralMinionsKilledEnemyJungle { get; set; }
 
         [JsonProperty("neutralMinionsKilledYourJungle")]
-        public int neutralMinionsKilledYourJungle { get; set; }
+        public int NeutralMinionsKilledYourJungle { get; set; }
 
         [JsonProperty("nexusKilled")]
-        public bool nexusKilled { get; set; }
+        public bool NexusKilled { get; set; }
 
         [JsonProperty("nodeCapture")]
-        public int nodeCapture { get; set; }
+        public int NodeCapture { get; set; }
 
         [JsonProperty("nodeCaptureAssist")]
-        public int nodeCaptureAssist { get; set; }
+        public int NodeCaptureAssist { get; set; }
 
         [JsonProperty("nodeNeutralize")]
-        public int nodeNeutralize { get; set; }
+        public int NodeNeutralize { get; set; }
 
         [JsonProperty("nodeNeutralizeAssist")]
-        public int nodeNeutralizeAssist { get; set; }
+        public int NodeNeutralizeAssist { get; set; }
 
         [JsonProperty("numDeaths")]
-        public int numDeaths { get; set; }
+        public int NumDeaths { get; set; }
 
         [JsonProperty("numItemsBought")]
-        public int numItemsBought { get; set; }
+        public int NumItemsBought { get; set; }
 
         [JsonProperty("objectivePlayerScore")]
-        public int objectivePlayerScore { get; set; }
+        public int ObjectivePlayerScore { get; set; }
 
         [JsonProperty("pentaKills")]
-        public int pentaKills { get; set; }
+        public int PentaKills { get; set; }
 
         [JsonProperty("physicalDamageDealtPlayer")]
-        public int physicalDamageDealtPlayer { get; set; }
+        public int PhysicalDamageDealtPlayer { get; set; }
 
         [JsonProperty("physicalDamageDealtToChampions")]
-        public int physicalDamageDealtToChampions { get; set; }
+        public int PhysicalDamageDealtToChampions { get; set; }
 
         [JsonProperty("physicalDamageTaken")]
-        public int physicalDamageTaken { get; set; }
+        public int PhysicalDamageTaken { get; set; }
 
         [JsonProperty("playerPosition")]
-        public int playerPosition { get; set; }
+        public int PlayerPosition { get; set; }
 
         [JsonProperty("playerRole")]
-        public int playerRole { get; set; }
+        public int PlayerRole { get; set; }
 
         [JsonProperty("quadraKills")]
-        public int quadraKills { get; set; }
+        public int QuadraKills { get; set; }
 
         [JsonProperty("sightWardsBought")]
-        public int sightWardsBought { get; set; }
+        public int SightWardsBought { get; set; }
 
         [JsonProperty("spell1Cast")]
-        public int spell1Cast { get; set; }
+        public int Spell1Cast { get; set; }
 
         [JsonProperty("spell2Cast")]
-        public int spell2Cast { get; set; }
+        public int Spell2Cast { get; set; }
 
         [JsonProperty("spell3Cast")]
-        public int spell3Cast { get; set; }
+        public int Spell3Cast { get; set; }
 
         [JsonProperty("spell4Cast")]
-        public int spell4Cast { get; set; }
+        public int Spell4Cast { get; set; }
 
         [JsonProperty("summonSpell1Cast")]
-        public int summonSpell1Cast { get; set; }
+        public int SummonSpell1Cast { get; set; }
 
         [JsonProperty("summonSpell2Cast")]
-        public int summonSpell2Cast { get; set; }
+        public int SummonSpell2Cast { get; set; }
 
         [JsonProperty("superMonsterKilled")]
-        public int superMonsterKilled { get; set; }
+        public int SuperMonsterKilled { get; set; }
 
         [JsonProperty("team")]
-        public int team { get; set; }
+        public int Team { get; set; }
 
         [JsonProperty("teamObjective")]
-        public int teamObjective { get; set; }
+        public int TeamObjective { get; set; }
 
         [JsonProperty("timePlayed")]
-        public int timePlayed { get; set; }
+        public int TimePlayed { get; set; }
 
         [JsonProperty("totalDamageDealt")]
-        public int totalDamageDealt { get; set; }
+        public int TotalDamageDealt { get; set; }
 
         [JsonProperty("totalDamageDealtToChampions")]
-        public int totalDamageDealtToChampions { get; set; }
+        public int TotalDamageDealtToChampions { get; set; }
 
         [JsonProperty("totalDamageTaken")]
-        public int totalDamageTaken { get; set; }
+        public int TotalDamageTaken { get; set; }
 
         [JsonProperty("totalHeal")]
-        public int totalHeal { get; set; }
+        public int TotalHeal { get; set; }
 
         [JsonProperty("totalPlayerScore")]
-        public int totalPlayerScore { get; set; }
+        public int TotalPlayerScore { get; set; }
 
         [JsonProperty("totalScoreRank")]
-        public int totalScoreRank { get; set; }
+        public int TotalScoreRank { get; set; }
 
         [JsonProperty("totalTimeCrowdControlDealt")]
-        public int totalTimeCrowdControlDealt { get; set; }
+        public int TotalTimeCrowdControlDealt { get; set; }
 
         [JsonProperty("totalUnitsHealed")]
-        public int totalUnitsHealed { get; set; }
+        public int TotalUnitsHealed { get; set; }
 
         [JsonProperty("tripleKills")]
-        public int tripleKills { get; set; }
+        public int TripleKills { get; set; }
 
         [JsonProperty("trueDamageDealtPlayer")]
-        public int trueDamageDealtPlayer { get; set; }
+        public int TrueDamageDealtPlayer { get; set; }
 
         [JsonProperty("trueDamageDealtToChampions")]
-        public int trueDamageDealtToChampions { get; set; }
+        public int TrueDamageDealtToChampions { get; set; }
 
         [JsonProperty("trueDamageTaken")]
-        public int trueDamageTaken { get; set; }
+        public int TrueDamageTaken { get; set; }
 
         [JsonProperty("turretsKilled")]
-        public int turretsKilled { get; set; }
+        public int TurretsKilled { get; set; }
 
         [JsonProperty("unrealKills")]
-        public int unrealKills { get; set; }
+        public int UnrealKills { get; set; }
 
         [JsonProperty("victoryPointTotal")]
-        public int victoryPointTotal { get; set; }
+        public int VictoryPointTotal { get; set; }
 
         [JsonProperty("visionWardsBought")]
-        public int visionWardsBought { get; set; }
+        public int VisionWardsBought { get; set; }
 
         [JsonProperty("wardKilled")]
-        public int wardKilled { get; set; }
+        public int WardKilled { get; set; }
 
         [JsonProperty("wardPlaced")]
-        public int wardPlaced { get; set; }
+        public int WardPlaced { get; set; }
 
         [JsonProperty("win")]
-        public int win { get; set; }
+        public bool Win { get; set; }
     }
 }

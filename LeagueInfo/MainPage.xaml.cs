@@ -71,7 +71,6 @@ namespace LeagueInfo
                             item.Champion = champion;
                             item.OnTouch += item_OnTouch;
                             ChampionsList.Items.Add(item);
-                            await Task.Delay(1);
                         }
                     }
                     catch (Exception ex)
@@ -92,7 +91,6 @@ namespace LeagueInfo
                             itemSelect.Item = item;
                             itemSelect.OnTouch += ItemSelect_OnTouch;
                             ItensList.Children.Add(itemSelect);
-                            await Task.Delay(50);
                         }
                     }
                     catch (Exception ex)

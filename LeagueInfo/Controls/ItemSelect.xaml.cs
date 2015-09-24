@@ -24,7 +24,7 @@ namespace LeagueInfo.Controls
                 item = value;
                 descriptionItem.Text = item.Name;
                 custItem.Text = "Custo: " + item.Gold.Total.ToString() + " gold";
-                iconItem.Source = new BitmapImage(new Uri("http://ddragon.leagueoflegends.com/cdn/5.18.1/img/item/" + item.Image.Full));
+                iconItem.Source = value.GetImage();
             }
         }
 
