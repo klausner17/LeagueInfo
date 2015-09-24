@@ -10,6 +10,7 @@ using Microsoft.Phone.Shell;
 using LeagueInfo.ClassApi;
 using System.Windows.Media.Imaging;
 using LeagueInfo.Controls;
+using System.Windows.Media;
 
 namespace LeagueInfo.Pages
 {
@@ -32,14 +33,22 @@ namespace LeagueInfo.Pages
             textBlockElo.Text = leagueSummoner.Tier + " " + leagueSummoner.Entries[0].Division;
             textBlockVit.Text = leagueSummoner.Entries[0].Wins > 1 ? leagueSummoner.Entries[0].Wins.ToString() + " vitórias" : leagueSummoner.Entries[0].Wins.ToString() + " vitória";
             textBlockDer.Text = leagueSummoner.Entries[0].Losses > 1 ? leagueSummoner.Entries[0].Losses.ToString() + " derrotas" : leagueSummoner.Entries[0].Losses.ToString() + " derrota";
-            imageInvocador.Source = new BitmapImage(new Uri(@"http://ddragon.leagueoflegends.com/cdn/5.18.1/img/profileicon/" + summoner.ProfileIconId.ToString() + ".png"));
+            imageInvocador.Source = summoner.GetProfileIcon();
             RecentGamesDto gamesRecent = await new RecentGamesDto().GetLatestGamesById(summoner.Id);
-            foreach(GameDto game in gamesRecent.Games)
+            List<int> lastChampionsPlayed = new List<int>();
+            foreach (GameDto game in gamesRecent.Games)
             {
-                LastMatches controlMatch = new LastMatches(game.ChampionId, new List<int>() { game.Stats.Item0, game.Stats.Item1, game.Stats.Item2, game.Stats.Item3, game.Stats.Item4, game.Stats.Item5, game.Stats.Item6 });
-                await controlMatch.Load();
+                lastChampionsPlayed.Add(game.ChampionId);
+                LastMatches controlMatch = new LastMatches(game);
+                controlMatch.Margin = new Thickness(0, 0, 0, 10);
+                controlMatch.Load();
                 listboxPartidas.Items.Add(controlMatch);
             }
+            int idChampPref = lastChampionsPlayed[new Random().Next(lastChampionsPlayed.Count - 1)];
+            ImageBrush imgBrush = new ImageBrush();
+            BitmapImage source = (await new ChampionDto().SearchChampionAllData(idChampPref)).GetChampionSplash(0);
+            imgBrush.ImageSource = source;
+            panoramaMain.Background = imgBrush;
         }
     }
 }

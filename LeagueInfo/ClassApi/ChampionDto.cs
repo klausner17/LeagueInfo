@@ -71,10 +71,17 @@ namespace LeagueInfo.ClassApi
         [JsonProperty("title")]
         public string Title { get; set; }
 
-        public async Task<ChampionDto> SearchChampion(long idChampion)
+        public async Task<ChampionDto> SearchChampionAllData(long idChampion)
         {
             string json = await new Requester(@"https://global.api.pvp.net/api/lol/static-data/br/v1.2/champion/" + idChampion.ToString() + 
                 "?champData=all&api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33").GetJson();
+            return JsonConvert.DeserializeObject<ChampionDto>(json);
+        }
+
+        public async Task<ChampionDto> SearchChampionLowData(long idChampiom)
+        {
+            string json = await new Requester(@"https://global.api.pvp.net/api/lol/static-data/br/v1.2/champion/" + idChampiom.ToString() + 
+                "?champData=image&api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33").GetJson();
             return JsonConvert.DeserializeObject<ChampionDto>(json);
         }
 
@@ -83,5 +90,10 @@ namespace LeagueInfo.ClassApi
             return new BitmapImage(new Uri("http://ddragon.leagueoflegends.com/cdn/5.18.1/img/champion/" + this.Image.Full));
         }
         #endregion
-	}
+
+        public BitmapImage GetChampionSplash(int idSkin)
+        {
+            return new BitmapImage(new Uri("http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + this.Key + "_" + idSkin.ToString() + ".jpg"));
+        }
+    }
 }

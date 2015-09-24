@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using LeagueInfo.ClassApi.Request;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace LeagueInfo.ClassApi
 {
@@ -31,6 +33,11 @@ namespace LeagueInfo.ClassApi
             string json = await new Requester(@"https://br.api.pvp.net/api/lol/br/v1.4/summoner/by-name/" + nameSummoner + "?api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33").GetJson();
             Dictionary<string, SummonerDto> summoner = JsonConvert.DeserializeObject<Dictionary<string, SummonerDto>>(json);
             return summoner.First().Value;
+        }
+
+        public BitmapImage GetProfileIcon()
+        {
+            return new BitmapImage(new Uri(@"http://ddragon.leagueoflegends.com/cdn/5.18.1/img/profileicon/" + this.ProfileIconId.ToString() + ".png"));
         }
     }
 }

@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace LeagueInfo.ClassApi
 {
-    class PlayerDto
+    public class PlayerDto
     {
         [JsonProperty("championId")]
         public int ChampionId { get; set; }

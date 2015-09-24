@@ -7,14 +7,75 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    d:DesignHeight="100" d:DesignWidth="480" >
-    
+    d:DesignHeight="200" d:DesignWidth="480" >
+
     <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneChromeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="83*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="120"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Image Grid.Column="0" Name="imageChampion"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="90" Height="90"/>
-        <StackPanel Name="itemsMatch" Grid.Column="1" FlowDirection="LeftToRight" VerticalAlignment="Stretch" Orientation="Horizontal"/>
+        <Grid Grid.Row="0" Grid.Column="1" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Column="0" Grid.Row="0" Name="textBlockAbates" Text="Abates: " FontSize="16" />
+            <TextBlock Grid.Column="0" Grid.Row="1" Name="textBlockMortes" Text="Mortes: " FontSize="16"/>
+            <TextBlock Grid.Column="0" Grid.Row="2" Name="textBlockAssistencias" Text="Assistencias: " FontSize="16"/>
+            <TextBlock Grid.Column="0" Grid.Row="3" Name="textBlockFarm" Text="Farm: " FontSize="16"/>
+            <TextBlock Grid.Column="0" Grid.Row="4" Name="textBlockOuro" Text="Ouro: " FontSize="16"/>
+            <TextBlock Grid.Column="1" Grid.Row="0" Name="textBlockTempo" Text="Duração: " FontSize="16"/>
+            <TextBlock Grid.Column="1" Grid.Row="1" Name="textBlockModo" Text="Modo: " FontSize="16"/>
+        </Grid>
+        <Image Grid.Column="0" Name="imageChampion"  
+               VerticalAlignment="Top" HorizontalAlignment="Left" 
+               Width="100" Height="100"
+               Margin="10"/>
+        <Grid Name="itemsMatch" Margin="10" Height="60"
+                    Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
+                    FlowDirection="LeftToRight" 
+                    VerticalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Ellipse VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Width="50" Height="50" Margin="5"
+                   Grid.Column="0" Name="item0" RenderTransformOrigin="0.5,0.5" />
+            <Ellipse VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Width="50" Height="50" Margin="5"
+                   Grid.Column="1" Name="item1" />
+            <Ellipse VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Width="50" Height="50" Margin="5"
+                   Grid.Column="2" Name="item2" />
+            <Ellipse VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Width="50" Height="50" Margin="5"
+                   Grid.Column="3" Name="item3" />
+            <Ellipse VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Width="50" Height="50" Margin="5"
+                   Grid.Column="4" Name="item4" />
+            <Ellipse VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Width="50" Height="50" Margin="5"
+                   Grid.Column="5" Name="item5" />
+            <Ellipse VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Width="50" Height="50" Margin="5"
+                   Grid.Column="6" Name="item6" />
+        </Grid>
     </Grid>
 </UserControl>

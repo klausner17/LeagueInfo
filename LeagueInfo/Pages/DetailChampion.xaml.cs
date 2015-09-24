@@ -37,10 +37,10 @@ namespace LeagueInfo.Pages
         private async void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
         {
             ChampionDto champion = new ChampionDto();
-            champion = await champion.SearchChampion(Convert.ToInt32(NavigationContext.QueryString["id"]));
+            champion = await champion.SearchChampionAllData(Convert.ToInt32(NavigationContext.QueryString["id"]));
             Random randNumSkin = new Random();
             int num = randNumSkin.Next(champion.Skins.Count);
-            BitmapImage backGridInfo = new BitmapImage(new Uri("http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + champion.Key + "_" + num.ToString() + ".jpg"));
+            BitmapImage backGridInfo = champion.GetChampionSplash(num);
             ImageBrush brush = new ImageBrush();
             brush.Stretch = Stretch.UniformToFill;
             brush.ImageSource = backGridInfo;
