@@ -20,7 +20,8 @@
             <phone:Panorama.Background>
                 <ImageBrush Stretch="UniformToFill" ImageSource="/BackGround.jpg"/>
             </phone:Panorama.Background>
-            <phone:PanoramaItem Header="[Jogador]" Name="panoramaPlayerStatics">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <phone:PanoramaItem Header="[Jogador]" Name="panoramaPlayerStatics">
                 <Grid ScrollViewer.VerticalScrollBarVisibility="Auto">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="160"/>
@@ -122,10 +123,9 @@
                             <SolidColorBrush Color="Black" Opacity="0.3"/>
                         </Controls:SquareInfo.ColorInfoSuperior>
                     </Controls:SquareInfo>
-
-                </ScrollBar>
-    </Grid>
+                </Grid>
             </phone:PanoramaItem>
+            </ScrollViewer>
             <phone:PanoramaItem Header="Equipes" Name="panoramaTeamsStatistics">
 
             </phone:PanoramaItem>

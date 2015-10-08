@@ -43,12 +43,19 @@ namespace LeagueInfo.Pages
                 controlMatch.Margin = new Thickness(0, 0, 0, 10);
                 controlMatch.Load();
                 listboxPartidas.Items.Add(controlMatch);
+                controlMatch.Tap += ControlMatch_Tap;
             }
             int idChampPref = lastChampionsPlayed[new Random().Next(lastChampionsPlayed.Count - 1)];
             ImageBrush imgBrush = new ImageBrush();
             BitmapImage source = (await new ChampionDto().SearchChampionAllData(idChampPref)).GetChampionSplash(0);
             imgBrush.ImageSource = source;
+            imgBrush.Stretch = Stretch.None;
             panoramaMain.Background = imgBrush;
+        }
+
+        private void ControlMatch_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Pages/DetailMatch.xaml", UriKind.Relative));
         }
     }
 }
