@@ -146,12 +146,18 @@
     <Compile Include="ClassApi\SpellVarsData.cs" />
     <Compile Include="ClassApi\StatsDto.cs" />
     <Compile Include="ClassApi\SummonerDto.cs" />
+    <Compile Include="Controls\SquareInfo.xaml.cs">
+      <DependentUpon>SquareInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\DetailChampion.xaml.cs">
       <DependentUpon>DetailChampion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DetailMatch.xaml.cs">
+      <DependentUpon>DetailMatch.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\SummonerDetail.xaml.cs">
       <DependentUpon>SummonerDetail.xaml</DependentUpon>
@@ -184,11 +190,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\SquareInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\DetailChampion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\DetailMatch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

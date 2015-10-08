@@ -42,12 +42,6 @@ namespace LeagueInfo
             }
         }
 
-        void item_OnTouch(object sender)
-        {
-            ChampionDto championSelected = (sender as ChampionSelected).Champion;
-            NavigationService.Navigate(new Uri("/Pages/DetailChampion.xaml?id="+championSelected.Id, UriKind.Relative));
-        }
-
         private void ItemSelect_OnTouch(object sender)
         {
             MessageBox.Show((sender as ItemSelect).Item.SanitizedDescriprion);
@@ -69,7 +63,7 @@ namespace LeagueInfo
                             ChampionSelected item = new ChampionSelected();
                             item.Margin = new Thickness(10);
                             item.Champion = champion;
-                            item.OnTouch += item_OnTouch;
+                            item.Tap += item_Tap;
                             ChampionsList.Items.Add(item);
                         }
                     }
@@ -99,6 +93,13 @@ namespace LeagueInfo
                     }
                     break;
             }
+        }
+
+        void item_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+
+            ChampionDto championSelected = (sender as ChampionSelected).Champion;
+            NavigationService.Navigate(new Uri("/Pages/DetailChampion.xaml?id=" + championSelected.Id, UriKind.Relative));
         }
 
         private void buttonBuscasInv_Click(object sender, RoutedEventArgs e)

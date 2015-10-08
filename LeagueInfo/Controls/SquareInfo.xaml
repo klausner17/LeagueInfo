@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="LeagueInfo.Controls.SquareInfo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="140" d:DesignWidth="180">
+    
+    <Grid x:Name="LayoutRoot">
+        <Grid Name="gridInfo"
+            VerticalAlignment="Center" HorizontalAlignment="Center"
+            Width="180" Height="140">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+            <Grid Name="gridSuperior">
+                <TextBlock Name="textBlockInfoSuperior" Text="[Info superior]"
+                           VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40"/>
+            </Grid>
+            <Grid Grid.Row="1" Name="gridInferior">
+                <TextBlock Name="textBlockInfoInferior" Text="[Info inferior]" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>
