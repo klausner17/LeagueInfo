@@ -1,0 +1,27 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="LeagueInfo.Pages.Login"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <StackPanel x:Name="ContentPanel" VerticalAlignment="Center" Margin="20">
+            <TextBlock TextAlignment="Center" FontWeight="SemiBold" Foreground="{StaticResource PhoneAccentBrush}" FontSize="34" Margin="0,0,0,70">League Info</TextBlock>
+            <TextBlock TextAlignment="Center" FontWeight="SemiBold" Foreground="{StaticResource PhoneAccentBrush}" FontSize="26">Nome do Invocador</TextBlock>
+            <TextBox VerticalAlignment="Top" HorizontalAlignment="Stretch" Style="{StaticResource login}"  Name="nomeInvocador" InputScope="EmailUserName" />
+            <TextBlock TextAlignment="Center" FontWeight="SemiBold" Foreground="{StaticResource PhoneAccentBrush}" FontSize="26">Senha</TextBlock>
+            <TextBox Name="senha" InputScope="Password" Style="{StaticResource login}" />
+        </StackPanel>
+    </Grid>
+
+</phone:PhoneApplicationPage>
