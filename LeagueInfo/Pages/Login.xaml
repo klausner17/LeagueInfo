@@ -14,14 +14,24 @@
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
-        <StackPanel x:Name="ContentPanel" VerticalAlignment="Center" Margin="20">
-            <TextBlock TextAlignment="Center" FontWeight="SemiBold" Foreground="{StaticResource PhoneAccentBrush}" FontSize="34" Margin="0,0,0,70">League Info</TextBlock>
-            <TextBlock TextAlignment="Center" FontWeight="SemiBold" Foreground="{StaticResource PhoneAccentBrush}" FontSize="26">Nome do Invocador</TextBlock>
-            <TextBox VerticalAlignment="Top" HorizontalAlignment="Stretch" Style="{StaticResource login}"  Name="nomeInvocador" InputScope="EmailUserName" />
-            <TextBlock TextAlignment="Center" FontWeight="SemiBold" Foreground="{StaticResource PhoneAccentBrush}" FontSize="26">Senha</TextBlock>
-            <TextBox Name="senha" InputScope="Password" Style="{StaticResource login}" />
-        </StackPanel>
+    <Grid x:Name="LayoutRoot">
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="/Assets/LoginScreen.jpg" />
+        </Grid.Background>
+        <Grid>
+            <Grid.Background>
+                <SolidColorBrush Color="Black" Opacity="0.5" />
+            </Grid.Background>
+            <StackPanel x:Name="ContentPanel" Margin="20" HorizontalAlignment="Stretch" VerticalAlignment="center">
+                <TextBlock TextAlignment="Center" FontWeight="SemiBold" Foreground="White" FontSize="54" Margin="0,0,0,70">League Info</TextBlock>
+                <TextBlock TextAlignment="Center" FontWeight="SemiBold" Foreground="White" FontSize="26">Nome do Invocador</TextBlock>
+                <TextBox VerticalAlignment="Top" HorizontalAlignment="Stretch"  Name="nomeInvocador" InputScope="EmailUserName" />
+                <TextBlock TextAlignment="Center" FontWeight="SemiBold" Foreground="White" FontSize="26">Senha</TextBlock>
+                <TextBox Name="senha" InputScope="Password" />
+                <Button Name="buttonLogin" FontSize="26" Content="Entrar" Click="buttonLogin_Click"/>
+                <HyperlinkButton NavigateUri="/Pages/CadastroUsuario.xaml" FontSize="26" Content="Cadastre-se"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 
 </phone:PhoneApplicationPage>
