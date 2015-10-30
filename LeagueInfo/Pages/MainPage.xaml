@@ -1,0 +1,51 @@
+﻿<phone:PhoneApplicationPage x:Name="phoneApplicationPage"
+    x:Class="LeagueInfo.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait" UseLayoutRounding="True">
+    <Grid>
+    	<Grid.Background>
+    		<ImageBrush ImageSource="/BackGround.jpg" Stretch="UniformToFill"/>
+    	</Grid.Background>
+		<Grid VerticalAlignment="Top">
+			<Grid.Background>
+				<SolidColorBrush Color="Black" Opacity="0.4"/>
+			</Grid.Background>
+			<TextBlock Padding="5" FontSize="24" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto">league info</TextBlock>
+		</Grid>
+		<phone:Panorama Name="panoramaMain" Margin="0,42,0,0" SelectionChanged="Panorama_SelectionChanged">
+            <phone:PanoramaItem Header="invocador" Name="panoramaInvocador">
+                <StackPanel>
+                    <TextBox Name="textBlockInvocador" InputScope="Chat" KeyDown="textBlockInvocador_KeyDown"/>
+                    <Button Name="buttonBuscasInv" Content="buscar" Click="buttonBuscasInv_Click"/>
+                </StackPanel>
+            </phone:PanoramaItem>
+            <phone:PanoramaItem Header="campeões" Name="panoramaCampeoes">
+                <ListBox Name="ChampionsList">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <toolkit:WrapPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                </ListBox>
+            </phone:PanoramaItem>
+            <phone:PanoramaItem Header="itens" Name="panoramaItens">
+                <ScrollViewer VerticalAlignment="Stretch">
+                    <StackPanel Name="ItensList" />
+                </ScrollViewer>
+		</phone:PanoramaItem>
+	</phone:Panorama>
+	<ProgressBar Visibility="Collapsed" HorizontalAlignment="Stretch" IsIndeterminate="True"  VerticalAlignment="center" Height="20" Width="{Binding Width, ElementName=phoneApplicationPage}" Foreground="White"  Name="loadProgress" Margin="0"/>
+	</Grid>
+
+
+</phone:PhoneApplicationPage>

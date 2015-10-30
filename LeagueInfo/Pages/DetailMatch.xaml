@@ -10,8 +10,7 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    mc:Ignorable="d"
-    shell:SystemTray.IsVisible="True">
+    mc:Ignorable="d" shell:SystemTray.IsVisible="True" >
     
     
     <!--LayoutRoot is the root grid where all page content is placed-->
@@ -20,112 +19,101 @@
             <phone:Panorama.Background>
                 <ImageBrush Stretch="UniformToFill" ImageSource="/BackGround.jpg"/>
             </phone:Panorama.Background>
-            <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <phone:PanoramaItem Header="[Jogador]" Name="panoramaPlayerStatics">
-                <Grid ScrollViewer.VerticalScrollBarVisibility="Auto">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="160"/>
-                        <RowDefinition Height="160"/>
-                        <RowDefinition Height="160"/>
-                        <RowDefinition Height="160"/>
-                        <RowDefinition Height="160"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Controls:SquareInfo InfoInferior="abates" InfoSuperior="[0]">
-                        <Controls:SquareInfo.ColorInfoInferior>
-                            <SolidColorBrush Color="DeepSkyBlue" Opacity="0.6"/>
-                        </Controls:SquareInfo.ColorInfoInferior>
-                        <Controls:SquareInfo.ColorInfoSuperior>
-                            <SolidColorBrush Color="Black" Opacity="0.3"/>
-                        </Controls:SquareInfo.ColorInfoSuperior>
-                    </Controls:SquareInfo>
-                    
-                    <Controls:SquareInfo InfoInferior="mortes" InfoSuperior="[0]" Grid.Column="1">
-                        <Controls:SquareInfo.ColorInfoInferior>
-                            <SolidColorBrush Color="LightCoral" Opacity="0.6"/>
-                        </Controls:SquareInfo.ColorInfoInferior>
-                        <Controls:SquareInfo.ColorInfoSuperior>
-                            <SolidColorBrush Color="Black" Opacity="0.3"/>
-                        </Controls:SquareInfo.ColorInfoSuperior>
-                    </Controls:SquareInfo>
+                    <Grid ScrollViewer.VerticalScrollBarVisibility="Auto">
+                        <ListBox>
+                            <Controls:SquareInfo InfoInferior="abates" InfoSuperior="[0]">
+                                <Controls:SquareInfo.ColorInfoInferior>
+                                    <SolidColorBrush Color="DeepSkyBlue" Opacity="0.6"/>
+                                </Controls:SquareInfo.ColorInfoInferior>
+                                <Controls:SquareInfo.ColorInfoSuperior>
+                                    <SolidColorBrush Color="Black" Opacity="0.3"/>
+                                </Controls:SquareInfo.ColorInfoSuperior>
+                            </Controls:SquareInfo>
 
-                    <Controls:SquareInfo InfoInferior="assistencias" InfoSuperior="[0]" Grid.Row="1">
-                        <Controls:SquareInfo.ColorInfoInferior>
-                            <SolidColorBrush Color="LightGreen" Opacity="0.6"/>
-                        </Controls:SquareInfo.ColorInfoInferior>
-                        <Controls:SquareInfo.ColorInfoSuperior>
-                            <SolidColorBrush Color="Black" Opacity="0.3"/>
-                        </Controls:SquareInfo.ColorInfoSuperior>
-                    </Controls:SquareInfo>
+                            <Controls:SquareInfo InfoInferior="mortes" InfoSuperior="[0]" Grid.Column="1">
+                                <Controls:SquareInfo.ColorInfoInferior>
+                                    <SolidColorBrush Color="LightCoral" Opacity="0.6"/>
+                                </Controls:SquareInfo.ColorInfoInferior>
+                                <Controls:SquareInfo.ColorInfoSuperior>
+                                    <SolidColorBrush Color="Black" Opacity="0.3"/>
+                                </Controls:SquareInfo.ColorInfoSuperior>
+                            </Controls:SquareInfo>
 
-                    <Controls:SquareInfo InfoInferior="ouro" InfoSuperior="[0]" Grid.Row="1" Grid.Column="1">
-                        <Controls:SquareInfo.ColorInfoInferior>
-                            <SolidColorBrush Color="Goldenrod" Opacity="0.6"/>
-                        </Controls:SquareInfo.ColorInfoInferior>
-                        <Controls:SquareInfo.ColorInfoSuperior>
-                            <SolidColorBrush Color="Black" Opacity="0.3"/>
-                        </Controls:SquareInfo.ColorInfoSuperior>
-                    </Controls:SquareInfo>
+                            <Controls:SquareInfo InfoInferior="assistencias" InfoSuperior="[0]" Grid.Row="1">
+                                <Controls:SquareInfo.ColorInfoInferior>
+                                    <SolidColorBrush Color="LightGreen" Opacity="0.6"/>
+                                </Controls:SquareInfo.ColorInfoInferior>
+                                <Controls:SquareInfo.ColorInfoSuperior>
+                                    <SolidColorBrush Color="Black" Opacity="0.3"/>
+                                </Controls:SquareInfo.ColorInfoSuperior>
+                            </Controls:SquareInfo>
 
-                    <Controls:SquareInfo InfoInferior="farm" InfoSuperior="[0]" Grid.Row="2" Grid.Column="0">
-                        <Controls:SquareInfo.ColorInfoInferior>
-                            <SolidColorBrush Color="Violet" Opacity="0.6"/>
-                        </Controls:SquareInfo.ColorInfoInferior>
-                        <Controls:SquareInfo.ColorInfoSuperior>
-                            <SolidColorBrush Color="Black" Opacity="0.3"/>
-                        </Controls:SquareInfo.ColorInfoSuperior>
-                    </Controls:SquareInfo>
+                            <Controls:SquareInfo InfoInferior="ouro" InfoSuperior="[0]" Grid.Row="1" Grid.Column="1">
+                                <Controls:SquareInfo.ColorInfoInferior>
+                                    <SolidColorBrush Color="Goldenrod" Opacity="0.6"/>
+                                </Controls:SquareInfo.ColorInfoInferior>
+                                <Controls:SquareInfo.ColorInfoSuperior>
+                                    <SolidColorBrush Color="Black" Opacity="0.3"/>
+                                </Controls:SquareInfo.ColorInfoSuperior>
+                            </Controls:SquareInfo>
 
-                    <Controls:SquareInfo InfoInferior="torres" InfoSuperior="[0]" Grid.Row="2" Grid.Column="1">
-                        <Controls:SquareInfo.ColorInfoInferior>
-                            <SolidColorBrush Color="#FF892C09" Opacity="0.6"/>
-                        </Controls:SquareInfo.ColorInfoInferior>
-                        <Controls:SquareInfo.ColorInfoSuperior>
-                            <SolidColorBrush Color="Black" Opacity="0.3"/>
-                        </Controls:SquareInfo.ColorInfoSuperior>
-                    </Controls:SquareInfo>
+                            <Controls:SquareInfo InfoInferior="farm" InfoSuperior="[0]" Grid.Row="2" Grid.Column="0">
+                                <Controls:SquareInfo.ColorInfoInferior>
+                                    <SolidColorBrush Color="Violet" Opacity="0.6"/>
+                                </Controls:SquareInfo.ColorInfoInferior>
+                                <Controls:SquareInfo.ColorInfoSuperior>
+                                    <SolidColorBrush Color="Black" Opacity="0.3"/>
+                                </Controls:SquareInfo.ColorInfoSuperior>
+                            </Controls:SquareInfo>
 
-                    <Controls:SquareInfo InfoInferior="dano magico" InfoSuperior="[0]" Grid.Row="3" Grid.Column="0">
-                        <Controls:SquareInfo.ColorInfoInferior>
-                            <SolidColorBrush Color="Purple" Opacity="0.6"/>
-                        </Controls:SquareInfo.ColorInfoInferior>
-                        <Controls:SquareInfo.ColorInfoSuperior>
-                            <SolidColorBrush Color="Black" Opacity="0.3"/>
-                        </Controls:SquareInfo.ColorInfoSuperior>
-                    </Controls:SquareInfo>
+                            <Controls:SquareInfo InfoInferior="torres" InfoSuperior="[0]" Grid.Row="2" Grid.Column="1">
+                                <Controls:SquareInfo.ColorInfoInferior>
+                                    <SolidColorBrush Color="#FF892C09" Opacity="0.6"/>
+                                </Controls:SquareInfo.ColorInfoInferior>
+                                <Controls:SquareInfo.ColorInfoSuperior>
+                                    <SolidColorBrush Color="Black" Opacity="0.3"/>
+                                </Controls:SquareInfo.ColorInfoSuperior>
+                            </Controls:SquareInfo>
 
-                    <Controls:SquareInfo InfoInferior="dano fisico" InfoSuperior="[0]" Grid.Row="3" Grid.Column="1">
-                        <Controls:SquareInfo.ColorInfoInferior>
-                            <SolidColorBrush Color="Red" Opacity="0.6"/>
-                        </Controls:SquareInfo.ColorInfoInferior>
-                        <Controls:SquareInfo.ColorInfoSuperior>
-                            <SolidColorBrush Color="Black" Opacity="0.3"/>
-                        </Controls:SquareInfo.ColorInfoSuperior>
-                    </Controls:SquareInfo>
+                            <Controls:SquareInfo InfoInferior="dano magico" InfoSuperior="[0]" Grid.Row="3" Grid.Column="0">
+                                <Controls:SquareInfo.ColorInfoInferior>
+                                    <SolidColorBrush Color="Purple" Opacity="0.6"/>
+                                </Controls:SquareInfo.ColorInfoInferior>
+                                <Controls:SquareInfo.ColorInfoSuperior>
+                                    <SolidColorBrush Color="Black" Opacity="0.3"/>
+                                </Controls:SquareInfo.ColorInfoSuperior>
+                            </Controls:SquareInfo>
 
-                    <Controls:SquareInfo InfoInferior="dano magico" InfoSuperior="[0]" Grid.Row="4" Grid.Column="0">
-                        <Controls:SquareInfo.ColorInfoInferior>
-                            <SolidColorBrush Color="Purple" Opacity="0.6"/>
-                        </Controls:SquareInfo.ColorInfoInferior>
-                        <Controls:SquareInfo.ColorInfoSuperior>
-                            <SolidColorBrush Color="Black" Opacity="0.3"/>
-                        </Controls:SquareInfo.ColorInfoSuperior>
-                    </Controls:SquareInfo>
+                            <Controls:SquareInfo InfoInferior="dano fisico" InfoSuperior="[0]" Grid.Row="3" Grid.Column="1">
+                                <Controls:SquareInfo.ColorInfoInferior>
+                                    <SolidColorBrush Color="Red" Opacity="0.6"/>
+                                </Controls:SquareInfo.ColorInfoInferior>
+                                <Controls:SquareInfo.ColorInfoSuperior>
+                                    <SolidColorBrush Color="Black" Opacity="0.3"/>
+                                </Controls:SquareInfo.ColorInfoSuperior>
+                            </Controls:SquareInfo>
 
-                    <Controls:SquareInfo InfoInferior="dano fisico" InfoSuperior="[0]" Grid.Row="4" Grid.Column="1">
-                        <Controls:SquareInfo.ColorInfoInferior>
-                            <SolidColorBrush Color="Red" Opacity="0.6"/>
-                        </Controls:SquareInfo.ColorInfoInferior>
-                        <Controls:SquareInfo.ColorInfoSuperior>
-                            <SolidColorBrush Color="Black" Opacity="0.3"/>
-                        </Controls:SquareInfo.ColorInfoSuperior>
-                    </Controls:SquareInfo>
-                </Grid>
-            </phone:PanoramaItem>
-            </ScrollViewer>
+                            <Controls:SquareInfo InfoInferior="dano magico" InfoSuperior="[0]" Grid.Row="4" Grid.Column="0">
+                                <Controls:SquareInfo.ColorInfoInferior>
+                                    <SolidColorBrush Color="Purple" Opacity="0.6"/>
+                                </Controls:SquareInfo.ColorInfoInferior>
+                                <Controls:SquareInfo.ColorInfoSuperior>
+                                    <SolidColorBrush Color="Black" Opacity="0.3"/>
+                                </Controls:SquareInfo.ColorInfoSuperior>
+                            </Controls:SquareInfo>
+
+                            <Controls:SquareInfo InfoInferior="dano fisico" InfoSuperior="[0]" Grid.Row="4" Grid.Column="1">
+                                <Controls:SquareInfo.ColorInfoInferior>
+                                    <SolidColorBrush Color="Red" Opacity="0.6"/>
+                                </Controls:SquareInfo.ColorInfoInferior>
+                                <Controls:SquareInfo.ColorInfoSuperior>
+                                    <SolidColorBrush Color="Black" Opacity="0.3"/>
+                                </Controls:SquareInfo.ColorInfoSuperior>
+                            </Controls:SquareInfo>
+                        </ListBox>
+                    </Grid>
+                </phone:PanoramaItem>
             <phone:PanoramaItem Header="Equipes" Name="panoramaTeamsStatistics">
 
             </phone:PanoramaItem>

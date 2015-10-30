@@ -36,11 +36,11 @@ namespace LeagueInfo.Controls
             textBlockAssistencias.Text += game.Stats.Assists.ToString();
             textBlockFarm.Text += game.Stats.MinionsKilled.ToString();
             textBlockOuro.Text += game.Stats.GoldEarned.ToString();
-            textBlockTempo.Text += game.Stats.TimePlayed.ToString();
+            textBlockTempo.Text += ((int)(game.Stats.TimePlayed / 60)).ToString();
             textBlockModo.Text += game.SubType;
             ChampionDto champion = await new ChampionDto().SearchChampionLowData(game.ChampionId);
             this.imageChampion.Source = champion.GetChampionSquare();
-            List<int> idItems = new List<int>(){game.Stats.Item0,game.Stats.Item1, game.Stats.Item2, game.Stats.Item3, game.Stats.Item4, game.Stats.Item5, game.Stats.Item6};
+            List<int> idItems = new List<int>() { game.Stats.Item0, game.Stats.Item1, game.Stats.Item2, game.Stats.Item3, game.Stats.Item4, game.Stats.Item5, game.Stats.Item6 };
             for (int i = 0; i < 7; i++)
             {
                 if (idItems[i] != 0)
