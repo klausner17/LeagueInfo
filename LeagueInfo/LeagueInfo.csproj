@@ -151,7 +151,11 @@
     <Compile Include="Controls\SquareInfo.xaml.cs">
       <DependentUpon>SquareInfo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Data\DataConnection.cs" />
     <Compile Include="LocalizedStrings.cs" />
+    <Compile Include="Pages\Cadastro.xaml.cs">
+      <DependentUpon>Cadastro.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -196,6 +200,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\SquareInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Cadastro.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
