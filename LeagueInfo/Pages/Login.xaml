@@ -26,10 +26,11 @@
                 <TextBlock TextAlignment="Center" FontWeight="SemiBold" Foreground="White" FontSize="54" Margin="0,0,0,40">League Info</TextBlock>
                 <TextBlock TextAlignment="Center" FontWeight="SemiBold" Foreground="White" FontSize="26">Nome do Invocador</TextBlock>
                 <TextBox VerticalAlignment="Top" TextAlignment="Center" HorizontalAlignment="Stretch"  Name="nomeInvocador" InputScope="EmailUserName" />
-                <TextBlock TextAlignment="Center" FontWeight="SemiBold" Foreground="White" FontSize="26">Senha</TextBlock>
-                <TextBox TextAlignment="Center" Name="senha" InputScope="Password" />
+                <TextBlock FontWeight="SemiBold" TextAlignment="Center" Foreground="White" FontSize="26">Senha</TextBlock>
+                <PasswordBox Name="senha"  FontSize="26"/>
                 <Button Name="buttonLogin" FontSize="26" Content="Entrar" Click="buttonLogin_Click"/>
-                <HyperlinkButton NavigateUri="/Pages/Cadastro.xaml" FontSize="26" Content="Cadastre-se"/>
+                <HyperlinkButton NavigateUri="/Pages/Cadastro.xaml" FontSize="26" Content="Cadastre-se" Tap="HyperlinkButton_Tap"/>
+                <HyperlinkButton NavigateUri="/Pages/MainPage.xaml?logado=false" FontSize="26" Content="Entrar sem cadastro"/>
             </StackPanel>
         </Grid>
     </Grid>

@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://service.klausner.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="LeagueService" targetNamespace="http://service.klausner.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://leagueinfoservice-leagueinfoserver.rhcloud.com:80/LeagueService?xsd=1" namespace="http://service.klausner.com/" />
+    </xsd:schema>
+  </types>
+  <message name="hello">
+    <part name="parameters" element="tns:hello" />
+  </message>
+  <message name="helloResponse">
+    <part name="parameters" element="tns:helloResponse" />
+  </message>
+  <message name="preCadastro">
+    <part name="parameters" element="tns:preCadastro" />
+  </message>
+  <message name="preCadastroResponse">
+    <part name="parameters" element="tns:preCadastroResponse" />
+  </message>
+  <message name="UpdateFailureException">
+    <part name="fault" element="tns:UpdateFailureException" />
+  </message>
+  <message name="encontrarUsuario">
+    <part name="parameters" element="tns:encontrarUsuario" />
+  </message>
+  <message name="encontrarUsuarioResponse">
+    <part name="parameters" element="tns:encontrarUsuarioResponse" />
+  </message>
+  <message name="alterarUsuario">
+    <part name="parameters" element="tns:alterarUsuario" />
+  </message>
+  <message name="alterarUsuarioResponse">
+    <part name="parameters" element="tns:alterarUsuarioResponse" />
+  </message>
+  <message name="Exception">
+    <part name="fault" element="tns:Exception" />
+  </message>
+  <message name="alterarSenha">
+    <part name="parameters" element="tns:alterarSenha" />
+  </message>
+  <message name="alterarSenhaResponse">
+    <part name="parameters" element="tns:alterarSenhaResponse" />
+  </message>
+  <message name="inserirUsuario">
+    <part name="parameters" element="tns:inserirUsuario" />
+  </message>
+  <message name="inserirUsuarioResponse">
+    <part name="parameters" element="tns:inserirUsuarioResponse" />
+  </message>
+  <message name="inserirComentarioCampeao">
+    <part name="parameters" element="tns:inserirComentarioCampeao" />
+  </message>
+  <message name="inserirComentarioCampeaoResponse">
+    <part name="parameters" element="tns:inserirComentarioCampeaoResponse" />
+  </message>
+  <message name="encontrarComentario">
+    <part name="parameters" element="tns:encontrarComentario" />
+  </message>
+  <message name="encontrarComentarioResponse">
+    <part name="parameters" element="tns:encontrarComentarioResponse" />
+  </message>
+  <message name="encontrarComentarioPorCampeao">
+    <part name="parameters" element="tns:encontrarComentarioPorCampeao" />
+  </message>
+  <message name="encontrarComentarioPorCampeaoResponse">
+    <part name="parameters" element="tns:encontrarComentarioPorCampeaoResponse" />
+  </message>
+  <message name="inserirCounter">
+    <part name="parameters" element="tns:inserirCounter" />
+  </message>
+  <message name="inserirCounterResponse">
+    <part name="parameters" element="tns:inserirCounterResponse" />
+  </message>
+  <message name="encontrarCounterPorId">
+    <part name="parameters" element="tns:encontrarCounterPorId" />
+  </message>
+  <message name="encontrarCounterPorIdResponse">
+    <part name="parameters" element="tns:encontrarCounterPorIdResponse" />
+  </message>
+  <message name="encontrarCounterPorCampeao">
+    <part name="parameters" element="tns:encontrarCounterPorCampeao" />
+  </message>
+  <message name="encontrarCounterPorCampeaoResponse">
+    <part name="parameters" element="tns:encontrarCounterPorCampeaoResponse" />
+  </message>
+  <message name="inserirBuild">
+    <part name="parameters" element="tns:inserirBuild" />
+  </message>
+  <message name="inserirBuildResponse">
+    <part name="parameters" element="tns:inserirBuildResponse" />
+  </message>
+  <message name="encontrarBuildPorId">
+    <part name="parameters" element="tns:encontrarBuildPorId" />
+  </message>
+  <message name="encontrarBuildPorIdResponse">
+    <part name="parameters" element="tns:encontrarBuildPorIdResponse" />
+  </message>
+  <message name="encontrarBuildsPorCampeao">
+    <part name="parameters" element="tns:encontrarBuildsPorCampeao" />
+  </message>
+  <message name="encontrarBuildsPorCampeaoResponse">
+    <part name="parameters" element="tns:encontrarBuildsPorCampeaoResponse" />
+  </message>
+  <message name="inserirBuildStage">
+    <part name="parameters" element="tns:inserirBuildStage" />
+  </message>
+  <message name="inserirBuildStageResponse">
+    <part name="parameters" element="tns:inserirBuildStageResponse" />
+  </message>
+  <message name="darFeedBackComentario">
+    <part name="parameters" element="tns:darFeedBackComentario" />
+  </message>
+  <message name="darFeedBackComentarioResponse">
+    <part name="parameters" element="tns:darFeedBackComentarioResponse" />
+  </message>
+  <message name="darFeedBackBuild">
+    <part name="parameters" element="tns:darFeedBackBuild" />
+  </message>
+  <message name="darFeedBackBuildResponse">
+    <part name="parameters" element="tns:darFeedBackBuildResponse" />
+  </message>
+  <message name="darFeedBackCounter">
+    <part name="parameters" element="tns:darFeedBackCounter" />
+  </message>
+  <message name="darFeedBackCounterResponse">
+    <part name="parameters" element="tns:darFeedBackCounterResponse" />
+  </message>
+  <message name="login">
+    <part name="parameters" element="tns:login" />
+  </message>
+  <message name="loginResponse">
+    <part name="parameters" element="tns:loginResponse" />
+  </message>
+  <message name="FailureLoginException">
+    <part name="fault" element="tns:FailureLoginException" />
+  </message>
+  <portType name="LeagueService">
+    <operation name="hello">
+      <input wsam:Action="http://service.klausner.com/LeagueService/helloRequest" message="tns:hello" />
+      <output wsam:Action="http://service.klausner.com/LeagueService/helloResponse" message="tns:helloResponse" />
+    </operation>
+    <operation name="preCadastro">
+      <input wsam:Action="http://service.klausner.com/LeagueService/preCadastroRequest" message="tns:preCadastro" />
+      <output wsam:Action="http://service.klausner.com/LeagueService/preCadastroResponse" message="tns:preCadastroResponse" />
+      <fault wsam:Action="http://service.klausner.com/LeagueService/preCadastro/Fault/UpdateFailureException" name="UpdateFailureException" message="tns:UpdateFailureException" />
+    </operation>
+    <operation name="encontrarUsuario">
+      <input wsam:Action="http://service.klausner.com/LeagueService/encontrarUsuarioRequest" message="tns:encontrarUsuario" />
+      <output wsam:Action="http://service.klausner.com/LeagueService/encontrarUsuarioResponse" message="tns:encontrarUsuarioResponse" />
+    </operation>
+    <operation name="alterarUsuario">
+      <input wsam:Action="http://service.klausner.com/LeagueService/alterarUsuarioRequest" message="tns:alterarUsuario" />
+      <output wsam:Action="http://service.klausner.com/LeagueService/alterarUsuarioResponse" message="tns:alterarUsuarioResponse" />
+      <fault wsam:Action="http://service.klausner.com/LeagueService/alterarUsuario/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="alterarSenha">
+      <input wsam:Action="http://service.klausner.com/LeagueService/alterarSenhaRequest" message="tns:alterarSenha" />
+      <output wsam:Action="http://service.klausner.com/LeagueService/alterarSenhaResponse" message="tns:alterarSenhaResponse" />
+      <fault wsam:Action="http://service.klausner.com/LeagueService/alterarSenha/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="inserirUsuario">
+      <input wsam:Action="http://service.klausner.com/LeagueService/inserirUsuarioRequest" message="tns:inserirUsuario" />
+      <output wsam:Action="http://service.klausner.com/LeagueService/inserirUsuarioResponse" message="tns:inserirUsuarioResponse" />
+    </operation>
+    <operation name="inserirComentarioCampeao">
+      <input wsam:Action="http://service.klausner.com/LeagueService/inserirComentarioCampeaoRequest" message="tns:inserirComentarioCampeao" />
+      <output wsam:Action="http://service.klausner.com/LeagueService/inserirComentarioCampeaoResponse" message="tns:inserirComentarioCampeaoResponse" />
+    </operation>
+    <operation name="encontrarComentario">
+      <input wsam:Action="http://service.klausner.com/LeagueService/encontrarComentarioRequest" message="tns:encontrarComentario" />
+      <output wsam:Action="http://service.klausner.com/LeagueService/encontrarComentarioResponse" message="tns:encontrarComentarioResponse" />
+    </operation>
+    <operation name="encontrarComentarioPorCampeao">
+      <input wsam:Action="http://service.klausner.com/LeagueService/encontrarComentarioPorCampeaoRequest" message="tns:encontrarComentarioPorCampeao" />
+      <output wsam:Action="http://service.klausner.com/LeagueService/encontrarComentarioPorCampeaoResponse" message="tns:encontrarComentarioPorCampeaoResponse" />
+    </operation>
+    <operation name="inserirCounter">
+      <input wsam:Action="http://service.klausner.com/LeagueService/inserirCounterRequest" message="tns:inserirCounter" />
+      <output wsam:Action="http://service.klausner.com/LeagueService/inserirCounterResponse" message="tns:inserirCounterResponse" />
+    </operation>
+    <operation name="encontrarCounterPorId">
+      <input wsam:Action="http://service.klausner.com/LeagueService/encontrarCounterPorIdRequest" message="tns:encontrarCounterPorId" />
+      <output wsam:Action="http://service.klausner.com/LeagueService/encontrarCounterPorIdResponse" message="tns:encontrarCounterPorIdResponse" />
+    </operation>
+    <operation name="encontrarCounterPorCampeao">
+      <input wsam:Action="http://service.klausner.com/LeagueService/encontrarCounterPorCampeaoRequest" message="tns:encontrarCounterPorCampeao" />
+      <output wsam:Action="http://service.klausner.com/LeagueService/encontrarCounterPorCampeaoResponse" message="tns:encontrarCounterPorCampeaoResponse" />
+    </operation>
+    <operation name="inserirBuild">
+      <input wsam:Action="http://service.klausner.com/LeagueService/inserirBuildRequest" message="tns:inserirBuild" />
+      <output wsam:Action="http://service.klausner.com/LeagueService/inserirBuildResponse" message="tns:inserirBuildResponse" />
+    </operation>
+    <operation name="encontrarBuildPorId">
+      <input wsam:Action="http://service.klausner.com/LeagueService/encontrarBuildPorIdRequest" message="tns:encontrarBuildPorId" />
+      <output wsam:Action="http://service.klausner.com/LeagueService/encontrarBuildPorIdResponse" message="tns:encontrarBuildPorIdResponse" />
+    </operation>
+    <operation name="encontrarBuildsPorCampeao">
+      <input wsam:Action="http://service.klausner.com/LeagueService/encontrarBuildsPorCampeaoRequest" message="tns:encontrarBuildsPorCampeao" />
+      <output wsam:Action="http://service.klausner.com/LeagueService/encontrarBuildsPorCampeaoResponse" message="tns:encontrarBuildsPorCampeaoResponse" />
+    </operation>
+    <operation name="inserirBuildStage">
+      <input wsam:Action="http://service.klausner.com/LeagueService/inserirBuildStageRequest" message="tns:inserirBuildStage" />
+      <output wsam:Action="http://service.klausner.com/LeagueService/inserirBuildStageResponse" message="tns:inserirBuildStageResponse" />
+    </operation>
+    <operation name="darFeedBackComentario">
+      <input wsam:Action="http://service.klausner.com/LeagueService/darFeedBackComentarioRequest" message="tns:darFeedBackComentario" />
+      <output wsam:Action="http://service.klausner.com/LeagueService/darFeedBackComentarioResponse" message="tns:darFeedBackComentarioResponse" />
+    </operation>
+    <operation name="darFeedBackBuild">
+      <input wsam:Action="http://service.klausner.com/LeagueService/darFeedBackBuildRequest" message="tns:darFeedBackBuild" />
+      <output wsam:Action="http://service.klausner.com/LeagueService/darFeedBackBuildResponse" message="tns:darFeedBackBuildResponse" />
+    </operation>
+    <operation name="darFeedBackCounter">
+      <input wsam:Action="http://service.klausner.com/LeagueService/darFeedBackCounterRequest" message="tns:darFeedBackCounter" />
+      <output wsam:Action="http://service.klausner.com/LeagueService/darFeedBackCounterResponse" message="tns:darFeedBackCounterResponse" />
+    </operation>
+    <operation name="login">
+      <input wsam:Action="http://service.klausner.com/LeagueService/loginRequest" message="tns:login" />
+      <output wsam:Action="http://service.klausner.com/LeagueService/loginResponse" message="tns:loginResponse" />
+      <fault wsam:Action="http://service.klausner.com/LeagueService/login/Fault/FailureLoginException" name="FailureLoginException" message="tns:FailureLoginException" />
+    </operation>
+  </portType>
+  <binding name="LeagueServicePortBinding" type="tns:LeagueService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="hello">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="preCadastro">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="UpdateFailureException">
+        <soap:fault use="literal" name="UpdateFailureException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="encontrarUsuario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="alterarUsuario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="alterarSenha">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="inserirUsuario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="inserirComentarioCampeao">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="encontrarComentario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="encontrarComentarioPorCampeao">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="inserirCounter">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="encontrarCounterPorId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="encontrarCounterPorCampeao">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="inserirBuild">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="encontrarBuildPorId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="encontrarBuildsPorCampeao">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="inserirBuildStage">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="darFeedBackComentario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="darFeedBackBuild">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="darFeedBackCounter">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="login">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="FailureLoginException">
+        <soap:fault use="literal" name="FailureLoginException" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="LeagueService">
+    <port name="LeagueServicePort" binding="tns:LeagueServicePortBinding">
+      <soap:address location="http://leagueinfoservice-leagueinfoserver.rhcloud.com:80/LeagueService" />
+    </port>
+  </service>
+</definitions>
