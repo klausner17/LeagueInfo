@@ -28,9 +28,21 @@
                 <TextBox VerticalAlignment="Top" TextAlignment="Center" HorizontalAlignment="Stretch"  Name="nomeInvocador" InputScope="EmailUserName" />
                 <TextBlock FontWeight="SemiBold" TextAlignment="Center" Foreground="White" FontSize="26">Senha</TextBlock>
                 <PasswordBox Name="senha"  FontSize="26"/>
-                <Button Name="buttonLogin" FontSize="26" Content="Entrar" Click="buttonLogin_Click"/>
-                <HyperlinkButton NavigateUri="/Pages/Cadastro.xaml" FontSize="26" Content="Cadastre-se" Tap="HyperlinkButton_Tap"/>
-                <HyperlinkButton NavigateUri="/Pages/MainPage.xaml?logado=false" FontSize="26" Content="Entrar sem cadastro"/>
+                <Button Name="buttonLogin" FontSize="26" Content="Entrar" Click="buttonLogin_Click">
+                    <Button.Background>
+                        <SolidColorBrush Color="#FFF36035" Opacity="0.4"/>
+                    </Button.Background>
+                </Button>
+                <Button Name="buttonCadastro" FontSize="26" Content="Cadastre-se" Click="buttonCadastro_Click" >
+                    <Button.Background>
+                        <SolidColorBrush Color="#FF2662CB" Opacity="0.4"/>
+                    </Button.Background>
+                </Button>
+                <Button Name="buttonSemCadastro" FontSize="26" Content="Entrar sem cadastro" Click="buttonSemCadastro_Click" >
+                    <Button.Background>
+                        <SolidColorBrush Color="#FF59D42B" Opacity="0.4"/>
+                    </Button.Background>
+                </Button>
             </StackPanel>
         </Grid>
     </Grid>

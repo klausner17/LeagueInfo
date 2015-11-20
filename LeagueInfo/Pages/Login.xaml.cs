@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using LeagueInfo.ClassApi;
 
 namespace LeagueInfo.Pages
 {
@@ -39,9 +40,48 @@ namespace LeagueInfo.Pages
             }
         }
 
-        private void HyperlinkButton_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        private async void buttonCadastro_Click(object sender, RoutedEventArgs e)
         {
-            e.ca
+            if(nomeInvocador.Text == string.Empty)
+            {
+                MessageBox.Show("Digite o nome do invocador antes de se cadastrar.");
+            }
+            else
+            {
+                SummonerDto summoner = new SummonerDto();
+                try
+                {
+                    summoner = await summoner.SearchSummoner(nomeInvocador.Text);
+                    LeagueWS.LeagueServiceClient ls = new LeagueWS.LeagueServiceClient();
+                    ls.encontrarUsuarioCompleted += Ls_encontrarUsuarioCompleted;
+                    ls.encontrarUsuarioAsync(nomeInvocador.Text);
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Erro ao procurar invocador.");
+                }
+            }
+        }
+
+        private void Ls_encontrarUsuarioCompleted(object sender, LeagueWS.encontrarUsuarioCompletedEventArgs e)
+        {
+            try
+            {
+                if (e.Result == null || !e.Result.validado)
+                    NavigationService.Navigate(new Uri("/Pages/Cadastro.xaml?summoner=" + nomeInvocador, UriKind.RelativeOrAbsolute));
+                else
+                    MessageBox.Show("Invocador já cadastrado.");
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.InnerException.Message);
+            }
+        }
+
+        private void buttonSemCadastro_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Pages/MainPage.xaml?logado=false", UriKind.RelativeOrAbsolute));
         }
     }
 }
