@@ -15,18 +15,20 @@
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="MY APPLICATION" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Text="page name" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <StackPanel>
-                <TextBlock Margin="10" FontSize="26" TextAlignment="Left" TextWrapping="Wrap" 
-                            Text="Para criar um novo login insira o seu nome de invocador e pressione Gerar Validador, após isso crie uma pagina de talento com o código gerado."/>
-                <TextBlock  TextAlignment="Center" FontSize="36">
-            		<Run Text="Nome do invocador"/>
-                </TextBlock>
-                <TextBox x:Name="textBoxSummonerName"/>
-                <Button x:Name="buttonGerar" Click="buttonGerar_Click" Content="Gerar validador" />
-                <TextBlock Margin="0,20,0,0" TextAlignment="Center" FontSize="50"
-            		x:Name="textBlockValidateNumber" Text="XXXX-XXXX" />
-            </StackPanel>
+
         </Grid>
     </Grid>
 

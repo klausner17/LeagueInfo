@@ -16,24 +16,5 @@ namespace LeagueInfo.Pages
         {
             InitializeComponent();
         }
-
-        private async void buttonGerar_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                ClassApi.SummonerDto summoner = new ClassApi.SummonerDto();
-                summoner = await summoner.SearchSummoner(textBoxSummonerName.Text);
-                string dicionario = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-                Random rand = new Random();
-                string validador = string.Empty;
-                for (int i = 0; i < 8; i++)
-                    validador += dicionario[rand.Next(dicionario.Count())];
-                textBlockValidateNumber.Text = validador.Substring(0, 4) + "-" + validador.Substring(3, 4);
-            }
-            catch (NullReferenceException)
-            {
-                MessageBox.Show("Nome de invocador não encontrado.", "Erro", MessageBoxButton.OK);
-            }
-        }
     }
 }

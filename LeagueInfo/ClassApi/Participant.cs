@@ -15,7 +15,7 @@ namespace LeagueInfo.ClassApi
         public string HighestAchievedSeasonTier { get; set; }
 
         [JsonProperty("masteries")]
-        public List<Mastery> Masteries { get; set; }
+        public List<MasteryDto> Masteries { get; set; }
 
         [JsonProperty("participantId")]
         public int ParticipantId { get; set; }

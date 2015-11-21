@@ -100,6 +100,9 @@
     <Compile Include="ClassApi\PlayerDto.cs" />
     <Compile Include="ClassApi\RawStatsDto.cs" />
     <Compile Include="ClassApi\RecentGamesDto.cs" />
+    <Compile Include="ClassApi\MasteryDto.cs" />
+    <Compile Include="ClassApi\MasteryPageDto.cs" />
+    <Compile Include="ClassApi\MasteryPagesDto.cs" />
     <Compile Include="Controls\AbillityControl.xaml.cs">
       <DependentUpon>AbillityControl.xaml</DependentUpon>
     </Compile>
@@ -129,7 +132,6 @@
     <Compile Include="ClassApi\LeagueDto.cs" />
     <Compile Include="ClassApi\LeagueEntryDto.cs" />
     <Compile Include="ClassApi\LevelTipDto.cs" />
-    <Compile Include="ClassApi\Mastery.cs" />
     <Compile Include="ClassApi\MatchSummary.cs" />
     <Compile Include="ClassApi\MetaDataDto.cs" />
     <Compile Include="ClassApi\MiniSeriesDto.cs" />
@@ -154,6 +156,9 @@
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Pages\Cadastro.xaml.cs">
       <DependentUpon>Cadastro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PreCadastro.xaml.cs">
+      <DependentUpon>PreCadastro.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -208,6 +213,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Cadastro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PreCadastro.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

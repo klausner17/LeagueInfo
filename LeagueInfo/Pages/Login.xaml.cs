@@ -13,6 +13,9 @@ namespace LeagueInfo.Pages
 {
     public partial class Login : PhoneApplicationPage
     {
+
+        SummonerDto summoner;
+
         public Login()
         {
             InitializeComponent();
@@ -48,7 +51,7 @@ namespace LeagueInfo.Pages
             }
             else
             {
-                SummonerDto summoner = new SummonerDto();
+                summoner = new SummonerDto();
                 try
                 {
                     summoner = await summoner.SearchSummoner(nomeInvocador.Text);
@@ -56,7 +59,7 @@ namespace LeagueInfo.Pages
                     ls.encontrarUsuarioCompleted += Ls_encontrarUsuarioCompleted;
                     ls.encontrarUsuarioAsync(nomeInvocador.Text);
                 }
-                catch(Exception ex)
+                catch(Exception)
                 {
                     MessageBox.Show("Erro ao procurar invocador.");
                 }
@@ -68,7 +71,8 @@ namespace LeagueInfo.Pages
             try
             {
                 if (e.Result == null || !e.Result.validado)
-                    NavigationService.Navigate(new Uri("/Pages/Cadastro.xaml?summoner=" + nomeInvocador, UriKind.RelativeOrAbsolute));
+                    NavigationService.Navigate(new Uri("/Pages/PreCadastro.xaml?summoner=" + summoner.Nome + "&idSummoner=" + summoner.Id.ToString()
+                        , UriKind.RelativeOrAbsolute));
                 else
                     MessageBox.Show("Invocador já cadastrado.");
 
