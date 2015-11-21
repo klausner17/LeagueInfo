@@ -112,6 +112,10 @@ namespace LeagueInfo
             if (e.Key == Key.Enter)
                 buttonBuscasInv_Click(sender, null);
         }
-        
+
+        private void phoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            NavigationService.RemoveBackEntry();
+        }
     }
 }

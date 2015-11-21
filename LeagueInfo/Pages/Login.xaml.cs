@@ -15,23 +15,36 @@ namespace LeagueInfo.Pages
     {
 
         SummonerDto summoner;
+        LeagueWS.LeagueServiceClient ls;
 
         public Login()
         {
             InitializeComponent();
+            ls = new LeagueWS.LeagueServiceClient();
         }
 
         private void buttonLogin_Click(object sender, RoutedEventArgs e)
         {
-            LeagueWS.LeagueServiceClient ls = new LeagueWS.LeagueServiceClient();
-            ls.loginCompleted += ls_loginCompleted;
-            ls.loginAsync(nomeInvocador.Text, senha.Password);
+            
+            if (nomeInvocador.Text != string.Empty && senha.Password != string.Empty)
+            {
+                buttonCadastro.IsEnabled = false;
+                buttonSemCadastro.IsEnabled = false;
+                ls.loginCompleted += ls_loginCompleted;
+                ls.loginAsync(nomeInvocador.Text, senha.Password);
+            }
+            else
+            {
+                MessageBox.Show("Insira o seu nome de invocadsor e sua senha.");
+            }
         }
 
         void ls_loginCompleted(object sender, LeagueWS.loginCompletedEventArgs e)
         {
             try
             {
+                buttonCadastro.IsEnabled = true;
+                buttonSemCadastro.IsEnabled = true;
                 if (e.Result)
                     NavigationService.Navigate(new Uri("/Pages/MainPage.xaml?logado=true", UriKind.RelativeOrAbsolute));
                 else
@@ -54,8 +67,9 @@ namespace LeagueInfo.Pages
                 summoner = new SummonerDto();
                 try
                 {
+                    buttonLogin.IsEnabled = false;
+                    buttonSemCadastro.IsEnabled = false;
                     summoner = await summoner.SearchSummoner(nomeInvocador.Text);
-                    LeagueWS.LeagueServiceClient ls = new LeagueWS.LeagueServiceClient();
                     ls.encontrarUsuarioCompleted += Ls_encontrarUsuarioCompleted;
                     ls.encontrarUsuarioAsync(nomeInvocador.Text);
                 }
@@ -70,9 +84,14 @@ namespace LeagueInfo.Pages
         {
             try
             {
+                buttonLogin.IsEnabled = true;
+                buttonSemCadastro.IsEnabled = true;
                 if (e.Result == null || !e.Result.validado)
-                    NavigationService.Navigate(new Uri("/Pages/PreCadastro.xaml?summoner=" + summoner.Nome + "&idSummoner=" + summoner.Id.ToString()
-                        , UriKind.RelativeOrAbsolute));
+                {
+                    string uriNavigate = "/Pages/PreCadastro.xaml?summoner=" + summoner.Nome + "&idSummoner=" + summoner.Id.ToString()
+                        + "&validador=" + (e.Result == null ? "" : e.Result.validador.ToString() + "&idUser=" + e.Result.idUsuario);
+                    NavigationService.Navigate(new Uri(uriNavigate, UriKind.RelativeOrAbsolute));
+                }
                 else
                     MessageBox.Show("Invocador já cadastrado.");
 

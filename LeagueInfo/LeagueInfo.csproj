@@ -181,6 +181,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Service References\LeagueService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\LeagueWS\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -247,71 +252,28 @@
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.alterarSenhaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
+    <Content Include="Assets\BackgroundCadastro.jpg" />
+    <None Include="Service References\LeagueService\LeagueService.wsdl" />
+    <None Include="Service References\LeagueService\LeagueService.xsd">
+      <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.alterarUsuarioResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
+    <None Include="Service References\LeagueWS\configuration91.svcinfo" />
+    <None Include="Service References\LeagueWS\configuration.svcinfo" />
+    <None Include="Service References\LeagueWS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.darFeedBackBuildResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
+    <None Include="Service References\LeagueService\configuration91.svcinfo" />
+    <None Include="Service References\LeagueService\configuration.svcinfo" />
+    <None Include="Service References\LeagueService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.darFeedBackComentarioResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.darFeedBackCounterResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.encontrarBuildPorIdResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.encontrarBuildsPorCampeaoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.encontrarComentarioPorCampeaoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.encontrarComentarioResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.encontrarCounterPorCampeaoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.encontrarCounterPorIdResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.encontrarUsuarioResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.helloResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.inserirBuildResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.inserirBuildStageResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.inserirComentarioCampeaoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.inserirCounterResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.inserirUsuarioResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.loginResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.preCadastroResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
+    <Content Include="ServiceReferences.ClientConfig" />
     <None Include="Service References\LeagueWS\LeagueService.wsdl" />
     <None Include="Service References\LeagueWS\LeagueService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="ServiceReferences.ClientConfig" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\AlignmentGrid.png" />
@@ -344,12 +306,6 @@
     <Content Include="BackGround.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Service References\LeagueWS\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Service References\LeagueWS\configuration.svcinfo" />
-    <None Include="Service References\LeagueWS\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\AppResources.resx">
@@ -375,6 +331,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\LeagueService\" />
     <WCFMetadataStorage Include="Service References\LeagueWS\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />

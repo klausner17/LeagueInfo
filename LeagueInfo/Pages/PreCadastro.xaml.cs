@@ -11,9 +11,9 @@ using LeagueInfo.ClassApi;
 
 namespace LeagueInfo.Pages
 {
-    public partial class Cadastro : PhoneApplicationPage
+    public partial class PreCadastro : PhoneApplicationPage
     {
-        public Cadastro()
+        public PreCadastro()
         {
             InitializeComponent();
         }
@@ -21,14 +21,21 @@ namespace LeagueInfo.Pages
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
         {
             textBlockSummonerName.Text = NavigationContext.QueryString["summoner"];
-            string dicionario = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            Random rand = new Random();
-            textBlockValidateNumber.Text = string.Empty;
-            for (int i = 0; i < 8; i++)
-                textBlockValidateNumber.Text += dicionario[rand.Next(dicionario.Count())];
-            LeagueWS.LeagueServiceClient ls = new LeagueWS.LeagueServiceClient();
-            ls.preCadastroCompleted += ls_preCadastroCompleted;
-            ls.preCadastroAsync(textBlockSummonerName.Text, textBlockValidateNumber.Text);
+            if (NavigationContext.QueryString["validador"] == string.Empty)
+            {
+                string dicionario = "ACDEFGHIJKLMPSTWXYZ1234578";
+                Random rand = new Random();
+                textBlockValidateNumber.Text = string.Empty;
+                for (int i = 0; i < 6; i++)
+                    textBlockValidateNumber.Text += dicionario[rand.Next(dicionario.Count())];
+                LeagueWS.LeagueServiceClient ls = new LeagueWS.LeagueServiceClient();
+                ls.preCadastroCompleted += ls_preCadastroCompleted;
+                ls.preCadastroAsync(textBlockSummonerName.Text, textBlockValidateNumber.Text);
+            }
+            else
+            {
+                textBlockValidateNumber.Text = NavigationContext.QueryString["validador"];
+            }
         }
 
         void ls_preCadastroCompleted(object sender, LeagueWS.preCadastroCompletedEventArgs e)
@@ -48,7 +55,8 @@ namespace LeagueInfo.Pages
                 {
                     if (masteryPages.Pages[i].Name == textBlockValidateNumber.Text)
                     {
-                        NavigationService.Navigate(new Uri("/Pages/Cadastro.xaml?summoner=" + textBlockSummonerName.Text, UriKind.RelativeOrAbsolute));
+                        string uri = "/Pages/Cadastro.xaml?summoner=" + NavigationContext.QueryString["summoner"];
+                        NavigationService.Navigate(new Uri(uri, UriKind.RelativeOrAbsolute));
                         achou = true;
                         break;
                     }                        

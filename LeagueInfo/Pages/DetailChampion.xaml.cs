@@ -11,7 +11,6 @@ using LeagueInfo.ClassApi;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using LeagueInfo.Controls;
-using LeagueInfo.ClassApi;
 
 namespace LeagueInfo.Pages
 {
