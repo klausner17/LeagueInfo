@@ -39,7 +39,7 @@ namespace LeagueInfo.Pages
                 user.validado = true;
                 user.dataNasc = (DateTime)datePickerBornDate.Value;
                 ls.finalizarCadastroCompleted += Ls_finalizarCadastroCompleted;
-                ls.finalizarCadastroAsync(user);
+                ls.finalizarCadastroAsync(user, user.senha);
             }
             catch(Exception ex)
             {

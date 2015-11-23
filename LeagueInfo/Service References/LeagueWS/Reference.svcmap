@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="1676750c-6185-48ec-96f6-44379c12ef8a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="eafb06ad-3b50-431f-994b-60a5c16ce21c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -20,11 +20,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://leagueinfoservice-leagueinfoserver.rhcloud.com:80/LeagueService?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://leagueinfoservice-leagueinfoserver.rhcloud.com/LeagueService?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="LeagueService.xsd" MetadataType="Schema" ID="1bbd5d5a-b521-41a4-bd75-bea7e0b13a8f" SourceId="1" SourceUrl="http://leagueinfoservice-leagueinfoserver.rhcloud.com/LeagueService?xsd=1" />
-    <MetadataFile FileName="LeagueService.wsdl" MetadataType="Wsdl" ID="7da2c31b-e948-4652-87e0-dedba3f34f6f" SourceId="1" SourceUrl="http://leagueinfoservice-leagueinfoserver.rhcloud.com/LeagueService?wsdl" />
+    <MetadataFile FileName="LeagueService.xsd" MetadataType="Schema" ID="05292a32-3349-48d6-ac12-04585af1b51f" SourceId="1" SourceUrl="http://leagueinfoservice-leagueinfoserver.rhcloud.com/LeagueService?xsd=1" />
+    <MetadataFile FileName="LeagueService.wsdl" MetadataType="Wsdl" ID="c91cde44-ec8c-4ea9-a108-0f429ef4475e" SourceId="1" SourceUrl="http://leagueinfoservice-leagueinfoserver.rhcloud.com/LeagueService?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

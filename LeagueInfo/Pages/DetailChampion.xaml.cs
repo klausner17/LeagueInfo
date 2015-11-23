@@ -11,14 +11,18 @@ using LeagueInfo.ClassApi;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using LeagueInfo.Controls;
+using LeagueInfo.Resources;
 
 namespace LeagueInfo.Pages
 {
     public partial class DetailChampion : PhoneApplicationPage
     {
+        LeagueWS.LeagueServiceClient ls;
+
         public DetailChampion()
         {
             InitializeComponent();
+            ls = new LeagueWS.LeagueServiceClient();
         }
 
         private void AddInfoComponent(List<string> strInfo, StackPanel component)
@@ -58,6 +62,59 @@ namespace LeagueInfo.Pages
             {
                 Abillity controlAbillity = new Abillity(spell);
                 abillityChampions.Children.Add(controlAbillity);
+            }
+            CarregarComentarios();
+        }
+
+        private void CarregarComentarios()
+        {
+            listBoxComments.Items.Clear();
+            ls.encontrarComentarioPorCampeaoCompleted += ls_encontrarComentarioPorCampeaoCompleted;
+            ls.encontrarComentarioPorCampeaoAsync(Convert.ToInt32(NavigationContext.QueryString["id"]));
+        }
+
+        void ls_encontrarComentarioPorCampeaoCompleted(object sender, LeagueWS.encontrarComentarioPorCampeaoCompletedEventArgs e)
+        {
+            if (e.Result != null)
+            {
+                foreach (var comment in e.Result)
+                {
+                    ChampionComment cm = new ChampionComment(comment.idComment, comment.comentario, comment.idUsuario.login);
+                    listBoxComments.Items.Add(cm);
+                }
+            }
+        }
+
+        private void buttonComment_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (textBoxComentario.Text != string.Empty)
+                {
+                    LeagueWS.championcomments cc = new LeagueWS.championcomments();
+                    cc.idUsuario = GlobalData.UserLogged;
+                    cc.comentario = textBoxComentario.Text;
+                    cc.idChampion = Convert.ToInt32(NavigationContext.QueryString["id"]);
+                    ls.inserirComentarioCampeaoCompleted += ls_inserirComentarioCampeaoCompleted;
+                    ls.inserirComentarioCampeaoAsync(cc);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Não foi possivel efetuar o comentario.Detalhes:\n" + ex.Message);
+            }
+            
+        }
+
+        void ls_inserirComentarioCampeaoCompleted(object sender, LeagueWS.inserirComentarioCampeaoCompletedEventArgs e)
+        {
+            if (!e.Result)
+            {
+                MessageBox.Show("Erro ao efetuar comentário.");
+            }
+            else
+            {
+                CarregarComentarios();
             }
         }
     }

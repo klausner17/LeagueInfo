@@ -109,6 +109,9 @@
     <Compile Include="Controls\ChampionSelect.xaml.cs">
       <DependentUpon>ChampionSelect.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ChampionComment.xaml.cs">
+      <DependentUpon>ChampionComment.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ItemSelect.xaml.cs">
       <DependentUpon>ItemSelect.xaml</DependentUpon>
     </Compile>
@@ -181,6 +184,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\GlobalData.cs" />
     <Compile Include="Service References\LeagueWS\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -199,6 +203,10 @@
     <Page Include="Controls\ChampionSelect.xaml">
       <Generator>MSBuild:MarkupCompilePass1</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ChampionComment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\ItemSelect.xaml">
       <SubType>Designer</SubType>
@@ -242,86 +250,89 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-    <None Include="Properties\AppManifest.xml" />
-    <None Include="Properties\WMAppManifest.xml">
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="Assets\BackgroundCadastro.jpg" />
-    <None Include="Service References\LeagueWS\configuration91.svcinfo" />
-    <None Include="Service References\LeagueWS\configuration.svcinfo" />
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.alterarSenhaResponse1.datasource">
+    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.alterarSenhaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.alterarUsuarioResponse1.datasource">
+    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.alterarUsuarioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.darFeedBackBuildResponse1.datasource">
+    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.darFeedBackBuildResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.darFeedBackComentarioResponse1.datasource">
+    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.darFeedBackComentarioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.darFeedBackCounterResponse1.datasource">
+    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.darFeedBackCounterResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.encontrarBuildPorIdResponse1.datasource">
+    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.encontrarBuildPorIdResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.encontrarBuildsPorCampeaoResponse1.datasource">
+    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.encontrarBuildsPorCampeaoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.encontrarComentarioPorCampeaoResponse1.datasource">
+    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.encontrarComentarioPorCampeaoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.encontrarComentarioResponse1.datasource">
+    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.encontrarComentarioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.encontrarCounterPorCampeaoResponse1.datasource">
+    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.encontrarCounterPorCampeaoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.encontrarCounterPorIdResponse1.datasource">
+    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.encontrarCounterPorIdResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.encontrarUsuarioResponse1.datasource">
+    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.encontrarUsuarioPorIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.encontrarUsuarioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.finalizarCadastroResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.helloResponse1.datasource">
+    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.helloResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.inserirBuildResponse1.datasource">
+    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.inserirBuildResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.inserirBuildStageResponse1.datasource">
+    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.inserirBuildStageResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.inserirComentarioCampeaoResponse1.datasource">
+    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.inserirComentarioCampeaoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.inserirCounterResponse1.datasource">
+    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.inserirCounterResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.inserirUsuarioResponse1.datasource">
+    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.inserirUsuarioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.loginResponse1.datasource">
+    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.loginResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.preCadastroResponse1.datasource">
+    <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.preCadastroResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\LeagueWS\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="ServiceReferences.ClientConfig" />
+    <None Include="Service References\LeagueWS\configuration.svcinfo" />
+    <None Include="Service References\LeagueWS\configuration91.svcinfo" />
+    <None Include="packages.config" />
+    <None Include="Properties\AppManifest.xml" />
+    <None Include="Properties\WMAppManifest.xml">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Assets\BackgroundCadastro.jpg" />
     <None Include="Service References\LeagueWS\LeagueService.wsdl" />
     <None Include="Service References\LeagueWS\LeagueService.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="ServiceReferences.ClientConfig" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\AlignmentGrid.png" />

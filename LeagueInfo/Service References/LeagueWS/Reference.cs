@@ -233,6 +233,12 @@ namespace LeagueInfo.LeagueWS {
         
         LeagueInfo.LeagueWS.finalizarCadastroResponse EndfinalizarCadastro(System.IAsyncResult result);
         
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://service.klausner.com/LeagueService/encontrarUsuarioPorIdRequest", ReplyAction="http://service.klausner.com/LeagueService/encontrarUsuarioPorIdResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.IAsyncResult BeginencontrarUsuarioPorId(LeagueInfo.LeagueWS.encontrarUsuarioPorIdRequest request, System.AsyncCallback callback, object asyncState);
+        
+        LeagueInfo.LeagueWS.encontrarUsuarioPorIdResponse EndencontrarUsuarioPorId(System.IAsyncResult result);
+        
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://service.klausner.com/LeagueService/loginRequest", ReplyAction="http://service.klausner.com/LeagueService/loginResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(LeagueInfo.LeagueWS.FailureLoginException), Action="http://service.klausner.com/LeagueService/login/Fault/FailureLoginException", Name="FailureLoginException")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -1640,11 +1646,16 @@ namespace LeagueInfo.LeagueWS {
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public LeagueInfo.LeagueWS.usuario user;
         
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.klausner.com/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string password;
+        
         public finalizarCadastroRequest() {
         }
         
-        public finalizarCadastroRequest(LeagueInfo.LeagueWS.usuario user) {
+        public finalizarCadastroRequest(LeagueInfo.LeagueWS.usuario user, string password) {
             this.user = user;
+            this.password = password;
         }
     }
     
@@ -1662,6 +1673,42 @@ namespace LeagueInfo.LeagueWS {
         }
         
         public finalizarCadastroResponse(bool @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="encontrarUsuarioPorId", WrapperNamespace="http://service.klausner.com/", IsWrapped=true)]
+    public partial class encontrarUsuarioPorIdRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.klausner.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idUsuario;
+        
+        public encontrarUsuarioPorIdRequest() {
+        }
+        
+        public encontrarUsuarioPorIdRequest(int idUsuario) {
+            this.idUsuario = idUsuario;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="encontrarUsuarioPorIdResponse", WrapperNamespace="http://service.klausner.com/", IsWrapped=true)]
+    public partial class encontrarUsuarioPorIdResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.klausner.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public LeagueInfo.LeagueWS.usuario @return;
+        
+        public encontrarUsuarioPorIdResponse() {
+        }
+        
+        public encontrarUsuarioPorIdResponse(LeagueInfo.LeagueWS.usuario @return) {
             this.@return = @return;
         }
     }
@@ -2093,6 +2140,25 @@ namespace LeagueInfo.LeagueWS {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class encontrarUsuarioPorIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public encontrarUsuarioPorIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public LeagueInfo.LeagueWS.usuario Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((LeagueInfo.LeagueWS.usuario)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class loginCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
@@ -2234,6 +2300,12 @@ namespace LeagueInfo.LeagueWS {
         
         private System.Threading.SendOrPostCallback onfinalizarCadastroCompletedDelegate;
         
+        private BeginOperationDelegate onBeginencontrarUsuarioPorIdDelegate;
+        
+        private EndOperationDelegate onEndencontrarUsuarioPorIdDelegate;
+        
+        private System.Threading.SendOrPostCallback onencontrarUsuarioPorIdCompletedDelegate;
+        
         private BeginOperationDelegate onBeginloginDelegate;
         
         private EndOperationDelegate onEndloginDelegate;
@@ -2332,6 +2404,8 @@ namespace LeagueInfo.LeagueWS {
         public event System.EventHandler<darFeedBackCounterCompletedEventArgs> darFeedBackCounterCompleted;
         
         public event System.EventHandler<finalizarCadastroCompletedEventArgs> finalizarCadastroCompleted;
+        
+        public event System.EventHandler<encontrarUsuarioPorIdCompletedEventArgs> encontrarUsuarioPorIdCompleted;
         
         public event System.EventHandler<loginCompletedEventArgs> loginCompleted;
         
@@ -3490,9 +3564,10 @@ namespace LeagueInfo.LeagueWS {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        private System.IAsyncResult BeginfinalizarCadastro(LeagueInfo.LeagueWS.usuario user, System.AsyncCallback callback, object asyncState) {
+        private System.IAsyncResult BeginfinalizarCadastro(LeagueInfo.LeagueWS.usuario user, string password, System.AsyncCallback callback, object asyncState) {
             LeagueInfo.LeagueWS.finalizarCadastroRequest inValue = new LeagueInfo.LeagueWS.finalizarCadastroRequest();
             inValue.user = user;
+            inValue.password = password;
             return ((LeagueInfo.LeagueWS.LeagueService)(this)).BeginfinalizarCadastro(inValue, callback, asyncState);
         }
         
@@ -3509,7 +3584,8 @@ namespace LeagueInfo.LeagueWS {
         
         private System.IAsyncResult OnBeginfinalizarCadastro(object[] inValues, System.AsyncCallback callback, object asyncState) {
             LeagueInfo.LeagueWS.usuario user = ((LeagueInfo.LeagueWS.usuario)(inValues[0]));
-            return this.BeginfinalizarCadastro(user, callback, asyncState);
+            string password = ((string)(inValues[1]));
+            return this.BeginfinalizarCadastro(user, password, callback, asyncState);
         }
         
         private object[] OnEndfinalizarCadastro(System.IAsyncResult result) {
@@ -3525,11 +3601,11 @@ namespace LeagueInfo.LeagueWS {
             }
         }
         
-        public void finalizarCadastroAsync(LeagueInfo.LeagueWS.usuario user) {
-            this.finalizarCadastroAsync(user, null);
+        public void finalizarCadastroAsync(LeagueInfo.LeagueWS.usuario user, string password) {
+            this.finalizarCadastroAsync(user, password, null);
         }
         
-        public void finalizarCadastroAsync(LeagueInfo.LeagueWS.usuario user, object userState) {
+        public void finalizarCadastroAsync(LeagueInfo.LeagueWS.usuario user, string password, object userState) {
             if ((this.onBeginfinalizarCadastroDelegate == null)) {
                 this.onBeginfinalizarCadastroDelegate = new BeginOperationDelegate(this.OnBeginfinalizarCadastro);
             }
@@ -3540,7 +3616,67 @@ namespace LeagueInfo.LeagueWS {
                 this.onfinalizarCadastroCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnfinalizarCadastroCompleted);
             }
             base.InvokeAsync(this.onBeginfinalizarCadastroDelegate, new object[] {
-                        user}, this.onEndfinalizarCadastroDelegate, this.onfinalizarCadastroCompletedDelegate, userState);
+                        user,
+                        password}, this.onEndfinalizarCadastroDelegate, this.onfinalizarCadastroCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult LeagueInfo.LeagueWS.LeagueService.BeginencontrarUsuarioPorId(LeagueInfo.LeagueWS.encontrarUsuarioPorIdRequest request, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginencontrarUsuarioPorId(request, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        private System.IAsyncResult BeginencontrarUsuarioPorId(int idUsuario, System.AsyncCallback callback, object asyncState) {
+            LeagueInfo.LeagueWS.encontrarUsuarioPorIdRequest inValue = new LeagueInfo.LeagueWS.encontrarUsuarioPorIdRequest();
+            inValue.idUsuario = idUsuario;
+            return ((LeagueInfo.LeagueWS.LeagueService)(this)).BeginencontrarUsuarioPorId(inValue, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        LeagueInfo.LeagueWS.encontrarUsuarioPorIdResponse LeagueInfo.LeagueWS.LeagueService.EndencontrarUsuarioPorId(System.IAsyncResult result) {
+            return base.Channel.EndencontrarUsuarioPorId(result);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        private LeagueInfo.LeagueWS.usuario EndencontrarUsuarioPorId(System.IAsyncResult result) {
+            LeagueInfo.LeagueWS.encontrarUsuarioPorIdResponse retVal = ((LeagueInfo.LeagueWS.LeagueService)(this)).EndencontrarUsuarioPorId(result);
+            return retVal.@return;
+        }
+        
+        private System.IAsyncResult OnBeginencontrarUsuarioPorId(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int idUsuario = ((int)(inValues[0]));
+            return this.BeginencontrarUsuarioPorId(idUsuario, callback, asyncState);
+        }
+        
+        private object[] OnEndencontrarUsuarioPorId(System.IAsyncResult result) {
+            LeagueInfo.LeagueWS.usuario retVal = this.EndencontrarUsuarioPorId(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnencontrarUsuarioPorIdCompleted(object state) {
+            if ((this.encontrarUsuarioPorIdCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.encontrarUsuarioPorIdCompleted(this, new encontrarUsuarioPorIdCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void encontrarUsuarioPorIdAsync(int idUsuario) {
+            this.encontrarUsuarioPorIdAsync(idUsuario, null);
+        }
+        
+        public void encontrarUsuarioPorIdAsync(int idUsuario, object userState) {
+            if ((this.onBeginencontrarUsuarioPorIdDelegate == null)) {
+                this.onBeginencontrarUsuarioPorIdDelegate = new BeginOperationDelegate(this.OnBeginencontrarUsuarioPorId);
+            }
+            if ((this.onEndencontrarUsuarioPorIdDelegate == null)) {
+                this.onEndencontrarUsuarioPorIdDelegate = new EndOperationDelegate(this.OnEndencontrarUsuarioPorId);
+            }
+            if ((this.onencontrarUsuarioPorIdCompletedDelegate == null)) {
+                this.onencontrarUsuarioPorIdCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnencontrarUsuarioPorIdCompleted);
+            }
+            base.InvokeAsync(this.onBeginencontrarUsuarioPorIdDelegate, new object[] {
+                        idUsuario}, this.onEndencontrarUsuarioPorIdDelegate, this.onencontrarUsuarioPorIdCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -3938,6 +4074,19 @@ namespace LeagueInfo.LeagueWS {
             public LeagueInfo.LeagueWS.finalizarCadastroResponse EndfinalizarCadastro(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 LeagueInfo.LeagueWS.finalizarCadastroResponse _result = ((LeagueInfo.LeagueWS.finalizarCadastroResponse)(base.EndInvoke("finalizarCadastro", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginencontrarUsuarioPorId(LeagueInfo.LeagueWS.encontrarUsuarioPorIdRequest request, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = request;
+                System.IAsyncResult _result = base.BeginInvoke("encontrarUsuarioPorId", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public LeagueInfo.LeagueWS.encontrarUsuarioPorIdResponse EndencontrarUsuarioPorId(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                LeagueInfo.LeagueWS.encontrarUsuarioPorIdResponse _result = ((LeagueInfo.LeagueWS.encontrarUsuarioPorIdResponse)(base.EndInvoke("encontrarUsuarioPorId", _args, result)));
                 return _result;
             }
             

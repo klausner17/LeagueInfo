@@ -8,6 +8,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using LeagueInfo.ClassApi;
+using LeagueInfo.Resources;
 
 namespace LeagueInfo.Pages
 {
@@ -46,7 +47,12 @@ namespace LeagueInfo.Pages
                 buttonCadastro.IsEnabled = true;
                 buttonSemCadastro.IsEnabled = true;
                 if (e.Result)
+                {
                     NavigationService.Navigate(new Uri("/Pages/MainPage.xaml?logado=true", UriKind.RelativeOrAbsolute));
+                    Resources.Add("UserLogged", nomeInvocador.Text);
+                    ls.encontrarUsuarioCompleted += ls_encontrarUsuarioCompleted;
+                    ls.encontrarUsuarioAsync(nomeInvocador.Text);
+                }
                 else
                     MessageBox.Show("Login não efetuado");
             }
@@ -54,6 +60,12 @@ namespace LeagueInfo.Pages
             {
                 MessageBox.Show(ex.InnerException.Message);
             }
+        }
+
+        void ls_encontrarUsuarioCompleted(object sender, LeagueWS.encontrarUsuarioCompletedEventArgs e)
+        {
+            GlobalData.Logged = true;
+            GlobalData.UserLogged = e.Result;
         }
 
         private async void buttonCadastro_Click(object sender, RoutedEventArgs e)

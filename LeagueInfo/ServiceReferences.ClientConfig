@@ -1,24 +1,17 @@
 ﻿<configuration>
-  <system.serviceModel>
-    <bindings>
-      <basicHttpBinding>
-        <binding name="LeagueServicePortBinding" maxBufferSize="2147483647"
-          maxReceivedMessageSize="2147483647">
-          <security mode="None" />
-        </binding>
-        <binding name="LeagueServicePortBinding1" maxBufferSize="2147483647"
-          maxReceivedMessageSize="2147483647">
-          <security mode="None" />
-        </binding>
-      </basicHttpBinding>
-    </bindings>
-    <client>
-      <endpoint address="http://leagueinfoservice-leagueinfoserver.rhcloud.com:80/LeagueService"
-        binding="basicHttpBinding" bindingConfiguration="LeagueServicePortBinding"
-        contract="LeagueWS.LeagueService" name="LeagueServicePort" />
-      <endpoint address="http://leagueinfoservice-leagueinfoserver.rhcloud.com:80/LeagueService"
-        binding="basicHttpBinding" bindingConfiguration="LeagueServicePortBinding1"
-        contract="LeagueWS.LeagueService" name="LeagueServicePort1" />
-    </client>
-  </system.serviceModel>
+    <system.serviceModel>
+        <bindings>
+            <basicHttpBinding>
+                <binding name="LeagueServicePortBinding" maxBufferSize="2147483647"
+                    maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+            </basicHttpBinding>
+        </bindings>
+        <client>
+            <endpoint address="http://leagueinfoservice-leagueinfoserver.rhcloud.com:80/LeagueService"
+                binding="basicHttpBinding" bindingConfiguration="LeagueServicePortBinding"
+                contract="LeagueWS.LeagueService" name="LeagueServicePort" />
+        </client>
+    </system.serviceModel>
 </configuration>

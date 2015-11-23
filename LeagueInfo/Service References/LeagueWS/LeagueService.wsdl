@@ -131,6 +131,12 @@
   <message name="finalizarCadastroResponse">
     <part name="parameters" element="tns:finalizarCadastroResponse" />
   </message>
+  <message name="encontrarUsuarioPorId">
+    <part name="parameters" element="tns:encontrarUsuarioPorId" />
+  </message>
+  <message name="encontrarUsuarioPorIdResponse">
+    <part name="parameters" element="tns:encontrarUsuarioPorIdResponse" />
+  </message>
   <message name="login">
     <part name="parameters" element="tns:login" />
   </message>
@@ -224,6 +230,10 @@
       <input wsam:Action="http://service.klausner.com/LeagueService/finalizarCadastroRequest" message="tns:finalizarCadastro" />
       <output wsam:Action="http://service.klausner.com/LeagueService/finalizarCadastroResponse" message="tns:finalizarCadastroResponse" />
       <fault wsam:Action="http://service.klausner.com/LeagueService/finalizarCadastro/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="encontrarUsuarioPorId">
+      <input wsam:Action="http://service.klausner.com/LeagueService/encontrarUsuarioPorIdRequest" message="tns:encontrarUsuarioPorId" />
+      <output wsam:Action="http://service.klausner.com/LeagueService/encontrarUsuarioPorIdResponse" message="tns:encontrarUsuarioPorIdResponse" />
     </operation>
     <operation name="login">
       <input wsam:Action="http://service.klausner.com/LeagueService/loginRequest" message="tns:login" />
@@ -424,6 +434,15 @@
       <fault name="Exception">
         <soap:fault use="literal" name="Exception" namespace="" />
       </fault>
+    </operation>
+    <operation name="encontrarUsuarioPorId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
     </operation>
     <operation name="login">
       <soap:operation soapAction="" />

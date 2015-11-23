@@ -30,6 +30,8 @@
   <xs:element name="encontrarCounterPorId" type="tns:encontrarCounterPorId" />
   <xs:element name="encontrarCounterPorIdResponse" type="tns:encontrarCounterPorIdResponse" />
   <xs:element name="encontrarUsuario" type="tns:encontrarUsuario" />
+  <xs:element name="encontrarUsuarioPorId" type="tns:encontrarUsuarioPorId" />
+  <xs:element name="encontrarUsuarioPorIdResponse" type="tns:encontrarUsuarioPorIdResponse" />
   <xs:element name="encontrarUsuarioResponse" type="tns:encontrarUsuarioResponse" />
   <xs:element name="finalizarCadastro" type="tns:finalizarCadastro" />
   <xs:element name="finalizarCadastroResponse" type="tns:finalizarCadastroResponse" />
@@ -175,6 +177,7 @@
   <xs:complexType name="finalizarCadastro">
     <xs:sequence>
       <xs:element minOccurs="0" name="user" type="tns:usuario" />
+      <xs:element minOccurs="0" name="password" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="finalizarCadastroResponse">
@@ -223,6 +226,16 @@
   <xs:complexType name="alterarUsuarioResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="encontrarUsuarioPorId">
+    <xs:sequence>
+      <xs:element name="idUsuario" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="encontrarUsuarioPorIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:usuario" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="inserirBuildStage">

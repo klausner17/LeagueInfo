@@ -23,7 +23,7 @@ namespace LeagueInfo.Pages
             textBlockSummonerName.Text = NavigationContext.QueryString["summoner"];
             if (NavigationContext.QueryString["validador"] == string.Empty)
             {
-                string dicionario = "ACDEFGHIJKLMPSTWXYZ1234578";
+                string dicionario = "ACDEFGHIJKMPTWXYZ123478";
                 Random rand = new Random();
                 textBlockValidateNumber.Text = string.Empty;
                 for (int i = 0; i < 6; i++)
