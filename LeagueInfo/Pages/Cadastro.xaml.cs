@@ -25,7 +25,7 @@ namespace LeagueInfo.Pages
         private void buttonFinalizarCadastro_Click(object sender, RoutedEventArgs e)
         {
             ls.encontrarUsuarioCompleted += Ls_encontrarUsuarioCompleted;
-            ls.encontrarUsuarioAsync(NavigationContext.QueryString["summoner"]);            
+            ls.encontrarUsuarioAsync(NavigationContext.QueryString["summoner"]);    
         }
 
         private void Ls_encontrarUsuarioCompleted(object sender, LeagueWS.encontrarUsuarioCompletedEventArgs e)
@@ -38,8 +38,8 @@ namespace LeagueInfo.Pages
                 user.sexo = radioButtonMasculino.IsChecked == true ? "m" : "f";
                 user.validado = true;
                 user.dataNasc = (DateTime)datePickerBornDate.Value;
-                ls.alterarUsuarioCompleted += Ls_alterarUsuarioCompleted;
-                ls.alterarUsuarioAsync(user);
+                ls.finalizarCadastroCompleted += Ls_finalizarCadastroCompleted;
+                ls.finalizarCadastroAsync(user);
             }
             catch(Exception ex)
             {
@@ -47,7 +47,7 @@ namespace LeagueInfo.Pages
             }
         }
 
-        private void Ls_alterarUsuarioCompleted(object sender, LeagueWS.alterarUsuarioCompletedEventArgs e)
+        private void Ls_finalizarCadastroCompleted(object sender, LeagueWS.finalizarCadastroCompletedEventArgs e)
         {
             try
             {

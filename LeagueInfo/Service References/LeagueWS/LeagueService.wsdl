@@ -5,6 +5,12 @@
       <xsd:import schemaLocation="http://leagueinfoservice-leagueinfoserver.rhcloud.com:80/LeagueService?xsd=1" namespace="http://service.klausner.com/" />
     </xsd:schema>
   </types>
+  <message name="hello">
+    <part name="parameters" element="tns:hello" />
+  </message>
+  <message name="helloResponse">
+    <part name="parameters" element="tns:helloResponse" />
+  </message>
   <message name="preCadastro">
     <part name="parameters" element="tns:preCadastro" />
   </message>
@@ -13,12 +19,6 @@
   </message>
   <message name="UpdateFailureException">
     <part name="fault" element="tns:UpdateFailureException" />
-  </message>
-  <message name="hello">
-    <part name="parameters" element="tns:hello" />
-  </message>
-  <message name="helloResponse">
-    <part name="parameters" element="tns:helloResponse" />
   </message>
   <message name="encontrarUsuario">
     <part name="parameters" element="tns:encontrarUsuario" />
@@ -141,14 +141,14 @@
     <part name="fault" element="tns:FailureLoginException" />
   </message>
   <portType name="LeagueService">
+    <operation name="hello">
+      <input wsam:Action="http://service.klausner.com/LeagueService/helloRequest" message="tns:hello" />
+      <output wsam:Action="http://service.klausner.com/LeagueService/helloResponse" message="tns:helloResponse" />
+    </operation>
     <operation name="preCadastro">
       <input wsam:Action="http://service.klausner.com/LeagueService/preCadastroRequest" message="tns:preCadastro" />
       <output wsam:Action="http://service.klausner.com/LeagueService/preCadastroResponse" message="tns:preCadastroResponse" />
       <fault wsam:Action="http://service.klausner.com/LeagueService/preCadastro/Fault/UpdateFailureException" name="UpdateFailureException" message="tns:UpdateFailureException" />
-    </operation>
-    <operation name="hello">
-      <input wsam:Action="http://service.klausner.com/LeagueService/helloRequest" message="tns:hello" />
-      <output wsam:Action="http://service.klausner.com/LeagueService/helloResponse" message="tns:helloResponse" />
     </operation>
     <operation name="encontrarUsuario">
       <input wsam:Action="http://service.klausner.com/LeagueService/encontrarUsuarioRequest" message="tns:encontrarUsuario" />
@@ -233,6 +233,15 @@
   </portType>
   <binding name="LeagueServicePortBinding" type="tns:LeagueService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="hello">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
     <operation name="preCadastro">
       <soap:operation soapAction="" />
       <input>
@@ -244,15 +253,6 @@
       <fault name="UpdateFailureException">
         <soap:fault use="literal" name="UpdateFailureException" namespace="" />
       </fault>
-    </operation>
-    <operation name="hello">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
     </operation>
     <operation name="encontrarUsuario">
       <soap:operation soapAction="" />
