@@ -16,12 +16,12 @@ namespace LeagueInfo.Pages
     {
 
         SummonerDto summoner;
-        LeagueWS.LeagueServiceClient ls;
+        private LeagueWS.LeagueServiceClient ls;
+        private LeagueWS.LeagueServiceClient lsUser;
 
         public Login()
         {
             InitializeComponent();
-            ls = new LeagueWS.LeagueServiceClient();
         }
 
         private void buttonLogin_Click(object sender, RoutedEventArgs e)
@@ -31,6 +31,7 @@ namespace LeagueInfo.Pages
             {
                 buttonCadastro.IsEnabled = false;
                 buttonSemCadastro.IsEnabled = false;
+                ls = new LeagueWS.LeagueServiceClient();
                 ls.loginCompleted += ls_loginCompleted;
                 ls.loginAsync(nomeInvocador.Text, senha.Password);
             }
@@ -48,10 +49,9 @@ namespace LeagueInfo.Pages
                 buttonSemCadastro.IsEnabled = true;
                 if (e.Result)
                 {
-                    NavigationService.Navigate(new Uri("/Pages/MainPage.xaml?logado=true", UriKind.RelativeOrAbsolute));
-                    Resources.Add("UserLogged", nomeInvocador.Text);
-                    ls.encontrarUsuarioCompleted += ls_encontrarUsuarioCompleted;
-                    ls.encontrarUsuarioAsync(nomeInvocador.Text);
+                    lsUser = new LeagueWS.LeagueServiceClient();
+                    lsUser.encontrarUsuarioCompleted += ls_encontrarUsuarioCompleted;
+                    lsUser.encontrarUsuarioAsync(nomeInvocador.Text);
                 }
                 else
                     MessageBox.Show("Login não efetuado");
@@ -60,12 +60,28 @@ namespace LeagueInfo.Pages
             {
                 MessageBox.Show(ex.InnerException.Message);
             }
+            finally
+            {
+                ls.CloseAsync();
+            }
         }
 
         void ls_encontrarUsuarioCompleted(object sender, LeagueWS.encontrarUsuarioCompletedEventArgs e)
         {
-            GlobalData.Logged = true;
-            GlobalData.UserLogged = e.Result;
+            try
+            {
+                NavigationService.Navigate(new Uri("/Pages/MainPage.xaml?logado=true", UriKind.RelativeOrAbsolute));
+                GlobalData.Logged = true;
+                GlobalData.UserLogged = e.Result;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao fazer login");
+            }
+            finally
+            {
+                lsUser.CloseAsync();
+            }
         }
 
         private async void buttonCadastro_Click(object sender, RoutedEventArgs e)
@@ -82,6 +98,7 @@ namespace LeagueInfo.Pages
                     buttonLogin.IsEnabled = false;
                     buttonSemCadastro.IsEnabled = false;
                     summoner = await summoner.SearchSummoner(nomeInvocador.Text);
+                    ls = new LeagueWS.LeagueServiceClient();
                     ls.encontrarUsuarioCompleted += Ls_encontrarUsuarioCompleted;
                     ls.encontrarUsuarioAsync(nomeInvocador.Text);
                 }
@@ -108,9 +125,13 @@ namespace LeagueInfo.Pages
                     MessageBox.Show("Invocador já cadastrado.");
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.InnerException.Message);
+            }
+            finally
+            {
+                ls.CloseAsync();
             }
         }
 

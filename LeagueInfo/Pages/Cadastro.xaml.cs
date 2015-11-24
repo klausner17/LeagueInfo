@@ -8,14 +8,15 @@ namespace LeagueInfo.Pages
     public partial class Cadastro : PhoneApplicationPage
     {
         private LeagueWS.LeagueServiceClient ls;
+
         public Cadastro()
         {
             InitializeComponent();
-            ls = new LeagueWS.LeagueServiceClient();
         }
 
         private void buttonFinalizarCadastro_Click(object sender, RoutedEventArgs e)
         {
+            ls = new LeagueWS.LeagueServiceClient();
             ls.encontrarUsuarioCompleted += Ls_encontrarUsuarioCompleted;
             ls.encontrarUsuarioAsync(NavigationContext.QueryString["summoner"]);    
         }
@@ -33,7 +34,7 @@ namespace LeagueInfo.Pages
                 ls.finalizarCadastroCompleted += Ls_finalizarCadastroCompleted;
                 ls.finalizarCadastroAsync(user, user.senha);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Não foi possivel cadastrar o usuário. Detalhes: \n" + ex.Message + ".\n" + ex.InnerException.Message);
             }
@@ -56,6 +57,10 @@ namespace LeagueInfo.Pages
             catch (Exception ex)
             {
                 MessageBox.Show("Não foi possível realizar o cadastro. Detalhes: \n" + ex.Message + ".\n" + ex.InnerException.Message);
+            }
+            finally
+            {
+                ls.CloseAsync();
             }
         }
 

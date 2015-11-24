@@ -15,6 +15,7 @@ namespace LeagueInfo.Controls
     public partial class CounterControl : UserControl
     {
         private ChampionDto champion;
+        private Boolean isSelect;
 
         public ChampionDto Champion
         {
@@ -27,7 +28,18 @@ namespace LeagueInfo.Controls
             }
         }
 
-        public Boolean IsSelected{get;set;}
+        public Boolean IsSelected
+        {
+            get { return isSelect; }
+            set
+            {
+                isSelect = value;
+                if (value)
+                    selectedSquare.Visibility = System.Windows.Visibility.Visible;
+                else
+                    selectedSquare.Visibility = System.Windows.Visibility.Collapsed;
+            }
+        }
 
         public Boolean CanSelect { get; set; }
 
@@ -52,12 +64,12 @@ namespace LeagueInfo.Controls
                 if (IsSelected)
                 {
                     IsSelected = false;
-                    Visibility = System.Windows.Visibility.Visible;
+                    selectedSquare.Visibility = System.Windows.Visibility.Collapsed;
                 }
                 else
                 {
                     IsSelected = true;
-                    Visibility = System.Windows.Visibility.Collapsed;
+                    selectedSquare.Visibility = System.Windows.Visibility.Visible;
                 }
             }
         }

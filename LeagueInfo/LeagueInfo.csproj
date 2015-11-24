@@ -103,6 +103,7 @@
     <Compile Include="ClassApi\MasteryDto.cs" />
     <Compile Include="ClassApi\MasteryPageDto.cs" />
     <Compile Include="ClassApi\MasteryPagesDto.cs" />
+    <Compile Include="ClassApi\Request\WebService.cs" />
     <Compile Include="Controls\AbillityControl.xaml.cs">
       <DependentUpon>AbillityControl.xaml</DependentUpon>
     </Compile>

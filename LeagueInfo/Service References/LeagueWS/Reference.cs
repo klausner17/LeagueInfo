@@ -857,14 +857,40 @@ namespace LeagueInfo.LeagueWS {
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://service.klausner.com/")]
     public partial class championcounter : object, System.ComponentModel.INotifyPropertyChanged {
         
+        private int idField;
+        
+        private bool idFieldSpecified;
+        
         private int idChampionField;
         
         private int idCounterField;
         
-        private bool idCounterFieldSpecified;
-        
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public int id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+                this.RaisePropertyChanged("id");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool idSpecified {
+            get {
+                return this.idFieldSpecified;
+            }
+            set {
+                this.idFieldSpecified = value;
+                this.RaisePropertyChanged("idSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
         public int idChampion {
             get {
                 return this.idChampionField;
@@ -876,7 +902,7 @@ namespace LeagueInfo.LeagueWS {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
         public int idCounter {
             get {
                 return this.idCounterField;
@@ -884,18 +910,6 @@ namespace LeagueInfo.LeagueWS {
             set {
                 this.idCounterField = value;
                 this.RaisePropertyChanged("idCounter");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool idCounterSpecified {
-            get {
-                return this.idCounterFieldSpecified;
-            }
-            set {
-                this.idCounterFieldSpecified = value;
-                this.RaisePropertyChanged("idCounterSpecified");
             }
         }
         

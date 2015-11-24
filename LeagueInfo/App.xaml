@@ -88,7 +88,7 @@
 				</Setter.Value>
 			</Setter>
 		</Style>
-	</Application.Resources>
+    </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>
         <!--Required object that handles lifetime events for the application-->
