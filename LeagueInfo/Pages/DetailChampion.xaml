@@ -98,8 +98,20 @@
                 </ScrollViewer>
             </phone:PanoramaItem>
 
-            <phone:PanoramaItem Header="comentarios">
+            <phone:PanoramaItem Header="counters">
+                <ScrollViewer VerticalAlignment="Stretch">
+                    <StackPanel Name="stackPanelCounters"/>
+                </ScrollViewer>
+            </phone:PanoramaItem>
 
+            <phone:PanoramaItem Header="builds">
+                <ScrollViewer VerticalAlignment="Stretch">
+                    <StackPanel Name="stackPanelBuilds">
+                    </StackPanel>
+                </ScrollViewer>
+            </phone:PanoramaItem>
+
+            <phone:PanoramaItem Header="comentarios">
                 <ScrollViewer VerticalAlignment="Stretch">
                     <StackPanel Name="comentariosChampions">
                         <StackPanel>
@@ -116,12 +128,6 @@
                             </ListBox.ItemContainerStyle>
                         </ListBox>
                     </StackPanel>
-                </ScrollViewer>
-            </phone:PanoramaItem>
-
-            <phone:PanoramaItem Header="counters">
-                <ScrollViewer VerticalAlignment="Stretch">
-                    <StackPanel Name="counterCampeao"/>
                 </ScrollViewer>
             </phone:PanoramaItem>
         </phone:Panorama>

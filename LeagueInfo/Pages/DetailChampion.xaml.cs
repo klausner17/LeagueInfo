@@ -117,5 +117,10 @@ namespace LeagueInfo.Pages
                 CarregarComentarios();
             }
         }
+
+        private void buttonCriarBuild_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
