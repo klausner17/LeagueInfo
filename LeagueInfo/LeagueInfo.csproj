@@ -112,6 +112,9 @@
     <Compile Include="Controls\ChampionComment.xaml.cs">
       <DependentUpon>ChampionComment.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\CounterControl.xaml.cs">
+      <DependentUpon>CounterControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ItemSelect.xaml.cs">
       <DependentUpon>ItemSelect.xaml</DependentUpon>
     </Compile>
@@ -205,6 +208,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\ChampionComment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\CounterControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
