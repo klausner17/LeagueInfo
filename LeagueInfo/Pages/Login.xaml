@@ -11,14 +11,21 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d"
-    shell:SystemTray.IsVisible="True">
+    shell:SystemTray.IsVisible="True" Name="pageLogin" Loaded="pageLogin_Loaded" >
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="40*"/>
+        </Grid.RowDefinitions>
         <Grid.Background>
             <ImageBrush Stretch="Fill" ImageSource="/Assets/LoginScreen.jpg" />
         </Grid.Background>
-        <Grid>
+        <StackPanel Name="stackProgress" Grid.Row="0">
+            <ProgressBar x:Name="progresBarCarregando" Visibility="Collapsed" HorizontalAlignment="Stretch" IsIndeterminate="True"  VerticalAlignment="Center" Height="20" />
+        </StackPanel>
+        <Grid Grid.RowSpan="2">
             <Grid.Background>
                 <SolidColorBrush Color="Black" Opacity="0.2" />
             </Grid.Background>

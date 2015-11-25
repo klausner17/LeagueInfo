@@ -9,6 +9,8 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using LeagueInfo.ClassApi;
 using LeagueInfo.Resources;
+using System.IO.IsolatedStorage;
+using System.Threading.Tasks;
 
 namespace LeagueInfo.Pages
 {
@@ -18,6 +20,7 @@ namespace LeagueInfo.Pages
         SummonerDto summoner;
         private LeagueWS.LeagueServiceClient ls;
         private LeagueWS.LeagueServiceClient lsUser;
+        private bool wait = true;
 
         public Login()
         {
@@ -31,6 +34,7 @@ namespace LeagueInfo.Pages
             {
                 buttonCadastro.IsEnabled = false;
                 buttonSemCadastro.IsEnabled = false;
+                buttonLogin.IsEnabled = false;
                 ls = new LeagueWS.LeagueServiceClient();
                 ls.loginCompleted += ls_loginCompleted;
                 ls.loginAsync(nomeInvocador.Text, senha.Password);
@@ -45,13 +49,19 @@ namespace LeagueInfo.Pages
         {
             try
             {
-                buttonCadastro.IsEnabled = true;
-                buttonSemCadastro.IsEnabled = true;
                 if (e.Result)
                 {
                     lsUser = new LeagueWS.LeagueServiceClient();
                     lsUser.encontrarUsuarioCompleted += ls_encontrarUsuarioCompleted;
-                    lsUser.encontrarUsuarioAsync(nomeInvocador.Text);
+                    var settings = IsolatedStorageSettings.ApplicationSettings;
+                    if (settings.Count > 0 && settings["Login"].ToString() != "")
+                    {
+                        lsUser.encontrarUsuarioAsync(settings["Login"].ToString());
+                    }
+                    else
+                    {
+                        lsUser.encontrarUsuarioAsync(nomeInvocador.Text);
+                    }
                 }
                 else
                     MessageBox.Show("Login não efetuado");
@@ -73,6 +83,14 @@ namespace LeagueInfo.Pages
                 NavigationService.Navigate(new Uri("/Pages/MainPage.xaml?logado=true", UriKind.RelativeOrAbsolute));
                 GlobalData.Logged = true;
                 GlobalData.UserLogged = e.Result;
+                var settings = IsolatedStorageSettings.ApplicationSettings;
+                if (settings.Count == 0 || settings["Login"].ToString() == "")
+                {
+                    settings.Clear();
+                    settings.Add("Login", nomeInvocador.Text);
+                    settings.Add("Senha", senha.Password);
+                    settings.Save();
+                }
             }
             catch (Exception ex)
             {
@@ -81,6 +99,10 @@ namespace LeagueInfo.Pages
             finally
             {
                 lsUser.CloseAsync();
+                wait = false;
+                buttonCadastro.IsEnabled = true;
+                buttonSemCadastro.IsEnabled = true;
+                buttonLogin.IsEnabled = true;
             }
         }
 
@@ -95,8 +117,6 @@ namespace LeagueInfo.Pages
                 summoner = new SummonerDto();
                 try
                 {
-                    buttonLogin.IsEnabled = false;
-                    buttonSemCadastro.IsEnabled = false;
                     summoner = await summoner.SearchSummoner(nomeInvocador.Text);
                     ls = new LeagueWS.LeagueServiceClient();
                     ls.encontrarUsuarioCompleted += Ls_encontrarUsuarioCompleted;
@@ -113,8 +133,6 @@ namespace LeagueInfo.Pages
         {
             try
             {
-                buttonLogin.IsEnabled = true;
-                buttonSemCadastro.IsEnabled = true;
                 if (e.Result == null || !e.Result.validado)
                 {
                     string uriNavigate = "/Pages/PreCadastro.xaml?summoner=" + summoner.Nome + "&idSummoner=" + summoner.Id.ToString()
@@ -132,12 +150,41 @@ namespace LeagueInfo.Pages
             finally
             {
                 ls.CloseAsync();
+                buttonLogin.IsEnabled = true;
+                buttonSemCadastro.IsEnabled = true;
+                buttonLogin.IsEnabled = true;
             }
         }
 
         private void buttonSemCadastro_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("/Pages/MainPage.xaml?logado=false", UriKind.RelativeOrAbsolute));
+        }
+
+        public async Task LoginAutomatico()
+        {
+            var settings = IsolatedStorageSettings.ApplicationSettings;
+            if (settings != null && settings.Count > 0 && settings["Senha"].ToString() != string.Empty && settings["Login"].ToString() != string.Empty)
+            {
+                buttonLogin.IsEnabled = false;
+                buttonCadastro.IsEnabled = false;
+                buttonSemCadastro.IsEnabled = false;
+                progresBarCarregando.Visibility = System.Windows.Visibility.Visible;
+                ls = new LeagueWS.LeagueServiceClient();
+                ls.loginCompleted += ls_loginCompleted;
+                ls.loginAsync(settings["Login"].ToString(), settings["Senha"].ToString());
+                while (wait)
+                {
+                    await Task.Delay(10);
+                }
+                buttonSemCadastro.Visibility = System.Windows.Visibility.Collapsed;
+            }
+        }
+
+        private async void pageLogin_Loaded(object sender, RoutedEventArgs e)
+        {
+            NavigationService.RemoveBackEntry();
+            await LoginAutomatico();
         }
     }
 }

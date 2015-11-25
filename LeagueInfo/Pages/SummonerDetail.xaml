@@ -68,12 +68,6 @@
             <phone:PanoramaItem Name="panoramaUltimasPartidas" Header="partidas">
                 <ListBox Name="listboxPartidas" />
             </phone:PanoramaItem>
-            <phone:PanoramaItem Name="panoramaRunas" Header="runas">
-                <ListBox Name="listBoxRunas" />
-            </phone:PanoramaItem>
-            <phone:PanoramaItem Name="panoramaTalentos" Header="talentos">
-                <ListBox Name="listBoxTalentos" />
-            </phone:PanoramaItem>
         </phone:Panorama>
     </Grid>
 

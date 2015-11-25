@@ -8,6 +8,8 @@ using LeagueInfo.ClassApi.Request;
 using System.Threading.Tasks;
 using LeagueInfo.Controls;
 using System.Windows.Input;
+using LeagueInfo.Resources;
+using System.IO.IsolatedStorage;
 
 namespace LeagueInfo
 {
@@ -27,6 +29,12 @@ namespace LeagueInfo
         {
             InitializeComponent();
             Requester.OnGettingData += Requester_OnGettingData;
+            if (GlobalData.Logged)
+            {
+                buttonAlterarCadastro.Visibility = System.Windows.Visibility.Visible;
+                buttonSair.Visibility = System.Windows.Visibility.Visible;
+                textBlockInvocador.Text = GlobalData.UserLogged.login;
+            }
         }
 
         void Requester_OnGettingData(int status)
@@ -116,6 +124,18 @@ namespace LeagueInfo
         private void phoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
         {
             NavigationService.RemoveBackEntry();
+        }
+
+        private void buttonAlterarCadastro_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Pages/UpdateAccount.xaml", UriKind.RelativeOrAbsolute));
+        }
+
+        private void buttonSair_Click(object sender, RoutedEventArgs e)
+        {
+            var settings = IsolatedStorageSettings.ApplicationSettings;
+            settings.Clear();
+            NavigationService.Navigate(new Uri("/Pages/Login.xaml", UriKind.RelativeOrAbsolute));
         }
     }
 }

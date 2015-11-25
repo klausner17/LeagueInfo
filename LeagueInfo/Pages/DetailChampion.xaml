@@ -116,6 +116,7 @@
                             </ListBox.ItemsPanel>
                         </ListBox>
                         <Button Content="Salvar" Name="buttonSaveCounter" Visibility="Collapsed" Click="buttonSaveCounter_Click" />
+                        <Button Content="Cancelar" Name="buttonCancelarCounter" Visibility="Collapsed" Click="buttonCancelarCounter_Click" />
                     </StackPanel>
                     <ListBox Name="listBoxCounters">
                         <ListBox.ItemContainerStyle>

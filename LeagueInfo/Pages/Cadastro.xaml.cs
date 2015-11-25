@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
+using LeagueInfo.Resources;
 
 namespace LeagueInfo.Pages
 {
@@ -31,6 +32,7 @@ namespace LeagueInfo.Pages
                 user.sexo = radioButtonMasculino.IsChecked == true ? "m" : "f";
                 user.validado = true;
                 user.dataNasc = (DateTime)datePickerBornDate.Value;
+                GlobalData.UserLogged = user;
                 ls.finalizarCadastroCompleted += Ls_finalizarCadastroCompleted;
                 ls.finalizarCadastroAsync(user, user.senha);
             }
@@ -47,6 +49,7 @@ namespace LeagueInfo.Pages
                 if (e.Result)
                 {
                     MessageBox.Show("Cadastro efetuado.");
+                    GlobalData.Logged = true;
                     NavigationService.Navigate(new Uri("/Pages/MainPage.xaml?logado=true", UriKind.RelativeOrAbsolute));
                 }
                 else

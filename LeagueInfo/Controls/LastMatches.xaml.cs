@@ -43,15 +43,18 @@ namespace LeagueInfo.Controls
             List<int> idItems = new List<int>() { game.Stats.Item0, game.Stats.Item1, game.Stats.Item2, game.Stats.Item3, game.Stats.Item4, game.Stats.Item5, game.Stats.Item6 };
             for (int i = 0; i < 7; i++)
             {
-                if (idItems[i] != 0)
+                try
                 {
-                    ItemDto item = await new ItemDto().SearchItemLowData(idItems[i]);
-                    ImageBrush brush = new ImageBrush();
-                    brush.ImageSource = item.GetImage();
-                    ((Ellipse)itemsMatch.Children[i]).Fill = brush;
-                }
-                else
-                    ((Ellipse)itemsMatch.Children[i]).Stroke = new SolidColorBrush(SystemColors.ActiveBorderColor);
+                    if (idItems[i] != 0)
+                    {
+                        ItemDto item = await new ItemDto().SearchItemLowData(idItems[i]);
+                        ImageBrush brush = new ImageBrush();
+                        brush.ImageSource = item.GetImage();
+                        ((Ellipse)itemsMatch.Children[i]).Fill = brush;
+                    }
+                    else
+                        ((Ellipse)itemsMatch.Children[i]).Stroke = new SolidColorBrush(SystemColors.ActiveBorderColor);
+                }catch{}
             }
         }
     }

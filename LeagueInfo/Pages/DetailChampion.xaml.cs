@@ -259,5 +259,12 @@ namespace LeagueInfo.Pages
                 lsInsertCounter.CloseAsync();
             }
         }
+
+        private void buttonCancelarCounter_Click(object sender, RoutedEventArgs e)
+        {
+            listBoxCounterChose.Visibility = Visibility.Collapsed;
+            buttonCancelarCounter.Visibility = System.Windows.Visibility.Collapsed;
+            buttonSaveCounter.Visibility = System.Windows.Visibility.Collapsed;
+        }
     }
 }

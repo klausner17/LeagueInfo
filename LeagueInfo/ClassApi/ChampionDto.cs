@@ -87,7 +87,7 @@ namespace LeagueInfo.ClassApi
 
         public BitmapImage GetChampionSquare()
         {
-            return new BitmapImage(new Uri("http://ddragon.leagueoflegends.com/cdn/5.18.1/img/champion/" + this.Image.Full));
+            return new BitmapImage(new Uri("http://ddragon.leagueoflegends.com/cdn/5.23.1/img/champion/" + this.Image.Full));
         }
         #endregion
 
