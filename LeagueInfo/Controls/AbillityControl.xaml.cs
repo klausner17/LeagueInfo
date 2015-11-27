@@ -23,7 +23,7 @@ namespace LeagueInfo.Controls
                 spell = value;
                 this.title.Text = spell.Name;
                 this.content.Text = spell.Description;
-                this.iconAbillity.Source = new BitmapImage(new Uri("http://ddragon.leagueoflegends.com/cdn/5.18.1/img/spell/"+spell.Image.Full));
+                LoadIconSpell();
             }
         }
         public Abillity()
@@ -35,6 +35,11 @@ namespace LeagueInfo.Controls
         {
             InitializeComponent();
             Spell = spell;
+        }
+
+        private async void LoadIconSpell()
+        {
+            this.iconAbillity.Source = await spell.GetImageSpell();
         }
 
     }

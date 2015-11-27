@@ -85,9 +85,9 @@ namespace LeagueInfo.ClassApi
             return JsonConvert.DeserializeObject<ChampionDto>(json);
         }
 
-        public BitmapImage GetChampionSquare()
+        public async Task<BitmapImage> GetChampionSquare()
         {
-            return new BitmapImage(new Uri("http://ddragon.leagueoflegends.com/cdn/5.23.1/img/champion/" + this.Image.Full));
+            return new BitmapImage(new Uri("http://ddragon.leagueoflegends.com/cdn/" + (await EndPointDDragon.GetVersions()).GeralVersion.Champion + "/img/champion/" + this.Image.Full));
         }
         #endregion
 

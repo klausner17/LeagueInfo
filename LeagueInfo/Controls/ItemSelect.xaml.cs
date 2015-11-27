@@ -24,7 +24,7 @@ namespace LeagueInfo.Controls
                 item = value;
                 descriptionItem.Text = item.Name;
                 custItem.Text = "Custo: " + item.Gold.Total.ToString() + " gold";
-                iconItem.Source = value.GetImage();
+                LoadIcon();
             }
         }
 
@@ -50,6 +50,12 @@ namespace LeagueInfo.Controls
         {
             if (OnTouch != null)
                 OnTouch(this);
+        }
+
+
+        private async void LoadIcon()
+        {
+            iconItem.Source = await item.GetImage();
         }
     }
 }

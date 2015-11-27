@@ -96,14 +96,15 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ClassApi\EndPointDDragon.cs" />
     <Compile Include="ClassApi\GameDto.cs" />
+    <Compile Include="ClassApi\GeneralVersion.cs" />
     <Compile Include="ClassApi\PlayerDto.cs" />
     <Compile Include="ClassApi\RawStatsDto.cs" />
     <Compile Include="ClassApi\RecentGamesDto.cs" />
     <Compile Include="ClassApi\MasteryDto.cs" />
     <Compile Include="ClassApi\MasteryPageDto.cs" />
     <Compile Include="ClassApi\MasteryPagesDto.cs" />
-    <Compile Include="ClassApi\Request\WebService.cs" />
     <Compile Include="Controls\AbillityControl.xaml.cs">
       <DependentUpon>AbillityControl.xaml</DependentUpon>
     </Compile>

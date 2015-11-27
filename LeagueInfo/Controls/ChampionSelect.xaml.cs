@@ -30,7 +30,7 @@ namespace LeagueInfo
                 this.title.Text = value.Name;
                 this.description.Text = value.Title;
                 this.tags.Text = string.Empty;
-                this.icon.Source = value.GetChampionSquare();
+                LoadIcon();
                 foreach (string tag in value.Tags)
                 {
                     switch(tag)
@@ -90,6 +90,11 @@ namespace LeagueInfo
         {
             if (OnTouch != null)
                 OnTouch(this);
+        }
+
+        private async void LoadIcon()
+        {
+            this.icon.Source = await champion.GetChampionSquare();
         }
     }
 }

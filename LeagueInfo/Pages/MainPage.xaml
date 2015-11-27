@@ -13,16 +13,16 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait" UseLayoutRounding="True" Loaded="phoneApplicationPage_Loaded">
     <Grid>
-    	<Grid.Background>
-    		<ImageBrush ImageSource="/BackGround.jpg" Stretch="UniformToFill"/>
-    	</Grid.Background>
-		<Grid VerticalAlignment="Top">
-			<Grid.Background>
-				<SolidColorBrush Color="Black" Opacity="0.4"/>
-			</Grid.Background>
-			<TextBlock Padding="5" FontSize="24" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto">league info</TextBlock>
-		</Grid>
-		<phone:Panorama Name="panoramaMain" Margin="0,42,0,0" SelectionChanged="Panorama_SelectionChanged">
+        <Grid.Background>
+            <ImageBrush ImageSource="/BackGround.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <Grid VerticalAlignment="Top">
+            <Grid.Background>
+                <SolidColorBrush Color="Black" Opacity="0.4"/>
+            </Grid.Background>
+            <TextBlock Padding="5" FontSize="24" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto">league info</TextBlock>
+        </Grid>
+        <phone:Panorama Name="panoramaMain" Margin="0,42,0,0" SelectionChanged="Panorama_SelectionChanged">
             <phone:PanoramaItem Header="invocador" Name="panoramaInvocador">
                 <StackPanel>
                     <TextBox Name="textBlockInvocador" InputScope="Chat" KeyDown="textBlockInvocador_KeyDown"/>
@@ -32,22 +32,52 @@
                 </StackPanel>
             </phone:PanoramaItem>
             <phone:PanoramaItem Header="campeões" Name="panoramaCampeoes">
-                <ListBox Name="ChampionsList">
-                    <ListBox.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <toolkit:WrapPanel Orientation="Horizontal"/>
-                        </ItemsPanelTemplate>
-                    </ListBox.ItemsPanel>
-                </ListBox>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" MinHeight="72"/>
+                            <RowDefinition Height="Auto" MinHeight="72"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.ColumnSpan="2"  Name="buttonFilterChampion" Click="buttonFilterChampion_Click">Filtrar</Button>
+                        <CheckBox Grid.Row="1" Grid.Column="0" Name="filterAssassin">Assassino</CheckBox>
+                        <CheckBox Grid.Row="1" Grid.Column="1" Name="filerMage">Mago</CheckBox>
+                        <CheckBox Grid.Row="2" Grid.Column="0" Name="filterFigther">Lutador</CheckBox>
+                        <CheckBox Grid.Row="2" Grid.Column="1" Name="filterTank">Tanque</CheckBox>
+                        <CheckBox Grid.Row="3" Grid.Column="0" Name="filterSupport">Suporte</CheckBox>
+                        <CheckBox Grid.Row="3" Grid.Column="1" Name="filterMarksman">Atirador</CheckBox>
+                    </Grid>
+                    <ListBox Name="ChampionsList" Grid.Row="1">
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="Margin" Value="3"/>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <toolkit:WrapPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                    </ListBox>
+                </Grid>
             </phone:PanoramaItem>
             <phone:PanoramaItem Header="itens" Name="panoramaItens">
                 <ScrollViewer VerticalAlignment="Stretch">
                     <StackPanel Name="ItensList" />
                 </ScrollViewer>
-		</phone:PanoramaItem>
-	</phone:Panorama>
-	<ProgressBar Visibility="Collapsed" HorizontalAlignment="Stretch" IsIndeterminate="True"  VerticalAlignment="center" Height="20" Width="{Binding Width, ElementName=phoneApplicationPage}" Foreground="White"  Name="loadProgress" Margin="0"/>
-	</Grid>
+            </phone:PanoramaItem>
+        </phone:Panorama>
+        <ProgressBar Visibility="Collapsed" HorizontalAlignment="Stretch" IsIndeterminate="True"  VerticalAlignment="center" Height="20" Width="{Binding Width, ElementName=phoneApplicationPage}" Foreground="White"  Name="loadProgress" Margin="0"/>
+    </Grid>
 
 
 </phone:PhoneApplicationPage>

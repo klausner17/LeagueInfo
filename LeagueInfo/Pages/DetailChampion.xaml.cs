@@ -196,14 +196,13 @@ namespace LeagueInfo.Pages
 
         }
 
-        private async void buttonEscolherCounter_Click(object sender, RoutedEventArgs e)
+        private void buttonEscolherCounter_Click(object sender, RoutedEventArgs e)
         {
-            ChampionListDto listChampion = await new ChampionListDto().LoadAllChampions();
             listBoxCounterChose.Visibility = System.Windows.Visibility.Visible;
             buttonSaveCounter.Visibility = System.Windows.Visibility.Visible;
             if (listBoxCounters.Items.Count == 0)
             {
-                foreach (ChampionDto champ in listChampion.Data.Values)
+                foreach (ChampionDto champ in ChampionListDto.AllChampions)
                 {
                     CounterControl cc = new CounterControl(champ, true, false);
                     listBoxCounterChose.Items.Add(cc);

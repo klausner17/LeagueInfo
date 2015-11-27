@@ -14,8 +14,6 @@ namespace LeagueInfo.ClassApi.Request
         public delegate void GettingJsonEventHandler(int status);
         public static event GettingJsonEventHandler OnGettingData;
         public string url;
-        const string REGION = "br";
-        const string VERSION = "v1.2";
         const string KEY = @"8eee2093-91d0-4a8f-bc85-c366e7de1c33";
         public string Campo { get; set; }
         private WebRequest requester;
@@ -37,7 +35,7 @@ namespace LeagueInfo.ClassApi.Request
             requester.BeginGetResponse(new AsyncCallback(FinishWebRequest), null);
             GettingData(BEGINDOWNLOAD);
             while (!go)
-                await Task.Delay(1000);
+                await Task.Delay(500);
             GettingData(ENDDOWNLOAD);
         }
 

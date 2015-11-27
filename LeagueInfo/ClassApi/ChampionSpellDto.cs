@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace LeagueInfo.ClassApi
 {
@@ -68,7 +70,12 @@ namespace LeagueInfo.ClassApi
         [JsonProperty("tooltip")]
         public string ToolTip { get; set; }
 
-        //[JsonProperty("vars")]
-        //public List<SpellVarsData> Vars { get; set; }
+        [JsonProperty("vars")]
+        public List<SpellVarsData> Vars { get; set; }
+
+        public async Task<BitmapImage> GetImageSpell()
+        {
+            return new BitmapImage(new Uri("http://ddragon.leagueoflegends.com/cdn/" + (await EndPointDDragon.GetVersions()).GeralVersion.Champion + "/img/spell/" + this.Image.Full));
+        }
     }
 }

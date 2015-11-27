@@ -10,6 +10,7 @@ using LeagueInfo.Controls;
 using System.Windows.Input;
 using LeagueInfo.Resources;
 using System.IO.IsolatedStorage;
+using System.Collections.Generic;
 
 namespace LeagueInfo
 {
@@ -60,44 +61,27 @@ namespace LeagueInfo
             string panoramaItemSelectedName = ((PanoramaItem)panoramaMain.SelectedItem).Name;
             switch (panoramaItemSelectedName)
             {
-                case "panoramaCampeoes":
-                    ChampionsList.Items.Clear();
-                    ChampionListDto champions = new ChampionListDto();
-                    champions = await champions.LoadAllChampions();
-                    try
-                    {
-                        foreach (ChampionDto champion in champions.Data.Values)
-                        {
-                            ChampionSelected item = new ChampionSelected();
-                            item.Margin = new Thickness(10);
-                            item.Champion = champion;
-                            item.Tap += item_Tap;
-                            ChampionsList.Items.Add(item);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                    break;
+                
                 case "panoramaItens":
-                    ItensList.Children.Clear();
-                    ItemListDto itens = new ItemListDto();
-                    itens = await itens.LoadAllItens();
-                    try
+                    if (ItensList.Children.Count == 0)
                     {
-                        foreach (ItemDto item in itens.Data.Values)
+                        ItemListDto itens = new ItemListDto();
+                        itens = await itens.LoadAllItens();
+                        try
                         {
-                            ItemSelect itemSelect = new ItemSelect();
-                            itemSelect.Margin = new Thickness(0, 5, 0, 5);
-                            itemSelect.Item = item;
-                            itemSelect.OnTouch += ItemSelect_OnTouch;
-                            ItensList.Children.Add(itemSelect);
+                            foreach (ItemDto item in itens.Data.Values)
+                            {
+                                ItemSelect itemSelect = new ItemSelect();
+                                itemSelect.Margin = new Thickness(0, 5, 0, 5);
+                                itemSelect.Item = item;
+                                itemSelect.OnTouch += ItemSelect_OnTouch;
+                                ItensList.Children.Add(itemSelect);
+                            }
                         }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
                     }
                     break;
             }
@@ -137,5 +121,40 @@ namespace LeagueInfo
             settings.Clear();
             NavigationService.Navigate(new Uri("/Pages/Login.xaml", UriKind.RelativeOrAbsolute));
         }
+
+
+        private async void buttonFilterChampion_Click(object sender, RoutedEventArgs e)
+        {
+            List<string> filters = new List<string>();
+            if (filterAssassin.IsChecked == true)
+                filters.Add("assassin");
+            if (filterFigther.IsChecked == true)
+                filters.Add("figther");
+            if (filterMarksman.IsChecked == true)
+                filters.Add("marksman");
+            if (filterTank.IsChecked == true)
+                filters.Add("tank");
+            if (filterSupport.IsChecked == true)
+                filters.Add("support");
+            if (ChampionListDto.AllChampions == null)
+                await ChampionListDto.LoadAllChampions();
+            {
+                foreach (ChampionDto champion in ChampionListDto.AllChampions)
+                {
+                    foreach (string tag in champion.Tags)
+                    {
+                        if (filters.Contains(tag))
+                        {
+                            ChampionSelected item = new ChampionSelected();
+                            item.Champion = champion;
+                            item.Tap += item_Tap;
+                            ChampionsList.Items.Add(item);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }

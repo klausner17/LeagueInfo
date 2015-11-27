@@ -35,9 +35,9 @@ namespace LeagueInfo.ClassApi
             return summoner.First().Value;
         }
 
-        public BitmapImage GetProfileIcon()
+        public async Task<BitmapImage> GetProfileIcon()
         {
-            return new BitmapImage(new Uri(@"http://ddragon.leagueoflegends.com/cdn/5.18.1/img/profileicon/" + this.ProfileIconId.ToString() + ".png"));
+            return new BitmapImage(new Uri(@"http://ddragon.leagueoflegends.com/cdn/" + (await EndPointDDragon.GetVersions()).GeralVersion.ProfileIcon + "/img/profileicon/" + this.ProfileIconId.ToString() + ".png"));
         }
     }
 }

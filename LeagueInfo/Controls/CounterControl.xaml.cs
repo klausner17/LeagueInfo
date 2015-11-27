@@ -24,7 +24,6 @@ namespace LeagueInfo.Controls
             {
                 champion = value;
                 textBlockChampionName.Text = champion.Name;
-                imageSquareChampion.Source = champion.GetChampionSquare();
             }
         }
 
@@ -55,6 +54,7 @@ namespace LeagueInfo.Controls
             CanSelect = canSelect;
             if(canSelect)
                 IsSelected = IsSelected;
+            LoadImage();
         }
 
         private void UserControl_Tap(object sender, System.Windows.Input.GestureEventArgs e)
@@ -72,6 +72,11 @@ namespace LeagueInfo.Controls
                     selectedSquare.Visibility = System.Windows.Visibility.Visible;
                 }
             }
+        }
+
+        private async void LoadImage()
+        {
+            imageSquareChampion.Source = await champion.GetChampionSquare();
         }
     }
 }

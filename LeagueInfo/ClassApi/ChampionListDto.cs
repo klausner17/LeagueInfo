@@ -13,6 +13,8 @@ namespace LeagueInfo.ClassApi
     {
         const String URLALLCHAMPS = @"https://global.api.pvp.net/api/lol/static-data/br/v1.2/champion?champData=image,tags&api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33";
 
+        public static List<ChampionDto> AllChampions { get; set; }
+
         [JsonProperty("data")]
         public Dictionary<string, ChampionDto> Data { get; set; }
 
@@ -33,25 +35,16 @@ namespace LeagueInfo.ClassApi
             GC.Collect();
         }
 
-        public async Task<ChampionListDto> LoadAllChampions()
+        public static async Task LoadAllChampions()
         {
             string json = await new Requester(URLALLCHAMPS).GetJson();
             if (json == string.Empty)
                 json = new StreamReader(@"Assets\Cache\jsonchampions.txt", UnicodeEncoding.UTF8).ReadLine();
-            ChampionListDto allChampions = new ChampionListDto();
-            allChampions =  JsonConvert.DeserializeObject<ChampionListDto>(json);
-            var championsByName = from championData in allChampions.Data
-                                  orderby championData.Value.Name ascending
-                                  select championData;
-            ChampionListDto championsByOrderName = new ChampionListDto();
-            championsByOrderName.Data = new Dictionary<string, ChampionDto>();
-            int count = championsByName.Count();
-            foreach (KeyValuePair<string, ChampionDto> champ in championsByName)
-            {
-                championsByOrderName.Data.Add(champ.Key, champ.Value);
-            }
-            allChampions.Dispose();
-            return championsByOrderName;
+            ChampionListDto championData = new ChampionListDto();
+            championData =  JsonConvert.DeserializeObject<ChampionListDto>(json);
+            AllChampions = (from cd in championData.Data
+                                  orderby cd.Value.Name ascending
+                                  select cd.Value).ToList();
         }
     }
 }

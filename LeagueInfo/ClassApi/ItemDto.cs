@@ -23,9 +23,9 @@ namespace LeagueInfo.ClassApi
             return item;
         }
 
-        public BitmapImage GetImage()
+        public async Task<BitmapImage> GetImage()
         {
-            return new BitmapImage(new Uri("http://ddragon.leagueoflegends.com/cdn/5.18.1/img/item/" + this.Image.Full));
+            return new BitmapImage(new Uri("http://ddragon.leagueoflegends.com/cdn/" + (await EndPointDDragon.GetVersions()).GeralVersion.Item + "/img/item/" + this.Image.Full));
         }
     }
 }
