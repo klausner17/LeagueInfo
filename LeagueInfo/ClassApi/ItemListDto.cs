@@ -9,9 +9,11 @@ using System.IO;
 
 namespace LeagueInfo.ClassApi
 {
-    public class ItemListDto : IDisposable
+    public class ItemListDto
     {
         const string URLALLITENS = @"https://global.api.pvp.net/api/lol/static-data/br/v1.2/item?itemListData=gold,image,maps,tags&api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33";
+
+        public static List<ItemDto> AllItems { get; set; }
 
         [JsonProperty("basic")]
         public BasicDataDto Basic { get; set; }
@@ -31,15 +33,13 @@ namespace LeagueInfo.ClassApi
         [JsonProperty("version")]
         public string Version { get; set; }
 
-        public async Task<ItemListDto> LoadAllItens()
+        public static async Task LoadAllItens()
         {
             string json = await new Requester(URLALLITENS).GetJson();
-            return JsonConvert.DeserializeObject<ItemListDto>(json);
-        }
-
-        public void Dispose()
-        {
-            GC.Collect();
+            ItemListDto dataItens = JsonConvert.DeserializeObject<ItemListDto>(json);
+            AllItems = (from itens in dataItens.Data
+                        orderby itens.Value.Name ascending
+                        select itens.Value).ToList();
         }
     }
 }

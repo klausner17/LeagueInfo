@@ -10,65 +10,75 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    mc:Ignorable="d"
-    shell:SystemTray.IsVisible="True" Loaded="PhoneApplicationPage_Loaded">
+    mc:Ignorable="d" Loaded="PhoneApplicationPage_Loaded" UseLayoutRounding="False">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <!--TitlePanel contains the name of the application and page title-->
-        <Grid Grid.Row="0" Background="White">
+    <Grid x:Name="LayoutRoot">
+        <Grid>
+            <Grid.Background>
+                <SolidColorBrush Color="Black" Opacity="0.4"/>
+            </Grid.Background>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="60"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="120"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Image Width="100" Height="100"
-                   VerticalAlignment="Center" HorizontalAlignment="Center"
-                   Name="imageInvocador" />
-            <Grid Grid.Column="1" Grid.Row="0">
+            <!--TitlePanel contains the name of the application and page title-->
+            <Grid Grid.Row="0">
+                <Grid.Background>
+                    <SolidColorBrush Color="Black" Opacity="0.5"/>
+                </Grid.Background>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
-                <TextBlock Name="textBlockNomeInv" Text="Nome do Invocador"
-                           VerticalAlignment="Center" Margin="5,5,0,5" 
-                            Grid.Row="0" Foreground="Black" FontSize="26" />
-                <TextBlock Name="textBlockLevel" Text="Level "
-                           VerticalAlignment="Center" Margin="5,5,0,5"
-                           Grid.Row="1" Foreground="Black" FontSize="26"  />
-                <TextBlock Name="textBlockElo" Text="Elo"
-                           VerticalAlignment="Center" Margin="5,5,0,5"
-                           Grid.Row="2" Foreground="Black" FontSize="26" />
-            </Grid>
-            <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="120"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Name="textBlockVit" Text=" vitorias"
+                <ProgressBar Name="loadProgress" IsIndeterminate="True" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="10" Visibility="Collapsed" Grid.ColumnSpan="2" />
+                <Image Width="120" Height="129"
+                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Name="imageInvocador" Margin="0,0,0,4.75" />
+                <Grid Grid.Column="1" Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Name="textBlockNomeInv" Text="Nome do Invocador"
+                           VerticalAlignment="Center" Margin="5,5,0,5" 
+                            Grid.Row="0" Foreground="White" FontSize="26" />
+                    <TextBlock Name="textBlockLevel" Text="Level "
+                           VerticalAlignment="Center" Margin="5,5,0,5"
+                           Grid.Row="1" Foreground="White" FontSize="26"  />
+                    <TextBlock Name="textBlockElo" Text="Elo"
+                           VerticalAlignment="Center" Margin="5,5,0,5"
+                           Grid.Row="2" Foreground="White" FontSize="26" />
+                </Grid>
+                <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Name="textBlockVit" Text=" vitorias"
                            VerticalAlignment="Center" HorizontalAlignment="Center"
                            Grid.Column="0"
                             FontSize="26" Foreground="#FF139C0D"/>
-                <TextBlock Name="textBlockDer" Text=" derrotas" FontSize="26"
+                    <TextBlock Name="textBlockDer" Text=" derrotas" FontSize="26"
                            VerticalAlignment="Center" HorizontalAlignment="Center"
                            Grid.Column="1" Foreground="#FFE83737"/>
+                </Grid>
             </Grid>
+            <TextBlock Margin="10,0,0,0" FontSize="38" Grid.Row="1" Text="Ultimas partidas" />
+            <ListBox Grid.Row="2" Name="listboxPartidas" Grid.RowSpan="2">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Margin" Value="3"/>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>
         </Grid>
-
-        <phone:Panorama Grid.Row="1" Name="panoramaMain">
-            <phone:PanoramaItem Name="panoramaUltimasPartidas" Header="partidas">
-                <ListBox Name="listboxPartidas" />
-            </phone:PanoramaItem>
-        </phone:Panorama>
     </Grid>
 
 </phone:PhoneApplicationPage>

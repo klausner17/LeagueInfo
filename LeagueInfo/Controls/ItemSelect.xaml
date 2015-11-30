@@ -7,17 +7,19 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    d:DesignHeight="100" d:DesignWidth="480"
-    MouseLeftButtonDown="UserControl_MouseLeftButtonDown" MouseLeftButtonUp="UserControl_MouseLeftButtonUp">
+    d:DesignHeight="100" d:DesignWidth="480">
 
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot">
+        <Grid.Background>
+            <SolidColorBrush Color="Black" Opacity="0.3"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="310"/>
         </Grid.ColumnDefinitions>
         <Image Name="iconItem" Width="90" Height="90" Grid.RowSpan="2"/>
         <TextBlock Name="descriptionItem" Text="Descrição" 

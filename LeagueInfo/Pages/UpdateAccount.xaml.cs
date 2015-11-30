@@ -53,7 +53,7 @@ namespace LeagueInfo.Pages
                 else
                     MessageBox.Show("Erro ao alterar o usuario.");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Erro ao alterar o usuario.");
             }

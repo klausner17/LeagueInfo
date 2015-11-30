@@ -92,7 +92,7 @@ namespace LeagueInfo.Pages
                     settings.Save();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Erro ao fazer login");
             }

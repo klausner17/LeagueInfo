@@ -10,12 +10,6 @@ namespace LeagueInfo.Controls
     {
         private ItemDto item;
 
-        private Point coordMouseDown;
-
-        public delegate void OnClick(object sender);
-
-        public event OnClick OnTouch;
-
         public ItemDto Item
         {
             get { return this.item; }
@@ -33,25 +27,6 @@ namespace LeagueInfo.Controls
             InitializeComponent();
             item = new ItemDto();
         }
-
-        private void UserControl_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            coordMouseDown = e.GetPosition(this);
-        }
-
-        private void UserControl_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            Point finalPosition = e.GetPosition(this);
-            if (finalPosition == coordMouseDown)
-                OnTouchEvent();
-        }
-
-        private void OnTouchEvent()
-        {
-            if (OnTouch != null)
-                OnTouch(this);
-        }
-
 
         private async void LoadIcon()
         {

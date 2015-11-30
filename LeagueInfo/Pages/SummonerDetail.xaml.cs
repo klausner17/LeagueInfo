@@ -11,14 +11,36 @@ using LeagueInfo.ClassApi;
 using System.Windows.Media.Imaging;
 using LeagueInfo.Controls;
 using System.Windows.Media;
+using LeagueInfo.ClassApi.Request;
 
 namespace LeagueInfo.Pages
 {
     public partial class SummonerDetail : PhoneApplicationPage
     {
+        private void ProgressBarVisibility(bool status)
+        {
+            if (status)
+                loadProgress.Visibility = Visibility.Visible;
+            else
+                loadProgress.Visibility = Visibility.Collapsed;
+        }
         public SummonerDetail()
         {
             InitializeComponent();
+            Requester.OnGettingData += Requester_OnGettingData;
+        }
+
+        private void Requester_OnGettingData(int status)
+        {
+            switch (status)
+            {
+                case Requester.BEGINDOWNLOAD:
+                    ProgressBarVisibility(true);
+                    break;
+                case Requester.ENDDOWNLOAD:
+                    ProgressBarVisibility(false);
+                    break;
+            }
         }
 
         private async void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
@@ -53,8 +75,8 @@ namespace LeagueInfo.Pages
                 ImageBrush imgBrush = new ImageBrush();
                 BitmapImage source = (await new ChampionDto().SearchChampionAllData(idChampPref)).GetChampionSplash(0);
                 imgBrush.ImageSource = source;
-                imgBrush.Stretch = Stretch.None;
-                panoramaMain.Background = imgBrush;
+                imgBrush.Stretch = Stretch.UniformToFill;
+                LayoutRoot.Background = imgBrush;
             }
             catch { }
         }

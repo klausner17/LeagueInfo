@@ -13,7 +13,6 @@ namespace LeagueInfo.Controls
     public partial class BuildControl : UserControl
     {
         private LeagueWS.championbuild championBuild;
-        private List<LeagueWS.buildstage> listBuildStage;
 
         public List<int> IdItem0 { get; set; }
         public int IdItem1 { get; set; }

@@ -11,7 +11,7 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="Portrait" Orientation="Portrait" UseLayoutRounding="True" Loaded="phoneApplicationPage_Loaded">
+    SupportedOrientations="Portrait" Orientation="Portrait" UseLayoutRounding="True" >
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/BackGround.jpg" Stretch="UniformToFill"/>
@@ -22,7 +22,7 @@
             </Grid.Background>
             <TextBlock Padding="5" FontSize="24" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto">league info</TextBlock>
         </Grid>
-        <phone:Panorama Name="panoramaMain" Margin="0,42,0,0" SelectionChanged="Panorama_SelectionChanged">
+        <phone:Panorama Name="panoramaMain" Margin="0,42,0,0">
             <phone:PanoramaItem Header="invocador" Name="panoramaInvocador">
                 <StackPanel>
                     <TextBox Name="textBlockInvocador" InputScope="Chat" KeyDown="textBlockInvocador_KeyDown"/>
@@ -49,17 +49,77 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Button Grid.ColumnSpan="2"  Name="buttonFilterChampion" Click="buttonFilterChampion_Click">Filtrar</Button>
-                        <CheckBox Grid.Row="1" Grid.Column="0" Name="filterAssassin">Assassino</CheckBox>
-                        <CheckBox Grid.Row="1" Grid.Column="1" Name="filerMage">Mago</CheckBox>
-                        <CheckBox Grid.Row="2" Grid.Column="0" Name="filterFigther">Lutador</CheckBox>
-                        <CheckBox Grid.Row="2" Grid.Column="1" Name="filterTank">Tanque</CheckBox>
-                        <CheckBox Grid.Row="3" Grid.Column="0" Name="filterSupport">Suporte</CheckBox>
-                        <CheckBox Grid.Row="3" Grid.Column="1" Name="filterMarksman">Atirador</CheckBox>
+                        <CheckBox Grid.Row="1" IsChecked="true"  Grid.Column="0" Name="filterChampionAssassin">Assassino</CheckBox>
+                        <CheckBox Grid.Row="1" IsChecked="true" Grid.Column="1" Name="filterChampionMage">Mago</CheckBox>
+                        <CheckBox Grid.Row="2" IsChecked="true" Grid.Column="0" Name="filterChampionFigther">Lutador</CheckBox>
+                        <CheckBox Grid.Row="2" IsChecked="true" Grid.Column="1" Name="filterChampionTank">Tanque</CheckBox>
+                        <CheckBox Grid.Row="3" IsChecked="true" Grid.Column="0" Name="filterChampionSupport">Suporte</CheckBox>
+                        <CheckBox Grid.Row="3" IsChecked="true" Grid.Column="1" Name="filterChampionMarksman">Atirador</CheckBox>
                     </Grid>
                     <ListBox Name="ChampionsList" Grid.Row="1">
                         <ListBox.ItemContainerStyle>
                             <Style TargetType="ListBoxItem">
                                 <Setter Property="Margin" Value="3"/>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                    </ListBox>
+                </Grid>
+            </phone:PanoramaItem>
+            <phone:PanoramaItem Header="itens" Name="panoramaItens">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.ColumnSpan="2"  Name="buttonFilterItem" Click="buttonFilterItem_Click">Filtrar</Button>
+                        <toolkit:ExpanderView Name="expanderDesfense" Grid.Row="1" FontSize="28" HasItems="True" Expander="Defesa" Margin="-30,0,0,0">
+                            <toolkit:ExpanderView.Items>
+                                <CheckBox Name="filterItemLife">Vida</CheckBox>
+                                <CheckBox Name="filterItemMagicResistence">Resistencia mágica</CheckBox>
+                                <CheckBox Name="filterItemLifeRegen">Regeneração de vida</CheckBox>
+                                <CheckBox Name="filterItemArmor">Armadura</CheckBox>
+                            </toolkit:ExpanderView.Items>
+                        </toolkit:ExpanderView>
+                        <toolkit:ExpanderView Name="expanderDamage" Grid.Row="2" FontSize="28" Expander="Ataque" Margin="-30,0,0,0">
+                            <CheckBox Name="filterItemDamage">Dano</CheckBox>
+                            <CheckBox Name="filterItemCritic">Acerto crítico</CheckBox>
+                            <CheckBox Name="filterItemAttackSpeed">Velocidade de ataque</CheckBox>
+                            <CheckBox Name="filterItemLifeSteal">Roubo de vida</CheckBox>
+                            <CheckBox Name="filterItemArmorPenetration">Penetração de armadura</CheckBox>
+                        </toolkit:ExpanderView>
+                        <toolkit:ExpanderView Name="expanderSpell" Grid.Row="3" Expander="Magia" FontSize="28" Margin="-30,0,0,0">
+                            <CheckBox Name="filterItemAbillity">Poder de habilidade</CheckBox>
+                            <CheckBox Name="filterItemCooldownReduction">Redução do tempo de recarga</CheckBox>
+                            <CheckBox Name="filterItemMana">Mana</CheckBox>
+                            <CheckBox Name="filterItemManaRegen">Regeneração de mana</CheckBox>
+                            <CheckBox Name="filterItemMagicPen">Penetração mágica</CheckBox>
+                            <CheckBox Name="filterItemSpellVamp">Vampirimo mágico</CheckBox>
+                        </toolkit:ExpanderView>
+                        <toolkit:ExpanderView Name="expanderUtil" Grid.Row="4" Expander="Utilidade" FontSize="28" Margin="-30,0,0,0">
+                            <CheckBox Name="filterItemSpeed">Movimentação</CheckBox>
+                            <CheckBox Name="filterItemConsumable">Consumíves</CheckBox>
+                            <CheckBox Name="filterItemTrinket">Amuletos</CheckBox>
+                            <CheckBox Name="filterItemVision">Visão</CheckBox>
+                            <CheckBox Name="filterItemGoldPer">Ouro</CheckBox>
+                            <CheckBox Name="filterItemJungle">Selva</CheckBox>
+                        </toolkit:ExpanderView>
+                    </Grid>
+                    <ListBox Name="ItensList" Grid.Row="1">
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="Margin" Value="3"/>
+                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
                             </Style>
                         </ListBox.ItemContainerStyle>
                         <ListBox.ItemsPanel>
@@ -69,11 +129,6 @@
                         </ListBox.ItemsPanel>
                     </ListBox>
                 </Grid>
-            </phone:PanoramaItem>
-            <phone:PanoramaItem Header="itens" Name="panoramaItens">
-                <ScrollViewer VerticalAlignment="Stretch">
-                    <StackPanel Name="ItensList" />
-                </ScrollViewer>
             </phone:PanoramaItem>
         </phone:Panorama>
         <ProgressBar Visibility="Collapsed" HorizontalAlignment="Stretch" IsIndeterminate="True"  VerticalAlignment="center" Height="20" Width="{Binding Width, ElementName=phoneApplicationPage}" Foreground="White"  Name="loadProgress" Margin="0"/>

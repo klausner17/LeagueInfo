@@ -51,40 +51,9 @@ namespace LeagueInfo
             }
         }
 
-        private void ItemSelect_OnTouch(object sender)
+        private void ItemSelect_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-            MessageBox.Show((sender as ItemSelect).Item.SanitizedDescriprion);
-        }
-
-        private async void Panorama_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-            string panoramaItemSelectedName = ((PanoramaItem)panoramaMain.SelectedItem).Name;
-            switch (panoramaItemSelectedName)
-            {
-                
-                case "panoramaItens":
-                    if (ItensList.Children.Count == 0)
-                    {
-                        ItemListDto itens = new ItemListDto();
-                        itens = await itens.LoadAllItens();
-                        try
-                        {
-                            foreach (ItemDto item in itens.Data.Values)
-                            {
-                                ItemSelect itemSelect = new ItemSelect();
-                                itemSelect.Margin = new Thickness(0, 5, 0, 5);
-                                itemSelect.Item = item;
-                                itemSelect.OnTouch += ItemSelect_OnTouch;
-                                ItensList.Children.Add(itemSelect);
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message);
-                        }
-                    }
-                    break;
-            }
+            //MessageBox.Show((sender as ItemSelect).Item.SanitizedDescriprion);
         }
 
         void item_Tap(object sender, System.Windows.Input.GestureEventArgs e)
@@ -125,36 +94,126 @@ namespace LeagueInfo
 
         private async void buttonFilterChampion_Click(object sender, RoutedEventArgs e)
         {
+            buttonFilterChampion.IsEnabled = false;
             List<string> filters = new List<string>();
-            if (filterAssassin.IsChecked == true)
-                filters.Add("assassin");
-            if (filterFigther.IsChecked == true)
-                filters.Add("figther");
-            if (filterMarksman.IsChecked == true)
-                filters.Add("marksman");
-            if (filterTank.IsChecked == true)
-                filters.Add("tank");
-            if (filterSupport.IsChecked == true)
-                filters.Add("support");
+            if (filterChampionAssassin.IsChecked == true)
+                filters.Add("Assassin");
+            if (filterChampionFigther.IsChecked == true)
+                filters.Add("Figther");
+            if (filterChampionMarksman.IsChecked == true)
+                filters.Add("Marksman");
+            if (filterChampionTank.IsChecked == true)
+                filters.Add("Tank");
+            if (filterChampionSupport.IsChecked == true)
+                filters.Add("Support");
+            if (filterChampionMage.IsChecked == true)
+                filters.Add("Mage");
             if (ChampionListDto.AllChampions == null)
                 await ChampionListDto.LoadAllChampions();
+            ChampionsList.Items.Clear();
+            foreach (ChampionDto champion in ChampionListDto.AllChampions)
             {
-                foreach (ChampionDto champion in ChampionListDto.AllChampions)
+                foreach (string tag in champion.Tags)
                 {
-                    foreach (string tag in champion.Tags)
+                    if (filters.Contains(tag))
                     {
-                        if (filters.Contains(tag))
-                        {
-                            ChampionSelected item = new ChampionSelected();
-                            item.Champion = champion;
-                            item.Tap += item_Tap;
-                            ChampionsList.Items.Add(item);
-                            break;
-                        }
+                        ChampionSelected item = new ChampionSelected();
+                        item.Champion = champion;
+                        item.Tap += item_Tap;
+                        ChampionsList.Items.Add(item);
+                        break;
                     }
                 }
             }
+            buttonFilterChampion.IsEnabled = true;
         }
 
+        private async void buttonFilterItem_Click(object sender, RoutedEventArgs e)
+        {
+            buttonFilterItem.IsEnabled = false;
+            List<string> filters = new List<string>();
+            if (filterItemAbillity.IsChecked == true)
+                filters.Add("SpellDamage");
+            if (filterItemArmor.IsChecked == true)
+                filters.Add("Armor");
+            if (filterItemAttackSpeed.IsChecked == true)
+                filters.Add("AttackSpeed");
+            if (filterItemConsumable.IsChecked == true)
+                filters.Add("Comsumable");
+            if (filterItemCooldownReduction.IsChecked == true)
+                filters.Add("CooldownReduction");
+            if (filterItemCritic.IsChecked == true)
+                filters.Add("CriticalStrike");
+            if (filterItemDamage.IsChecked == true)
+                filters.Add("Damage");
+            if (filterItemLife.IsChecked == true)
+                filters.Add("Health");
+            if (filterItemLifeRegen.IsChecked == true)
+                filters.Add("HealthRegen");
+            if (filterItemLifeSteal.IsChecked == true)
+                filters.Add("LifeSteal");
+            if (filterItemMagicResistence.IsChecked == true)
+                filters.Add("SpellBlock");
+            if (filterItemMana.IsChecked == true)
+                filters.Add("Mana");
+            if (filterItemManaRegen.IsChecked == true)
+                filters.Add("ManaRegen");
+            if (filterItemTrinket.IsChecked == true)
+                filters.Add("Trinket");
+            if (filterItemVision.IsChecked == true)
+                filters.Add("Vision");
+            if (filterItemMagicPen.IsChecked == true)
+                filters.Add("MagicPenetration");
+            if (filterItemSpellVamp.IsChecked == true)
+                filters.Add("SpellVamp");
+            if (filterItemGoldPer.IsChecked == true)
+                filters.Add("GoldPer");
+            if (filterItemJungle.IsChecked == true)
+                filters.Add("Jungle");
+            if (filterItemSpeed.IsChecked == true)
+            {
+                filters.Add("Boots");
+                filters.Add("NonbootsMovement");
+            }
+            if (filterItemArmorPenetration.IsChecked == true)
+                filters.Add("ArmorPenetration");
+            if (filters.Count == 0)
+                filters.Add("All");
+            ItensList.Items.Clear();
+            if (ItemListDto.AllItems == null)
+                await ItemListDto.LoadAllItens();
+            foreach (ItemDto item in ItemListDto.AllItems)
+            {
+                if (!filters.Contains("All"))
+                {
+                    if (item.Tags != null)
+                    {
+                        foreach (string tag in item.Tags)
+                        {
+                            if (filters.Contains(tag))
+                            {
+                                ItemSelect itemSelect = new ItemSelect();
+                                itemSelect.Item = item;
+                                itemSelect.Tap += ItemSelect_Tap;
+                                ItensList.Items.Add(itemSelect);
+                                break;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    ItemSelect itemSelect = new ItemSelect();
+                    itemSelect.Item = item;
+                    itemSelect.Tap += ItemSelect_Tap;
+                    ItensList.Items.Add(itemSelect);
+                }
+            }
+            expanderDamage.IsExpanded = false;
+            expanderDesfense.IsExpanded = false;
+            expanderSpell.IsExpanded = false;
+            expanderUtil.IsExpanded = false;
+            buttonFilterItem.IsEnabled = true;
+        }
     }
 }

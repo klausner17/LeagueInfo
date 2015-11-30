@@ -19,7 +19,6 @@ namespace LeagueInfo.Pages
     {
         private LeagueWS.LeagueServiceClient lsComment;
         private LeagueWS.LeagueServiceClient lsCounter;
-        private LeagueWS.LeagueServiceClient lsBuild;
         private LeagueWS.LeagueServiceClient lsInsertCounter;
         private LeagueWS.LeagueServiceClient lsInsertComment;
 
@@ -98,7 +97,7 @@ namespace LeagueInfo.Pages
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Não foi possível encontrar os comentários do campeão.");
             }
@@ -131,7 +130,7 @@ namespace LeagueInfo.Pages
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Não foi possível encontrar os counter do campeão.");
             }
@@ -181,7 +180,7 @@ namespace LeagueInfo.Pages
                 else
                     CarregarComentarios();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Erro ao efetuar comentário.");
             }
@@ -249,7 +248,7 @@ namespace LeagueInfo.Pages
                 else
                     MessageBox.Show("Não foi possível inserir o counter do campeão.");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Não foi possível inserir o counter do campeão.");
             }

@@ -15,11 +15,6 @@ namespace LeagueInfo
     public partial class ChampionSelected : UserControl
     {
         private ChampionDto champion;
-        private Point coordMouseDown;
-
-        public delegate void OnClick(object sender);
-
-        public event OnClick OnTouch;
 
         public ChampionDto Champion
         {
@@ -72,24 +67,6 @@ namespace LeagueInfo
         public ChampionSelected()
         {
             InitializeComponent();
-        }
-
-        private void userControl_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            coordMouseDown = e.GetPosition(userControl);
-        }
-
-        private void userControl_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            Point finalPosition = e.GetPosition(userControl);
-            if (finalPosition == coordMouseDown)
-                OnTouchEvent();
-        }
-
-        private void OnTouchEvent()
-        {
-            if (OnTouch != null)
-                OnTouch(this);
         }
 
         private async void LoadIcon()
