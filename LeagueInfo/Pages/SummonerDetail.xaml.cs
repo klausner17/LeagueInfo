@@ -24,6 +24,7 @@ namespace LeagueInfo.Pages
             else
                 loadProgress.Visibility = Visibility.Collapsed;
         }
+
         public SummonerDetail()
         {
             InitializeComponent();
@@ -45,40 +46,43 @@ namespace LeagueInfo.Pages
 
         private async void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
         {
+            string nameSummoner = NavigationContext.QueryString["name"];
+            SummonerDto summoner = new SummonerDto();
+            textBlockNomeInv.Text = summoner.Nome;
+            textBlockLevel.Text += summoner.SummonerLevel.ToString();
+            summoner = await summoner.SearchSummoner(nameSummoner);
             try
             {
-                string nameSummoner = NavigationContext.QueryString["name"];
-                SummonerDto summoner = new SummonerDto();
                 LeagueDto leagueSummoner = new LeagueDto();
-                summoner = await summoner.SearchSummoner(nameSummoner);
                 leagueSummoner = await leagueSummoner.SearchLeague(summoner.Id);
-                textBlockNomeInv.Text = summoner.Nome;
-                textBlockLevel.Text += summoner.SummonerLevel.ToString();
-                if (leagueSummoner.Entries[0].Division != null)
-                    textBlockElo.Text = leagueSummoner.Tier + " " + leagueSummoner.Entries[0].Division;
-                else
-                    textBlockElo.Text = "Unranked";
+                textBlockElo.Text = leagueSummoner.Tier + " " + leagueSummoner.Entries[0].Division;
                 textBlockVit.Text = leagueSummoner.Entries[0].Wins > 1 ? leagueSummoner.Entries[0].Wins.ToString() + " vitórias" : leagueSummoner.Entries[0].Wins.ToString() + " vitória";
                 textBlockDer.Text = leagueSummoner.Entries[0].Losses > 1 ? leagueSummoner.Entries[0].Losses.ToString() + " derrotas" : leagueSummoner.Entries[0].Losses.ToString() + " derrota";
-                imageInvocador.Source = await summoner.GetProfileIcon();
-                RecentGamesDto gamesRecent = await new RecentGamesDto().GetLatestGamesById(summoner.Id);
-                List<int> lastChampionsPlayed = new List<int>();
-                foreach (GameDto game in gamesRecent.Games)
-                {
-                    lastChampionsPlayed.Add(game.ChampionId);
-                    LastMatches controlMatch = new LastMatches(game);
-                    controlMatch.Margin = new Thickness(0, 0, 0, 10);
-                    controlMatch.Load();
-                    listboxPartidas.Items.Add(controlMatch);
-                }
-                int idChampPref = lastChampionsPlayed[new Random().Next(lastChampionsPlayed.Count - 1)];
-                ImageBrush imgBrush = new ImageBrush();
-                BitmapImage source = (await new ChampionDto().SearchChampionAllData(idChampPref)).GetChampionSplash(0);
-                imgBrush.ImageSource = source;
-                imgBrush.Stretch = Stretch.UniformToFill;
-                LayoutRoot.Background = imgBrush;
             }
-            catch { }
+            catch
+            {
+                MessageBox.Show("Informações de derrotas e vitórias são apenas para jogadores ranqueados.", "Informação", MessageBoxButton.OK);
+                textBlockElo.Text = "Unranked";
+                textBlockVit.Text = "0 vitória";
+                textBlockDer.Text = "0 derrota";
+            }
+            imageInvocador.Source = await summoner.GetProfileIcon();
+            RecentGamesDto gamesRecent = await new RecentGamesDto().GetLatestGamesById(summoner.Id);
+            List<int> lastChampionsPlayed = new List<int>();
+            foreach (GameDto game in gamesRecent.Games)
+            {
+                lastChampionsPlayed.Add(game.ChampionId);
+                LastMatches controlMatch = new LastMatches(game);
+                controlMatch.Margin = new Thickness(0, 0, 0, 10);
+                controlMatch.Load();
+                listboxPartidas.Items.Add(controlMatch);
+            }
+            int idChampPref = lastChampionsPlayed[new Random().Next(lastChampionsPlayed.Count - 1)];
+            ImageBrush imgBrush = new ImageBrush();
+            BitmapImage source = (await new ChampionDto().SearchChampionAllData(idChampPref)).GetChampionSplash(0);
+            imgBrush.ImageSource = source;
+            imgBrush.Stretch = Stretch.UniformToFill;
+            LayoutRoot.Background = imgBrush;
         }
     }
 }

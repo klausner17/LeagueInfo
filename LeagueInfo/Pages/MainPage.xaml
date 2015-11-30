@@ -47,14 +47,16 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Button Grid.ColumnSpan="2"  Name="buttonFilterChampion" Click="buttonFilterChampion_Click">Filtrar</Button>
-                        <CheckBox Grid.Row="1" IsChecked="true"  Grid.Column="0" Name="filterChampionAssassin">Assassino</CheckBox>
-                        <CheckBox Grid.Row="1" IsChecked="true" Grid.Column="1" Name="filterChampionMage">Mago</CheckBox>
-                        <CheckBox Grid.Row="2" IsChecked="true" Grid.Column="0" Name="filterChampionFigther">Lutador</CheckBox>
-                        <CheckBox Grid.Row="2" IsChecked="true" Grid.Column="1" Name="filterChampionTank">Tanque</CheckBox>
-                        <CheckBox Grid.Row="3" IsChecked="true" Grid.Column="0" Name="filterChampionSupport">Suporte</CheckBox>
-                        <CheckBox Grid.Row="3" IsChecked="true" Grid.Column="1" Name="filterChampionMarksman">Atirador</CheckBox>
+                        <Button Grid.ColumnSpan="3"  Name="buttonFilterChampion" Click="buttonFilterChampion_Click">Filtrar</Button>
+                        <Button Grid.ColumnSpan="3" Grid.Row="1"  Name="buttonFilterFreeWeek" Click="buttonFilterFreeWeek_Click">Free Week</Button>
+                        <CheckBox FontSize="20" Grid.Row="2" IsChecked="true" Grid.Column="0" Name="filterChampionAssassin" Grid.ColumnSpan="2">Assassino</CheckBox>
+                        <CheckBox FontSize="20" Grid.Row="2" IsChecked="true" Grid.Column="1" Name="filterChampionMage">Mago</CheckBox>
+                        <CheckBox FontSize="20" Grid.Row="2" IsChecked="true" Grid.Column="2" Name="filterChampionFigther" Grid.ColumnSpan="2">Lutador</CheckBox>
+                        <CheckBox FontSize="20" Grid.Row="3" IsChecked="true" Grid.Column="0" Name="filterChampionTank">Tanque</CheckBox>
+                        <CheckBox FontSize="20" Grid.Row="3" IsChecked="true" Grid.Column="1" Name="filterChampionSupport" Grid.ColumnSpan="2">Suporte</CheckBox>
+                        <CheckBox FontSize="20"  Grid.Row="3" IsChecked="true" Grid.Column="2" Name="filterChampionMarksman">Atirador</CheckBox>
                     </Grid>
                     <ListBox Name="ChampionsList" Grid.Row="1">
                         <ListBox.ItemContainerStyle>

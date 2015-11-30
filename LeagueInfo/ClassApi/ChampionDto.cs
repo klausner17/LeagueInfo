@@ -71,6 +71,21 @@ namespace LeagueInfo.ClassApi
         [JsonProperty("title")]
         public string Title { get; set; }
 
+        [JsonProperty("active")]
+        public bool Active { get; set; }
+
+        [JsonProperty("botEnabled")]
+        public bool BotEnabled { get; set; }
+
+        [JsonProperty("botMmEnabled")]
+        public bool BotMmEnabled { get; set; }
+
+        [JsonProperty("freeToPlay")]
+        public bool FreeToPlay { get; set; }
+
+        [JsonProperty("rankedPlayEnabled")]
+        public bool RankedPlayEnabled { get; set; }
+
         public async Task<ChampionDto> SearchChampionAllData(long idChampion)
         {
             string json = await new Requester(@"https://global.api.pvp.net/api/lol/static-data/br/v1.2/champion/" + idChampion.ToString() + 

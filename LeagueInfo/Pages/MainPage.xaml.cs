@@ -53,7 +53,8 @@ namespace LeagueInfo
 
         private void ItemSelect_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-            //MessageBox.Show((sender as ItemSelect).Item.SanitizedDescriprion);
+            ItemDto itemSelected = (sender as ItemSelect).Item;
+            NavigationService.Navigate(new Uri("/Pages/ItemDetail.xaml?id="+itemSelected.Id, UriKind.RelativeOrAbsolute));
         }
 
         void item_Tap(object sender, System.Windows.Input.GestureEventArgs e)
@@ -90,7 +91,6 @@ namespace LeagueInfo
             settings.Clear();
             NavigationService.Navigate(new Uri("/Pages/Login.xaml", UriKind.RelativeOrAbsolute));
         }
-
 
         private async void buttonFilterChampion_Click(object sender, RoutedEventArgs e)
         {
@@ -214,6 +214,11 @@ namespace LeagueInfo
             expanderSpell.IsExpanded = false;
             expanderUtil.IsExpanded = false;
             buttonFilterItem.IsEnabled = true;
+        }
+
+        private void buttonFilterFreeeWeek_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

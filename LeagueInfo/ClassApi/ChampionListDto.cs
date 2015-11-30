@@ -15,6 +15,8 @@ namespace LeagueInfo.ClassApi
 
         public static List<ChampionDto> AllChampions { get; set; }
 
+        public static List<ChampionDto> ChampionsFreeWeek { get; set; }
+
         [JsonProperty("data")]
         public Dictionary<string, ChampionDto> Data { get; set; }
 
@@ -38,13 +40,17 @@ namespace LeagueInfo.ClassApi
         public static async Task LoadAllChampions()
         {
             string json = await new Requester(URLALLCHAMPS).GetJson();
-            if (json == string.Empty)
-                json = new StreamReader(@"Assets\Cache\jsonchampions.txt", UnicodeEncoding.UTF8).ReadLine();
             ChampionListDto championData = new ChampionListDto();
             championData =  JsonConvert.DeserializeObject<ChampionListDto>(json);
             AllChampions = (from cd in championData.Data
                                   orderby cd.Value.Name ascending
                                   select cd.Value).ToList();
+        }
+
+        public static async Task LoadFreeWeek()
+        {
+            string json = await new Requester(@"https://br.api.pvp.net/api/lol/br/v1.2/champion?freeToPlay=true&api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33").GetJson();
+            ChampionsFreeWeek = JsonConvert.DeserializeObject<List<ChampionDto>>(json);
         }
     }
 }

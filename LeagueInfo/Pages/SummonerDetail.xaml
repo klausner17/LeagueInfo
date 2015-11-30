@@ -46,7 +46,7 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Name="textBlockNomeInv" Text="Nome do Invocador"
+                    <TextBlock Name="textBlockNomeInv" Text=""
                            VerticalAlignment="Center" Margin="5,5,0,5" 
                             Grid.Row="0" Foreground="White" FontSize="26" />
                     <TextBlock Name="textBlockLevel" Text="Level "
