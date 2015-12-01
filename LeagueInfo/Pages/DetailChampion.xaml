@@ -24,7 +24,7 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Top">
             <StackPanel.Background>
-                <SolidColorBrush Color="{StaticResource PhoneAccentColor}" Opacity="0.3"/>
+                <SolidColorBrush Color="{StaticResource PhoneAccentColor}" />
             </StackPanel.Background>
             <TextBlock TextAlignment="Left" Name="championName" FontSize="38" Text="champion" Margin="10,0,0,0"/>
             <Grid Margin="10,0,0,0">
@@ -42,7 +42,7 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <TextBlock FontSize="24" Text="Defesa" />
-                <ProgressBar Name="defenseInfo" Grid.Column="1" Foreground="#FF73B843" Minimum="0" Maximum="10" Margin="0,0,10,0" Height="20" />
+                <ProgressBar Name="defenseInfo" Grid.Column="1" Foreground="#FF1F3816" Minimum="0" Maximum="10" Margin="0,0,10,0" Height="20" />
             </Grid>
             <Grid Margin="10,0,0,0">
                 <Grid.ColumnDefinitions>
@@ -67,7 +67,7 @@
             <!--Panorama item one-->
             <phone:PanoramaItem Header="lore">
                 <ScrollViewer VerticalAlignment="Stretch">
-                    <TextBlock TextWrapping="Wrap" Name="lore"></TextBlock>
+                    <TextBlock TextWrapping="Wrap" Name="lore"/>
                 </ScrollViewer>
             </phone:PanoramaItem>
 

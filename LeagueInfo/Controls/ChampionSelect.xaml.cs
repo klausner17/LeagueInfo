@@ -25,6 +25,8 @@ namespace LeagueInfo
                 this.title.Text = value.Name;
                 this.description.Text = value.Title;
                 this.tags.Text = string.Empty;
+                this.info.Text = value.FreeToPlay ? "free" : "";
+                this.info.Text += !value.Active ? "" : " - destivado";
                 LoadIcon();
                 foreach (string tag in value.Tags)
                 {

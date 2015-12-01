@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
-  <DefaultLanguage xmlns="" code="en-US" />
-  <App xmlns="" ProductID="{b06376d0-fdce-4c89-9809-b8702455967f}" Title="LeagueInfo" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="LeagueInfo author" Description="Sample description" Publisher="LeagueInfo" PublisherID="{14a45ae0-1de6-4916-890e-de64921f59bd}">
+  <DefaultLanguage xmlns="" code="pt-BR" />
+  <Languages xmlns="">
+    <Language code="pt-BR" />
+  </Languages>
+  <App xmlns="" ProductID="{b06376d0-fdce-4c89-9809-b8702455967f}" Title="LeagueInfo" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="LeagueInfo author" Description="Aplicações para mostrar informações do jogo League of Legends." Publisher="LeagueInfo" PublisherID="{14a45ae0-1de6-4916-890e-de64921f59bd}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
@@ -28,8 +31,7 @@
           </BackTitle>
           <DeviceLockImageURI>
           </DeviceLockImageURI>
-          <HasLarge>
-          </HasLarge>
+          <HasLarge>False</HasLarge>
         </TemplateFlip>
       </PrimaryToken>
     </Tokens>

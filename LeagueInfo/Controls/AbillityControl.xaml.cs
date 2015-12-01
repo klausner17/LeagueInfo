@@ -12,9 +12,10 @@ using System.Windows.Media.Imaging;
 
 namespace LeagueInfo.Controls
 {
-    public partial class Abillity : UserControl
+    public partial class ControlAbillity : UserControl
     {
         private ChampionSpellDto spell;
+
         public ChampionSpellDto Spell
         {
             get { return spell; }
@@ -22,16 +23,17 @@ namespace LeagueInfo.Controls
             {
                 spell = value;
                 this.title.Text = spell.Name;
-                this.content.Text = spell.Description;
+                this.content.Text = Code.HtmlRemoval.StripTagsCharArray(spell.Description);
                 LoadIconSpell();
             }
         }
-        public Abillity()
+
+        public ControlAbillity()
         {
             InitializeComponent();
         }
 
-        public Abillity(ChampionSpellDto spell)
+        public ControlAbillity(ChampionSpellDto spell)
         {
             InitializeComponent();
             Spell = spell;

@@ -39,7 +39,7 @@ namespace LeagueInfo.Pages
             foreach (string str in strInfo)
             {
                 TextBlock info = new TextBlock();
-                info.Text = "\n\t" + str;
+                info.Text = "\n\t" + Code.HtmlRemoval.StripTagsCharArray(str);
                 info.TextWrapping = TextWrapping.Wrap;
                 info.FontSize = 22;
                 component.Children.Add(info);
@@ -49,7 +49,7 @@ namespace LeagueInfo.Pages
         private async void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
         {
             ChampionDto champion = new ChampionDto();
-            champion = await champion.SearchChampionAllData(Convert.ToInt32(NavigationContext.QueryString["id"]));
+            champion = await ChampionDto.SearchChampionAllData(Convert.ToInt32(NavigationContext.QueryString["id"]));
             Random randNumSkin = new Random();
             int num = randNumSkin.Next(champion.Skins.Count);
             BitmapImage backGridInfo = champion.GetChampionSplash(num);
@@ -57,9 +57,10 @@ namespace LeagueInfo.Pages
             brush.Stretch = Stretch.UniformToFill;
             brush.ImageSource = backGridInfo;
             panorama.Background = brush;
+            panorama.Background.Opacity = 0.5;
             championName.Text = champion.Name;
             TextBlock loreDescription = new TextBlock();
-            lore.Text = champion.Lore.Replace("<br>", "\n");
+            lore.Text = Code.HtmlRemoval.StripTagsCharArray(champion.Lore);
             AddInfoComponent(champion.AllyTips, allytips);
             AddInfoComponent(champion.EnimyTips, enimytips);
             attackInfo.Value = champion.Info.Attack;
@@ -69,7 +70,7 @@ namespace LeagueInfo.Pages
             //incluir habilidades
             foreach (ChampionSpellDto spell in champion.Spells)
             {
-                Abillity controlAbillity = new Abillity(spell);
+                ControlAbillity controlAbillity = new ControlAbillity(spell);
                 abillityChampions.Children.Add(controlAbillity);
             }
             CarregarComentarios();
@@ -124,7 +125,7 @@ namespace LeagueInfo.Pages
                     var resultado = e.Result.GroupBy(test => test.idCounter).Select(grp => grp.First()) .ToList();
                     foreach (var counter in resultado)
                     {
-                        CounterControl cm = new CounterControl(await new ChampionDto().SearchChampionLowData(counter.idCounter), false, false);
+                        CounterControl cm = new CounterControl(await ChampionDto.SearchChampionLowData(counter.idCounter), false, false);
                         listBoxCounters.Items.Add(cm);
                         listBoxCounters.Tap += listBoxCounters_Tap;
                     }

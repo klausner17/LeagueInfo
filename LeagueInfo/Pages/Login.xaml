@@ -20,7 +20,7 @@
             <RowDefinition Height="40*"/>
         </Grid.RowDefinitions>
         <Grid.Background>
-            <ImageBrush Stretch="Fill" ImageSource="/Assets/LoginScreen.jpg" />
+            <ImageBrush Stretch="UniformToFill" ImageSource="/Assets/LoginScreen.jpg" Opacity="0.6" />
         </Grid.Background>
         <StackPanel Name="stackProgress" Grid.Row="0">
             <ProgressBar x:Name="progresBarCarregando" Visibility="Collapsed" HorizontalAlignment="Stretch" IsIndeterminate="True"  VerticalAlignment="Center" Height="20" />

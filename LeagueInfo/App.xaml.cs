@@ -23,6 +23,9 @@ namespace LeagueInfo
         /// </summary>
         public App()
         {
+
+            ThemeManager.ToDarkTheme();
+
             // Global handler for uncaught exceptions.
             UnhandledException += Application_UnhandledException;
 
@@ -85,12 +88,11 @@ namespace LeagueInfo
         // Code to execute if a navigation fails
         private void RootFrame_NavigationFailed(object sender, NavigationFailedEventArgs e)
         {
-            MessageBox.Show("A navegação falhou.");
-            //if (Debugger.IsAttached)
-            //{
-            //    // A navigation has failed; break into the debugger
-            //    Debugger.Break();
-            //}
+            if (Debugger.IsAttached)
+            {
+                // A navigation has failed; break into the debugger
+                Debugger.Break();
+            }
         }
 
         // Code to execute on Unhandled Exceptions

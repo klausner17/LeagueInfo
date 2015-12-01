@@ -16,17 +16,17 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Grid.Background>
-                <SolidColorBrush Color="DarkGoldenrod" Opacity="0.4" />
+                <SolidColorBrush Color="Black" Opacity="0.4" />
             </Grid.Background>
             <TextBlock Name="textBlockComment" Grid.Row="0" HorizontalAlignment="Stretch"
-                       FontSize="30" TextWrapping="Wrap"  />
+                       FontSize="30" TextWrapping="Wrap" Margin="5,10,10,5"  />
         </Grid>
         <Grid Grid.Row="1">
             <Grid.Background>
-                <SolidColorBrush Color="Blue" Opacity="0.4" />
+                <SolidColorBrush Color="{StaticResource PhoneAccentColor}" Opacity="0.4" />
             </Grid.Background>
             <TextBlock Name="textBlockUser" Grid.Row="1" FontSize="26" 
-                       HorizontalAlignment="Stretch"  TextAlignment="Right" />
+                       HorizontalAlignment="Stretch"  TextAlignment="Right" Margin="5,10,10,5" />
         </Grid>
     </Grid>
 </UserControl>

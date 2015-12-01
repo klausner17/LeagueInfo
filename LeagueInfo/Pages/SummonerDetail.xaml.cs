@@ -48,9 +48,18 @@ namespace LeagueInfo.Pages
         {
             string nameSummoner = NavigationContext.QueryString["name"];
             SummonerDto summoner = new SummonerDto();
-            textBlockNomeInv.Text = summoner.Nome;
+            try
+            {
+                summoner = await summoner.SearchSummoner(nameSummoner);
+                textBlockNomeInv.Text = summoner.Nome;
+            }
+            catch
+            {
+                MessageBox.Show("Não existe um invocador com esse nome.");
+                NavigationService.GoBack();
+                return;
+            }
             textBlockLevel.Text += summoner.SummonerLevel.ToString();
-            summoner = await summoner.SearchSummoner(nameSummoner);
             try
             {
                 LeagueDto leagueSummoner = new LeagueDto();
@@ -79,7 +88,7 @@ namespace LeagueInfo.Pages
             }
             int idChampPref = lastChampionsPlayed[new Random().Next(lastChampionsPlayed.Count - 1)];
             ImageBrush imgBrush = new ImageBrush();
-            BitmapImage source = (await new ChampionDto().SearchChampionAllData(idChampPref)).GetChampionSplash(0);
+            BitmapImage source = (await ChampionDto.SearchChampionAllData(idChampPref)).GetChampionSplash(0);
             imgBrush.ImageSource = source;
             imgBrush.Stretch = Stretch.UniformToFill;
             LayoutRoot.Background = imgBrush;

@@ -216,9 +216,23 @@ namespace LeagueInfo
             buttonFilterItem.IsEnabled = true;
         }
 
-        private void buttonFilterFreeeWeek_Click(object sender, RoutedEventArgs e)
+        private async void buttonFilterFreeWeek_Click(object sender, RoutedEventArgs e)
         {
-
+            buttonFilterFreeWeek.IsEnabled = false;
+            if (ChampionListDto.AllChampions == null)
+                await ChampionListDto.LoadAllChampions();
+            ChampionsList.Items.Clear();
+            foreach (ChampionDto champion in ChampionListDto.AllChampions)
+            {
+                if (champion.FreeToPlay)
+                {
+                    ChampionSelected item = new ChampionSelected();
+                    item.Champion = champion;
+                    item.Tap += item_Tap;
+                    ChampionsList.Items.Add(item);
+                }
+            }
+            buttonFilterFreeWeek.IsEnabled = true;
         }
     }
 }

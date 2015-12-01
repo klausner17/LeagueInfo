@@ -11,6 +11,7 @@ using LeagueInfo.ClassApi;
 using LeagueInfo.Resources;
 using System.IO.IsolatedStorage;
 using System.Threading.Tasks;
+using Microsoft.Phone.Net.NetworkInformation;
 
 namespace LeagueInfo.Pages
 {
@@ -183,6 +184,13 @@ namespace LeagueInfo.Pages
 
         private async void pageLogin_Loaded(object sender, RoutedEventArgs e)
         {
+            if (!NetworkInterface.GetIsNetworkAvailable())
+            {
+                MessageBox.Show("Não foi possível encontrar a conexão com internet. Por favor verifique o sinal.");
+                NavigationService.RemoveBackEntry();
+                NavigationService.GoBack();
+                return;
+            }
             NavigationService.RemoveBackEntry();
             await LoginAutomatico();
         }

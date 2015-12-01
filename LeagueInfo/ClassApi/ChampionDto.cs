@@ -17,7 +17,6 @@ namespace LeagueInfo.ClassApi
 {
 	public class ChampionDto
     {
-        const String URLCHAMPS = @"https://global.api.pvp.net/api/lol/static-data/br/v1.2/champion/412?champData=all&api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33";
    
         #region ChampionDto
         [JsonProperty("allytips")]
@@ -86,14 +85,14 @@ namespace LeagueInfo.ClassApi
         [JsonProperty("rankedPlayEnabled")]
         public bool RankedPlayEnabled { get; set; }
 
-        public async Task<ChampionDto> SearchChampionAllData(long idChampion)
+        public static async Task<ChampionDto> SearchChampionAllData(long idChampion)
         {
             string json = await new Requester(@"https://global.api.pvp.net/api/lol/static-data/br/v1.2/champion/" + idChampion.ToString() + 
                 "?champData=all&api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33").GetJson();
             return JsonConvert.DeserializeObject<ChampionDto>(json);
         }
 
-        public async Task<ChampionDto> SearchChampionLowData(long idChampiom)
+        public static async Task<ChampionDto> SearchChampionLowData(long idChampiom)
         {
             string json = await new Requester(@"https://global.api.pvp.net/api/lol/static-data/br/v1.2/champion/" + idChampiom.ToString() + 
                 "?champData=image&api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33").GetJson();
