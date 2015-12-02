@@ -125,9 +125,10 @@ namespace LeagueInfo.Pages
                     var resultado = e.Result.GroupBy(test => test.idCounter).Select(grp => grp.First()) .ToList();
                     foreach (var counter in resultado)
                     {
-                        CounterControl cm = new CounterControl(await ChampionDto.SearchChampionLowData(counter.idCounter), false, false);
-                        listBoxCounters.Items.Add(cm);
-                        listBoxCounters.Tap += listBoxCounters_Tap;
+                        ChampionSelected championControl = new ChampionSelected();
+                        championControl.Champion = await ChampionDto.SearchChampionLowData(counter.idCounter);
+                        listBoxCounters.Items.Add(championControl);
+                        championControl.Tap += championControl_Tap;
                     }
                 }
             }
@@ -141,13 +142,9 @@ namespace LeagueInfo.Pages
             }
         }
 
-        void listBoxCounters_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        void championControl_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-            try
-            {
-                NavigationService.Navigate(new Uri("/Pages/DetailChampion.xaml?id=" + ((CounterControl)((ListBox)sender).SelectedItem).Champion.Id.ToString(), UriKind.RelativeOrAbsolute));
-            }
-            catch { }
+            NavigationService.Navigate(new Uri("/Pages/DetailChampion.xaml?id=" + ((CounterControl)sender).Champion.Id.ToString(), UriKind.RelativeOrAbsolute));
         }
 
         private void buttonComment_Click(object sender, RoutedEventArgs e)
@@ -198,8 +195,7 @@ namespace LeagueInfo.Pages
 
         private void buttonEscolherCounter_Click(object sender, RoutedEventArgs e)
         {
-            listBoxCounterChose.Visibility = System.Windows.Visibility.Visible;
-            buttonSaveCounter.Visibility = System.Windows.Visibility.Visible;
+            gridChooseCounter.Visibility = System.Windows.Visibility.Visible;
             if (listBoxCounters.Items.Count == 0)
             {
                 foreach (ChampionDto champ in ChampionListDto.AllChampions)
@@ -219,8 +215,7 @@ namespace LeagueInfo.Pages
 
         private void buttonSaveCounter_Click(object sender, RoutedEventArgs e)
         {
-            listBoxCounterChose.Visibility = System.Windows.Visibility.Collapsed;
-            buttonSaveCounter.Visibility = System.Windows.Visibility.Collapsed;
+            gridChooseCounter.Visibility = Visibility.Collapsed;
             foreach(CounterControl cc in listBoxCounterChose.Items)
             {
                 if (cc.IsSelected)
@@ -261,9 +256,7 @@ namespace LeagueInfo.Pages
 
         private void buttonCancelarCounter_Click(object sender, RoutedEventArgs e)
         {
-            listBoxCounterChose.Visibility = Visibility.Collapsed;
-            buttonCancelarCounter.Visibility = System.Windows.Visibility.Collapsed;
-            buttonSaveCounter.Visibility = System.Windows.Visibility.Collapsed;
+            gridChooseCounter.Visibility = System.Windows.Visibility.Collapsed;
         }
     }
 }
