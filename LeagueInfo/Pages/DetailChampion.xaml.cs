@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using LeagueInfo.Controls;
 using LeagueInfo.Resources;
+using LeagueInfo.ClassApi.Request;
 
 namespace LeagueInfo.Pages
 {
@@ -21,16 +22,39 @@ namespace LeagueInfo.Pages
         private LeagueWS.LeagueServiceClient lsCounter;
         private LeagueWS.LeagueServiceClient lsInsertCounter;
         private LeagueWS.LeagueServiceClient lsInsertComment;
+        private bool carregado = false;
 
         public DetailChampion()
         {
             InitializeComponent();
+            Requester.OnGettingData += Requester_OnGettingData;
             if (!GlobalData.Logged)
             {
                 buttonComment.Visibility = System.Windows.Visibility.Collapsed;
-                buttonEscolherCounter.Visibility = System.Windows.Visibility.Collapsed;
-                buttonSaveCounter.Visibility = System.Windows.Visibility.Collapsed;
                 textBoxComentario.Visibility = System.Windows.Visibility.Collapsed;
+            }
+        }
+
+        private delegate void ProgressCallBack(bool status);
+
+        private void ProgressBarVisibility(bool status)
+        {
+            if (status)
+                loadProgress.Visibility = Visibility.Visible;
+            else
+                loadProgress.Visibility = Visibility.Collapsed;
+        }
+
+        void Requester_OnGettingData(int status)
+        {
+            switch (status)
+            {
+                case Requester.BEGINDOWNLOAD:
+                    ProgressBarVisibility(true);
+                    break;
+                case Requester.ENDDOWNLOAD:
+                    ProgressBarVisibility(false);
+                    break;
             }
         }
 
@@ -48,33 +72,37 @@ namespace LeagueInfo.Pages
 
         private async void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
         {
-            ChampionDto champion = new ChampionDto();
-            champion = await ChampionDto.SearchChampionAllData(Convert.ToInt32(NavigationContext.QueryString["id"]));
-            Random randNumSkin = new Random();
-            int num = randNumSkin.Next(champion.Skins.Count);
-            BitmapImage backGridInfo = champion.GetChampionSplash(num);
-            ImageBrush brush = new ImageBrush();
-            brush.Stretch = Stretch.UniformToFill;
-            brush.ImageSource = backGridInfo;
-            panorama.Background = brush;
-            panorama.Background.Opacity = 0.5;
-            championName.Text = champion.Name;
-            TextBlock loreDescription = new TextBlock();
-            lore.Text = Code.HtmlRemoval.StripTagsCharArray(champion.Lore);
-            AddInfoComponent(champion.AllyTips, allytips);
-            AddInfoComponent(champion.EnimyTips, enimytips);
-            attackInfo.Value = champion.Info.Attack;
-            defenseInfo.Value = champion.Info.Defense;
-            magicInfo.Value = champion.Info.Magic;
-            difficultyInfo.Value = champion.Info.Difficulty;
-            //incluir habilidades
-            foreach (ChampionSpellDto spell in champion.Spells)
+            if (!carregado)
             {
-                ControlAbillity controlAbillity = new ControlAbillity(spell);
-                abillityChampions.Children.Add(controlAbillity);
+                ChampionDto champion = new ChampionDto();
+                champion = await ChampionDto.SearchChampionAllData(Convert.ToInt32(NavigationContext.QueryString["id"]));
+                iconChampion.Source = await champion.GetChampionSquare();
+                Random randNumSkin = new Random();
+                int num = randNumSkin.Next(champion.Skins.Count);
+                BitmapImage backGridInfo = champion.GetChampionSplash(num);
+                ImageBrush brush = new ImageBrush();
+                brush.Stretch = Stretch.UniformToFill;
+                brush.ImageSource = backGridInfo;
+                panorama.Background = brush;
+                panorama.Background.Opacity = 0.5;
+                championName.Text = champion.Name;
+                TextBlock loreDescription = new TextBlock();
+                lore.Text = Code.HtmlRemoval.StripTagsCharArray(champion.Lore);
+                AddInfoComponent(champion.AllyTips, allytips);
+                AddInfoComponent(champion.EnimyTips, enimytips);
+                attackInfo.Value = champion.Info.Attack;
+                defenseInfo.Value = champion.Info.Defense;
+                magicInfo.Value = champion.Info.Magic;
+                difficultyInfo.Value = champion.Info.Difficulty;
+                //incluir habilidades
+                foreach (ChampionSpellDto spell in champion.Spells)
+                {
+                    ControlAbillity controlAbillity = new ControlAbillity(spell);
+                    abillityChampions.Children.Add(controlAbillity);
+                }
+                CarregarComentarios();
+                CarregarCounters();
             }
-            CarregarComentarios();
-            CarregarCounters();
         }
 
         private void CarregarComentarios()
@@ -116,17 +144,16 @@ namespace LeagueInfo.Pages
             lsCounter.encontrarCounterPorCampeaoAsync(Convert.ToInt32(NavigationContext.QueryString["id"]));
         }
 
-        async void ls_encontrarCounterPorCampeaoCompleted(object sender, LeagueWS.encontrarCounterPorCampeaoCompletedEventArgs e)
+        void ls_encontrarCounterPorCampeaoCompleted(object sender, LeagueWS.encontrarCounterPorCampeaoCompletedEventArgs e)
         {
             try
             {
                 if (e.Result != null)
                 {
-                    var resultado = e.Result.GroupBy(test => test.idCounter).Select(grp => grp.First()) .ToList();
-                    foreach (var counter in resultado)
+                    foreach (var counter in e.Result)
                     {
                         ChampionSelected championControl = new ChampionSelected();
-                        championControl.Champion = await ChampionDto.SearchChampionLowData(counter.idCounter);
+                        championControl.Champion = ChampionListDto.AllChampions.Find(x => x.Id == counter.idChampion);
                         listBoxCounters.Items.Add(championControl);
                         championControl.Tap += championControl_Tap;
                     }
@@ -144,7 +171,7 @@ namespace LeagueInfo.Pages
 
         void championControl_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/Pages/DetailChampion.xaml?id=" + ((CounterControl)sender).Champion.Id.ToString(), UriKind.RelativeOrAbsolute));
+            NavigationService.Navigate(new Uri("/Pages/DetailChampion.xaml?id=" + ((ChampionSelected)sender).Champion.Id.ToString(), UriKind.RelativeOrAbsolute));
         }
 
         private void buttonComment_Click(object sender, RoutedEventArgs e)
@@ -196,20 +223,11 @@ namespace LeagueInfo.Pages
         private void buttonEscolherCounter_Click(object sender, RoutedEventArgs e)
         {
             gridChooseCounter.Visibility = System.Windows.Visibility.Visible;
-            if (listBoxCounters.Items.Count == 0)
+            listBoxCounterChose.Items.Clear();
+            foreach (ChampionDto champ in ChampionListDto.AllChampions)
             {
-                foreach (ChampionDto champ in ChampionListDto.AllChampions)
-                {
-                    CounterControl cc = new CounterControl(champ, true, false);
-                    listBoxCounterChose.Items.Add(cc);
-                }
-            }
-            else
-            {
-                foreach (CounterControl cc in listBoxCounters.Items)
-                {
-                    cc.IsSelected = false;
-                }
+                CounterControl cc = new CounterControl(champ, true, false);
+                listBoxCounterChose.Items.Add(cc);
             }
         }
 
@@ -237,8 +255,6 @@ namespace LeagueInfo.Pages
             {
                 if (e.Result)
                 {
-                    listBoxCounterChose.Visibility = System.Windows.Visibility.Collapsed;
-                    buttonSaveCounter.Visibility = System.Windows.Visibility.Collapsed;
                     CarregarCounters();
                 }
                 else

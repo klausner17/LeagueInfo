@@ -87,6 +87,8 @@ namespace LeagueInfo
 
         private void buttonSair_Click(object sender, RoutedEventArgs e)
         {
+            GlobalData.Logged = false;
+            GlobalData.UserLogged = null;
             var settings = IsolatedStorageSettings.ApplicationSettings;
             settings.Clear();
             NavigationService.Navigate(new Uri("/Pages/Login.xaml", UriKind.RelativeOrAbsolute));

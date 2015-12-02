@@ -13,20 +13,28 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
     shell:SystemTray.IsVisible="False" Loaded="PhoneApplicationPage_Loaded">
-    
-   
+
+
 
     <!--LayoutRoot contains the root grid where all other page content is placed-->
     <Grid x:Name="LayoutRoot">
         <Grid.RowDefinitions>
-            <RowDefinition Height="180"/>
+            <RowDefinition Height="200"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Top">
             <StackPanel.Background>
                 <SolidColorBrush Color="{StaticResource PhoneAccentColor}" Opacity="0.2" />
             </StackPanel.Background>
-            <TextBlock TextAlignment="Left" Name="championName" FontSize="38" Text="champion" Margin="10,0,0,0"/>
+            <ProgressBar Name="loadProgress" Foreground="White" VerticalAlignment="Top" Visibility="Collapsed" IsIndeterminate="True"/>
+            <Grid Height="70">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Name="iconChampion"/>
+                <TextBlock TextAlignment="Left" Name="championName" VerticalAlignment="Center" FontSize="38" Text="" Margin="10,0,0,0" Grid.Column="1"/>
+            </Grid>
             <Grid Margin="10,0,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="120"/>
@@ -100,15 +108,19 @@
             </phone:PanoramaItem>
 
             <phone:PanoramaItem Header="counters">
-                <StackPanel>
-                    <StackPanel HorizontalAlignment="Stretch">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel HorizontalAlignment="Stretch" Grid.Row="0">
                         <Button Content="Escolher counter" Name="buttonEscolherCounter" Click="buttonEscolherCounter_Click"/>
-                            <Grid Visibility="Collapsed" Name="gridChooseCounter">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="200"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
-                            <ListBox Height="250" Name="listBoxCounterChose" Visibility="Visible" Margin="5">
+                        <Grid Visibility="Collapsed" Name="gridChooseCounter">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="200"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <ListBox Height="250" Name="listBoxCounterChose" Margin="5">
                                 <ListBox.ItemContainerStyle>
                                     <Style TargetType="ListBoxItem">
                                         <Setter Property="Margin" Value="3"/>
@@ -130,39 +142,38 @@
                             </Grid>
                         </Grid>
                     </StackPanel>
-                    <ListBox Name="listBoxCounters">
+                    <ListBox Name="listBoxCounters" Grid.Row="1">
                         <ListBox.ItemContainerStyle>
                             <Style TargetType="ListBoxItem">
                                 <Setter Property="Margin" Value="3"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
                             </Style>
                         </ListBox.ItemContainerStyle>
-                        <ListBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <toolkit:WrapPanel />
-                            </ItemsPanelTemplate>
-                        </ListBox.ItemsPanel>
                     </ListBox>
-                </StackPanel>
+                </Grid>
             </phone:PanoramaItem>
 
             <phone:PanoramaItem Header="comentarios">
-                <ScrollViewer VerticalAlignment="Stretch">
-                    <StackPanel Name="comentariosChampions">
-                        <StackPanel>
-                            <TextBox Name="textBoxComentario" AcceptsReturn="True" />
-                            <Button Name="buttonComment" Content="Comentar" Click="buttonComment_Click" />
-                        </StackPanel>
-                        <ListBox Name="listBoxComments" Padding="10">
-                            <ListBox.ItemContainerStyle>
-                                <Style TargetType="ListBoxItem">
-                                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                                    <Setter Property="Margin" Value="0,10,0,10"/>
-                                </Style>
-                            </ListBox.ItemContainerStyle>
-                        </ListBox>
+                <Grid Name="comentariosChampions">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0">
+                        <TextBox Name="textBoxComentario" AcceptsReturn="True" InputScope="Text"  />
+                        <Button Name="buttonComment" Content="Comentar" Click="buttonComment_Click" />
                     </StackPanel>
-                </ScrollViewer>
+                    <ListBox Name="listBoxComments" Padding="10" Grid.Row="1">
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                <Setter Property="Margin" Value="0,10,0,10"/>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                    </ListBox>
+                </Grid>
             </phone:PanoramaItem>
         </phone:Panorama>
     </Grid>
