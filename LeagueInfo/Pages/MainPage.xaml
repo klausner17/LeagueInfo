@@ -130,6 +130,27 @@
                     </ListBox>
                 </Grid>
             </phone:PanoramaItem>
+            <phone:PanoramaItem Header="Sobre">
+                <StackPanel>
+                    <TextBlock TextWrapping="Wrap">
+                        Olá pessoal! Meu nome é Klausner Augusto e gostaria de agradece-los pelo downlod do app.
+                        <LineBreak/>
+                        Quando pensei em fazer o aplicativo, decidi fazer com que ele sempre se auto atualize, não importando
+                        quantas season passar.
+                        <LineBreak />
+                        Não sei se vocês notaram, mas eu utilizo nenhum tipo de anúncio e para falar a verdade eu odeio eles. Então se
+                        você gostaram do trabalho e achem que potencial, por favor, me ajudem a manter o suporte fazendo doações em qualquer valor.
+                        <LineBreak/>
+                        Próximas atualizações:
+                    </TextBlock>
+                    <TextBlock>
+                        Detalhes mais ricos da partidas.
+                        <LineBreak/>
+                        Usuários poderão indicar builds
+                        <LineBreak/>
+                    </TextBlock>
+                </StackPanel>
+            </phone:PanoramaItem>
         </phone:Panorama>
         <ProgressBar Visibility="Collapsed" HorizontalAlignment="Stretch" IsIndeterminate="True"  VerticalAlignment="center" Height="20" Width="{Binding Width, ElementName=phoneApplicationPage}" Foreground="White"  Name="loadProgress" Margin="0"/>
     </Grid>
