@@ -159,7 +159,7 @@ namespace LeagueInfo.Pages
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 MessageBox.Show("Não foi possível encontrar os counter do campeão.");
             }

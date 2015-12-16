@@ -187,6 +187,9 @@
     <Compile Include="Pages\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Sobre.xaml.cs">
+      <DependentUpon>Sobre.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\SummonerDetail.xaml.cs">
       <DependentUpon>SummonerDetail.xaml</DependentUpon>
     </Compile>
@@ -271,6 +274,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Sobre.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\SummonerDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -281,6 +288,21 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Properties\AppManifest.xml" />
+    <None Include="Properties\WMAppManifest.xml">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Assets\appbar.information.circle.png" />
+    <Content Include="Assets\appbar.paypal.png" />
+    <Content Include="Assets\appbar.star.png" />
+    <Content Include="Assets\BackgroundCadastro.jpg" />
+    <Content Include="Assets\LoginScreen.jpg" />
+    <Content Include="Assets\LojaLol.jpg" />
+    <Content Include="Assets\Tiles\IconicTileLarge.png" />
+    <Content Include="Assets\UpdateAccount.jpg" />
+    <None Include="Service References\LeagueWS\configuration91.svcinfo" />
+    <None Include="Service References\LeagueWS\configuration.svcinfo" />
     <None Include="Service References\LeagueWS\LeagueInfo.LeagueWS.alterarSenhaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -351,23 +373,13 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Service References\LeagueWS\configuration.svcinfo" />
-    <None Include="Service References\LeagueWS\configuration91.svcinfo" />
-    <None Include="packages.config" />
-    <None Include="Properties\AppManifest.xml" />
-    <None Include="Properties\WMAppManifest.xml">
+    <Content Include="ServiceReferences.ClientConfig">
       <SubType>Designer</SubType>
-    </None>
-    <Content Include="Assets\BackgroundCadastro.jpg" />
+    </Content>
     <None Include="Service References\LeagueWS\LeagueService.wsdl" />
     <None Include="Service References\LeagueWS\LeagueService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Assets\LoginScreen.jpg" />
-    <Content Include="Assets\LojaLol.jpg" />
-    <Content Include="Assets\Tiles\IconicTileLarge.png" />
-    <Content Include="Assets\UpdateAccount.jpg" />
-    <Content Include="ServiceReferences.ClientConfig" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\AlignmentGrid.png" />

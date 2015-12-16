@@ -11,6 +11,7 @@ using System.Windows.Input;
 using LeagueInfo.Resources;
 using System.IO.IsolatedStorage;
 using System.Collections.Generic;
+using Microsoft.Phone.Tasks;
 
 namespace LeagueInfo
 {
@@ -101,7 +102,7 @@ namespace LeagueInfo
             if (filterChampionAssassin.IsChecked == true)
                 filters.Add("Assassin");
             if (filterChampionFigther.IsChecked == true)
-                filters.Add("Figther");
+                filters.Add("Fighter");
             if (filterChampionMarksman.IsChecked == true)
                 filters.Add("Marksman");
             if (filterChampionTank.IsChecked == true)
@@ -235,6 +236,17 @@ namespace LeagueInfo
                 }
             }
             buttonFilterFreeWeek.IsEnabled = true;
+        }
+
+        private void ApplicationBarIconButton_Click(object sender, EventArgs e)
+        {
+            MarketplaceReviewTask task = new MarketplaceReviewTask();
+            task.Show();
+        }
+
+        private void ApplicationBarIconButton_Click_1(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Pages/Sobre.xaml" + textBlockInvocador.Text, UriKind.Relative));
         }
     }
 }

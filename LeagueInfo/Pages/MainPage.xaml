@@ -11,7 +11,7 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="Portrait" Orientation="Portrait" UseLayoutRounding="True" Loaded="phoneApplicationPage_Loaded" >
+    SupportedOrientations="Portrait" Orientation="Portrait" UseLayoutRounding="True" Loaded="phoneApplicationPage_Loaded">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/BackGround.jpg" Stretch="UniformToFill" Opacity="0.7"/>
@@ -40,7 +40,6 @@
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" MinHeight="72"/>
-                            <RowDefinition Height="Auto" MinHeight="72"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
@@ -49,14 +48,20 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Button Grid.ColumnSpan="3"  Name="buttonFilterChampion" Click="buttonFilterChampion_Click">Filtrar</Button>
-                        <Button Grid.ColumnSpan="3" Grid.Row="1"  Name="buttonFilterFreeWeek" Click="buttonFilterFreeWeek_Click">Free Week</Button>
-                        <CheckBox FontSize="20" Grid.Row="2" IsChecked="true" Grid.Column="0" Name="filterChampionAssassin" Grid.ColumnSpan="2">Assassino</CheckBox>
-                        <CheckBox FontSize="20" Grid.Row="2" IsChecked="true" Grid.Column="1" Name="filterChampionMage">Mago</CheckBox>
-                        <CheckBox FontSize="20" Grid.Row="2" IsChecked="true" Grid.Column="2" Name="filterChampionFigther" Grid.ColumnSpan="2">Lutador</CheckBox>
-                        <CheckBox FontSize="20" Grid.Row="3" IsChecked="true" Grid.Column="0" Name="filterChampionTank">Tanque</CheckBox>
-                        <CheckBox FontSize="20" Grid.Row="3" IsChecked="true" Grid.Column="1" Name="filterChampionSupport" Grid.ColumnSpan="2">Suporte</CheckBox>
-                        <CheckBox FontSize="20"  Grid.Row="3" IsChecked="true" Grid.Column="2" Name="filterChampionMarksman">Atirador</CheckBox>
+                        <Grid Grid.ColumnSpan="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0"  Name="buttonFilterChampion" Click="buttonFilterChampion_Click">Filtrar</Button>
+                            <Button Grid.Column="1"  Name="buttonFilterFreeWeek" Click="buttonFilterFreeWeek_Click">Free Week</Button>
+                        </Grid>
+                        <CheckBox FontSize="20" Grid.Row="1" IsChecked="true" Grid.Column="0" Name="filterChampionAssassin" Grid.ColumnSpan="2">Assassino</CheckBox>
+                        <CheckBox FontSize="20" Grid.Row="1" IsChecked="true" Grid.Column="1" Name="filterChampionMage">Mago</CheckBox>
+                        <CheckBox FontSize="20" Grid.Row="1" IsChecked="true" Grid.Column="2" Name="filterChampionFigther" Grid.ColumnSpan="2">Lutador</CheckBox>
+                        <CheckBox FontSize="20" Grid.Row="2" IsChecked="true" Grid.Column="0" Name="filterChampionTank">Tanque</CheckBox>
+                        <CheckBox FontSize="20" Grid.Row="2" IsChecked="true" Grid.Column="1" Name="filterChampionSupport" Grid.ColumnSpan="2">Suporte</CheckBox>
+                        <CheckBox FontSize="20"  Grid.Row="2" IsChecked="true" Grid.Column="2" Name="filterChampionMarksman">Atirador</CheckBox>
                     </Grid>
                     <ListBox Name="ChampionsList" Grid.Row="1">
                         <ListBox.ItemContainerStyle>
@@ -130,30 +135,14 @@
                     </ListBox>
                 </Grid>
             </phone:PanoramaItem>
-            <phone:PanoramaItem Header="Sobre">
-                <StackPanel>
-                    <TextBlock TextWrapping="Wrap">
-                        Olá pessoal! Meu nome é Klausner Augusto e gostaria de agradece-los pelo downlod do app.
-                        <LineBreak/>
-                        Quando pensei em fazer o aplicativo, decidi fazer com que ele sempre se auto atualize, não importando
-                        quantas season passar.
-                        <LineBreak />
-                        Não sei se vocês notaram, mas eu utilizo nenhum tipo de anúncio e para falar a verdade eu odeio eles. Então se
-                        você gostaram do trabalho e achem que potencial, por favor, me ajudem a manter o suporte fazendo doações em qualquer valor.
-                        <LineBreak/>
-                        Próximas atualizações:
-                    </TextBlock>
-                    <TextBlock>
-                        Detalhes mais ricos da partidas.
-                        <LineBreak/>
-                        Usuários poderão indicar builds
-                        <LineBreak/>
-                    </TextBlock>
-                </StackPanel>
-            </phone:PanoramaItem>
         </phone:Panorama>
         <ProgressBar Visibility="Collapsed" HorizontalAlignment="Stretch" IsIndeterminate="True"  VerticalAlignment="center" Height="20" Width="{Binding Width, ElementName=phoneApplicationPage}" Foreground="White"  Name="loadProgress" Margin="0"/>
     </Grid>
-
-
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True" Mode="Minimized" Opacity="0.8">
+            <shell:ApplicationBarIconButton IconUri="/Assets/appbar.information.circle.png" Text="Sobre" Click="ApplicationBarIconButton_Click_1"/>
+            <shell:ApplicationBarIconButton IconUri="/Assets/appbar.paypal.png" Text="Doação"/>
+            <shell:ApplicationBarIconButton IconUri="/Assets/appbar.star.png" Text="Avaliar" Click="ApplicationBarIconButton_Click"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
 </phone:PhoneApplicationPage>
