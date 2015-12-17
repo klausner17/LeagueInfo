@@ -27,8 +27,6 @@
                 <StackPanel>
                     <TextBox Name="textBlockInvocador" InputScope="Chat" KeyDown="textBlockInvocador_KeyDown"/>
                     <Button Name="buttonBuscasInv" Content="buscar" Click="buttonBuscasInv_Click"/>
-                    <Button Name="buttonAlterarCadastro" Content="Alterar dados de cadastro" Visibility="Collapsed" Click="buttonAlterarCadastro_Click"/>
-                    <Button Name="buttonSair" Content="Sair da conta" Visibility="Collapsed" Click="buttonSair_Click" ></Button>
                 </StackPanel>
             </phone:PanoramaItem>
             <phone:PanoramaItem Header="campeões" Name="panoramaCampeoes">

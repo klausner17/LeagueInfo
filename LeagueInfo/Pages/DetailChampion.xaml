@@ -73,6 +73,10 @@
 
         <phone:Panorama Grid.Row="1" Name="panorama">
             <!--Panorama item one-->
+            <phone:PanoramaItem Padding="-12,-8,0,0">
+                <Image Name="championSplash" Stretch="UniformToFill" />
+            </phone:PanoramaItem>
+            
             <phone:PanoramaItem Header="lore">
                 <ScrollViewer VerticalAlignment="Stretch">
                     <TextBlock TextWrapping="Wrap" Name="lore"/>
@@ -107,74 +111,18 @@
                 </ScrollViewer>
             </phone:PanoramaItem>
 
-            <phone:PanoramaItem Header="counters">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <StackPanel HorizontalAlignment="Stretch" Grid.Row="0">
-                        <Button Content="Escolher counter" Name="buttonEscolherCounter" Click="buttonEscolherCounter_Click"/>
-                        <Grid Visibility="Collapsed" Name="gridChooseCounter">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="200"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <ListBox Height="250" Name="listBoxCounterChose" Margin="5">
-                                <ListBox.ItemContainerStyle>
-                                    <Style TargetType="ListBoxItem">
-                                        <Setter Property="Margin" Value="3"/>
-                                    </Style>
-                                </ListBox.ItemContainerStyle>
-                                <ListBox.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <toolkit:WrapPanel />
-                                    </ItemsPanelTemplate>
-                                </ListBox.ItemsPanel>
-                            </ListBox>
-                            <Grid Grid.Row="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Button Content="Salvar" Name="buttonSaveCounter" Click="buttonSaveCounter_Click" />
-                                <Button Grid.Column="1" Content="Cancelar" Name="buttonCancelarCounter" Click="buttonCancelarCounter_Click" />
-                            </Grid>
-                        </Grid>
-                    </StackPanel>
-                    <ListBox Name="listBoxCounters" Grid.Row="1">
-                        <ListBox.ItemContainerStyle>
-                            <Style TargetType="ListBoxItem">
-                                <Setter Property="Margin" Value="3"/>
-                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
-                            </Style>
-                        </ListBox.ItemContainerStyle>
-                    </ListBox>
-                </Grid>
+            <phone:PanoramaItem Header="skins">
+                <ListBox Name="ListBoxSkins" Grid.Row="1">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="Margin" Value="3"/>
+                            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                </ListBox>
             </phone:PanoramaItem>
 
-            <phone:PanoramaItem Header="comentarios">
-                <Grid Name="comentariosChampions">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <StackPanel Grid.Row="0">
-                        <TextBox Name="textBoxComentario" AcceptsReturn="True" InputScope="Text"  />
-                        <Button Name="buttonComment" Content="Comentar" Click="buttonComment_Click" />
-                    </StackPanel>
-                    <ListBox Name="listBoxComments" Padding="10" Grid.Row="1">
-                        <ListBox.ItemContainerStyle>
-                            <Style TargetType="ListBoxItem">
-                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
-                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                                <Setter Property="Margin" Value="0,10,0,10"/>
-                            </Style>
-                        </ListBox.ItemContainerStyle>
-                    </ListBox>
-                </Grid>
-            </phone:PanoramaItem>
         </phone:Panorama>
     </Grid>
 

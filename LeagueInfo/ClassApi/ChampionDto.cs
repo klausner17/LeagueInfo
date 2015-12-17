@@ -109,5 +109,10 @@ namespace LeagueInfo.ClassApi
         {
             return new BitmapImage(new Uri("http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + this.Key + "_" + idSkin.ToString() + ".jpg"));
         }
+
+        public BitmapImage GetChampionLoading(int idSkin)
+        {
+            return new BitmapImage(new Uri("http://ddragon.leagueoflegends.com/cdn/img/champion/loading/" + this.Key + "_" + idSkin.ToString() + ".jpg"));
+        }
     }
 }

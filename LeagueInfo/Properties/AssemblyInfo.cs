@@ -9,7 +9,7 @@ using System.Resources;
 [assembly: AssemblyTitle("League Info")]
 [assembly: AssemblyDescription("Aplicação para visualizar informações do jogo League of Legends.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Klausner Apps")]
+[assembly: AssemblyCompany("Klapps")]
 [assembly: AssemblyProduct("League Info")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("Klausner Apps")]

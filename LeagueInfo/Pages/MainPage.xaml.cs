@@ -31,12 +31,6 @@ namespace LeagueInfo
         {
             InitializeComponent();
             Requester.OnGettingData += Requester_OnGettingData;
-            if (GlobalData.Logged)
-            {
-                buttonAlterarCadastro.Visibility = System.Windows.Visibility.Visible;
-                buttonSair.Visibility = System.Windows.Visibility.Visible;
-                textBlockInvocador.Text = GlobalData.UserLogged.login;
-            }
         }
 
         void Requester_OnGettingData(int status)
@@ -84,15 +78,6 @@ namespace LeagueInfo
         private void buttonAlterarCadastro_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("/Pages/UpdateAccount.xaml", UriKind.RelativeOrAbsolute));
-        }
-
-        private void buttonSair_Click(object sender, RoutedEventArgs e)
-        {
-            GlobalData.Logged = false;
-            GlobalData.UserLogged = null;
-            var settings = IsolatedStorageSettings.ApplicationSettings;
-            settings.Clear();
-            NavigationService.Navigate(new Uri("/Pages/Login.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private async void buttonFilterChampion_Click(object sender, RoutedEventArgs e)

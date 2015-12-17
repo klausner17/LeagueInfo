@@ -18,21 +18,12 @@ namespace LeagueInfo.Pages
 {
     public partial class DetailChampion : PhoneApplicationPage
     {
-        private LeagueWS.LeagueServiceClient lsComment;
-        private LeagueWS.LeagueServiceClient lsCounter;
-        private LeagueWS.LeagueServiceClient lsInsertCounter;
-        private LeagueWS.LeagueServiceClient lsInsertComment;
         private bool carregado = false;
 
         public DetailChampion()
         {
             InitializeComponent();
             Requester.OnGettingData += Requester_OnGettingData;
-            if (!GlobalData.Logged)
-            {
-                buttonComment.Visibility = System.Windows.Visibility.Collapsed;
-                textBoxComentario.Visibility = System.Windows.Visibility.Collapsed;
-            }
         }
 
         private delegate void ProgressCallBack(bool status);
@@ -77,6 +68,8 @@ namespace LeagueInfo.Pages
                 ChampionDto champion = new ChampionDto();
                 champion = await ChampionDto.SearchChampionAllData(Convert.ToInt32(NavigationContext.QueryString["id"]));
                 iconChampion.Source = await champion.GetChampionSquare();
+                championSplash.Source = champion.GetChampionLoading(0);
+                CarregarSkins(champion);
                 Random randNumSkin = new Random();
                 int num = randNumSkin.Next(champion.Skins.Count);
                 BitmapImage backGridInfo = champion.GetChampionSplash(num);
@@ -100,179 +93,17 @@ namespace LeagueInfo.Pages
                     ControlAbillity controlAbillity = new ControlAbillity(spell);
                     abillityChampions.Children.Add(controlAbillity);
                 }
-                CarregarComentarios();
-                CarregarCounters();
             }
         }
 
-        private void CarregarComentarios()
+        private void CarregarSkins(ChampionDto champion)
         {
-            listBoxComments.Items.Clear();
-            lsComment = new LeagueWS.LeagueServiceClient();
-            lsComment.encontrarComentarioPorCampeaoCompleted += ls_encontrarComentarioPorCampeaoCompleted;
-            lsComment.encontrarComentarioPorCampeaoAsync(Convert.ToInt32(NavigationContext.QueryString["id"]));
-        }
-
-        void ls_encontrarComentarioPorCampeaoCompleted(object sender, LeagueWS.encontrarComentarioPorCampeaoCompletedEventArgs e)
-        {
-            try
+            foreach (SkinDto skin in champion.Skins)
             {
-                if (e.Result != null)
-                {
-                    foreach (var comment in e.Result)
-                    {
-                        ChampionComment cm = new ChampionComment(comment.idComment, comment.comentario, comment.idUsuario.login);
-                        listBoxComments.Items.Add(cm);
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Não foi possível encontrar os comentários do campeão.");
-            }
-            finally
-            {
-                lsComment.CloseAsync();
+                SkinControl skinControl = new SkinControl(champion.GetChampionSplash(skin.Id), skin.Name);
+                ListBoxSkins.Items.Add(skinControl);                
             }
         }
 
-        private void CarregarCounters()
-        {
-            listBoxCounters.Items.Clear();
-            lsCounter = new LeagueWS.LeagueServiceClient();
-            lsCounter.encontrarCounterPorCampeaoCompleted += ls_encontrarCounterPorCampeaoCompleted;
-            lsCounter.encontrarCounterPorCampeaoAsync(Convert.ToInt32(NavigationContext.QueryString["id"]));
-        }
-
-        void ls_encontrarCounterPorCampeaoCompleted(object sender, LeagueWS.encontrarCounterPorCampeaoCompletedEventArgs e)
-        {
-            try
-            {
-                if (e.Result != null)
-                {
-                    foreach (var counter in e.Result)
-                    {
-                        ChampionSelected championControl = new ChampionSelected();
-                        championControl.Champion = ChampionListDto.AllChampions.Find(x => x.Id == counter.idChampion);
-                        listBoxCounters.Items.Add(championControl);
-                        championControl.Tap += championControl_Tap;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Não foi possível encontrar os counter do campeão.");
-            }
-            finally
-            {
-                lsCounter.CloseAsync();
-            }
-        }
-
-        void championControl_Tap(object sender, System.Windows.Input.GestureEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("/Pages/DetailChampion.xaml?id=" + ((ChampionSelected)sender).Champion.Id.ToString(), UriKind.RelativeOrAbsolute));
-        }
-
-        private void buttonComment_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                if (textBoxComentario.Text != string.Empty)
-                {
-                    LeagueWS.championcomments cc = new LeagueWS.championcomments();
-                    cc.idUsuario = GlobalData.UserLogged;
-                    cc.comentario = textBoxComentario.Text;
-                    cc.idChampion = Convert.ToInt32(NavigationContext.QueryString["id"]);
-                    lsInsertComment = new LeagueWS.LeagueServiceClient();
-                    lsInsertComment.inserirComentarioCampeaoCompleted += ls_inserirComentarioCampeaoCompleted;
-                    lsInsertComment.inserirComentarioCampeaoAsync(cc);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Não foi possivel efetuar o comentario.Detalhes:\n" + ex.Message);
-            }
-            
-        }
-
-        void ls_inserirComentarioCampeaoCompleted(object sender, LeagueWS.inserirComentarioCampeaoCompletedEventArgs e)
-        {
-            try
-            {
-                if (!e.Result)
-                    MessageBox.Show("Erro ao efetuar comentário.");
-                else
-                    CarregarComentarios();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Erro ao efetuar comentário.");
-            }
-            finally
-            {
-                lsInsertComment.CloseAsync();
-            }
-        }
-
-        private void buttonCriarBuild_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void buttonEscolherCounter_Click(object sender, RoutedEventArgs e)
-        {
-            gridChooseCounter.Visibility = System.Windows.Visibility.Visible;
-            listBoxCounterChose.Items.Clear();
-            foreach (ChampionDto champ in ChampionListDto.AllChampions)
-            {
-                CounterControl cc = new CounterControl(champ, true, false);
-                listBoxCounterChose.Items.Add(cc);
-            }
-        }
-
-        private void buttonSaveCounter_Click(object sender, RoutedEventArgs e)
-        {
-            gridChooseCounter.Visibility = Visibility.Collapsed;
-            foreach(CounterControl cc in listBoxCounterChose.Items)
-            {
-                if (cc.IsSelected)
-                {
-                    LeagueWS.championcounter counterWS = new LeagueWS.championcounter();
-                    counterWS.idCounter = cc.Champion.Id;
-                    counterWS.idChampion = Convert.ToInt16(NavigationContext.QueryString["id"]);
-                    lsInsertCounter = new LeagueWS.LeagueServiceClient();
-                    lsInsertCounter.inserirCounterCompleted += ls_inserirCounterCompleted;
-                    lsInsertCounter.inserirCounterAsync(counterWS);
-                }
-            }
-            
-        }
-
-        void ls_inserirCounterCompleted(object sender, LeagueWS.inserirCounterCompletedEventArgs e)
-        {
-            try
-            {
-                if (e.Result)
-                {
-                    CarregarCounters();
-                }
-                else
-                    MessageBox.Show("Não foi possível inserir o counter do campeão.");
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Não foi possível inserir o counter do campeão.");
-            }
-            finally
-            {
-                lsInsertCounter.CloseAsync();
-            }
-        }
-
-        private void buttonCancelarCounter_Click(object sender, RoutedEventArgs e)
-        {
-            gridChooseCounter.Visibility = System.Windows.Visibility.Collapsed;
-        }
     }
 }
