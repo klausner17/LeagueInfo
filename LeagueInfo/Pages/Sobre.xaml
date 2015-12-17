@@ -14,7 +14,10 @@
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot">
+        <Grid.Background>
+            <ImageBrush Opacity="0.4" ImageSource="/Assets/SobreBack.jpg" Stretch="None"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -27,7 +30,7 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <TextBlock TextWrapping="Wrap" Margin="10,0,10,0">
+            <TextBlock TextWrapping="Wrap" Margin="10,0,10,0" FontSize="22">
                 <LineBreak />
                 Eu me chamo Klausner! Sou o desenvolvedor do aplicativo e confesso  
                 que estou muito feliz e agradecido por você tê-lo instalado em seu Windows Phone.

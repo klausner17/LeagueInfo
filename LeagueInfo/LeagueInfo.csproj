@@ -299,6 +299,7 @@
     <Content Include="Assets\BackgroundCadastro.jpg" />
     <Content Include="Assets\LoginScreen.jpg" />
     <Content Include="Assets\LojaLol.jpg" />
+    <Content Include="Assets\SobreBack.jpg" />
     <Content Include="Assets\Tiles\IconicTileLarge.png" />
     <Content Include="Assets\UpdateAccount.jpg" />
     <None Include="Service References\LeagueWS\configuration91.svcinfo" />
