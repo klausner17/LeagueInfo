@@ -38,24 +38,24 @@ namespace LeagueInfo.Controls
             textBlockOuro.Text += game.Stats.GoldEarned.ToString();
             textBlockTempo.Text += ((int)(game.Stats.TimePlayed / 60)).ToString();
             textBlockModo.Text += game.SubType;
-            ChampionDto champion = await ChampionDto.SearchChampionLowData(game.ChampionId);
-            this.imageChampion.Source = await champion.GetChampionSquare();
-            List<int> idItems = new List<int>() { game.Stats.Item0, game.Stats.Item1, game.Stats.Item2, game.Stats.Item3, game.Stats.Item4, game.Stats.Item5, game.Stats.Item6 };
-            for (int i = 0; i < 7; i++)
-            {
-                try
-                {
-                    if (idItems[i] != 0)
-                    {
-                        ItemDto item = await new ItemDto().SearchItemLowData(idItems[i]);
-                        ImageBrush brush = new ImageBrush();
-                        brush.ImageSource = await item.GetImage();
-                        ((Ellipse)itemsMatch.Children[i]).Fill = brush;
-                    }
-                    else
-                        ((Ellipse)itemsMatch.Children[i]).Stroke = new SolidColorBrush(SystemColors.ActiveBorderColor);
-                }catch{}
-            }
+            //ChampionDto champion = await ChampionDto.SearchChampionLowData(game.Champion);
+            //this.imageChampion.Source = await champion.GetChampionSquare();
+            //List<int> idItems = new List<int>() { game.Stats.Item0, game.Stats.Item1, game.Stats.Item2, game.Stats.Item3, game.Stats.Item4, game.Stats.Item5, game.Stats.Item6 };
+            //for (int i = 0; i < 7; i++)
+            //{
+            //    try
+            //    {
+            //        if (idItems[i] != 0)
+            //        {
+            //            ItemDto item = await new ItemDto().SearchItemLowData(idItems[i]);
+            //            ImageBrush brush = new ImageBrush();
+            //            brush.ImageSource = await item.GetImage();
+            //            ((Ellipse)itemsMatch.Children[i]).Fill = brush;
+            //        }
+            //        else
+            //            ((Ellipse)itemsMatch.Children[i]).Stroke = new SolidColorBrush(SystemColors.ActiveBorderColor);
+            //    }catch{}
+            //}
         }
     }
 }

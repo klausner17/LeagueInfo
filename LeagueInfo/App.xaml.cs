@@ -7,6 +7,8 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using LeagueInfo.Resources;
+using LeagueInfo.ClassApi;
+using LeagueInfo;
 
 namespace LeagueInfo
 {
@@ -37,6 +39,7 @@ namespace LeagueInfo
 
             // Language display initialization
             InitializeLanguage();
+
 
             // Show graphics profiling information while debugging.
             if (Debugger.IsAttached)
@@ -129,6 +132,8 @@ namespace LeagueInfo
 
             // Ensure we don't initialize again
             phoneApplicationInitialized = true;
+
+            EndPointDDragon.GetVersions();
         }
 
         // Do not add any additional code to this method

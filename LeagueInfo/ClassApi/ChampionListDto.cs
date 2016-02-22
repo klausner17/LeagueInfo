@@ -11,7 +11,7 @@ namespace LeagueInfo.ClassApi
 {
     class ChampionListDto : IDisposable
     {
-        const String URLALLCHAMPS = @"https://global.api.pvp.net/api/lol/static-data/br/v1.2/champion?champData=image,tags&api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33";
+        const String URLALLCHAMPS = @"https://global.api.pvp.net/api/lol/static-data/br/v1.2/champion?champData=image,tags,skins&api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33";
 
         public static List<ChampionDto> AllChampions { get; set; }
 
@@ -49,7 +49,7 @@ namespace LeagueInfo.ClassApi
             for(int i = 0; i < AllChampions.Count; i++)
                 foreach (ChampionDto fw in champsFree)
                     if (AllChampions[i].Id == fw.Id)
-                        AllChampions[i].FreeToPlay = true;
+                        AllChampions[i].SetFree(true);
         }
 
         private static async Task<List<ChampionDto>> LoadFreeWeek()

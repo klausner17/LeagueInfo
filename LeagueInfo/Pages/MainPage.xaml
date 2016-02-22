@@ -22,7 +22,7 @@
             </Grid.Background>
             <TextBlock Padding="5" FontSize="24" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto">league info</TextBlock>
         </Grid>
-        <phone:Panorama Name="panoramaMain" Margin="0,42,0,0">
+        <phone:Panorama Name="panoramaMain" Margin="0,42,0,30">
             <phone:PanoramaItem Header="invocador" Name="panoramaInvocador">
                 <StackPanel>
                     <TextBox Name="textBlockInvocador" InputScope="Chat" KeyDown="textBlockInvocador_KeyDown"/>
@@ -61,7 +61,7 @@
                         <CheckBox FontSize="20" Grid.Row="2" IsChecked="true" Grid.Column="1" Name="filterChampionSupport" Grid.ColumnSpan="2">Suporte</CheckBox>
                         <CheckBox FontSize="20"  Grid.Row="2" IsChecked="true" Grid.Column="2" Name="filterChampionMarksman">Atirador</CheckBox>
                     </Grid>
-                    <ListBox Name="ChampionsList" Grid.Row="1">
+                    <ListBox Name="ChampionsList" Grid.Row="1" SelectionChanged="ChampionsList_SelectionChanged" ItemTemplate="{StaticResource ChampionTemplate}">
                         <ListBox.ItemContainerStyle>
                             <Style TargetType="ListBoxItem">
                                 <Setter Property="Margin" Value="3"/>
@@ -122,7 +122,7 @@
                             <CheckBox Name="filterItemJungle">Selva</CheckBox>
                         </toolkit:ExpanderView>
                     </Grid>
-                    <ListBox Name="ItensList" Grid.Row="1">
+                    <ListBox Name="ItensList" Grid.Row="1" ItemTemplate="{StaticResource ItemTemplate}" >
                         <ListBox.ItemContainerStyle>
                             <Style TargetType="ListBoxItem">
                                 <Setter Property="Margin" Value="3"/>

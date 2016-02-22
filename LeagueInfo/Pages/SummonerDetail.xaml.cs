@@ -76,22 +76,11 @@ namespace LeagueInfo.Pages
                 textBlockDer.Text = "0 derrota";
             }
             imageInvocador.Source = await summoner.GetProfileIcon();
-            RecentGamesDto gamesRecent = await new RecentGamesDto().GetLatestGamesById(summoner.Id);
-            List<int> lastChampionsPlayed = new List<int>();
-            foreach (GameDto game in gamesRecent.Games)
-            {
-                lastChampionsPlayed.Add(game.ChampionId);
-                LastMatches controlMatch = new LastMatches(game);
-                controlMatch.Margin = new Thickness(0, 0, 0, 10);
-                controlMatch.Load();
-                listboxPartidas.Items.Add(controlMatch);
-            }
-            int idChampPref = lastChampionsPlayed[new Random().Next(lastChampionsPlayed.Count - 1)];
-            ImageBrush imgBrush = new ImageBrush();
-            BitmapImage source = (await ChampionDto.SearchChampionAllData(idChampPref)).GetChampionSplash(0);
-            imgBrush.ImageSource = source;
-            imgBrush.Stretch = Stretch.UniformToFill;
-            LayoutRoot.Background = imgBrush;
+            if (ChampionListDto.AllChampions == null || ChampionListDto.AllChampions.Count == 0)
+                await ChampionListDto.LoadAllChampions();
+            if (ItemListDto.AllItems == null || ItemListDto.AllItems.Count == 0)
+                await ItemListDto.LoadAllItens();
+            listboxPartidas.ItemsSource = (await new RecentGamesDto().GetLatestGamesById(summoner.Id)).Games;
         }
     }
 }

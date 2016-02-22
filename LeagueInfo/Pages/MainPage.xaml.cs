@@ -12,6 +12,8 @@ using LeagueInfo.Resources;
 using System.IO.IsolatedStorage;
 using System.Collections.Generic;
 using Microsoft.Phone.Tasks;
+using System.Windows.Controls;
+using System.Linq;
 
 namespace LeagueInfo
 {
@@ -85,36 +87,25 @@ namespace LeagueInfo
             buttonFilterChampion.IsEnabled = false;
             List<string> filters = new List<string>();
             if (filterChampionAssassin.IsChecked == true)
-                filters.Add("Assassin");
+                filters.Add("assassino");
             if (filterChampionFigther.IsChecked == true)
-                filters.Add("Fighter");
+                filters.Add("lutador");
             if (filterChampionMarksman.IsChecked == true)
-                filters.Add("Marksman");
+                filters.Add("atirador");
             if (filterChampionTank.IsChecked == true)
-                filters.Add("Tank");
+                filters.Add("tanque");
             if (filterChampionSupport.IsChecked == true)
-                filters.Add("Support");
+                filters.Add("suporte");
             if (filterChampionMage.IsChecked == true)
-                filters.Add("Mage");
+                filters.Add("mago");
             if (ChampionListDto.AllChampions == null)
                 await ChampionListDto.LoadAllChampions();
-            ChampionsList.Items.Clear();
-            foreach (ChampionDto champion in ChampionListDto.AllChampions)
-            {
-                foreach (string tag in champion.Tags)
-                {
-                    if (filters.Contains(tag))
-                    {
-                        ChampionSelected item = new ChampionSelected();
-                        item.Champion = champion;
-                        item.Tap += item_Tap;
-                        ChampionsList.Items.Add(item);
-                        break;
-                    }
-                }
-            }
+            ChampionsList.ItemsSource = (from champion in ChampionListDto.AllChampions
+                                         where filters.Intersect(from tag in champion.Tags select tag.Description).Count() > 0
+                                         select champion); 
             buttonFilterChampion.IsEnabled = true;
         }
+
 
         private async void buttonFilterItem_Click(object sender, RoutedEventArgs e)
         {
@@ -170,32 +161,14 @@ namespace LeagueInfo
             ItensList.Items.Clear();
             if (ItemListDto.AllItems == null)
                 await ItemListDto.LoadAllItens();
-            foreach (ItemDto item in ItemListDto.AllItems)
+            if (filters.Contains("All"))
+                ItensList.ItemsSource = ItemListDto.AllItems;
+            else
             {
-                if (!filters.Contains("All"))
-                {
-                    if (item.Tags != null)
-                    {
-                        foreach (string tag in item.Tags)
-                        {
-                            if (filters.Contains(tag))
-                            {
-                                ItemSelect itemSelect = new ItemSelect();
-                                itemSelect.Item = item;
-                                itemSelect.Tap += ItemSelect_Tap;
-                                ItensList.Items.Add(itemSelect);
-                                break;
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    ItemSelect itemSelect = new ItemSelect();
-                    itemSelect.Item = item;
-                    itemSelect.Tap += ItemSelect_Tap;
-                    ItensList.Items.Add(itemSelect);
-                }
+
+                ItensList.ItemsSource = (from item in ItemListDto.AllItems
+                                         where item.Tags != null && filters.Intersect(item.Tags).Count() > 0
+                                         select item);
             }
             expanderDamage.IsExpanded = false;
             expanderDesfense.IsExpanded = false;
@@ -209,17 +182,9 @@ namespace LeagueInfo
             buttonFilterFreeWeek.IsEnabled = false;
             if (ChampionListDto.AllChampions == null)
                 await ChampionListDto.LoadAllChampions();
-            ChampionsList.Items.Clear();
-            foreach (ChampionDto champion in ChampionListDto.AllChampions)
-            {
-                if (champion.FreeToPlay)
-                {
-                    ChampionSelected item = new ChampionSelected();
-                    item.Champion = champion;
-                    item.Tap += item_Tap;
-                    ChampionsList.Items.Add(item);
-                }
-            }
+            ChampionsList.ItemsSource = from champion in ChampionListDto.AllChampions
+                                        where champion.Free == "free"
+                                        select champion;
             buttonFilterFreeWeek.IsEnabled = true;
         }
 
@@ -232,6 +197,12 @@ namespace LeagueInfo
         private void ApplicationBarIconButton_Click_1(object sender, EventArgs e)
         {
             NavigationService.Navigate(new Uri("/Pages/Sobre.xaml" + textBlockInvocador.Text, UriKind.Relative));
+        }
+
+        private void ChampionsList_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            ChampionDto championSelected = ((ChampionDto)((ListBox)sender).SelectedItem);
+            NavigationService.Navigate(new Uri("/Pages/DetailChampion.xaml?id=" + championSelected.Id, UriKind.Relative));          
         }
     }
 }

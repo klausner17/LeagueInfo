@@ -20,70 +20,270 @@ namespace LeagueInfo.ClassApi
    
         #region ChampionDto
         [JsonProperty("allytips")]
-        public List<string> AllyTips { get; set; }
+        private List<string> allyTips;
 
         [JsonProperty("blurb")]
-        public string Blurb { get; set; }
+        private string blurb;
 
         [JsonProperty("enemytips")]
-        public List<string> EnimyTips { get; set; }
+        private List<string> enimyTips;
 
         [JsonProperty("id")]
-        public int Id { get; set; }
+        private int id;
 
         [JsonProperty("image")]
-        public ImageDto Image { get; set; }
+        private ImageDto image;
 
         [JsonProperty("info")]
-        public InfoDto Info { get; set; }
+        private InfoDto info;
 
         [JsonProperty("key")]
-        public string Key { get; set; }
+        private string key;
 
         [JsonProperty("lore")]
-        public string Lore { get; set; }
+        private string lore;
 
         [JsonProperty("name")]
-        public string Name { get; set; }
+        private string name;
 
         [JsonProperty("partype")]
-        public string Partype { get; set; }
+        private string partype;
 
         [JsonProperty("passive")]
-        public PassiveDto Passive { get; set; }
+        private PassiveDto passive;
 
         [JsonProperty("recommended")]
-        public List<RecommendedDto> Recommended { get; set; }
+        private List<RecommendedDto> recommended;
 
         [JsonProperty("skins")]
-        public List<SkinDto> Skins { get; set; }
+        private List<SkinDto> skins;
 
         [JsonProperty("spells")]
-        public List<ChampionSpellDto> Spells { get; set; }
+        private List<ChampionSpellDto> spells;
 
         [JsonProperty("stats")]
-        public StatsDto Stats { get; set; }
+        private StatsDto stats;
 
         [JsonProperty("tags")]
-        public List<string> Tags { get; set; }
+        private List<string> tags;
 
         [JsonProperty("title")]
-        public string Title { get; set; }
+        private string title;
 
         [JsonProperty("active")]
-        public bool Active { get; set; }
+        private bool active;
 
         [JsonProperty("botEnabled")]
-        public bool BotEnabled { get; set; }
+        private bool botEnabled;
 
         [JsonProperty("botMmEnabled")]
-        public bool BotMmEnabled { get; set; }
+        private bool botMmEnabled;
 
         [JsonProperty("freeToPlay")]
-        public bool FreeToPlay { get; set; }
+        private bool freeToPlay;
 
         [JsonProperty("rankedPlayEnabled")]
-        public bool RankedPlayEnabled { get; set; }
+        private bool rankedPlayEnabled;
+        #endregion
+
+        #region Properties
+
+        public List<string> AllyTips
+        {
+            get { return allyTips; }
+            set { allyTips = value; }
+        }
+
+        public string Blurb
+        {
+            get { return blurb; }
+            set { blurb = value; }
+        }
+
+        public List<string> EnimyTips
+        {
+            get { return enimyTips; }
+            set { enimyTips = value; }
+        }
+
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+
+        public string SquareChampion
+        {
+            get { return "http://ddragon.leagueoflegends.com/cdn/" + EndPointDDragon.GetVersions().Result.GeralVersion.Champion + "/img/champion/" + this.image.Full; }
+        }
+
+        public List<string> SplashSkins
+        {
+            get 
+            {
+                List<string> skinsSources = new List<string>();
+                foreach (SkinDto skin in Skins)
+                {
+                    skinsSources.Add("http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + this.Key + "_" + skin.Num.ToString() + ".jpg");
+                }
+                return skinsSources; 
+            }
+        }
+
+        public List<string> ChampionLoading
+        {
+            get
+            {
+                List<string> loadingSources = new List<string>();
+                foreach (SkinDto skin in Skins)
+                    loadingSources.Add("http://ddragon.leagueoflegends.com/cdn/img/champion/loading/" + this.Key + "_" + skin.Id.ToString() + ".jpg");
+                return loadingSources;
+            }
+        }
+
+        public ImageDto Image
+        {
+            get { return image; }
+            set { image = value; }
+        }
+
+        public InfoDto Info
+        {
+            get { return info; }
+            set { info = value; }
+        }
+
+        public string Key
+        {
+            get { return key; }
+            set { key = value; }
+        }
+
+        public string Lore
+        {
+            get { return lore; }
+            set { lore = value; }
+        }
+
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        public string Partype
+        {
+            get { return partype; }
+            set { partype = value; }
+        }
+
+        public PassiveDto Passive
+        {
+            get { return passive; }
+            set { passive = value; }
+        }
+
+        public List<RecommendedDto> Recommended
+        {
+            get { return recommended; }
+            set { recommended = value; }
+        }
+
+        public List<SkinDto> Skins
+        {
+            get { return skins; }
+            set { skins = value; }
+        }
+
+        public List<ChampionSpellDto> Spells
+        {
+            get { return spells; }
+            set { spells = value; }
+        }
+
+        public StatsDto Stats
+        {
+            get { return stats; }
+            set { stats = value; }
+        }
+
+        public List<ChampionTag>  Tags
+        {
+            get
+            {
+                List<ChampionTag> tags = new List<ChampionTag>();
+                foreach (string tag in this.tags)
+                {
+                    switch (tag)
+                    {
+                        case "Fighter":
+                            tags.Add(new ChampionTag("lutador", new SolidColorBrush(Color.FromArgb(255, 197, 255, 73))));
+                            break;
+                        case "Support":
+                            tags.Add(new ChampionTag("suporte", new SolidColorBrush(Color.FromArgb(255, 55, 232, 194))));
+                            break;
+                        case "Tank":
+                            tags.Add(new ChampionTag("tanque", new SolidColorBrush(Color.FromArgb(255, 232, 67, 132))));
+                            break;
+                        case "Mage":
+                            tags.Add(new ChampionTag("mago", new SolidColorBrush(Color.FromArgb(255, 81, 73, 255))));
+                            break;
+                        case "Assassin":
+                            tags.Add(new ChampionTag("assassino", new SolidColorBrush(Color.FromArgb(255, 255, 178, 73))));
+                            break;
+                        case "Marksman":
+                            tags.Add(new ChampionTag("atirador", new SolidColorBrush(Color.FromArgb(255, 255, 144, 104))));
+                            break;
+                        default:
+                            tags.Add(new ChampionTag("desconhecido", new SolidColorBrush(Colors.LightGray)));
+                            break;
+                    }
+                }
+                return tags;
+            }
+        }
+
+        public string Title
+        {
+            get { return title; }
+            set { title = value; }
+        }
+
+        public bool Active
+        {
+            get { return active; }
+            set { active = value; }
+        }
+
+        public bool BotEnabled
+        {
+            get { return botEnabled; }
+            set { botEnabled = value; }
+        }
+
+        public bool BotMmEnabled
+        {
+            get { return botMmEnabled; }
+            set { botMmEnabled = value; }
+        }
+
+        public string Free
+        {
+            get
+            {
+                if (freeToPlay)
+                    return "free";
+                else return "";
+            }
+        }
+
+        public bool RankedPlayEnabled
+        {
+            get { return rankedPlayEnabled; }
+            set { rankedPlayEnabled = value; }
+        }
+
+        #endregion
 
         public static async Task<ChampionDto> SearchChampionAllData(long idChampion)
         {
@@ -92,27 +292,16 @@ namespace LeagueInfo.ClassApi
             return JsonConvert.DeserializeObject<ChampionDto>(json);
         }
 
-        public static async Task<ChampionDto> SearchChampionLowData(long idChampiom)
+        public static async Task<ChampionDto> SearchChampionLowData(long idChampion)
         {
-            string json = await new Requester(@"https://global.api.pvp.net/api/lol/static-data/br/v1.2/champion/" + idChampiom.ToString() + 
+            string json = await new Requester(@"https://global.api.pvp.net/api/lol/static-data/br/v1.2/champion/" + idChampion.ToString() + 
                 "?champData=image&api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33").GetJson();
             return JsonConvert.DeserializeObject<ChampionDto>(json);
         }
 
-        public async Task<BitmapImage> GetChampionSquare()
+        public void SetFree(bool status)
         {
-            return new BitmapImage(new Uri("http://ddragon.leagueoflegends.com/cdn/" + (await EndPointDDragon.GetVersions()).GeralVersion.Champion + "/img/champion/" + this.Image.Full));
-        }
-        #endregion
-
-        public BitmapImage GetChampionSplash(int idSkin)
-        {
-            return new BitmapImage(new Uri("http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + this.Key + "_" + idSkin.ToString() + ".jpg"));
-        }
-
-        public BitmapImage GetChampionLoading(int idSkin)
-        {
-            return new BitmapImage(new Uri("http://ddragon.leagueoflegends.com/cdn/img/champion/loading/" + this.Key + "_" + idSkin.ToString() + ".jpg"));
+            freeToPlay = true;
         }
     }
 }

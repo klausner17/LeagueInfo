@@ -1,241 +1,684 @@
 ﻿using Newtonsoft.Json;
+using System;
+using System.Linq;
+using System.Windows.Media;
 
 namespace LeagueInfo.ClassApi
 {
     public class RawStatsDto
     {
+        #region RawStatsDto
+
         [JsonProperty("assists")]
-        public int Assists { get; set; }
+        private int assists;
 
         [JsonProperty("barracksKilled")]
-        public int BarracksKilled { get; set; }
+        private int barracksKilled;
         
         [JsonProperty("championsKilled")]
-        public int ChampionsKilled { get; set; }
+        private int championsKilled;
         
         [JsonProperty("combatPlayerScore")]
-        public int CombatPlayerScore { get; set; }
+        private int combatPlayerScore;
         
         [JsonProperty("consumablesPurchased")]
-        public int ConsumablesPurchased { get; set; }
+        private int consumablesPurchased;
         
         [JsonProperty("damageDealtPlayer")]
-        public int DamageDealtPlayer { get; set; }
+        private int damageDealtPlayer;
         
         [JsonProperty("doubleKills")]
-        public int DoubleKills { get; set; }
+        private int doubleKills;
         
         [JsonProperty("firstBlood")]
-        public int FirstBlood { get; set; }
+        private int firstBlood;
         
         [JsonProperty("gold")]
-        public int Gold { get; set; }
+        private int gold;
         
         [JsonProperty("goldEarned")]
-        public int GoldEarned { get; set; }
+        private int goldEarned;
         
         [JsonProperty("goldSpent")]
-        public int GoldSpent { get; set; }
+        private int goldSpent;
 
         [JsonProperty("item0")]
-        public int Item0 { get; set; }
+        private int item0;
 
         [JsonProperty("item1")]
-        public int Item1 { get; set; }
+        private int item1;
 
         [JsonProperty("item2")]
-        public int Item2 { get; set; }
+        private int item2;
 
         [JsonProperty("item3")]
-        public int Item3 { get; set; }
+        private int item3;
 
         [JsonProperty("item4")]
-        public int Item4 { get; set; }
+        private int item4;
 
         [JsonProperty("item5")]
-        public int Item5 { get; set; }
+        private int item5;
 
         [JsonProperty("item6")]
-        public int Item6 { get; set; }
+        private int item6;
 
         [JsonProperty("itemsPurchased")]
-        public int ItemsPurchased { get; set; }
+        private int itemsPurchased;
         
         [JsonProperty("killingSprees")]
-        public int KillingSprees { get; set; }
+        private int killingSprees;
         
         [JsonProperty("largestCriticalStrike")]
-        public int LargestCriticalStrike { get; set; }
+        private int largestCriticalStrike;
         
         [JsonProperty("largestKillingSpree")]
-        public int LargestKillingSpree { get; set; }
+        private int largestKillingSpree;
         
         [JsonProperty("largestMultiKill")]
-        public int LargestMultiKill { get; set; }
+        private int largestMultiKill;
         
         [JsonProperty("legendaryItemsCreated")]
-        public int LegendaryItemsCreated { get; set; }
+        private int legendaryItemsCreated;
         
         [JsonProperty("level")]
-        public int Level { get; set; }
+        private int level;
         
         [JsonProperty("magicDamageDealtPlayer")]
-        public int MagicDamageDealtPlayer { get; set; }
+        private int magicDamageDealtPlayer;
         
         [JsonProperty("magicDamageDealtToChampions")]
-        public int MagicDamageDealtToChampions { get; set; }
+        private int magicDamageDealtToChampions;
         
         [JsonProperty("magicDamageTaken")]
-        public int MagicDamageTaken { get; set; }
+        private int magicDamageTaken;
         
         [JsonProperty("minionsDenied")]
-        public int MinionsDenied { get; set; }
+        private int minionsDenied;
         
         [JsonProperty("minionsKilled")]
-        public int MinionsKilled { get; set; }
+        private int minionsKilled;
         
         [JsonProperty("neutralMinionsKilled")]
-        public int NeutralMinionsKilled { get; set; }
+        private int neutralMinionsKilled;
         
         [JsonProperty("neutralMinionsKilledEnemyJungle")]
-        public int NeutralMinionsKilledEnemyJungle { get; set; }
+        private int neutralMinionsKilledEnemyJungle;
         
         [JsonProperty("neutralMinionsKilledYourJungle")]
-        public int NeutralMinionsKilledYourJungle { get; set; }
+        private int neutralMinionsKilledYourJungle;
         
         [JsonProperty("nexusKilled")]
-        public bool NexusKilled { get; set; }
+        private bool nexusKilled;
         
         [JsonProperty("nodeCapture")]
-        public int NodeCapture { get; set; }
+        private int nodeCapture;
         
         [JsonProperty("nodeCaptureAssist")]
-        public int NodeCaptureAssist { get; set; }
+        private int nodeCaptureAssist;
         
         [JsonProperty("nodeNeutralize")]
-        public int NodeNeutralize { get; set; }
+        private int nodeNeutralize;
         
         [JsonProperty("nodeNeutralizeAssist")]
-        public int NodeNeutralizeAssist { get; set; }
+        private int nodeNeutralizeAssist;
         
         [JsonProperty("numDeaths")]
-        public int NumDeaths { get; set; }
+        private int numDeaths;
         
         [JsonProperty("numItemsBought")]
-        public int NumItemsBought { get; set; }
+        private int numItemsBought;
         
         [JsonProperty("objectivePlayerScore")]
-        public int ObjectivePlayerScore { get; set; }
+        private int objectivePlayerScore;
         
         [JsonProperty("pentaKills")]
-        public int PentaKills { get; set; }
+        private int pentaKills;
         
         [JsonProperty("physicalDamageDealtPlayer")]
-        public int PhysicalDamageDealtPlayer { get; set; }
+        private int physicalDamageDealtPlayer;
         
         [JsonProperty("physicalDamageDealtToChampions")]
-        public int PhysicalDamageDealtToChampions { get; set; }
+        private int physicalDamageDealtToChampions;
         
         [JsonProperty("physicalDamageTaken")]
-        public int PhysicalDamageTaken { get; set; }
+        private int physicalDamageTaken;
         
         [JsonProperty("playerPosition")]
-        public int PlayerPosition { get; set; }
+        private int playerPosition;
         
         [JsonProperty("playerRole")]
-        public int PlayerRole { get; set; }
+        private int playerRole;
 
         [JsonProperty("quadraKills")]
-        public int QuadraKills { get; set; }
+        private int quadraKills;
 
         [JsonProperty("sightWardsBought")]
-        public int SightWardsBought { get; set; }
+        private int sightWardsBought;
 
         [JsonProperty("spell1Cast")]
-        public int Spell1Cast { get; set; }
+        private int spell1Cast;
 
         [JsonProperty("spell2Cast")]
-        public int Spell2Cast { get; set; }
+        private int spell2Cast;
 
         [JsonProperty("spell3Cast")]
-        public int Spell3Cast { get; set; }
+        private int spell3Cast;
 
         [JsonProperty("spell4Cast")]
-        public int Spell4Cast { get; set; }
+        private int spell4Cast;
 
         [JsonProperty("summonSpell1Cast")]
-        public int SummonSpell1Cast { get; set; }
+        private int summonSpell1Cast;
 
         [JsonProperty("summonSpell2Cast")]
-        public int SummonSpell2Cast { get; set; }
+        private int summonSpell2Cast;
 
         [JsonProperty("superMonsterKilled")]
-        public int SuperMonsterKilled { get; set; }
+        private int superMonsterKilled;
 
         [JsonProperty("team")]
-        public int Team { get; set; }
+        private int team;
 
         [JsonProperty("teamObjective")]
-        public int TeamObjective { get; set; }
+        private int teamObjective;
 
         [JsonProperty("timePlayed")]
-        public int TimePlayed { get; set; }
+        private int timePlayed;
 
         [JsonProperty("totalDamageDealt")]
-        public int TotalDamageDealt { get; set; }
+        private int totalDamageDealt;
 
         [JsonProperty("totalDamageDealtToChampions")]
-        public int TotalDamageDealtToChampions { get; set; }
+        private int totalDamageDealtToChampions;
 
         [JsonProperty("totalDamageTaken")]
-        public int TotalDamageTaken { get; set; }
+        private int totalDamageTaken;
 
         [JsonProperty("totalHeal")]
-        public int TotalHeal { get; set; }
+        private int totalHeal;
 
         [JsonProperty("totalPlayerScore")]
-        public int TotalPlayerScore { get; set; }
+        private int totalPlayerScore;
 
         [JsonProperty("totalScoreRank")]
-        public int TotalScoreRank { get; set; }
+        private int totalScoreRank;
 
         [JsonProperty("totalTimeCrowdControlDealt")]
-        public int TotalTimeCrowdControlDealt { get; set; }
+        private int totalTimeCrowdControlDealt;
 
         [JsonProperty("totalUnitsHealed")]
-        public int TotalUnitsHealed { get; set; }
+        private int totalUnitsHealed;
 
         [JsonProperty("tripleKills")]
-        public int TripleKills { get; set; }
+        private int tripleKills;
 
         [JsonProperty("trueDamageDealtPlayer")]
-        public int TrueDamageDealtPlayer { get; set; }
+        private int trueDamageDealtPlayer;
 
         [JsonProperty("trueDamageDealtToChampions")]
-        public int TrueDamageDealtToChampions { get; set; }
+        private int trueDamageDealtToChampions;
 
         [JsonProperty("trueDamageTaken")]
-        public int TrueDamageTaken { get; set; }
+        private int trueDamageTaken;
 
         [JsonProperty("turretsKilled")]
-        public int TurretsKilled { get; set; }
+        private int turretsKilled;
 
         [JsonProperty("unrealKills")]
-        public int UnrealKills { get; set; }
+        private int unrealKills;
 
         [JsonProperty("victoryPointTotal")]
-        public int VictoryPointTotal { get; set; }
+        private int victoryPointTotal;
 
         [JsonProperty("visionWardsBought")]
-        public int VisionWardsBought { get; set; }
+        private int visionWardsBought;
 
         [JsonProperty("wardKilled")]
-        public int WardKilled { get; set; }
+        private int wardKilled;
 
         [JsonProperty("wardPlaced")]
-        public int WardPlaced { get; set; }
+        private int wardPlaced;
 
         [JsonProperty("win")]
-        public bool Win { get; set; }
+        private bool win;
+
+        #endregion
+
+        #region Propriedades
+
+        public int Assists
+        {
+            get { return assists; }
+        }
+
+        public int BarracksKilled
+        {
+            get { return barracksKilled; }
+        }
+
+        public int ChampionsKilled
+        {
+            get { return championsKilled; }
+        }
+
+        public int CombatPlayerScore{
+            get { return assists; }
+        }
+
+        public int ConsumablesPurchased
+        {
+            get { return consumablesPurchased; }
+        }
+
+        public int DamageDealtPlayer
+        {
+            get { return damageDealtPlayer; }
+        }
+
+        public int DoubleKills
+        {
+            get { return doubleKills; }
+        }
+
+        public int FirstBlood
+        {
+            get { return firstBlood; }
+        }
+
+        public int Gold
+        {
+            get { return gold; }
+        }
+
+        public int GoldEarned
+        {
+            get { return goldEarned; }
+        }
+
+        public int GoldSpent
+        {
+            get { return goldSpent; }
+        }
+
+        public ItemDto Item0
+        {
+            get
+            {
+                return (from item in ItemListDto.AllItems
+                        where item.id == item0
+                        select item).FirstOrDefault();
+            }
+        }
+
+        public ItemDto Item1
+        {
+            get
+            {
+                return (from item in ItemListDto.AllItems
+                        where item.id == item1
+                        select item).FirstOrDefault();
+            }
+        }
+
+        public ItemDto Item2
+        {
+            get
+            {
+                return (from item in ItemListDto.AllItems
+                        where item.id == item2
+                        select item).FirstOrDefault();
+            }
+        }
+
+        public ItemDto Item3
+        {
+            get
+            {
+                return (from item in ItemListDto.AllItems
+                        where item.id == item3
+                        select item).FirstOrDefault();
+            }
+        }
+
+        public ItemDto Item4
+        {
+            get
+            {
+                return (from item in ItemListDto.AllItems
+                        where item.id == item4
+                        select item).FirstOrDefault();
+            }
+        }
+
+        public ItemDto Item5
+        {
+            get
+            {
+                return (from item in ItemListDto.AllItems
+                        where item.id == item5
+                        select item).FirstOrDefault();
+            }
+        }
+
+        public ItemDto Item6
+        {
+            get
+            {
+                return (from item in ItemListDto.AllItems
+                        where item.id == item6
+                        select item).First();
+            }
+        }
+
+        public int ItemsPurchased
+        {
+            get { return itemsPurchased; }
+        }
+
+        public int KillingSprees
+        {
+            get { return killingSprees; }
+        }
+
+        public int LargestCriticalStrike
+        {
+            get { return largestCriticalStrike; }
+        }
+
+        public int LargestKillingSpree
+        {
+            get { return largestKillingSpree; }
+        }
+
+        public int LargestMultiKill
+        {
+            get { return largestMultiKill; }
+        }
+
+        public int LegendaryItemsCreated
+        {
+            get { return legendaryItemsCreated; }
+        }
+
+        public int Level
+        {
+            get { return level; }
+        }
+
+        public int MagicDamageDealtPlayer
+        {
+            get { return magicDamageDealtPlayer; }
+        }
+
+        public int MagicDamageDealtToChampions
+        {
+            get { return magicDamageDealtToChampions; }
+        }
+
+        public int MagicDamageTaken
+        {
+            get { return magicDamageTaken; }
+        }
+
+        public int MinionsDenied
+        {
+            get { return minionsDenied; }
+        }
+
+        public int MinionsKilled
+        {
+            get { return minionsKilled; }
+        }
+
+        public int NeutralMinionsKilled
+        {
+            get { return neutralMinionsKilled; }
+        }
+
+        public int NeutralMinionsKilledEnemyJungle
+        {
+            get { return neutralMinionsKilledEnemyJungle; }
+        }
+
+        public int NeutralMinionsKilledYourJungle
+        {
+            get { return neutralMinionsKilledYourJungle; }
+        }
+
+        public bool NexusKilled
+        {
+            get { return nexusKilled; }
+        }
+
+        public int NodeCapture
+        {
+            get { return nodeCapture; }
+        }
+
+        public int NodeCaptureAssist
+        {
+            get { return nodeCaptureAssist; }
+        }
+
+        public int NodeNeutralize
+        {
+            get { return nodeNeutralize; }
+        }
+
+        public int NodeNeutralizeAssist
+        {
+            get { return nodeNeutralizeAssist; }
+        }
+
+        public int NumDeaths
+        {
+            get { return numDeaths; }
+        }
+
+        public int NumItemsBought
+        {
+            get { return numItemsBought; }
+        }
+
+        public int ObjectivePlayerScore
+        {
+            get { return objectivePlayerScore; }
+        }
+
+        public int PentaKills
+        {
+            get { return pentaKills; }
+        }
+
+        public int PhysicalDamageDealtPlayer
+        {
+            get { return physicalDamageDealtPlayer; }
+        }
+
+        public int PhysicalDamageDealtToChampions
+        {
+            get { return physicalDamageDealtToChampions; }
+        }
+
+        public int PhysicalDamageTaken
+        {
+            get { return physicalDamageTaken; }
+        }
+
+        public int PlayerPosition
+        {
+            get { return playerPosition; }
+        }
+
+        public int PlayerRole
+        {
+            get { return playerRole; }
+        }
+
+        public int QuadraKills
+        {
+            get { return quadraKills; }
+        }
+
+        public int SightWardsBought
+        {
+            get { return sightWardsBought; }
+        }
+
+        public int Spell1Cast
+        {
+            get { return spell1Cast; }
+        }
+
+        public int Spell2Cast
+        {
+            get { return spell2Cast; }
+        }
+
+        public int Spell3Cast
+        {
+            get { return spell3Cast; }
+        }
+
+        public int Spell4Cast
+        {
+            get { return spell4Cast; }
+        }
+
+        public int SummonSpell1Cast
+        {
+            get { return summonSpell1Cast; }
+        }
+
+        public int SummonSpell2Cast
+        {
+            get { return summonSpell2Cast; }
+        }
+
+        public int SuperMonsterKilled
+        {
+            get { return superMonsterKilled; }
+        }
+
+        public int Team { get { return team ; } }
+
+        public int TeamObjective
+        {
+            get { return teamObjective; }
+        }
+
+        public double TimePlayed
+        {
+            get { return Math.Round((double)(timePlayed / 60), 0); }
+        }
+
+        public int TotalDamageDealt
+        {
+            get { return totalDamageDealt; }
+        }
+
+        public int TotalDamageDealtToChampions
+        {
+            get { return totalDamageDealtToChampions; }
+        }
+
+        public int TotalDamageTaken
+        {
+            get { return totalDamageTaken; }
+        }
+
+        public int TotalHeal
+        {
+            get { return totalHeal; }
+        }
+
+        public int TotalPlayerScore
+        {
+            get { return totalPlayerScore; }
+        }
+
+        public int TotalScoreRank
+        {
+            get { return totalScoreRank; }
+        }
+
+        public int TotalTimeCrowdControlDealt
+        {
+            get { return totalTimeCrowdControlDealt; }
+        }
+
+        public int TotalUnitsHealed
+        {
+            get { return totalUnitsHealed; }
+        }
+
+        public int TripleKills
+        {
+            get { return tripleKills; }
+        }
+
+        public int TrueDamageDealtPlayer
+        {
+            get { return trueDamageDealtPlayer; }
+        }
+
+        public int TrueDamageDealtToChampions
+        {
+            get { return trueDamageDealtToChampions; }
+        }
+
+        public int TrueDamageTaken
+        {
+            get { return trueDamageTaken; }
+        }
+
+        public int TurretsKilled
+        {
+            get { return turretsKilled; }
+        }
+
+        public int UnrealKills
+        {
+            get { return unrealKills; }
+        }
+
+        public int VictoryPointTotal
+        {
+            get { return victoryPointTotal; }
+        }
+
+        public int VisionWardsBought
+        {
+            get { return visionWardsBought; }
+        }
+
+        public int WardKilled
+        {
+            get { return wardKilled; }
+        }
+
+        public int WardPlaced
+        {
+            get { return wardPlaced; }
+        }
+
+        public bool Win
+        {
+            get { return win; }
+        }
+
+        public SolidColorBrush WinColor
+        {
+            get
+            {
+                if (win)
+                    return new SolidColorBrush(Colors.Green);
+                else
+                    return new SolidColorBrush(Colors.Red);
+            }
+        }
+
+        #endregion
     }
 }

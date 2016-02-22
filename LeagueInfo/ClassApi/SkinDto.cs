@@ -11,13 +11,38 @@ namespace LeagueInfo.ClassApi
     /// </summary>
     public class SkinDto
     {
+        #region SkinDto
+
         [JsonProperty("id")]
-        public int Id { get; set; }
+        private int id;
 
         [JsonProperty("name")]
-        public string Name { get; set; }
+        private string name;
 
         [JsonProperty("num")]
-        public int Num { get; set; }
+        private int num;
+
+        #endregion
+
+        #region Properties
+
+        public int Id
+        {
+            get{ return id; }
+        }
+
+        public string Name
+        {
+            get { return name; }
+        }
+
+        public int Num
+        {
+            get { return num; }
+        }
+
+        #endregion
+
+
     }
 }

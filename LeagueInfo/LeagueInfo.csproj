@@ -96,6 +96,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ClassApi\ChampionTag.cs" />
     <Compile Include="ClassApi\EndPointDDragon.cs" />
     <Compile Include="ClassApi\GameDto.cs" />
     <Compile Include="ClassApi\GeneralVersion.cs" />
@@ -159,6 +160,7 @@
     <Compile Include="Controls\SquareInfo.xaml.cs">
       <DependentUpon>SquareInfo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ConverterWin.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Pages\ItemDetail.xaml.cs">
       <DependentUpon>ItemDetail.xaml</DependentUpon>

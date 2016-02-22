@@ -3,93 +3,11 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
-    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone">
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit">
 	<Application.Resources>
-
-    <Style TargetType="TextBox" x:Key="login">
-			<Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyNormal}"/>
-			<Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMediumLarge}"/>
-			<Setter Property="Background" Value="Transparent"/>
-			<Setter Property="Foreground" Value="{StaticResource PhoneTextBoxForegroundBrush}"/>
-			<Setter Property="BorderBrush" Value="{StaticResource PhoneAccentBrush}"/>
-			<Setter Property="SelectionBackground" Value="{StaticResource PhoneAccentBrush}"/>
-			<Setter Property="SelectionForeground" Value="{StaticResource PhoneTextBoxSelectionForegroundBrush}"/>
-			<Setter Property="BorderThickness" Value="0,0,0,2"/>
-			<Setter Property="Padding" Value="2"/>
-			<Setter Property="Template">
-				<Setter.Value>
-					<ControlTemplate TargetType="TextBox">
-						<Grid Background="Transparent">
-							<VisualStateManager.VisualStateGroups>
-								<VisualStateGroup x:Name="CommonStates">
-									<VisualState x:Name="Normal"/>
-									<VisualState x:Name="MouseOver"/>
-									<VisualState x:Name="Disabled">
-										<Storyboard>
-											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="MainBorder">
-												<DiscreteObjectKeyFrame KeyTime="0" Value="Transparent"/>
-											</ObjectAnimationUsingKeyFrames>
-											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="MainBorder">
-												<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}"/>
-											</ObjectAnimationUsingKeyFrames>
-											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentElement">
-												<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}"/>
-											</ObjectAnimationUsingKeyFrames>
-										</Storyboard>
-									</VisualState>
-									<VisualState x:Name="ReadOnly">
-										<Storyboard>
-											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="MainBorder">
-												<DiscreteObjectKeyFrame KeyTime="0">
-													<DiscreteObjectKeyFrame.Value>
-														<Visibility>Collapsed</Visibility>
-													</DiscreteObjectKeyFrame.Value>
-												</DiscreteObjectKeyFrame>
-											</ObjectAnimationUsingKeyFrames>
-											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="ReadonlyBorder">
-												<DiscreteObjectKeyFrame KeyTime="0">
-													<DiscreteObjectKeyFrame.Value>
-														<Visibility>Visible</Visibility>
-													</DiscreteObjectKeyFrame.Value>
-												</DiscreteObjectKeyFrame>
-											</ObjectAnimationUsingKeyFrames>
-											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="ReadonlyBorder">
-												<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneTextBoxBrush}"/>
-											</ObjectAnimationUsingKeyFrames>
-											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ReadonlyBorder">
-												<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneTextBoxBrush}"/>
-											</ObjectAnimationUsingKeyFrames>
-											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentElement">
-												<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneTextBoxReadOnlyBrush}"/>
-											</ObjectAnimationUsingKeyFrames>
-										</Storyboard>
-									</VisualState>
-								</VisualStateGroup>
-								<VisualStateGroup x:Name="FocusStates">
-									<VisualState x:Name="Focused">
-										<Storyboard>
-											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="MainBorder">
-												<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneTextBoxEditBackgroundBrush}"/>
-											</ObjectAnimationUsingKeyFrames>
-											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="MainBorder">
-												<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneTextBoxEditBorderBrush}"/>
-											</ObjectAnimationUsingKeyFrames>
-										</Storyboard>
-									</VisualState>
-									<VisualState x:Name="Unfocused"/>
-								</VisualStateGroup>
-							</VisualStateManager.VisualStateGroups>
-							<Border x:Name="MainBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Margin="{StaticResource PhoneTouchTargetOverhang}"/>
-							<Border x:Name="ReadonlyBorder" BorderBrush="{StaticResource PhoneDisabledBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="Transparent" Margin="{StaticResource PhoneTouchTargetOverhang}" Visibility="Collapsed"/>
-							<Border BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" Background="Transparent" Margin="{StaticResource PhoneTouchTargetOverhang}">
-								<ContentControl x:Name="ContentElement" BorderThickness="0" HorizontalContentAlignment="Stretch" Margin="{StaticResource PhoneTextBoxInnerMargin}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="Stretch"/>
-							</Border>
-						</Grid>
-					</ControlTemplate>
-				</Setter.Value>
-			</Setter>
-		</Style>
-		<Style TargetType="phone:PanoramaItem">
+        
+        <Style TargetType="phone:PanoramaItem">
 			<Setter Property="HorizontalContentAlignment" Value="Stretch"/>
 			<Setter Property="VerticalContentAlignment" Value="Stretch"/>
 			<Setter Property="Template">
@@ -111,6 +29,159 @@
 				</Setter.Value>
 			</Setter>
 		</Style>
+        
+        <DataTemplate x:Key="ChampionTemplate">
+            <Grid>
+                <Grid.Background>
+                    <SolidColorBrush Color="Black" Opacity="0.3" />
+                </Grid.Background>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+                <Image x:Name="icon" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Source="{Binding Path=SquareChampion}" />
+                <TextBlock Grid.Row="0" Grid.Column="1" FontSize="26" Text="{Binding Path=Name}" Margin="8,8,0,0" Foreground="White" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+                <TextBlock Grid.Row="1" Grid.Column="1" FontSize="22" Text="{Binding Path=Title}" Margin="8,0,0,0" Foreground="{StaticResource PhoneSubtleBrush}" VerticalAlignment="Top" HorizontalAlignment="Stretch" />
+                <TextBlock Grid.Row="0" Grid.Column="1" FontSize="12" Text="{Binding Path=Free}" Foreground="Green" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,2,2,0" />
+                <ListBox Grid.Row="2" Grid.Column="1" Margin="8,0,0,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" >
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <toolkit:WrapPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <TextBlock FontSize="14" Text="{Binding Path=Tags[0].Description}" Foreground="{Binding Path=Tags[0].Background}" Margin="3,0,0,0"/>
+                    <TextBlock FontSize="14" Text="{Binding Path=Tags[1].Description}" Foreground="{Binding Path=Tags[1].Background}" Margin="3,0,0,0"/>
+                    <TextBlock FontSize="14" Text="{Binding Path=Tags[2].Description}" Foreground="{Binding Path=Tags[2].Background}" Margin="3,0,0,0"/>
+                </ListBox>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="ItemTemplate">
+            <Grid>
+                <Grid.Background>
+                    <SolidColorBrush Color="Black" Opacity="0.3"/>
+                </Grid.Background>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="{Binding Path=ImageSource}" Width="90" Height="90" Grid.RowSpan="2"/>
+                <TextBlock Name="descriptionItem" Text="{Binding Path=Name}"
+                   Grid.Column="1" Grid.Row="0" Margin="3,0"
+                   FontSize="20" VerticalAlignment="Top" TextWrapping="Wrap"/>
+                <TextBlock Name="custItem" Grid.Column="1" Grid.Row="1" Margin="3"
+                    Text="{Binding Path=Gold.Total, StringFormat=0 gold}"
+                   FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+
+            </Grid>
+        </DataTemplate>
+        
+        <DataTemplate x:Key="MatchTemplate">
+            <Grid x:Name="LayoutRoot">
+                <Grid.Background>
+                    <ImageBrush ImageSource="{Binding Path=Champion.SplashSkins[0]}" Opacity="0.5" Stretch="UniformToFill"/>
+                </Grid.Background>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="120"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="0" Grid.Column="1" Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Column="0" Grid.Row="0" Name="textBlockAbates" Text="{Binding Path=Stats.ChampionsKilled, StringFormat=Abates: 0}" FontSize="16" />
+                    <TextBlock Grid.Column="0" Grid.Row="1" Name="textBlockMortes" Text="{Binding Path=Stats.NumDeaths, StringFormat=Mortes: 0}" FontSize="16"/>
+                    <TextBlock Grid.Column="0" Grid.Row="2" Name="textBlockAssistencias" Text="{Binding Path=Stats.Assists, StringFormat=Assistencias: 0}" FontSize="16"/>
+                    <TextBlock Grid.Column="0" Grid.Row="3" Name="textBlockFarm" Text="{Binding Path=Stats.MinionsKilled, StringFormat=Farm: 0}" FontSize="16"/>
+                    <TextBlock Grid.Column="0" Grid.Row="4" Name="textBlockOuro" Text="{Binding Path=Stats.GoldEarned, StringFormat=Gold: 0}" FontSize="16"/>
+                    <TextBlock Grid.Column="1" Grid.Row="0" Name="textBlockTempo" Text="{Binding Path=Stats.TimePlayed, StringFormat=Tempo: 0}" FontSize="16"/>
+                    <TextBlock Grid.Column="1" Grid.Row="1" Name="textBlockModo" Text="{Binding Path=SubType, StringFormat=Modo: 0}" FontSize="16"/>
+                    <TextBlock Grid.Column="1" Grid.Row="2" Name="textBlockData" Text="{Binding Path=CreateDate, StringFormat=Data: 0}" FontSize="16"/>
+                </Grid>
+                <Image Grid.Column="0" Name="imageChampion"  
+                    VerticalAlignment="Top" HorizontalAlignment="Left" 
+                    Width="100" Height="100" Margin="10"
+                    Source="{Binding Path=Champion.SquareChampion}"/>
+                <Grid Name="itemsMatch" Margin="10" Height="60"
+                    Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
+                    FlowDirection="LeftToRight" 
+                    VerticalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Ellipse VerticalAlignment="Center" HorizontalAlignment="Center"
+                        Width="50" Height="50" Margin="5" Grid.Column="0" Name="item0" RenderTransformOrigin="0.5,0.5">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="{Binding Path=Stats.Item0.ImageSource}"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <Ellipse VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Width="50" Height="50" Margin="5" Grid.Column="1" Name="item1">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="{Binding Path=Stats.Item1.ImageSource}"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <Ellipse VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Width="50" Height="50" Margin="5" Grid.Column="2" Name="item2">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="{Binding Path=Stats.Item2.ImageSource}"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <Ellipse VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Width="50" Height="50" Margin="5" Grid.Column="3" Name="item3">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="{Binding Path=Stats.Item3.ImageSource}"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <Ellipse VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Width="50" Height="50" Margin="5" Grid.Column="4" Name="item4">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="{Binding Path=Stats.Item4.ImageSource}"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <Ellipse VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Width="50" Height="50" Margin="5" Grid.Column="5" Name="item5">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="{Binding Path=Stats.Item5.ImageSource}"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <Ellipse VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Width="50" Height="50" Margin="5" Grid.Column="6" Name="item6" >
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="{Binding Path=Stats.Item6.ImageSource}"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </Grid>
+                <Border Grid.RowSpan="2" Grid.Column="0" BorderThickness="3,0,0,0" BorderBrush="{Binding Path=Stats.WinColor}"/>
+            </Grid>
+        </DataTemplate>
+
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>

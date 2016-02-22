@@ -67,12 +67,12 @@ namespace LeagueInfo.Pages
             {
                 ChampionDto champion = new ChampionDto();
                 champion = await ChampionDto.SearchChampionAllData(Convert.ToInt32(NavigationContext.QueryString["id"]));
-                iconChampion.Source = await champion.GetChampionSquare();
-                championSplash.Source = champion.GetChampionLoading(0);
+                //iconChampion.Source = await champion.GetChampionSquare();
+                championSplash.Source = new BitmapImage(new Uri(champion.ChampionLoading[0]));
                 CarregarSkins(champion);
                 Random randNumSkin = new Random();
                 int num = randNumSkin.Next(champion.Skins.Count);
-                BitmapImage backGridInfo = champion.GetChampionSplash(num);
+                BitmapImage backGridInfo = new BitmapImage(new Uri(champion.SplashSkins[num]));
                 ImageBrush brush = new ImageBrush();
                 brush.Stretch = Stretch.UniformToFill;
                 brush.ImageSource = backGridInfo;
@@ -100,8 +100,8 @@ namespace LeagueInfo.Pages
         {
             foreach (SkinDto skin in champion.Skins)
             {
-                SkinControl skinControl = new SkinControl(champion.GetChampionSplash(skin.Id), skin.Name);
-                ListBoxSkins.Items.Add(skinControl);                
+                SkinControl skinControl = new SkinControl(new BitmapImage(new Uri(champion.SplashSkins[skin.Num])), skin.Name);
+                ListBoxSkins.Items.Add(skinControl);
             }
         }
 

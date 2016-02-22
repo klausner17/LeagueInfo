@@ -8,50 +8,140 @@ namespace LeagueInfo.ClassApi
 {
     public class GameDto
     {
+        #region GameDto
+
         [JsonProperty("championId")]
-        public int ChampionId { get; set; }
+        private int championId;
 
         [JsonProperty("createDate")]
-        public long CreateDate { get; set; }
+        private long createDate;
 
         [JsonProperty("fellowPlayers")]
-        public List<PlayerDto> FellowPlayers { get; set; }
+        private List<PlayerDto> fellowPlayers;
 
         [JsonProperty("gameId")]
-        public long GameId { get; set; }
+        private long gameId;
 
         [JsonProperty("gameMode")]
-        public string GameMode { get; set; }
+        private string gameMode;
 
         [JsonProperty("gameType")]
-        public string GameType { get; set; }
+        private string gameType;
 
         [JsonProperty("invalid")]
-        public bool Invalid { get; set; }
+        private bool invalid;
 
         [JsonProperty("ipEarned")]
-        public int IpEarned { get; set; }
+        private int ipEarned;
 
         [JsonProperty("level")]
-        public int Level { get; set; }
+        private int level;
 
         [JsonProperty("mapId")]
-        public int MapId { get; set; }
+        private int mapId;
 
         [JsonProperty("spell1")]
-        public int Spell1 { get; set; }
+        private int spell1;
 
         [JsonProperty("spell2")]
-        public int Spell2 { get; set; }
+        private int spell2;
 
         [JsonProperty("stats")]
-        public RawStatsDto Stats { get; set; }
+        private RawStatsDto stats;
 
         [JsonProperty("subType")]
-        public string SubType { get; set; }
+        private string subType;
 
         [JsonProperty("teamId")]
-        public int TeamId { get; set; }
+        private int teamId;
+        
+        #endregion
+
+        #region Propriedades
+
+        public ChampionDto Champion
+        {
+            get
+            {
+                return (from x in ChampionListDto.AllChampions 
+                        where x.Id == championId select x).First();
+            }
+        }
+
+        public DateTime CreateDate
+        {
+            get
+            {
+                return new DateTime(createDate);
+            }
+        }
+
+        public List<PlayerDto> FellowPlayers
+        {
+            get { return fellowPlayers; }
+        }
+
+        public long GameId
+        {
+            get { return gameId; }
+        }
+
+        public string GameMode
+        {
+            get { return gameMode; }
+        }
+
+        public string GameType
+        {
+            get { return gameType; }
+        }
+
+        public bool Invalid
+        {
+            get { return invalid; }
+        }
+
+        public int IpEarned
+        {
+            get { return ipEarned; }
+        }
+
+        public int Level
+        {
+            get { return level; }
+        }
+
+        public int MapId
+        {
+            get { return mapId; }
+        }
+
+        public int Spell1
+        {
+            get { return spell1; }
+        }
+
+        public int Spell2
+        {
+            get { return spell2; }
+        }
+
+        public RawStatsDto Stats
+        {
+            get { return stats; }
+        }
+
+        public string SubType
+        {
+            get { return subType; }
+        }
+
+        public int TeamId
+        {
+            get { return teamId; }
+        }
+
+        #endregion
 
     }
 }

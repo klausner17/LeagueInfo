@@ -19,7 +19,7 @@
             <Grid.Background>
                 <SolidColorBrush Color="Black" Opacity="0.75"/>
             </Grid.Background>
-            <TextBlock Name="titulo" TextAlignment="Center" FontSize="16" Foreground="White" TextWrapping="Wrap"/>
+            <TextBlock Name="titulo" TextAlignment="Center" FontSize="20" Foreground="White" TextWrapping="Wrap"/>
         </Grid>
     </Grid>
 </UserControl>

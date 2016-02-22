@@ -23,7 +23,7 @@ namespace LeagueInfo.Controls
         {
             InitializeComponent();
             this.skinImage.Source = imageSource;
-            this.titulo.Text = titulo;
+            this.titulo.Text = titulo == "default" ? "Padrão" : titulo;
         }
     }
 }

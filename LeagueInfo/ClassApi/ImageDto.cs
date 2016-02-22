@@ -9,25 +9,75 @@ namespace LeagueInfo.ClassApi
 {
     public class ImageDto
     {
+        #region Api Class
+
         [JsonProperty("full")]
-        public string Full { get; set; }
+        private string full;
 
         [JsonProperty("group")]
-        public string Group { get; set; }
+        private string group;
 
         [JsonProperty("h")]
-        public int H { get; set; }
+        private int h { get; set; }
 
         [JsonProperty("sprite")]
-        public string Sprite { get; set; }
+        private string sprite { get; set; }
 
         [JsonProperty("w")]
-        public int W { get; set; }
+        private int w;
 
         [JsonProperty("x")]
-        public int X { get; set; }
+        private int x;
 
         [JsonProperty("y")]
-        public int Y { get; set; }
+        private int y;
+
+        #endregion
+
+        #region Propriedades
+
+        public string Full
+        {
+            get { return full; }
+            set { full = value; }
+        }
+
+        public string Group
+        {
+            get { return group; }
+            set { group = value; }
+        }
+
+        public int H
+        {
+            get { return h; }
+            set { h = value; }
+        }
+
+        public string Sprite
+        {
+            get { return sprite; }
+            set { sprite = value; }
+        }
+
+        public int W
+        {
+            get { return w; }
+            set { w = value; }
+        }
+
+        public int X
+        {
+            get { return x; }
+            set { x = value; }
+        }
+
+        public int Y
+        {
+            get { return y; }
+            set { y = value; }
+        }
+
+        #endregion
     }
 }

@@ -25,37 +25,9 @@ namespace LeagueInfo
                 this.title.Text = value.Name;
                 this.description.Text = value.Title;
                 this.tags.Text = string.Empty;
-                this.info.Text = value.FreeToPlay ? "free" : "";
-                this.info.Text += !value.Active ? "" : " - destivado";
+                //this.info.Text = value.Status ? "free" : "";
+                this.info.Text += !value.Active ? "" : " - desativado";
                 LoadIcon();
-                foreach (string tag in value.Tags)
-                {
-                    switch(tag)
-                    {
-                        case "Fighter":
-                            this.tags.Text += ", lutador";
-                            break;
-                        case "Support":
-                            this.tags.Text += ", suporte";
-                            break;
-                        case "Tank":
-                            this.tags.Text += ", tanque";
-                            break;
-                        case "Mage":
-                            this.tags.Text += ", mago";
-                            break;
-                        case "Assassin":
-                            this.tags.Text += ", assassino";
-                            break;
-                        case "Marksman":
-                            this.tags.Text += ", atirador";
-                            break;
-                        default:
-                            this.tags.Text += ", desconhecido";
-                            break;
-                    }
-                }
-                tags.Text = tags.Text.Remove(0, 2);
 
             }
         }
@@ -73,7 +45,7 @@ namespace LeagueInfo
 
         private async void LoadIcon()
         {
-            this.icon.Source = await champion.GetChampionSquare();
+            //this.icon.Source = await champion.GetChampionSquare();
         }
     }
 }

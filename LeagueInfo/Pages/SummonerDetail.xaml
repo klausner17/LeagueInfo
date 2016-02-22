@@ -71,7 +71,7 @@
                 </Grid>
             </Grid>
             <TextBlock Margin="10,0,0,0" FontSize="38" Grid.Row="1" Text="Ultimas partidas" />
-            <ListBox Grid.Row="2" Name="listboxPartidas" Grid.RowSpan="2">
+            <ListBox Grid.Row="2" Name="listboxPartidas" Grid.RowSpan="2" ItemTemplate="{StaticResource MatchTemplate}" >
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="ListBoxItem">
                         <Setter Property="Margin" Value="3"/>
