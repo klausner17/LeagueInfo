@@ -48,19 +48,6 @@ namespace LeagueInfo
             }
         }
 
-        private void ItemSelect_Tap(object sender, System.Windows.Input.GestureEventArgs e)
-        {
-            ItemDto itemSelected = (sender as ItemSelect).Item;
-            NavigationService.Navigate(new Uri("/Pages/ItemDetail.xaml?id="+itemSelected.Id, UriKind.RelativeOrAbsolute));
-        }
-
-        void item_Tap(object sender, System.Windows.Input.GestureEventArgs e)
-        {
-
-            ChampionDto championSelected = (sender as ChampionSelected).Champion;
-            NavigationService.Navigate(new Uri("/Pages/DetailChampion.xaml?id=" + championSelected.Id, UriKind.Relative));
-        }
-
         private void buttonBuscasInv_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("/Pages/SummonerDetail.xaml?name=" + textBlockInvocador.Text, UriKind.Relative));

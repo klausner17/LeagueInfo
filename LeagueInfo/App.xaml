@@ -116,7 +116,7 @@
                     <TextBlock Grid.Column="0" Grid.Row="4" Name="textBlockOuro" Text="{Binding Path=Stats.GoldEarned, StringFormat=Gold: 0}" FontSize="16"/>
                     <TextBlock Grid.Column="1" Grid.Row="0" Name="textBlockTempo" Text="{Binding Path=Stats.TimePlayed, StringFormat=Tempo: 0}" FontSize="16"/>
                     <TextBlock Grid.Column="1" Grid.Row="1" Name="textBlockModo" Text="{Binding Path=SubType, StringFormat=Modo: 0}" FontSize="16"/>
-                    <TextBlock Grid.Column="1" Grid.Row="2" Name="textBlockData" Text="{Binding Path=CreateDate, StringFormat=Data: 0}" FontSize="16"/>
+                    <TextBlock Grid.Column="1" Grid.Row="2" Name="textBlockData" Text="{Binding Path=CreateDate, StringFormat='{}{0:dd/MM/yyyy HH:mm}'}" FontSize="16"/>
                 </Grid>
                 <Image Grid.Column="0" Name="imageChampion"  
                     VerticalAlignment="Top" HorizontalAlignment="Left" 

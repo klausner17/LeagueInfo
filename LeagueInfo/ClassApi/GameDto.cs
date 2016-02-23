@@ -72,7 +72,9 @@ namespace LeagueInfo.ClassApi
         {
             get
             {
-                return new DateTime(createDate);
+                var dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0);
+                dateTime = dateTime.AddMilliseconds(createDate);
+                return dateTime;
             }
         }
 

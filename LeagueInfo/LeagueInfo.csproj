@@ -110,15 +110,6 @@
     <Compile Include="Controls\AbillityControl.xaml.cs">
       <DependentUpon>AbillityControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ChampionSelect.xaml.cs">
-      <DependentUpon>ChampionSelect.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ItemSelect.xaml.cs">
-      <DependentUpon>ItemSelect.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\LastMatches.xaml.cs">
-      <DependentUpon>LastMatches.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ClassApi\BasicDataDto.cs" />
     <Compile Include="ClassApi\BasicDataStatsDto.cs" />
     <Compile Include="ClassApi\BlockItemDto.cs" />
@@ -160,7 +151,6 @@
     <Compile Include="Controls\SquareInfo.xaml.cs">
       <DependentUpon>SquareInfo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ConverterWin.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Pages\ItemDetail.xaml.cs">
       <DependentUpon>ItemDetail.xaml</DependentUpon>
@@ -176,6 +166,9 @@
     </Compile>
     <Compile Include="Pages\Sobre.xaml.cs">
       <DependentUpon>Sobre.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Splash.xaml.cs">
+      <DependentUpon>Splash.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\SummonerDetail.xaml.cs">
       <DependentUpon>SummonerDetail.xaml</DependentUpon>
@@ -193,18 +186,6 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Page Include="Controls\AbillityControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\ChampionSelect.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\ItemSelect.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\LastMatches.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -236,12 +217,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Splash.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\SummonerDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="maestria.png" />
     <None Include="packages.config" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml">
@@ -253,6 +239,9 @@
     <Content Include="Assets\BackgroundCadastro.jpg" />
     <Content Include="Assets\LoginScreen.jpg" />
     <Content Include="Assets\LojaLol.jpg" />
+    <Content Include="Assets\Splash.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\SobreBack.jpg" />
     <Content Include="Assets\Tiles\IconicTileLarge.png" />
     <Content Include="Assets\UpdateAccount.jpg" />

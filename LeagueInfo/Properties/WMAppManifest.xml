@@ -5,7 +5,7 @@
     <Language code="pt-BR" />
   </Languages>
   <App xmlns="" ProductID="{b06376d0-fdce-4c89-9809-b8702455967f}" Title="League Info" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Klausner Augusto" Description="Aplicações para mostrar informações do jogo League of Legends." Publisher="Klapps" PublisherID="{14a45ae0-1de6-4916-890e-de64921f59bd}">
-    <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
+    <IconPath IsRelative="true" IsResource="false">maestria.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
       <Capability Name="ID_CAP_MEDIALIB_AUDIO" />
@@ -14,24 +14,25 @@
       <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
     </Capabilities>
     <Tasks>
-      <DefaultTask Name="_default" NavigationPage="Pages\MainPage.xaml" />
+      <DefaultTask Name="_default" NavigationPage="Pages\Splash.xaml" />
     </Tasks>
     <Tokens>
       <PrimaryToken TokenID="LeagueInfoToken" TaskName="_default">
         <TemplateFlip>
-          <SmallImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileSmall.png</SmallImageURI>
+          <SmallImageURI IsRelative="true" IsResource="false">maestria.png</SmallImageURI>
           <Count>0</Count>
-          <BackgroundImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileMedium.png</BackgroundImageURI>
-          <Title>League Info</Title>
+          <BackgroundImageURI IsRelative="true" IsResource="false">maestria.png</BackgroundImageURI>
+          <Title>
+          </Title>
           <BackContent>
           </BackContent>
-          <BackBackgroundImageURI>
+          <BackBackgroundImageURI IsRelative="true" IsResource="false">
           </BackBackgroundImageURI>
           <BackTitle>
           </BackTitle>
-          <DeviceLockImageURI>
+          <DeviceLockImageURI IsRelative="true" IsResource="false">
           </DeviceLockImageURI>
-          <HasLarge>False</HasLarge>
+          <HasLarge>false</HasLarge>
         </TemplateFlip>
       </PrimaryToken>
     </Tokens>

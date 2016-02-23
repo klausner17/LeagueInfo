@@ -132,8 +132,6 @@ namespace LeagueInfo
 
             // Ensure we don't initialize again
             phoneApplicationInitialized = true;
-
-            EndPointDDragon.GetVersions();
         }
 
         // Do not add any additional code to this method

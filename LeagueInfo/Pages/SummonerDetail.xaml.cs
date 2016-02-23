@@ -76,10 +76,6 @@ namespace LeagueInfo.Pages
                 textBlockDer.Text = "0 derrota";
             }
             imageInvocador.Source = await summoner.GetProfileIcon();
-            if (ChampionListDto.AllChampions == null || ChampionListDto.AllChampions.Count == 0)
-                await ChampionListDto.LoadAllChampions();
-            if (ItemListDto.AllItems == null || ItemListDto.AllItems.Count == 0)
-                await ItemListDto.LoadAllItens();
             listboxPartidas.ItemsSource = (await new RecentGamesDto().GetLatestGamesById(summoner.Id)).Games;
         }
     }

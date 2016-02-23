@@ -55,16 +55,16 @@ namespace LeagueInfo.Pages
                 textBlockNameItem.Text = item.Name;
                 textBlockGoldItem.Text = item.Gold.Total.ToString() + " gold";
                 textBlockItemEffect.Text = Code.HtmlRemoval.StripTagsCharArray(item.Description);
-                ListBoxReceita.Items.Clear();
+                //ListBoxReceita.Items.Clear();
                 if (item.From != null)
                 {
-                    foreach (string id in item.From)
-                    {
-                        ItemSelect itemSelect = new ItemSelect();
-                        itemSelect.Item = await new ItemDto().SearchItemLowData(Convert.ToInt16(id));
-                        itemSelect.Tap += ItemSelect_Tap;
-                        ListBoxReceita.Items.Add(itemSelect);
-                    }
+                //    foreach (string id in item.From)
+                //    {
+                //        ItemSelect itemSelect = new ItemSelect();
+                //        itemSelect.Item = await new ItemDto().SearchItemLowData(Convert.ToInt16(id));
+                //        itemSelect.Tap += ItemSelect_Tap;
+                //        ListBoxReceita.Items.Add(itemSelect);
+                //    }
                 }
                 else
                 {
@@ -75,12 +75,6 @@ namespace LeagueInfo.Pages
                 }
                 carregada = true;
             }
-        }
-
-        private void ItemSelect_Tap(object sender, System.Windows.Input.GestureEventArgs e)
-        {
-            ItemDto itemSelected = (sender as ItemSelect).Item;
-            NavigationService.Navigate(new Uri("/Pages/ItemDetail.xaml?id=" + itemSelected.Id, UriKind.RelativeOrAbsolute));
         }
     }
 }
