@@ -13,69 +13,171 @@ namespace LeagueInfo.ClassApi
     /// </summary>
     public class ChampionSpellDto
     {
+        #region Api
         [JsonProperty("altimages")]
-        public List<ImageDto> AltImages { get; set; }
+        private List<ImageDto> altImages;
 
         [JsonProperty("cooldown")]
-        public List<double> Cooldown { get; set; }
+        private List<double> cooldown;
 
         [JsonProperty("cooldownBurn")]
-        public string CooldownBurn { get; set; }
+        private string cooldownBurn;
 
         [JsonProperty("cost")]
-        public List<int> Cost { get; set; }
+        private List<int> cost;
 
         [JsonProperty("costBurn")]
-        public string CostBurn { get; set; }
+        private string costBurn;
 
         [JsonProperty("costType")]
-        public string CostType { get; set; }
+        private string costType;
 
         [JsonProperty("description")]
-        public string Description { get; set; }
+        private string description;
 
         [JsonProperty("effect")]
-        public List<List<double>> Effect { get; set; }
+        private List<List<double>> effect;
 
         [JsonProperty("effectBurn")]
-        public List<string> EffectBurn { get; set; }
+        private List<string> effectBurn;
 
         [JsonProperty("image")]
-        public ImageDto Image { get; set; }
+        private ImageDto image;
 
         [JsonProperty("key")]
-        public string Key { get; set; }
+        private string key;
 
         [JsonProperty("leveltip")]
-        public LevelTipDto LevelTip { get; set; }
+        private LevelTipDto levelTip;
 
         [JsonProperty("maxrank")]
-        public int MaxRank { get; set; }
+        private int maxRank;
 
         [JsonProperty("name")]
-        public string Name { get; internal set; }
+        private string name;
 
         [JsonProperty("range")]
-        public object Range { get; set; }
+        private object range;
 
         [JsonProperty("rangeBurn")]
-        public string RangeBurn { get; set; }
+        private string rangeBurn;
 
         [JsonProperty("resource")]
-        public string Resource { get; set; }
+        private string resource;
 
         [JsonProperty("sanitizedDescription")]
-        public string SanitizedDescription { get; set; }
+        private string sanitizedDescription;
 
         [JsonProperty("tooltip")]
-        public string ToolTip { get; set; }
+        private string toolTip;
 
         [JsonProperty("vars")]
-        public List<SpellVarsData> Vars { get; set; }
+        private List<SpellVarsData> vars;
+        #endregion
 
-        public async Task<BitmapImage> GetImageSpell()
+        public List<ImageDto> AltImages
         {
-            return new BitmapImage(new Uri("http://ddragon.leagueoflegends.com/cdn/" + (await EndPointDDragon.GetVersions()).GeralVersion.Champion + "/img/spell/" + this.Image.Full));
+            get { return altImages; }
+        }
+
+        public List<double> Cooldown
+        {
+            get { return cooldown; }
+        }
+
+        public string CooldownBurn
+        {
+            get { return cooldownBurn; }
+        }
+
+        public List<int> Cost
+        {
+            get { return cost; }
+        }
+
+        public string CostBurn
+        {
+            get { return costBurn; }
+        }
+
+        public string CostType
+        {
+            get { return costType; }
+        }
+
+        public string Description
+        {
+            get { return description; }
+        }
+
+        public List<List<double>> Effect
+        {
+            get { return effect; }
+        }
+
+        public List<string> EffectBurn
+        {
+            get { return effectBurn; }
+        }
+
+        public ImageDto Image
+        {
+            get { return image; }
+        }
+
+        public string Key
+        {
+            get { return key; }
+        }
+
+        public LevelTipDto LevelTip
+        {
+            get { return levelTip; }
+        }
+
+        public int MaxRank
+        {
+            get { return MaxRank; }
+        }
+
+        public string Name
+        {
+            get { return name; }
+        }
+
+        public object Range
+        {
+            get { return range; }
+        }
+
+        public string RangeBurn
+        {
+            get { return rangeBurn; }
+        }
+
+        public string Resource
+        {
+            get { return resource; }
+        }
+
+        public string SanitizedDescription
+        {
+            get { return sanitizedDescription; }
+        }
+
+        public string ToolTip
+        {
+            get { return toolTip; }
+        }
+
+        public List<SpellVarsData> Vars
+        {
+            get { return vars; }
+        }
+
+        public string ImageSpell
+        {
+            get { return "http://ddragon.leagueoflegends.com/cdn/" + (EndPointDDragon.GetVersions().Result).GeralVersion.Champion + "/img/spell/" + this.Image.Full; }
         }
     }
 }

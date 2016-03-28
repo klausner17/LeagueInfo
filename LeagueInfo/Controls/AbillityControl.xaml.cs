@@ -41,7 +41,7 @@ namespace LeagueInfo.Controls
 
         private async void LoadIconSpell()
         {
-            this.iconAbillity.Source = await spell.GetImageSpell();
+           // this.iconAbillity.Source = await spell.GetImageSpell();
         }
 
     }

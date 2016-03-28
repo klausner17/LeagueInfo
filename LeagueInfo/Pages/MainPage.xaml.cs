@@ -91,7 +91,6 @@ namespace LeagueInfo
             buttonFilterChampion.IsEnabled = true;
         }
 
-
         private async void buttonFilterItem_Click(object sender, RoutedEventArgs e)
         {
             buttonFilterItem.IsEnabled = false;
