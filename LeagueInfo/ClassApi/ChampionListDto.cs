@@ -46,7 +46,7 @@ namespace LeagueInfo.ClassApi
             AllChampions = (from cd in championData.Data
                                   orderby cd.Value.Name ascending
                                   select cd.Value).ToList();
-            for(int i = 0; i < AllChampions.Count; i++)
+            for (int i = 0; i < AllChampions.Count; i++)
                 foreach (ChampionDto fw in champsFree)
                     if (AllChampions[i].Id == fw.Id)
                         AllChampions[i].SetFree(true);

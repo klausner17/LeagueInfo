@@ -7,6 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:common="using:WinRT_RichTextBlock.Html2Xaml.Common"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -72,11 +73,7 @@
         </StackPanel>
 
         <phone:Panorama Grid.Row="1" Name="panorama">
-            <!--Panorama item one-->
-            <phone:PanoramaItem Padding="-12,-8,0,0">
-                <Image Name="championSplash" Stretch="UniformToFill" />
-            </phone:PanoramaItem>
-            
+
             <phone:PanoramaItem Header="lore">
                 <ScrollViewer VerticalAlignment="Stretch">
                     <TextBlock TextWrapping="Wrap" Name="lore"/>
@@ -113,6 +110,28 @@
 
             <phone:PanoramaItem Header="skins">
                 <ListBox Name="ListBoxSkins" Grid.Row="1">
+                    <ListBox.Resources>
+                        <DataTemplate x:Key="SkinsTemplate">
+                            <Grid/>
+                        </DataTemplate>
+                    </ListBox.Resources>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate x:Name="SkinsTemplate">
+                            <Grid x:Name="LayoutRoot">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="200"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Image Grid.Row="0" Grid.RowSpan="2" Name="skinImage" Stretch="UniformToFill" Source="{Binding Path=ImageSource}"/>
+                                <Grid Grid.Row="1">
+                                    <Grid.Background>
+                                        <SolidColorBrush Color="Black" Opacity="0.75"/>
+                                    </Grid.Background>
+                                    <TextBlock Name="titulo" TextAlignment="Center" FontSize="20" Foreground="White" TextWrapping="Wrap" Text="{Binding Path=Name}"/>
+                                </Grid>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
                     <ListBox.ItemContainerStyle>
                         <Style TargetType="ListBoxItem">
                             <Setter Property="Margin" Value="3"/>

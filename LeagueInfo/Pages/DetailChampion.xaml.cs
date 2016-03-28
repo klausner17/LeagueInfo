@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using LeagueInfo.Controls;
 using LeagueInfo.Resources;
 using LeagueInfo.ClassApi.Request;
+using System.Windows.Documents;
 
 namespace LeagueInfo.Pages
 {
@@ -67,9 +68,9 @@ namespace LeagueInfo.Pages
             {
                 ChampionDto champion = new ChampionDto();
                 champion = await ChampionDto.SearchChampionAllData(Convert.ToInt32(NavigationContext.QueryString["id"]));
-                //iconChampion.Source = await champion.GetChampionSquare();
-                championSplash.Source = new BitmapImage(new Uri(champion.ChampionLoading[0]));
-                CarregarSkins(champion);
+                iconChampion.Source = new BitmapImage(new Uri(champion.SquareChampion, UriKind.RelativeOrAbsolute));
+                champion.Skins.ForEach(x => x.Champion = champion);
+                ListBoxSkins.ItemsSource = champion.Skins;
                 Random randNumSkin = new Random();
                 int num = randNumSkin.Next(champion.Skins.Count);
                 BitmapImage backGridInfo = new BitmapImage(new Uri(champion.SplashSkins[num]));
@@ -79,8 +80,8 @@ namespace LeagueInfo.Pages
                 panorama.Background = brush;
                 panorama.Background.Opacity = 0.5;
                 championName.Text = champion.Name;
-                TextBlock loreDescription = new TextBlock();
-                lore.Text = Code.HtmlRemoval.StripTagsCharArray(champion.Lore);
+                RichTextBox r = new RichTextBox();
+                lore.Text = champion.Lore;
                 AddInfoComponent(champion.AllyTips, allytips);
                 AddInfoComponent(champion.EnimyTips, enimytips);
                 attackInfo.Value = champion.Info.Attack;
@@ -95,15 +96,5 @@ namespace LeagueInfo.Pages
                 }
             }
         }
-
-        private void CarregarSkins(ChampionDto champion)
-        {
-            foreach (SkinDto skin in champion.Skins)
-            {
-                SkinControl skinControl = new SkinControl(new BitmapImage(new Uri(champion.SplashSkins[skin.Num])), skin.Name);
-                ListBoxSkins.Items.Add(skinControl);
-            }
-        }
-
     }
 }

@@ -33,7 +33,13 @@ namespace LeagueInfo.ClassApi
 
         public string Name
         {
-            get { return name; }
+            get
+            {
+                if (name.ToUpper() == "DEFAULT")
+                    return "Clássica";
+                else
+                    return name;
+            }
         }
 
         public int Num
@@ -41,8 +47,22 @@ namespace LeagueInfo.ClassApi
             get { return num; }
         }
 
+        public string ImageSource
+        {
+            get
+            {
+                return "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + this.Champion.Key + "_" + this.Num.ToString() + ".jpg";
+            }
+        }
+
+
+        public ChampionDto Champion { get; set; }
+
+        public SkinDto(ChampionDto champion)
+        {
+            Champion = champion;
+        }
+
         #endregion
-
-
     }
 }

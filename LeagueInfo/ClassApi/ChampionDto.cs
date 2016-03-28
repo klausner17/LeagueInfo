@@ -211,35 +211,35 @@ namespace LeagueInfo.ClassApi
         {
             get
             {
-                List<ChampionTag> tags = new List<ChampionTag>();
+                List<ChampionTag> tagsTemp = new List<ChampionTag>();
                 foreach (string tag in this.tags)
                 {
                     switch (tag)
                     {
                         case "Fighter":
-                            tags.Add(new ChampionTag("lutador", new SolidColorBrush(Color.FromArgb(255, 197, 255, 73))));
+                            tagsTemp.Add(new ChampionTag("lutador", new SolidColorBrush(Color.FromArgb(255, 197, 255, 73))));
                             break;
                         case "Support":
-                            tags.Add(new ChampionTag("suporte", new SolidColorBrush(Color.FromArgb(255, 55, 232, 194))));
+                            tagsTemp.Add(new ChampionTag("suporte", new SolidColorBrush(Color.FromArgb(255, 55, 232, 194))));
                             break;
                         case "Tank":
-                            tags.Add(new ChampionTag("tanque", new SolidColorBrush(Color.FromArgb(255, 232, 67, 132))));
+                            tagsTemp.Add(new ChampionTag("tanque", new SolidColorBrush(Color.FromArgb(255, 232, 67, 132))));
                             break;
                         case "Mage":
-                            tags.Add(new ChampionTag("mago", new SolidColorBrush(Color.FromArgb(255, 81, 73, 255))));
+                            tagsTemp.Add(new ChampionTag("mago", new SolidColorBrush(Color.FromArgb(255, 81, 73, 255))));
                             break;
                         case "Assassin":
-                            tags.Add(new ChampionTag("assassino", new SolidColorBrush(Color.FromArgb(255, 255, 178, 73))));
+                            tagsTemp.Add(new ChampionTag("assassino", new SolidColorBrush(Color.FromArgb(255, 255, 178, 73))));
                             break;
                         case "Marksman":
-                            tags.Add(new ChampionTag("atirador", new SolidColorBrush(Color.FromArgb(255, 255, 144, 104))));
+                            tagsTemp.Add(new ChampionTag("atirador", new SolidColorBrush(Color.FromArgb(255, 255, 144, 104))));
                             break;
                         default:
-                            tags.Add(new ChampionTag("desconhecido", new SolidColorBrush(Colors.LightGray)));
+                            tagsTemp.Add(new ChampionTag("desconhecido", new SolidColorBrush(Colors.LightGray)));
                             break;
                     }
                 }
-                return tags;
+                return tagsTemp;
             }
         }
 

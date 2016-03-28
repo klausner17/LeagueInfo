@@ -85,8 +85,6 @@ namespace LeagueInfo
                 filters.Add("suporte");
             if (filterChampionMage.IsChecked == true)
                 filters.Add("mago");
-            if (ChampionListDto.AllChampions == null)
-                await ChampionListDto.LoadAllChampions();
             ChampionsList.ItemsSource = (from champion in ChampionListDto.AllChampions
                                          where filters.Intersect(from tag in champion.Tags select tag.Description).Count() > 0
                                          select champion); 

@@ -35,7 +35,7 @@ namespace LeagueInfo.ClassApi.Request
             requester.BeginGetResponse(new AsyncCallback(FinishWebRequest), null);
             GettingData(BEGINDOWNLOAD);
             while (!go)
-                await Task.Delay(500);
+                await Task.Delay(1);
             GettingData(ENDDOWNLOAD);
         }
 
