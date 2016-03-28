@@ -7,7 +7,10 @@
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit">
 	<Application.Resources>
         
+        <SolidColorBrush Color="SteelBlue" x:Key="CorDestaque"/>
+        
         <Style TargetType="phone:PanoramaItem">
+            <Setter Property="Foreground" Value="{StaticResource CorDestaque}"/>
 			<Setter Property="HorizontalContentAlignment" Value="Stretch"/>
 			<Setter Property="VerticalContentAlignment" Value="Stretch"/>
 			<Setter Property="Template">
@@ -30,11 +33,22 @@
 			</Setter>
 		</Style>
         
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource CorDestaque}"/>
+        </Style>
+        
+        <Style TargetType="Button">
+            <Setter Property="Foreground" Value="{StaticResource CorDestaque}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource CorDestaque}"/>
+        </Style>
+        
+        <Style TargetType="CheckBox">
+            <Setter Property="Foreground" Value="{StaticResource CorDestaque}"/>
+            <Setter Property="Background" Value="{StaticResource CorDestaque}"/>
+        </Style>
+        
         <DataTemplate x:Key="ChampionTemplate">
             <Grid>
-                <Grid.Background>
-                    <SolidColorBrush Color="Black" Opacity="0.3" />
-                </Grid.Background>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100"/>
                     <ColumnDefinition Width="*"/>
@@ -45,29 +59,27 @@
                     <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
                 <Image x:Name="icon" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Source="{Binding Path=SquareChampion}" />
-                <TextBlock Grid.Row="0" Grid.Column="1" FontSize="26" Text="{Binding Path=Name}" Margin="8,8,0,0" Foreground="White" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
-                <TextBlock Grid.Row="1" Grid.Column="1" FontSize="22" Text="{Binding Path=Title}" Margin="8,0,0,0" Foreground="{StaticResource PhoneSubtleBrush}" VerticalAlignment="Top" HorizontalAlignment="Stretch" />
-                <TextBlock Grid.Row="0" Grid.Column="1" FontSize="12" Text="{Binding Path=Free}" Foreground="Green" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,2,2,0" />
+                <TextBlock Grid.Row="0" Grid.Column="1" FontSize="26" Text="{Binding Path=Name}" Margin="8,8,0,0" Foreground="{StaticResource CorDestaque}" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+                <TextBlock Grid.Row="1" Grid.Column="1" FontSize="22" Text="{Binding Path=Title}" Margin="8,0,0,0" Foreground="{StaticResource CorDestaque}" VerticalAlignment="Top" HorizontalAlignment="Stretch" />
                 <ListBox Grid.Row="2" Grid.Column="1" Margin="8,0,0,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" >
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <toolkit:WrapPanel Orientation="Horizontal"/>
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
-                    <TextBlock FontSize="14" Text="{Binding Path=Tags[0].Description}" Foreground="{Binding Path=Tags[0].Background}" Margin="3,0,0,0"/>
-                    <TextBlock FontSize="14" Text="{Binding Path=Tags[1].Description}" Foreground="{Binding Path=Tags[1].Background}" Margin="3,0,0,0"/>
-                    <TextBlock FontSize="14" Text="{Binding Path=Tags[2].Description}" Foreground="{Binding Path=Tags[2].Background}" Margin="3,0,0,0"/>
+                    <TextBlock FontSize="14" Text="{Binding Path=Tags[0].Description}" Foreground="{StaticResource CorDestaque}" Margin="3,0,0,0"/>
+                    <TextBlock FontSize="14" Text="{Binding Path=Tags[1].Description}" Foreground="{StaticResource CorDestaque}" Margin="3,0,0,0"/>
+                    <TextBlock FontSize="14" Text="{Binding Path=Tags[2].Description}" Foreground="{StaticResource CorDestaque}" Margin="3,0,0,0"/>
+                    <TextBlock FontSize="14" Text="{Binding Path=Free}" Foreground="Green" Margin="3,0,0,0" />
                 </ListBox>
             </Grid>
         </DataTemplate>
+        
         <DataTemplate x:Key="ItemTemplate">
             <Grid>
-                <Grid.Background>
-                    <SolidColorBrush Color="Black" Opacity="0.3"/>
-                </Grid.Background>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="2*"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100"/>
@@ -75,20 +87,17 @@
                 </Grid.ColumnDefinitions>
                 <Image Source="{Binding Path=ImageSource}" Width="90" Height="90" Grid.RowSpan="2"/>
                 <TextBlock Name="descriptionItem" Text="{Binding Path=Name}"
-                   Grid.Column="1" Grid.Row="0" Margin="3,0"
-                   FontSize="20" VerticalAlignment="Top" TextWrapping="Wrap"/>
+                   Grid.Column="1" Grid.Row="0" Margin="3,0" Foreground="{StaticResource CorDestaque}"
+                   FontSize="20" VerticalAlignment="Top" FontWeight="SemiBold" TextWrapping="Wrap"/>
                 <TextBlock Name="custItem" Grid.Column="1" Grid.Row="1" Margin="3"
-                    Text="{Binding Path=Gold.Total, StringFormat=0 gold}"
-                   FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                    Text="{Binding Path=Gold.Total, StringFormat=0 gold}" Foreground="{StaticResource CorDestaque}"
+                   FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left"/>
 
             </Grid>
         </DataTemplate>
         
         <DataTemplate x:Key="MatchTemplate">
             <Grid x:Name="LayoutRoot">
-                <Grid.Background>
-                    <ImageBrush ImageSource="{Binding Path=Champion.SplashSkins[0]}" Opacity="0.5" Stretch="UniformToFill"/>
-                </Grid.Background>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="120"/>
                     <RowDefinition Height="*"/>
@@ -97,6 +106,7 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
+                <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" BorderBrush="{StaticResource CorDestaque}" BorderThickness="0,0,0,1"/>
                 <Grid Grid.Row="0" Grid.Column="1" Margin="10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -109,14 +119,14 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Column="0" Grid.Row="0" Name="textBlockAbates" Text="{Binding Path=Stats.ChampionsKilled, StringFormat=Abates: 0}" FontSize="16" />
-                    <TextBlock Grid.Column="0" Grid.Row="1" Name="textBlockMortes" Text="{Binding Path=Stats.NumDeaths, StringFormat=Mortes: 0}" FontSize="16"/>
-                    <TextBlock Grid.Column="0" Grid.Row="2" Name="textBlockAssistencias" Text="{Binding Path=Stats.Assists, StringFormat=Assistencias: 0}" FontSize="16"/>
-                    <TextBlock Grid.Column="0" Grid.Row="3" Name="textBlockFarm" Text="{Binding Path=Stats.MinionsKilled, StringFormat=Farm: 0}" FontSize="16"/>
-                    <TextBlock Grid.Column="0" Grid.Row="4" Name="textBlockOuro" Text="{Binding Path=Stats.GoldEarned, StringFormat=Gold: 0}" FontSize="16"/>
-                    <TextBlock Grid.Column="1" Grid.Row="0" Name="textBlockTempo" Text="{Binding Path=Stats.TimePlayed, StringFormat=Tempo: 0}" FontSize="16"/>
-                    <TextBlock Grid.Column="1" Grid.Row="1" Name="textBlockModo" Text="{Binding Path=SubType, StringFormat=Modo: 0}" FontSize="16"/>
-                    <TextBlock Grid.Column="1" Grid.Row="2" Name="textBlockData" Text="{Binding Path=CreateDate, StringFormat='{}{0:dd/MM/yyyy HH:mm}'}" FontSize="16"/>
+                    <TextBlock Foreground="{StaticResource CorDestaque}" Grid.Column="0" Grid.Row="0" Name="textBlockAbates" Text="{Binding Path=Stats.ChampionsKilled, StringFormat=Abates: 0}" FontSize="16" />
+                    <TextBlock Foreground="{StaticResource CorDestaque}" Grid.Column="0" Grid.Row="1" Name="textBlockMortes" Text="{Binding Path=Stats.NumDeaths, StringFormat=Mortes: 0}" FontSize="16"/>
+                    <TextBlock Foreground="{StaticResource CorDestaque}" Grid.Column="0" Grid.Row="2" Name="textBlockAssistencias" Text="{Binding Path=Stats.Assists, StringFormat=Assistencias: 0}" FontSize="16"/>
+                    <TextBlock Foreground="{StaticResource CorDestaque}" Grid.Column="0" Grid.Row="3" Name="textBlockFarm" Text="{Binding Path=Stats.MinionsKilled, StringFormat=Farm: 0}" FontSize="16"/>
+                    <TextBlock Foreground="{StaticResource CorDestaque}" Grid.Column="0" Grid.Row="4" Name="textBlockOuro" Text="{Binding Path=Stats.GoldEarned, StringFormat=Gold: 0}" FontSize="16"/>
+                    <TextBlock Foreground="{StaticResource CorDestaque}" Grid.Column="1" Grid.Row="0" Name="textBlockTempo" Text="{Binding Path=Stats.TimePlayed, StringFormat=Tempo: 0}" FontSize="16"/>
+                    <TextBlock Foreground="{StaticResource CorDestaque}" Grid.Column="1" Grid.Row="1" Name="textBlockModo" Text="{Binding Path=SubType, StringFormat=Modo: 0}" FontSize="16"/>
+                    <TextBlock Foreground="{StaticResource CorDestaque}"  Grid.Column="1" Grid.Row="2" Name="textBlockData" Text="{Binding Path=CreateDate, StringFormat='{}{0:dd/MM/yyyy HH:mm}'}" FontSize="16"/>
                 </Grid>
                 <Image Grid.Column="0" Name="imageChampion"  
                     VerticalAlignment="Top" HorizontalAlignment="Left" 

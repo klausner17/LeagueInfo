@@ -16,17 +16,13 @@
     shell:SystemTray.IsVisible="False" Loaded="PhoneApplicationPage_Loaded">
 
 
-
     <!--LayoutRoot contains the root grid where all other page content is placed-->
-    <Grid x:Name="LayoutRoot">
+    <Grid x:Name="LayoutRoot" Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="200"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Top">
-            <StackPanel.Background>
-                <SolidColorBrush Color="{StaticResource PhoneAccentColor}" Opacity="0.2" />
-            </StackPanel.Background>
+        <StackPanel Grid.Row="0" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="{StaticResource CorDestaque}">
             <ProgressBar Name="loadProgress" Foreground="White" VerticalAlignment="Top" Visibility="Collapsed" IsIndeterminate="True"/>
             <Grid Height="70">
                 <Grid.ColumnDefinitions>
@@ -34,14 +30,15 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Image Name="iconChampion"/>
-                <TextBlock TextAlignment="Left" Name="championName" VerticalAlignment="Center" FontSize="38" Text="" Margin="10,0,0,0" Grid.Column="1"/>
+                <TextBlock TextAlignment="Left" Name="championName" VerticalAlignment="Center" 
+                           FontSize="38" Text="" Margin="10,0,0,0" Grid.Column="1" Foreground="White"/>
             </Grid>
             <Grid Margin="10,0,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="120"/>
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" FontSize="24" Text="Ataque" />
+                <TextBlock Grid.Column="0" FontSize="24" Text="Ataque" Foreground="White"/>
                 <ProgressBar Name="attackInfo" Grid.Column="1" Foreground="Red" Minimum="0" Maximum="10" Margin="0,0,10,0"/>
 
             </Grid>
@@ -50,7 +47,7 @@
                     <ColumnDefinition Width="120"/>
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <TextBlock FontSize="24" Text="Defesa" />
+                <TextBlock FontSize="24" Text="Defesa" Foreground="White"/>
                 <ProgressBar Name="defenseInfo" Grid.Column="1" Foreground="#FF44FF00" Minimum="0" Maximum="10" Margin="0,0,10,0" Height="20" />
             </Grid>
             <Grid Margin="10,0,0,0">
@@ -58,7 +55,7 @@
                     <ColumnDefinition Width="120"/>
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <TextBlock FontSize="24" Text="Magia" />
+                <TextBlock FontSize="24" Text="Magia" Foreground="White"/>
                 <ProgressBar Name="magicInfo" Grid.Column="1" Foreground="#FF008BFF" Minimum="0" Maximum="10" Margin="0,0,10,0" />
             </Grid>
             <Grid Margin="10,0,0,0">
@@ -66,18 +63,16 @@
                     <ColumnDefinition Width="120"/>
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <TextBlock FontSize="24" Text="Dificuldade" />
+                <TextBlock FontSize="24" Text="Dificuldade" Foreground="White"/>
                 <ProgressBar Name="difficultyInfo" Grid.Column="1" Foreground="#FF5C00FF" Minimum="0" Maximum="10" Margin="0,0,10,0" />
             </Grid>
             <Line StrokeThickness="10" Stroke="{StaticResource PhoneAccentBrush}" Fill="{StaticResource PhoneAccentBrush}" />
         </StackPanel>
 
-        <phone:Panorama Grid.Row="1" Name="panorama">
+        <phone:Panorama Grid.Row="1" Name="panorama" Background="White">
 
             <phone:PanoramaItem Header="lore">
-                <ScrollViewer VerticalAlignment="Stretch">
-                    <TextBlock TextWrapping="Wrap" Name="lore"/>
-                </ScrollViewer>
+                    <phone:WebBrowser Name="lore"/>
             </phone:PanoramaItem>
 
             <!--Panorama item two-->

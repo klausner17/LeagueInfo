@@ -13,17 +13,14 @@
     mc:Ignorable="d" Loaded="PhoneApplicationPage_Loaded" IsTabStop="True" >
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot">
-        <Grid.Background>
-            <SolidColorBrush Color="{StaticResource PhoneAccentColor}" />
-        </Grid.Background>
+    <Grid x:Name="LayoutRoot" Background="{StaticResource CorDestaque}">
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Stretch">
             <Image Source="/Assets/Splash.png" Width="150"/>
             <TextBlock Text="League Info" HorizontalAlignment="Center"
                        FontSize="36" Foreground="White" FontWeight="Medium"/>
-            <TextBlock HorizontalAlignment="Center" Margin="0,20,0,0"
+            <TextBlock HorizontalAlignment="Center" Margin="0,20,0,0" Foreground="White"
                        Name="textBlockStatus" TextWrapping="Wrap" Text="olá" />
-            <ProgressBar Name="progress" IsIndeterminate="True" 
+            <ProgressBar Name="progress" IsIndeterminate="True"
                          Foreground="White" Visibility="Collapsed"
                          HorizontalAlignment="Stretch" Margin="20"/>
         </StackPanel>

@@ -10,6 +10,7 @@ using Microsoft.Phone.Shell;
 using LeagueInfo.ClassApi.Request;
 using LeagueInfo.ClassApi;
 using LeagueInfo.Controls;
+using System.Windows.Media;
 
 namespace LeagueInfo.Pages
 {
@@ -54,27 +55,30 @@ namespace LeagueInfo.Pages
                 imageItem.Source = await item.GetImage();
                 textBlockNameItem.Text = item.Name;
                 textBlockGoldItem.Text = item.Gold.Total.ToString() + " gold";
-                textBlockItemEffect.Text = Code.HtmlRemoval.StripTagsCharArray(item.Description);
-                //ListBoxReceita.Items.Clear();
-                if (item.From != null)
+                textBlockItemEffect.NavigateToString(item.Description);
+                if (item.From == null)
                 {
-                //    foreach (string id in item.From)
-                //    {
-                //        ItemSelect itemSelect = new ItemSelect();
-                //        itemSelect.Item = await new ItemDto().SearchItemLowData(Convert.ToInt16(id));
-                //        itemSelect.Tap += ItemSelect_Tap;
-                //        ListBoxReceita.Items.Add(itemSelect);
-                //    }
+                    TextBlock tb = new TextBlock();
+                    tb.Foreground = (SolidColorBrush)Resources["CorDestaque"];
+                    tb.FontSize = 30;
+                    tb.Text = "Este item não possui receita.";
+                    gridReceita.Children.Add(tb);
                 }
                 else
                 {
-                    TextBlock tb = new TextBlock();
-                    tb.FontSize = 30;
-                    tb.Text = "Este item não possui receita.";
-                    ListBoxReceita.Items.Add(tb);
+                    List<ItemDto> receita = new List<ItemDto>();
+                    foreach (string s in item.From)
+                        receita.Add(await new ItemDto().SearchItemLowData(Convert.ToInt16(s)));
+                    ListBoxReceita.ItemsSource = receita;
                 }
                 carregada = true;
             }
+        }
+
+        private void ListBoxReceita_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ItemDto itemSelected = ((ItemDto)((ListBox)sender).SelectedItem);
+            NavigationService.Navigate(new Uri("/Pages/ItemDetail.xaml?id=" + itemSelected.Id, UriKind.Relative)); 
         }
     }
 }

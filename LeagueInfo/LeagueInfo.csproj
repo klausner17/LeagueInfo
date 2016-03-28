@@ -161,9 +161,6 @@
     <Compile Include="Pages\DetailChampion.xaml.cs">
       <DependentUpon>DetailChampion.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\DetailMatch.xaml.cs">
-      <DependentUpon>DetailMatch.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\Sobre.xaml.cs">
       <DependentUpon>Sobre.xaml</DependentUpon>
     </Compile>
@@ -206,10 +203,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\DetailChampion.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\DetailMatch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

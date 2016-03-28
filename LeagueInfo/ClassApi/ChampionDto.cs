@@ -191,7 +191,7 @@ namespace LeagueInfo.ClassApi
 
         public List<SkinDto> Skins
         {
-            get { return skins; }
+            get { return skins;  }
             set { skins = value; }
         }
 

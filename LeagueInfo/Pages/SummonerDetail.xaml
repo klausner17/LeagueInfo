@@ -13,21 +13,15 @@
     mc:Ignorable="d" Loaded="PhoneApplicationPage_Loaded" UseLayoutRounding="False">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot">
+    <Grid x:Name="LayoutRoot" Background="White">
         <Grid>
-            <Grid.Background>
-                <SolidColorBrush Color="Black" Opacity="0.4"/>
-            </Grid.Background>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <!--TitlePanel contains the name of the application and page title-->
-            <Grid Grid.Row="0">
-                <Grid.Background>
-                    <SolidColorBrush Color="Black" Opacity="0.5"/>
-                </Grid.Background>
+            <Grid Grid.Row="0" Background="{StaticResource CorDestaque}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="60"/>
@@ -64,10 +58,10 @@
                     <TextBlock Name="textBlockVit" Text=" vitorias"
                            VerticalAlignment="Center" HorizontalAlignment="Center"
                            Grid.Column="0"
-                            FontSize="26" Foreground="#FF139C0D"/>
+                            FontSize="26" Foreground="#FF7FE27B"/>
                     <TextBlock Name="textBlockDer" Text=" derrotas" FontSize="26"
                            VerticalAlignment="Center" HorizontalAlignment="Center"
-                           Grid.Column="1" Foreground="#FFE83737"/>
+                           Grid.Column="1" Foreground="#FFF15252"/>
                 </Grid>
             </Grid>
             <TextBlock Margin="10,0,0,0" FontSize="38" Grid.Row="1" Text="Ultimas partidas" />

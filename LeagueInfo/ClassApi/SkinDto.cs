@@ -55,7 +55,6 @@ namespace LeagueInfo.ClassApi
             }
         }
 
-
         public ChampionDto Champion { get; set; }
 
         public SkinDto(ChampionDto champion)

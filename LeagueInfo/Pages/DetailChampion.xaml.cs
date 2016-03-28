@@ -69,19 +69,12 @@ namespace LeagueInfo.Pages
                 ChampionDto champion = new ChampionDto();
                 champion = await ChampionDto.SearchChampionAllData(Convert.ToInt32(NavigationContext.QueryString["id"]));
                 iconChampion.Source = new BitmapImage(new Uri(champion.SquareChampion, UriKind.RelativeOrAbsolute));
-                champion.Skins.ForEach(x => x.Champion = champion);
+                for (int i = 0; i < champion.Skins.Count; i++)
+                    champion.Skins[i].Champion = champion;
                 ListBoxSkins.ItemsSource = champion.Skins;
-                Random randNumSkin = new Random();
-                int num = randNumSkin.Next(champion.Skins.Count);
-                BitmapImage backGridInfo = new BitmapImage(new Uri(champion.SplashSkins[num]));
-                ImageBrush brush = new ImageBrush();
-                brush.Stretch = Stretch.UniformToFill;
-                brush.ImageSource = backGridInfo;
-                panorama.Background = brush;
-                panorama.Background.Opacity = 0.5;
                 championName.Text = champion.Name;
                 RichTextBox r = new RichTextBox();
-                lore.Text = champion.Lore;
+                lore.NavigateToString(champion.Lore);
                 AddInfoComponent(champion.AllyTips, allytips);
                 AddInfoComponent(champion.EnimyTips, enimytips);
                 attackInfo.Value = champion.Info.Attack;

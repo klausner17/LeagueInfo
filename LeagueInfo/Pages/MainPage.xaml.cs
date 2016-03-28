@@ -69,7 +69,7 @@ namespace LeagueInfo
             NavigationService.Navigate(new Uri("/Pages/UpdateAccount.xaml", UriKind.RelativeOrAbsolute));
         }
 
-        private async void buttonFilterChampion_Click(object sender, RoutedEventArgs e)
+        private void buttonFilterChampion_Click(object sender, RoutedEventArgs e)
         {
             buttonFilterChampion.IsEnabled = false;
             List<string> filters = new List<string>();
@@ -188,6 +188,12 @@ namespace LeagueInfo
         {
             ChampionDto championSelected = ((ChampionDto)((ListBox)sender).SelectedItem);
             NavigationService.Navigate(new Uri("/Pages/DetailChampion.xaml?id=" + championSelected.Id, UriKind.Relative));          
+        }
+
+        private void ItensList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ItemDto itemSelected = ((ItemDto)((ListBox)sender).SelectedItem);
+            NavigationService.Navigate(new Uri("/Pages/ItemDetail.xaml?id=" + itemSelected.Id, UriKind.Relative));  
         }
     }
 }

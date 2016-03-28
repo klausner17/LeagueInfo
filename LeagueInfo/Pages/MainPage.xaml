@@ -12,20 +12,14 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait" UseLayoutRounding="True" Loaded="phoneApplicationPage_Loaded">
-    <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="/BackGround.jpg" Stretch="UniformToFill" Opacity="0.7"/>
-        </Grid.Background>
-        <Grid VerticalAlignment="Top">
-            <Grid.Background>
-                <SolidColorBrush Color="Black" Opacity="0.4"/>
-            </Grid.Background>
-            <TextBlock Padding="5" FontSize="24" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto">league info</TextBlock>
+    <Grid Background="white">
+        <Grid VerticalAlignment="Top" Background="{StaticResource CorDestaque}">
+            <TextBlock Padding="5" Foreground="White" FontWeight="Medium" FontSize="24" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto">league info</TextBlock>
         </Grid>
         <phone:Panorama Name="panoramaMain" Margin="0,42,0,30">
             <phone:PanoramaItem Header="invocador" Name="panoramaInvocador">
                 <StackPanel>
-                    <TextBox Name="textBlockInvocador" InputScope="Chat" KeyDown="textBlockInvocador_KeyDown"/>
+                    <TextBox BorderBrush="{StaticResource CorDestaque}" Name="textBlockInvocador" InputScope="Chat" KeyDown="textBlockInvocador_KeyDown"/>
                     <Button Name="buttonBuscasInv" Content="buscar" Click="buttonBuscasInv_Click"/>
                 </StackPanel>
             </phone:PanoramaItem>
@@ -60,6 +54,7 @@
                         <CheckBox FontSize="20" Grid.Row="2" IsChecked="true" Grid.Column="0" Name="filterChampionTank">Tanque</CheckBox>
                         <CheckBox FontSize="20" Grid.Row="2" IsChecked="true" Grid.Column="1" Name="filterChampionSupport" Grid.ColumnSpan="2">Suporte</CheckBox>
                         <CheckBox FontSize="20"  Grid.Row="2" IsChecked="true" Grid.Column="2" Name="filterChampionMarksman">Atirador</CheckBox>
+                        <Border Grid.Row="2" Grid.ColumnSpan="3" BorderBrush="{StaticResource CorDestaque}" BorderThickness="0,0,0,1"/>
                     </Grid>
                     <ListBox Name="ChampionsList" Grid.Row="1" SelectionChanged="ChampionsList_SelectionChanged" ItemTemplate="{StaticResource ChampionTemplate}">
                         <ListBox.ItemContainerStyle>
@@ -121,8 +116,9 @@
                             <CheckBox Name="filterItemGoldPer">Ouro</CheckBox>
                             <CheckBox Name="filterItemJungle">Selva</CheckBox>
                         </toolkit:ExpanderView>
+                        <Border BorderBrush="{StaticResource CorDestaque}" BorderThickness="0,0,0,1" Grid.Row="4" />
                     </Grid>
-                    <ListBox Name="ItensList" Grid.Row="1" ItemTemplate="{StaticResource ItemTemplate}" >
+                    <ListBox Name="ItensList" Grid.Row="1" ItemTemplate="{StaticResource ItemTemplate}" SelectionChanged="ItensList_SelectionChanged" >
                         <ListBox.ItemContainerStyle>
                             <Style TargetType="ListBoxItem">
                                 <Setter Property="Margin" Value="3"/>
@@ -137,7 +133,7 @@
         <ProgressBar Visibility="Collapsed" HorizontalAlignment="Stretch" IsIndeterminate="True"  VerticalAlignment="center" Height="20" Width="{Binding Width, ElementName=phoneApplicationPage}" Foreground="White"  Name="loadProgress" Margin="0"/>
     </Grid>
     <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True" Mode="Minimized" Opacity="0.8">
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True" Mode="Minimized" Opacity="0.8" BackgroundColor="Black">
             <shell:ApplicationBarIconButton IconUri="/Assets/appbar.information.circle.png" Text="Sobre" Click="ApplicationBarIconButton_Click_1"/>
             <shell:ApplicationBarIconButton IconUri="/Assets/appbar.paypal.png" Text="Doação"/>
             <shell:ApplicationBarIconButton IconUri="/Assets/appbar.star.png" Text="Avaliar" Click="ApplicationBarIconButton_Click"/>

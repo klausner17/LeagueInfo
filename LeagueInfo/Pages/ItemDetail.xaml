@@ -10,23 +10,15 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    mc:Ignorable="d"
-    shell:SystemTray.IsVisible="True" Name="pageItemDetail" Loaded="pageItemDetail_Loaded">
+    mc:Ignorable="d" Name="pageItemDetail" Loaded="pageItemDetail_Loaded">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot">
-        <Grid.Background>
-            <ImageBrush Stretch="UniformToFill" ImageSource="/Assets/LojaLol.jpg"/>
-        </Grid.Background>
-
+    <Grid x:Name="LayoutRoot" Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <Grid.Background>
-                <SolidColorBrush Color="Black" Opacity="0.65"/>
-            </Grid.Background>
+        <Grid Grid.Row="0" Background="{StaticResource CorDestaque}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100"/>
                 <ColumnDefinition Width="91*"/>
@@ -39,34 +31,33 @@
             <Image Name="imageItem"
                    VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                    Grid.Column="0" Grid.RowSpan="2"/>
-            <TextBlock Name="textBlockNameItem" 
+            <TextBlock Name="textBlockNameItem" Foreground="White"
                        VerticalAlignment="Center" HorizontalAlignment="Stretch"
                        Grid.Column="1" Grid.Row="0" FontSize="28"
                        Margin="10,0,0,0" TextWrapping="Wrap"/>
-            <TextBlock Name="textBlockGoldItem" 
+            <TextBlock Name="textBlockGoldItem" Foreground="White"
                        VerticalAlignment="Center" HorizontalAlignment="Stretch"
                        Grid.Column="1" Grid.Row="1" FontSize="22"
                        Margin="10,0,0,0"/>
         </Grid>
         <phone:Panorama Name="panoramaMain" Grid.Row="1">
-            <phone:Panorama.Background>
-                <SolidColorBrush Color="Black" Opacity="0.3"/>
-            </phone:Panorama.Background>
             <phone:PanoramaItem Name="panoamaItemEffect" Header="Efeito">
                 <Grid>
-                    <TextBlock Name="textBlockItemEffect" TextWrapping="Wrap"/>
+                    <phone:WebBrowser Name="textBlockItemEffect" />
                 </Grid>
             </phone:PanoramaItem>
             <phone:PanoramaItem Name="panoamaItemReceita" Header="Receita">
-                <ListBox Name="ListBoxReceita">
-                    <ListBox.ItemContainerStyle>
-                        <Style TargetType="ListBoxItem">
-                            <Setter Property="Margin" Value="3"/>
-                            <Setter Property="HorizontalAlignment" Value="Stretch"/>
-                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                        </Style>
-                    </ListBox.ItemContainerStyle>
-                </ListBox>
+                <StackPanel Name="gridReceita">
+                    <ListBox Name="ListBoxReceita" ItemTemplate="{StaticResource ItemTemplate}" SelectionChanged="ListBoxReceita_SelectionChanged" >
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="Margin" Value="3"/>
+                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                    </ListBox>
+                </StackPanel>
             </phone:PanoramaItem>
         </phone:Panorama>
     </Grid>
