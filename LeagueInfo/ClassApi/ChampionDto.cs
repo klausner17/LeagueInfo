@@ -10,7 +10,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Newtonsoft.Json;
-using LeagueInfo.ClassApi.Request;
 using System.Threading.Tasks;
 
 namespace LeagueInfo.ClassApi
@@ -287,15 +286,15 @@ namespace LeagueInfo.ClassApi
 
         public static async Task<ChampionDto> SearchChampionAllData(long idChampion)
         {
-            string json = await new Requester(@"https://global.api.pvp.net/api/lol/static-data/br/v1.2/champion/" + idChampion.ToString() + 
-                "?champData=all&api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33").GetJson();
+            string json = await new Requester().GetJson(@"https://global.api.pvp.net/api/lol/static-data/br/v1.2/champion/" + idChampion.ToString() +
+                "?champData=all&api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33");
             return JsonConvert.DeserializeObject<ChampionDto>(json);
         }
 
         public static async Task<ChampionDto> SearchChampionLowData(long idChampion)
         {
-            string json = await new Requester(@"https://global.api.pvp.net/api/lol/static-data/br/v1.2/champion/" + idChampion.ToString() + 
-                "?champData=image&api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33").GetJson();
+            string json = await new Requester().GetJson(@"https://global.api.pvp.net/api/lol/static-data/br/v1.2/champion/" + idChampion.ToString() +
+                "?champData=image&api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33");
             return JsonConvert.DeserializeObject<ChampionDto>(json);
         }
 

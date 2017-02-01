@@ -110,6 +110,11 @@ namespace LeagueInfo.ClassApi
             get { return description; }
         }
 
+        public string DescriptionNoHtml
+        {
+            get { return Code.HtmlRemoval.StripTagsCharArray(description); }
+        }
+
         public List<List<double>> Effect
         {
             get { return effect; }

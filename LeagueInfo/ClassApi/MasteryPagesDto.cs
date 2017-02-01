@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using LeagueInfo.ClassApi.Request;
 
 namespace LeagueInfo.ClassApi
 {
@@ -18,7 +17,7 @@ namespace LeagueInfo.ClassApi
 
         public static async Task<MasteryPagesDto> SearchMateryPages(long idSummoner)
         {
-            string json = await new Requester(@"https://br.api.pvp.net/api/lol/br/v1.4/summoner/" + idSummoner.ToString() + "/masteries?api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33").GetJson();
+            string json = await new Requester().GetJson(@"https://br.api.pvp.net/api/lol/br/v1.4/summoner/" + idSummoner.ToString() + "/masteries?api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33");
             Dictionary<string, MasteryPagesDto> materyPages = JsonConvert.DeserializeObject<Dictionary<string, MasteryPagesDto>>(json);
             return materyPages.First().Value;
         }

@@ -9,6 +9,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using LeagueInfo.ClassApi;
 using System.Windows.Media.Imaging;
+using LeagueInfo.Code;
 
 namespace LeagueInfo.Controls
 {
@@ -23,7 +24,7 @@ namespace LeagueInfo.Controls
             {
                 spell = value;
                 this.title.Text = spell.Name;
-                this.content.Text = Code.HtmlRemoval.StripTagsCharArray(spell.Description);
+                this.content.Text = HtmlRemoval.StripTagsCharArray(spell.Description);
                 LoadIconSpell();
             }
         }
@@ -39,9 +40,9 @@ namespace LeagueInfo.Controls
             Spell = spell;
         }
 
-        private async void LoadIconSpell()
+        private void LoadIconSpell()
         {
-           // this.iconAbillity.Source = await spell.GetImageSpell();
+            this.iconAbillity.Source = new BitmapImage(new Uri(spell.ImageSpell, UriKind.RelativeOrAbsolute));
         }
 
     }

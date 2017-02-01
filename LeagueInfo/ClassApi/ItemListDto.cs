@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using LeagueInfo.ClassApi.Request;
 using System.IO;
 
 namespace LeagueInfo.ClassApi
@@ -35,7 +34,7 @@ namespace LeagueInfo.ClassApi
 
         public static async Task LoadAllItens()
         {
-            string json = await new Requester(URLALLITENS).GetJson();
+            string json = await new Requester().GetJson(URLALLITENS);
             ItemListDto dataItens = JsonConvert.DeserializeObject<ItemListDto>(json);
             AllItems = (from itens in dataItens.Data
                         orderby itens.Value.Name ascending

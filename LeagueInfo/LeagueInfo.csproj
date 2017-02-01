@@ -106,6 +106,7 @@
     <Compile Include="ClassApi\MasteryDto.cs" />
     <Compile Include="ClassApi\MasteryPageDto.cs" />
     <Compile Include="ClassApi\MasteryPagesDto.cs" />
+    <Compile Include="ClassApi\Request\Requester.cs" />
     <Compile Include="Code\HtmlRemoval.cs" />
     <Compile Include="Controls\AbillityControl.xaml.cs">
       <DependentUpon>AbillityControl.xaml</DependentUpon>
@@ -139,18 +140,11 @@
     <Compile Include="ClassApi\Player.cs" />
     <Compile Include="ClassApi\PlayerHistory.cs" />
     <Compile Include="ClassApi\RecommendedDto.cs" />
-    <Compile Include="ClassApi\Request\Requester.cs" />
     <Compile Include="ClassApi\Rune.cs" />
     <Compile Include="ClassApi\SkinDto.cs" />
     <Compile Include="ClassApi\SpellVarsData.cs" />
     <Compile Include="ClassApi\StatsDto.cs" />
     <Compile Include="ClassApi\SummonerDto.cs" />
-    <Compile Include="Controls\SkinControl.xaml.cs">
-      <DependentUpon>SkinControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\SquareInfo.xaml.cs">
-      <DependentUpon>SquareInfo.xaml</DependentUpon>
-    </Compile>
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Pages\ItemDetail.xaml.cs">
       <DependentUpon>ItemDetail.xaml</DependentUpon>
@@ -183,14 +177,6 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Page Include="Controls\AbillityControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\SkinControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\SquareInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

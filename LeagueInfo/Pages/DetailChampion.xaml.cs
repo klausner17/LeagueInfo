@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using LeagueInfo.Controls;
 using LeagueInfo.Resources;
-using LeagueInfo.ClassApi.Request;
 using System.Windows.Documents;
 
 namespace LeagueInfo.Pages
@@ -81,12 +80,7 @@ namespace LeagueInfo.Pages
                 defenseInfo.Value = champion.Info.Defense;
                 magicInfo.Value = champion.Info.Magic;
                 difficultyInfo.Value = champion.Info.Difficulty;
-                //incluir habilidades
-                foreach (ChampionSpellDto spell in champion.Spells)
-                {
-                    ControlAbillity controlAbillity = new ControlAbillity(spell);
-                    abillityChampions.Children.Add(controlAbillity);
-                }
+                abillityChampions.ItemsSource = champion.Spells;
             }
         }
     }

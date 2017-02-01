@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using LeagueInfo.ClassApi.Request;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 
@@ -19,14 +18,14 @@ namespace LeagueInfo.ClassApi
 
         public async Task<ItemDto> SearchItemByIDAllData(int id)
         {
-            string json = await new Requester(@"https://global.api.pvp.net/api/lol/static-data/br/v1.2/item/" + id + "?itemData=all&api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33").GetJson();
+            string json = await new Requester().GetJson(@"https://global.api.pvp.net/api/lol/static-data/br/v1.2/item/" + id + "?itemData=all&api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33");
             ItemDto item = JsonConvert.DeserializeObject<ItemDto>(json);
             return item;
         }
 
         public async Task<ItemDto> SearchItemLowData(int id)
         {
-            string json = await new Requester(@"https://global.api.pvp.net/api/lol/static-data/br/v1.2/item/" + id.ToString() + "?itemData=gold,image&api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33").GetJson();
+            string json = await new Requester().GetJson(@"https://global.api.pvp.net/api/lol/static-data/br/v1.2/item/" + id.ToString() + "?itemData=gold,image&api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33");
             ItemDto item = JsonConvert.DeserializeObject<ItemDto>(json);
             return item;
         }

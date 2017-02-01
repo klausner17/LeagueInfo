@@ -96,11 +96,15 @@
             </phone:PanoramaItem>
 
             <phone:PanoramaItem Header="habilidades">
-                <ScrollViewer VerticalAlignment="Stretch">
-                    <StackPanel Name="abillityChampions">
-
-                    </StackPanel>
-                </ScrollViewer>
+                <ListBox Name="abillityChampions" ItemTemplate="{StaticResource DataTemplateAbillity}">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="Margin" Value="3"/>
+                            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                </ListBox>
             </phone:PanoramaItem>
 
             <phone:PanoramaItem Header="skins">

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using LeagueInfo.ClassApi.Request;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -30,7 +29,7 @@ namespace LeagueInfo.ClassApi
         public async Task<SummonerDto> SearchSummoner(string nameSummoner)
         {
             nameSummoner = nameSummoner.Replace(" ", "");
-            string json = await new Requester(@"https://br.api.pvp.net/api/lol/br/v1.4/summoner/by-name/" + nameSummoner + "?api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33").GetJson();
+            string json = await new Requester().GetJson(@"https://br.api.pvp.net/api/lol/br/v1.4/summoner/by-name/" + nameSummoner + "?api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33");
             Dictionary<string, SummonerDto> summoner = JsonConvert.DeserializeObject<Dictionary<string, SummonerDto>>(json);
             return summoner.First().Value;
         }

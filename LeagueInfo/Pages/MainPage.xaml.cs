@@ -4,7 +4,6 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using LeagueInfo.ClassApi;
 using System.Windows.Media.Imaging;
-using LeagueInfo.ClassApi.Request;
 using System.Threading.Tasks;
 using LeagueInfo.Controls;
 using System.Windows.Input;
@@ -20,6 +19,8 @@ namespace LeagueInfo
     public partial class MainPage : PhoneApplicationPage
     {
         private delegate void ProgressCallBack(bool status);
+
+        private static bool loaded = false;
 
         private void ProgressBarVisibility(bool status)
         {

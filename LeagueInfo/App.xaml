@@ -191,6 +191,23 @@
                 <Border Grid.RowSpan="2" Grid.Column="0" BorderThickness="3,0,0,0" BorderBrush="{Binding Path=Stats.WinColor}"/>
             </Grid>
         </DataTemplate>
+        
+        <DataTemplate x:Key="DataTemplateAbillity">
+            <Grid x:Name="LayoutRoot">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Border Margin="0,2,0,0" Grid.ColumnSpan="2" Grid.RowSpan="2" BorderThickness="0,0,0,1" BorderBrush="{StaticResource CorDestaque}"/>
+                <Image Name="iconAbillity" HorizontalAlignment="Center" Height="100" VerticalAlignment="Top" Width="100" Source="{Binding Path=ImageSpell}"/>
+                <TextBlock Foreground="{StaticResource CorDestaque}" Grid.Column="1" Grid.Row="0" Margin="10,0" FontSize="28" Text="{Binding Path=Name}" TextWrapping="Wrap" FontWeight="SemiBold" />
+                <TextBlock Foreground="{StaticResource CorDestaque}" Grid.Row="1" Grid.ColumnSpan="2" Margin="10" FontSize="20" Text="{Binding Path=DescriptionNoHtml}" TextWrapping="Wrap" />
+            </Grid>
+        </DataTemplate>
 
     </Application.Resources>
 

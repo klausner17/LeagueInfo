@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using LeagueInfo.ClassApi.Request;
 
 namespace LeagueInfo.ClassApi
 {
@@ -48,7 +47,7 @@ namespace LeagueInfo.ClassApi
         {
             if (instance == null)
             {
-                string json = await new Requester(@"https://ddragon.leagueoflegends.com/realms/br.json").GetJson();
+                string json = await new Requester().GetJson(@"https://ddragon.leagueoflegends.com/realms/br.json");
                 instance = JsonConvert.DeserializeObject<EndPointDDragon>(json);
             }
             return instance;

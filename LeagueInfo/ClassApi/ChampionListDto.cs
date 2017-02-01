@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using LeagueInfo.ClassApi.Request;
 using System.IO;
 
 namespace LeagueInfo.ClassApi
@@ -40,7 +39,7 @@ namespace LeagueInfo.ClassApi
 
         public static async Task LoadAllChampions()
         {
-            string json = await new Requester(URLALLCHAMPS).GetJson();
+            string json = await new Requester().GetJson(URLALLCHAMPS);
             List<ChampionDto> champsFree = await LoadFreeWeek();
             var championData =  JsonConvert.DeserializeObject<ChampionListDto>(json);
             AllChampions = (from cd in championData.Data
@@ -54,7 +53,7 @@ namespace LeagueInfo.ClassApi
 
         private static async Task<List<ChampionDto>> LoadFreeWeek()
         {
-            string json = await new Requester(@"https://br.api.pvp.net/api/lol/br/v1.2/champion?freeToPlay=true&api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33").GetJson();
+            string json = await new Requester().GetJson(@"https://br.api.pvp.net/api/lol/br/v1.2/champion?freeToPlay=true&api_key=8eee2093-91d0-4a8f-bc85-c366e7de1c33");
             return JsonConvert.DeserializeObject<ChampionListDto>(json).ChampionsFreeWeek;
         }
     }

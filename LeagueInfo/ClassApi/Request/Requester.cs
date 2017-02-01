@@ -7,61 +7,37 @@ using System.Net;
 using System.IO;
 using System.Threading;
 
-namespace LeagueInfo.ClassApi.Request
+namespace LeagueInfo.ClassApi
 {
     class Requester
     {
         public delegate void GettingJsonEventHandler(int status);
         public static event GettingJsonEventHandler OnGettingData;
-        public string url;
-        const string KEY = @"8eee2093-91d0-4a8f-bc85-c366e7de1c33";
-        public string Campo { get; set; }
-        private WebRequest requester;
         private String json { get; set; }
-        private static ManualResetEvent allDone = new ManualResetEvent(false);
         bool go = false;
 
         public const int BEGINDOWNLOAD = 0;
         public const int ENDDOWNLOAD = 1;
 
-        public Requester(string url)
+        public async Task<string> GetJson(string url)
         {
-            this.url = url;
-        }
-
-        private async Task StartWebRequest()
-        {
-            requester = (HttpWebRequest)WebRequest.Create(url);
-            requester.BeginGetResponse(new AsyncCallback(FinishWebRequest), null);
+            WebClient client = new WebClient();
+            client.DownloadStringCompleted += client_DownloadStringCompleted;
+            client.DownloadStringAsync(new Uri(url));
             GettingData(BEGINDOWNLOAD);
             while (!go)
-                await Task.Delay(1);
+                await Task.Delay(10);
             GettingData(ENDDOWNLOAD);
-        }
-
-        private void FinishWebRequest(IAsyncResult result)
-        {
-            json = string.Empty;
-            try
-            {
-                HttpWebResponse response;
-                response = requester.EndGetResponse(result) as HttpWebResponse;
-                json = string.Empty;
-                using (var reader = new StreamReader(response.GetResponseStream()))
-                    json = reader.ReadToEnd();
-                go = true;
-            }
-            catch (Exception )
-            {
-                go = true;
-                return;
-            }
-        }
-
-        public async Task<string> GetJson()
-        {
-            await StartWebRequest();
             return json;
+        }
+
+        void client_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(e.Result))
+            {
+                json = e.Result;
+                go = true;
+            }
         }
 
         public void GettingData(int status)
