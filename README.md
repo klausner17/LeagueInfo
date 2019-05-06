@@ -10,4 +10,4 @@ Um projeto para a faculdade com a inteção de aprendar sobre Windows Phone.<br>
 * Programação para Windows Phone, óbvio
 * Alguns conceitos de design
 ## Conclusão
-Além de passar na matéria eu ficou empolgado em saber mais sobre programação mobile e web, principalmente na área de backend.
+Além de passar na matéria eu fiquei empolgado em saber mais sobre programação mobile e web, principalmente na área de backend.
